@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('overzicht');
 });
+Route::get('/belbin', function(){
+    return view('belbin');
+});
+Route::get('/nieuwproject', function(){
+    return view('nieuwproject');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
