@@ -11,6 +11,12 @@ class create_users_seeder extends Seeder
      */
     public function run()
     {
-        //
+      DB::table('users')->insert([
+          'Id' => 1,
+          'Name' => "Lauwers",
+          'Surname' => "Andreas",
+          'Email' => "andreas.lauwers@student.odisee.be",
+          'Password' => bcrypt('secret'),
+      ]);
     }
 }

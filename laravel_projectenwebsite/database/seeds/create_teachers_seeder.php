@@ -11,6 +11,8 @@ class create_teachers_seeder extends Seeder
      */
     public function run()
     {
-        //
+      DB::table('students')->insert([
+          'Id' => 1
+      ]);
     }
 }

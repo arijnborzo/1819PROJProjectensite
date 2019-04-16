@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class create_students_seeder extends Seeder
+class create_externs_seeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class create_students_seeder extends Seeder
      */
     public function run()
     {
-      
+        //
     }
 }

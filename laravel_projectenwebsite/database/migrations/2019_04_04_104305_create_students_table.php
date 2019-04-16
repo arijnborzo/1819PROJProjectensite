@@ -14,9 +14,9 @@ class CreateStudentsTable extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->increments('Id');
-            $table->enum('Belbintype', ['Bedrijfsman', 'Brononderzoeker', 'Plant', 'Monitor', 'Vormer', 'Voozitter', 'Zorgdrager', 'Groepsdrager', 'Specialist']);
-            $table->integer('Group_id')
+            $table->integer('Id');
+            $table->enum('Belbintype', ['Bedrijfsman', 'Brononderzoeker', 'Plant', 'Monitor', 'Vormer', 'Voozitter', 'Zorgdrager', 'Groepsdrager', 'Specialist'])->nullable();
+            $table->integer('Group_id')->nullable();
         });
     }
 
