@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(create_teachers_seeder::class);
         $this->call(create_users_seeder::class);
         $this->call(create_externs_seeder::class);
+        $this->call(create_smartcriteria_seeder::class);
     }
 }

@@ -16,10 +16,11 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->Increments('Id');
             $table->string('Title');
-            $table->mediumText('Short_Description');
-            $table->longText('Full_Description');
-            $table->integer('Teacher_Id');
-            $table->integer('Creator_Id');
+            $table->enum('Status', ['Declined', 'Pending', 'Accepted']);
+            $table->mediumText('Short_Description')->nullable();
+            $table->longText('Full_Description')->nullable();
+            $table->integer('Teacher_Id')->nullable();
+            $table->integer('Creator_Id')->nullable();
             $table->timestamps();
         });
     }

@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Projects extends Model
 {
-    protected $fillable = ['Id', 'Title', 'Short_Description', 'Full_Description', 'Teacher_Id', 'Creator_Id',];
+    protected $fillable = ['Id', 'Title', 'Status', 'Short_Description', 'Full_Description', 'Teacher_Id', 'Creator_Id',];
     public function teachers(){
         return $this->belongsTo('App\Teachers', 'Id', 'Teacher_Id');
+    }
+    public function smartcriteria() {
+        return $this->hasOne('App\Smartcriteria', 'Group_Id', 'Id');
     }
     public function users(){
         return $this->belongsTo('App\Users', 'Id', 'Creator_Id');

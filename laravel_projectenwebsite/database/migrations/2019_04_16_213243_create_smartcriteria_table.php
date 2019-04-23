@@ -14,8 +14,12 @@ class CreateSmartcriteriaTable extends Migration
     public function up()
     {
         Schema::create('smartcriteria', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->integer('Group_Id');
+            $table->string('Specific');
+            $table->string('Measurable');
+            $table->string('Acceptable');
+            $table->string('Realistic');
+            $table->string('Tolerant');
         });
     }
 
