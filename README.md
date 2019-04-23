@@ -2,7 +2,7 @@
 
 ## HTML & CSS design templates
 ```
-Designs schetsen
+Snelle schetsen van het design
 ```
 
 ### UX
@@ -12,9 +12,18 @@ Het userexperience gedeelte met o.m. persona's, storyboard en wireframes
 
 ### Laravel projectensite
 ```
-Laravel gedeelte
+Het backend gedeelte gemaakt in Laravel
 ```
 
 ### VueBootstrap projectensite
 ```
-Het frontend gedeelte gemaakt in VueBootstrap (nog apart van laravel)
+Het frontend gedeelte gemaakt in VueBootstrap (tot op heden nog apart van laravel)
+
+```
+### ICTEO14.docx
+
+```
+Het verslag tot op heden
+
+```
+
