@@ -1,6 +1,6 @@
 # Projectensite
 
-## HTML & CSS design templates
+### HTML & CSS design templates
 ```
 Snelle schetsen van het design
 ```
