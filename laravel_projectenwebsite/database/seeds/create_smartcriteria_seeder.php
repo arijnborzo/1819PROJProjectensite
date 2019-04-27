@@ -15,7 +15,7 @@ class create_smartcriteria_seeder extends Seeder
           'Group_Id' => 1,
           'Specific' => 'Vernieuwen van de huidige site',
           'Measurable' => 'De website moet de leerlingen van het 2e jaar tegelijk op de website toelaten',
-          'Accepted' => 'De website moet volledig werkende zijn',
+          'Acceptable' => 'De website moet volledig werkende zijn',
           'Realistic' => 'Website moet moderne methodes gebruiken',
           'Tolerant' => 'Groepen moeten kunnen worden verdeeld',
       ]);

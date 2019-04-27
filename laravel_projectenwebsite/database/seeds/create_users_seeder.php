@@ -12,39 +12,39 @@ class create_users_seeder extends Seeder
     public function run()
     {
       DB::table('users')->insert([
-          'Id' => 1,
-          'Name' => "Lauwers",
-          'Surname' => "Andreas",
-          'Email' => "andreas.lauwers@student.odisee.be",
-          'Password' => bcrypt('test'),
+          'id' => 1,
+          'name' => "Lauwers",
+          'surname' => "Andreas",
+          'email' => "andreas.lauwers@student.odisee.be",
+          'password' => bcrypt('test'),
       ]);
       DB::table('users')->insert([
-          'Id' => 2,
-          'Name' => "Petit",
-          'Surname' => "Lukas",
-          'Email' => "lukas.petit@student.odisee.be",
-          'Password' => bcrypt('test1'),
+          'id' => 2,
+          'name' => "Petit",
+          'surname' => "Lukas",
+          'email' => "lukas.petit@student.odisee.be",
+          'password' => bcrypt('test1'),
       ]);
       DB::table('users')->insert([
-          'Id' => 3,
-          'Name' => "Borzo",
-          'Surname' => "Arijn",
-          'Email' => "arijn.borzo@student.odisee.be",
-          'Password' => bcrypt('test2'),
+          'id' => 3,
+          'name' => "Borzo",
+          'surname' => "Arijn",
+          'email' => "arijn.borzo@student.odisee.be",
+          'password' => bcrypt('test2'),
       ]);
       DB::table('users')->insert([
-          'Id' => 4,
-          'Name' => "Stas",
-          'Surname' => "Arno",
-          'Email' => "andreas.lauwers@student.odisee.be",
-          'Password' => bcrypt('test3'),
+          'id' => 4,
+          'name' => "Stas",
+          'surname' => "Arno",
+          'email' => "andreas.lauwers@student.odisee.be",
+          'password' => bcrypt('test3'),
       ]);
       DB::table('users')->insert([
-          'Id' => 5,
-          'Name' => "Van Peteghem",
-          'Surname' => "Pieter",
-          'Email' => "pieter.vanpeteghem@odisee.be",
-          'Password' => bcrypt('test4'),
+          'id' => 5,
+          'name' => "Van Peteghem",
+          'surname' => "Pieter",
+          'email' => "pieter.vanpeteghem@odisee.be",
+          'password' => bcrypt('test4'),
       ]);
     }
 }
