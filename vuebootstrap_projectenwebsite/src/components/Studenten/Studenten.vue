@@ -97,16 +97,33 @@ export default {
     },
     belbinResult(value) {
       if (value === "Z")
-        return `<img src=${this.photo.coordinator} alt="CO-ORDINATOR">`;
+        return `<img src=${
+          this.photo.coordinator
+        } alt="CO-ORDINATOR" v-b-tooltip.click title="Co-ordinator">`;
       if (value === "Y")
-        return `<img src=${this.photo.completor} alt="COMPLETOR">`;
+        return `<img src=${
+          this.photo.completor
+        } alt="COMPLETOR" v-b-tooltip.click title="Completor">`;
       if (value === "X")
-        return `<img src=${this.photo.implementor} alt="IMPLEMENTOR">`;
+        return `<img src=${
+          this.photo.implementor
+        } alt="IMPLEMENTOR" v-b-tooltip.click title="Implementor">`;
       if (value === "W")
-        return `<img src=${this.photo.investigator} alt="INVESTIGATOR">`;
-      if (value === "V") return `<img src=${this.photo.monitor} alt="MONITOR">`;
-      if (value === "Q") return `<img src=${this.photo.shaper} alt="SHAPER">`;
-      if (value === "T") return `<img src=${this.photo.plant} alt="PLANT">`;
+        return `<img src=${
+          this.photo.investigator
+        } alt="INVESTIGATOR" v-b-tooltip.click title="Investigator">`;
+      if (value === "V")
+        return `<img src=${
+          this.photo.monitor
+        } alt="MONITOR" v-b-tooltip.click title="Monitor">`;
+      if (value === "Q")
+        return `<img src=${
+          this.photo.shaper
+        } alt="SHAPER" v-b-tooltip.click title="Shaper">`;
+      if (value === "T")
+        return `<img src=${
+          this.photo.plant
+        } alt="PLANT" v-b-tooltip.click title="Plant">`;
       if (value === "S")
         return `<img src=${this.photo.teamworker} alt="TEAMWORKER">`;
     },
