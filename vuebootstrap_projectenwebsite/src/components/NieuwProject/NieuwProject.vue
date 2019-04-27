@@ -190,7 +190,6 @@ export default {
         var obj = this.form.smart[key];
         if (obj != "") {
           count++;
-          console.log(count);
         }
         if (count == 6) this.form.smart.border = "success";
         else this.form.smart.border = "danger";

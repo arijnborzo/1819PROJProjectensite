@@ -12,7 +12,7 @@
             <!-- COMPETITE -->
             <b-form-group
                 label="competitie:"
-                label-cols="3"
+                label-cols="4"
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
@@ -21,13 +21,14 @@
                 buttons
                 size= "sm"
                 button-variant="outline-primary"
+                name="radio-btn-outline"
               ></b-form-radio-group>
             </b-form-group>
 
             <!-- O & B -->
             <b-form-group
                 label="onderzoeken en begrijpen:"
-                label-cols="3"
+                label-cols="4"
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
@@ -43,7 +44,23 @@
             <!-- UITDAGING -->
             <b-form-group
                 label="uitdaging:"
-                label-cols="3"
+                label-cols="4"
+                label-align-lg="left" class="mb-2"
+            >
+              <b-form-radio-group
+                v-model="selected1"
+                :options="options"
+                buttons
+                size= "sm"
+                button-variant="outline-primary"
+                name="radio-btn-outline"
+              ></b-form-radio-group>
+            </b-form-group>
+
+              <!-- AVONTUUR -->
+            <b-form-group
+                label="avontuur:"
+                label-cols="4"
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
