@@ -23,4 +23,7 @@ Route::get('/nieuwproject', function(){
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'OverviewController@index')->name('home');
+Route::get('/archief', 'OverviewController@archive')->name('archief');
+/*Route::get('/belbintest', 'OverviewController@students')->name('studenten');*/
+Route::get('/studenten', 'OverviewController@students')->name('studenten');

@@ -12,13 +12,13 @@ class create_projects_seeder extends Seeder
     public function run()
     {
         DB::table('projects')->insert([
-            'Id' => 1,
-            'Title' => 'Projectenwebsite',
-            'Status' => 'Accepted',
-            'Short_Description' => 'Dit is de korte beschrijving',
-            'Full_Description' => 'Dit is de veel veel veel langere beschrijving',
-            'Teacher_Id' => 5,
-            'Creator_Id' => 1,
+            'id' => 1,
+            'title' => 'Projectenwebsite',
+            'status' => 'Accepted',
+            'short_description' => 'Dit is de korte beschrijving',
+            'full_description' => 'Dit is de veel veel veel langere beschrijving',
+            'teacher_id' => 5,
+            'creator_id' => 1,
             'created_at' => date("Y-m-d H:i:s"),
         ]);
     }

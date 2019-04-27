@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Students extends Model
 {
-    protected $fillable = ['Id', 'Belbintype', 'Group_Id',];
+    protected $fillable = ['id', 'belbintype', 'group_id',];
     public function users(){
-      return $this->hasOne('App\Users', 'Id');
+      return $this->hasOne('App\Users', 'id', 'id');
     }
     public function groups(){
-      return $this->belongsTo('App\Groups', 'Id', 'Group_Id');
+      return $this->belongsTo('App\Groups', 'id', 'group_id');
     }
 }

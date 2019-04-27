@@ -14,8 +14,8 @@ class CreateExternsTable extends Migration
     public function up()
     {
         Schema::create('externs', function (Blueprint $table) {
-            $table->increments('Id');
-            $table->string('Companie');
+            $table->increments('id');
+            $table->string('companie');
         });
     }
 

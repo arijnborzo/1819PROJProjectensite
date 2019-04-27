@@ -29,8 +29,9 @@
 			   <li ><a href='#'><span>Archief</span></a></li>
 			   <li ><a href='/belbin'><span>Belbintest</span></a></li>
 			   <li class='last'><a href='/nieuwproject'><span>Nieuw Project</span></a></li>
-			</ul>
 
+			</ul>
+			
 		</div>
 	</div>
 </div>

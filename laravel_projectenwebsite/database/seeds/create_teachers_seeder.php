@@ -12,7 +12,7 @@ class create_teachers_seeder extends Seeder
     public function run()
     {
       DB::table('teachers')->insert([
-          'Id' => 1,
+          'id' => 1,
       ]);
     }
 }

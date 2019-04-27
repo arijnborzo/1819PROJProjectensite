@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comments extends Model
 {
-    protected $fillable = ['Id', 'User_Id', 'Title', 'Message', 'Project_Id',];
+    protected $fillable = ['id', 'user_Id', 'title', 'message', 'project_id',];
     public function users(){
-      return $this->belongsTo('App\Users', 'User_id');
+      return $this->belongsTo('App\Users', 'user_id');
     }
     public function projects(){
-      return $this->belongsTo('App\Projects', 'Project_Id');
+      return $this->belongsTo('App\Projects', 'project_id');
     }
     public $timestamps = true;
 }

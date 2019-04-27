@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Teachers extends Model
 {
-    protected $fillable = ['Id',];
+    protected $fillable = ['id',];
     public function users() {
         return $this->hasOne('App\Users');
     }

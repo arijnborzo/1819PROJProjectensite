@@ -12,8 +12,8 @@ class create_groups_seeder extends Seeder
     public function run()
     {
       DB::table('groups')->insert([
-          'Id' => 1,
-          'Project_Id' => 1,
+          'id' => 1,
+          'project_id' => 1,
       ]);
     }
 }

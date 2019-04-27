@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Smartcriteria extends Model
 {
-  protected $fillable = ['Group_Id', 'Specific', 'Measurable', 'Acceptable', 'Realistic', 'Tolerant',];
+  protected $fillable = ['group_id', 'specific', 'measurable', 'acceptable', 'realistic', 'tolerant',];
 
   public function groups(){
       return $this->hasOne('App\Groups', 'Id', 'Group_Id');

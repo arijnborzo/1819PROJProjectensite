@@ -19,19 +19,19 @@ class Users extends Authenticatable
   ];
 
   public function students(){
-    return $this->hasOne('App\Students');
+    return $this->hasOne('App\Students', 'id');
   }
   public function teachers(){
-    return $this->hasOne('App\Teachers');
+    return $this->hasOne('App\Teachers', 'id');
   }
   public function externs(){
-    return $this->hasOne('App\Externs');
+    return $this->hasOne('App\Externs', 'id');
   }
   public function comments()  {
-      return $this->hasMany('App\Comments', 'User_id');
+      return $this->hasMany('App\Comments', 'user_id');
   }
   public function projects(){
-    return $this->hasMany('App\Projects', 'Creator_Id');
+    return $this->hasMany('App\Projects', 'creator_Id');
   }
   public $timestamps = false;
 }

@@ -14,13 +14,13 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->Increments('Id');
-            $table->string('Title');
-            $table->enum('Status', ['Declined', 'Pending', 'Accepted']);
-            $table->mediumText('Short_Description')->nullable();
-            $table->longText('Full_Description')->nullable();
-            $table->integer('Teacher_Id')->nullable();
-            $table->integer('Creator_Id')->nullable();
+            $table->Increments('id');
+            $table->string('title');
+            $table->enum('status', ['Declined', 'Pending', 'Accepted']);
+            $table->mediumText('short_description')->nullable();
+            $table->longText('full_description')->nullable();
+            $table->integer('teacher_id')->nullable();
+            $table->integer('creator_id')->nullable();
             $table->timestamps();
         });
     }
