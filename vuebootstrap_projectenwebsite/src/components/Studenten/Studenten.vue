@@ -1,13 +1,14 @@
 <template>
-    <div>
-      <b-row align-h="center" class="mt-5">
-        <b-col cols="10">
-            <b-table responsive striped borderless :items="studenten" :fields="fields" head-variant="dark" :tbody-tr-class="rowClass">
-              <span slot="belbin" slot-scope="data" v-html="data.value"></span>
-            </b-table>
-        </b-col>
-      </b-row>
-    </div>
+   <div>
+     <b-row align-h="center" class="mt-5">
+       <b-col cols="10">
+           <b-table responsive striped borderless :items="studenten" :fields="fields" head-variant="dark" :tbody-tr-class="rowClass">
+             <span slot="belbin" slot-scope="data" v-html="data.value"></span>
+             <span slot="groep" slot-scope="data" v-html="data.value"></span>
+           </b-table>
+       </b-col>
+     </b-row>
+   </div>
 </template>
 
 <script>
@@ -17,8 +18,10 @@ export default {
       fields: [
         {
           key: "groep",
+          label: "Groep",
           sortable: true,
-          formatter: "groepResult"
+          formatter: "groepResult",
+          html: true
         },
         {
           key: "naam",
@@ -77,7 +80,7 @@ export default {
         { groep: "1", naam: "Nummer drie", projectvoorstel: "", belbin: "X" }
       ],
       photo: {
-        coordinator: `"../../assets/co-ordinator.png"`,
+        coordinator: "../../assets/co-ordinator.png",
         completor: "../../assets/completor.png",
         implementor: "../../assets/implementor.png",
         investigator: "../../assets/investigator.png",
@@ -94,27 +97,52 @@ export default {
     },
     belbinResult(value) {
       if (value === "Z")
-        return `<img src=${this.photo.coordinator} alt="CO-ORDINATOR">`;
+        return `<img src=${
+          this.photo.coordinator
+        } alt="CO-ORDINATOR" v-b-tooltip.click title="Co-ordinator">`;
       if (value === "Y")
-        return `<img src=${this.photo.completor} alt="COMPLETOR">`;
+        return `<img src=${
+          this.photo.completor
+        } alt="COMPLETOR" v-b-tooltip.click title="Completor">`;
       if (value === "X")
-        return `<img src=${this.photo.implementor} alt="IMPLEMENTOR">`;
+        return `<img src=${
+          this.photo.implementor
+        } alt="IMPLEMENTOR" v-b-tooltip.click title="Implementor">`;
       if (value === "W")
-        return `<img src=${this.photo.investigator} alt="INVESTIGATOR">`;
-      if (value === "V") return `<img src=${this.photo.monitor} alt="MONITOR">`;
-      if (value === "Q") return `<img src=${this.photo.shaper} alt="SHAPER">`;
-      if (value === "T") return `<img src=${this.photo.plant} alt="PLANT">`;
+        return `<img src=${
+          this.photo.investigator
+        } alt="INVESTIGATOR" v-b-tooltip.click title="Investigator">`;
+      if (value === "V")
+        return `<img src=${
+          this.photo.monitor
+        } alt="MONITOR" v-b-tooltip.click title="Monitor">`;
+      if (value === "Q")
+        return `<img src=${
+          this.photo.shaper
+        } alt="SHAPER" v-b-tooltip.click title="Shaper">`;
+      if (value === "T")
+        return `<img src=${
+          this.photo.plant
+        } alt="PLANT" v-b-tooltip.click title="Plant">`;
       if (value === "S")
         return `<img src=${this.photo.teamworker} alt="TEAMWORKER">`;
     },
     groepResult(value) {
-      if (value === "4") return "VOL";
-      if (value === "1") return "GEEN";
-      else return "?";
+      if (value === "4") return `✔`;
+      if (value === "1") return "✖";
+      else return "❔";
     }
   }
 };
 </script>
 
 <style>
+img {
+  width: 29px;
+  height: auto;
+}
 </style>
+Message Input
+
+
+Message Arijn
