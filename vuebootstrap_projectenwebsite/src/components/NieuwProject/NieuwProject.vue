@@ -45,6 +45,53 @@
                   placeholder="Schrijf hier zoveel mogelijk nevenvragen die bij het project passen"
                 ></b-form-textarea>
               </b-form-group>
+              
+              <b-form-group id="input-group-8" label="SMART-criteria">
+              <b-card
+              v-bind:border-variant="form.smart.border"
+              >
+                  <span><i>Specifiek:</i></span>
+                  <b-form-input
+                    id="Specifiek"
+                    v-model="form.smart.specifiek"
+                    placeholder="Geen algemeen maar een specifiek doel"
+                    v-on:keyup="smartMonitor"
+                    required
+                  ></b-form-input>
+                  <span><i>Meetbaar:</i></span>
+                  <b-form-input
+                    id="Meetbaar"
+                    v-model="form.smart.meetbaar"
+                    placeholder="Het doel moet "
+                    v-on:keyup="smartMonitor"
+                    required
+                  ></b-form-input>
+                  <span><i>Acceptabel:</i></span>
+                  <b-form-input
+                    id="Acceptabel"
+                    v-model="form.smart.acceptabel"
+                    placeholder="Het moet een project zijn dat met 4 studenten te doen is."
+                    v-on:keyup="smartMonitor"
+                    required
+                  ></b-form-input>
+                  <span><i>Realiseerbaar:</i></span>
+                  <b-form-input
+                    id="Realiseerbaar"
+                    v-model="form.smart.realiseerbaar"
+                    placeholder="Het moet realiseerbaar zijn voor de groep."
+                    v-on:keyup="smartMonitor"
+                    required
+                  ></b-form-input>
+                  <span><i>Tijdsgebonden:</i></span>
+                  <b-form-input
+                    id="Tijdsgebonden"
+                    v-model="form.smart.tijdsgebonden"
+                    placeholder="Het moet binnen de tijd verworven kunnen worden"
+                    v-on:keyup="smartMonitor"
+                    required
+                  ></b-form-input>
+              </b-card>
+              </b-form-group>
 
               <b-form-group id="input-group-5" label="Kies een categorie" label-for="categorie">
                 <b-form-select id="categorie" v-model="selected" required :options="categorien"></b-form-select>
@@ -90,7 +137,15 @@ export default {
         nevenvragen: "",
         categorie: "",
         docent: "",
-        bestand: ""
+        bestand: "",
+        smart: {
+          specifiek: "",
+          meetbaar: "",
+          acceptabel: "",
+          realiseerbaar: "",
+          tijdsgebonden: "",
+          border: "danger"
+        }
       },
       selected: "",
       docentBoolean: "",
@@ -128,6 +183,18 @@ export default {
       this.$nextTick(() => {
         this.show = true;
       });
+    },
+    smartMonitor() {
+      var count = 0;
+      for (var key in this.form.smart) {
+        var obj = this.form.smart[key];
+        if (obj != "") {
+          count++;
+          console.log(count);
+        }
+        if (count == 6) this.form.smart.border = "success";
+        else this.form.smart.border = "danger";
+      }
     }
   },
   watch: {
