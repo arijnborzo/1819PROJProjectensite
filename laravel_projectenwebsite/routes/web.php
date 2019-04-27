@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('overzicht');
-});
+})->middleware('auth');*/
 Route::get('/belbin', function(){
     return view('belbin');
 });
@@ -23,4 +23,4 @@ Route::get('/nieuwproject', function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
