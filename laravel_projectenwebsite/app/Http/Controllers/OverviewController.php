@@ -40,13 +40,14 @@ class OverviewController extends Controller
         $projecten = Projects::whereYear('created_at', $year)->get();
         return view('overzicht', [
           'projecten' => $projecten,
-          'user' => Auth::user()
+          'user' => $user
         ]);
       }
 
     }
     public function archive()
     {
+      $user = Auth::user();
       $year = date("Y")-1;
       $projecten = Projects::whereYear('created_at', '!=', $year)->get();
       return view('welcome', [
@@ -56,10 +57,12 @@ class OverviewController extends Controller
     }
     public function students()
     {
+      $user = Auth::user();
       $students = Users::rightJoin('students', 'users.id', '=', 'students.id')->get();
       echo $students;
       return view('welcome', [
-        'students' => $students
+        'students' => $students,
+        'user' => $user
       ]);
     }
 }
