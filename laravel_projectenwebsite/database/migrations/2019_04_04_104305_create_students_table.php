@@ -17,6 +17,7 @@ class CreateStudentsTable extends Migration
             $table->integer('id');
             $table->enum('belbintype', ['Bedrijfsman', 'Brononderzoeker', 'Plant', 'Monitor', 'Vormer', 'Voozitter', 'Zorgdrager', 'Groepsdrager', 'Specialist'])->nullable();
             $table->integer('group_id')->nullable();
+            $table->boolean('confirmed')->nullable ();
         });
     }
 

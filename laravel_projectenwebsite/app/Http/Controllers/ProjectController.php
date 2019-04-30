@@ -27,17 +27,19 @@ class ProjectController extends Controller
     *
     * @return \Illuminate\Contracts\Support\Renderable
     */
-    public function loadProject(){
+    public function createProject(){
         $user = Auth::user();
         $groupid = Students::find((int)$user['id'])->value('group_id');
-        $teachers = Users::rightJoin('students', 'users.id', '=', 'students.id')->get();
+        $teachers = Users::rightJoin('teachers', 'users.id', '=', 'teachers.id')->get();
 
         if($groupid != NULL){
+          //user already belongs to group
           $group = Users::rightJoin('students', 'users.id', '=', 'students.id')->where('group_id', $groupid)->get();
           $projectid = Groups::where('id', $groupid)->value('project_id');
           $project = Projects::find($projectid);
         }
         else{
+          //create new project
           $project = new Projects;
           $group = new Groups;
         }
@@ -46,6 +48,7 @@ class ProjectController extends Controller
         return view('welcome',[
           'project'  => $project,
           'group' => $group,
+          'teachers*' => $teachers,
           'user' => $user
         ]);
     }
@@ -108,7 +111,31 @@ class ProjectController extends Controller
         $group->save();
       }
     }
-    public function addMember(){
-      
+    public function sendMemberRequest(Request $request){
+      $user = Auth::user();
+      $student=Students::find($user['id']);
+      $updateStudent = [
+        'group_id' => $request->group_id,
+        'confirmed'=> FALSE
+      ]
+      $student->update($updateStudent);
+      return redirect('/');
     }
+    public function addMember(Request $request){
+      $user = Auth::user();
+      $newMember = Students::first($request->selected_userid);
+      if (Students::first($user['id'])->value('group_id') == $newMember['group_id']) {
+        //securitycheck to see if authenticated user can only accept or deny members that want to join te same group.
+        if ($request->answer == 'accept') {
+          Students::find($request->selected_userid)->update(['confirmed'=> TRUE]);
+        }
+        else {
+          Students::find($request->selected_userid)->update(['group_id'=> NULL]);
+        }
+      }
+
+
+
+    }
+
 }

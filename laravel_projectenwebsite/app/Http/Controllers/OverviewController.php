@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Groups;
 use App\Projects;
 use App\Users;
 use App\Students;
@@ -44,7 +45,6 @@ class OverviewController extends Controller
           'user' => $user
         ]);
       }
-
     }
     public function archive()
     {
@@ -55,6 +55,24 @@ class OverviewController extends Controller
       return view('welcome', [
         'projects' => $projects,
         'user' => $user
+      ]);
+    }
+    public function detailProject($id)
+    {
+      $user = Auth::user();
+      $usergroupid = Students::first($user['id'])->value('group_id');
+      $projectgroupid = Groups::where('project_id', $id)->value('id');
+      if ($usergroupid == $projectgroupid) {
+        //user belongs to group of projects
+        $belongstoproject = TRUE;
+      }
+      else {
+        $belongstoproject = FALSE;
+      }
+      return view('detail',[
+        'project' => $project,
+        'user' => $user,
+        'belongstoproject' => $belongstoproject
       ]);
     }
     public function students()

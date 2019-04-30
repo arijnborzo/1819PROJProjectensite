@@ -14,19 +14,23 @@ class create_students_seeder extends Seeder
       DB::table('students')->insert([
           'id' => 1,
           'group_id' => 1,
-          'belbintype' => 'Plant'
+          'belbintype' => 'Plant',
+          'confirmed' => TRUE
       ]);
       DB::table('students')->insert([
           'id' => 2,
           'group_id' => 1,
+          'confirmed' => TRUE
       ]);
       DB::table('students')->insert([
           'id' => 3,
           'group_id' => 1,
+          'confirmed' => FALSE
       ]);
       DB::table('students')->insert([
           'id' => 4,
           'group_id' => 1,
+          'confirmed' => FALSE
       ]);
     }
 }
