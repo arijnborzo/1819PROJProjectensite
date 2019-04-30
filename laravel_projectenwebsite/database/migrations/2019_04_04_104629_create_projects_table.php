@@ -16,7 +16,7 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('title');
-            $table->enum('status', ['Declined', 'Pending', 'Accepted']);
+            $table->enum('status', ['Declined', 'Pending', 'Accepted'])->nullable();
             $table->mediumText('short_description')->nullable();
             $table->longText('full_description')->nullable();
             $table->integer('teacher_id')->nullable();

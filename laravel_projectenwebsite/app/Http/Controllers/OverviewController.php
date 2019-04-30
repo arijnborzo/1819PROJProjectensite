@@ -37,9 +37,10 @@ class OverviewController extends Controller
       }
       else{
         $year = date("Y")-1;
-        $projecten = Projects::whereYear('created_at', $year)->get();
+        $projects = Projects::join('groups', 'projects.id', '=', 'groups.project_id')->join('students', 'students.group_id','=', 'groups.id')->join('users', 'users.id', '=', 'students.id' )->whereYear('created_at', $year)->get();
+        echo $projects;
         return view('overzicht', [
-          'projecten' => $projecten,
+          'projects' => $projects,
           'user' => $user
         ]);
       }
@@ -49,9 +50,10 @@ class OverviewController extends Controller
     {
       $user = Auth::user();
       $year = date("Y")-1;
-      $projecten = Projects::whereYear('created_at', '!=', $year)->get();
+      $projects = Projects::whereYear('created_at', '!=', $year)->get();
+      echo $projects;
       return view('welcome', [
-        'projecten' => $projecten,
+        'projects' => $projects,
         'user' => $user
       ]);
     }

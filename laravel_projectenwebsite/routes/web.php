@@ -14,9 +14,9 @@
 /*Route::get('/', function () {
     return view('overzicht');
 })->middleware('auth');*/
-Route::get('/belbin', function(){
+/*Route::get('/belbin', function(){
     return view('belbin');
-});
+});*/
 Route::get('/nieuwproject', function(){
     return view('nieuwproject');
 });

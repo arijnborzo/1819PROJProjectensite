@@ -36,7 +36,7 @@ class create_users_seeder extends Seeder
           'id' => 4,
           'name' => "Stas",
           'surname' => "Arno",
-          'email' => "andreas.lauwers@student.odisee.be",
+          'email' => "arno.stas@student.odisee.be",
           'password' => bcrypt('test3'),
       ]);
       DB::table('users')->insert([

@@ -32,14 +32,14 @@ class ProjectController extends Controller
         $groupid = Students::find((int)$user['id'])->value('group_id');
         $teachers = Users::rightJoin('students', 'users.id', '=', 'students.id')->get();
 
-        if($groupid! = NULL){
+        if($groupid != NULL){
           $group = Users::rightJoin('students', 'users.id', '=', 'students.id')->where('group_id', $groupid)->get();
           $projectid = Groups::where('id', $groupid)->value('project_id');
           $project = Projects::find($projectid);
         }
         else{
           $project = new Projects;
-          $groups = new Groups;
+          $group = new Groups;
         }
         echo $project;
         echo $group;
@@ -57,14 +57,21 @@ class ProjectController extends Controller
         //update project
         $projectid = Groups::where('id', $groupid)->value('project_id');
         $updateProject = [
-          'title' = $request->title,
-          'short_description' = $request->short_description,
-          'full_description' = $request->full_description,
-          'teacher_id' = $request->teacher_id
+          'title' => $request->title,
+          'short_description' => $request->short_description,
+          'full_description' => $request->full_description,
+          'teacher_id' => $request->teacher_id
 
         ];
         Projects::find($projectid)->update($updateProject);
-
+        $updateSmartCriteria = [
+          'specific' => $request->specific,
+          'measurable' => $request->measurable,
+          'acceptable' => $request->acceptable,
+          'realistic' => $request->realistic,
+          'tolerant' => $request->tolerant
+        ];
+        Smartcriteria::find($projectid)->update($updateSmartCriteria);
 
       }
       else{
@@ -79,7 +86,11 @@ class ProjectController extends Controller
 
 
         if($request->title != NULL && $request->short_description != NULL && $request->full_description != NULL && $request->specific != NULL && $request->measurable != NULL && $request->acceptable != NULL && $request->realistic != NULL && $request->tolerant != NULL){
-
+          //everything filled in
+          $project->status = 'Pending';
+        }
+        else {
+          $project->status = NULL;
         }
         $project->save();
         $smartcriteria = new Smartcriteria;
@@ -89,7 +100,15 @@ class ProjectController extends Controller
         $smartcriteria->acceptable = $request->acceptable;
         $smartcriteria->realistic = $request->realistic;
         $smartcriteria->tolerant = $request->tolerant;
-        $groups = new Groups;
+        $projectid = Project::where('creator_id', $user['id'])->value('id');
+        $group = new Groups;
+        $group = [
+          'project_id' => $projectid
+        ];
+        $group->save();
       }
+    }
+    public function addMember(){
+      
     }
 }
