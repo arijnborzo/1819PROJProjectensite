@@ -117,7 +117,7 @@ class ProjectController extends Controller
       $updateStudent = [
         'group_id' => $request->group_id,
         'confirmed'=> FALSE
-      ]
+      ];
       $student->update($updateStudent);
       return redirect('/');
     }
