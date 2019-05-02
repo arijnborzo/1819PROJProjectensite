@@ -25,7 +25,7 @@ Auth::routes();
 
 Route::get('/', 'OverviewController@index')->name('home');
 Route::get('/archief', 'OverviewController@archive')->name('archief');
-Route::get('/maakproject', 'ProjectController@loadProject')->name('maakproject');
+Route::get('/maakproject', 'ProjectController@createProject')->name('maakproject');
 Route::get('/belbintest' , 'BelbintestController@showBelbintest')->name('belbintest');
 Route::post('/belbintest', 'BelbintestController@addBelbintype');
 Route::get('/studenten', 'OverviewController@students')->name('studenten');
