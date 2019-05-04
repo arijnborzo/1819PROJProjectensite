@@ -1,39 +1,3 @@
-<!doctype html>
-<html lang="en" class="no-js">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-
-	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
-	<script src="js/modernizr.js"></script> <!-- Modernizr -->
-  	<link rel="stylesheet" href="css/formstyle.css">
-	<title>Projectenwebsite ICTEO14</title>
-</head>
-<body>
-	<header class="cd-header">
-
-	</header>
-<div class="headerFixedBar">
-	<div class="row">
-		<div class="col-lg-12">
-			<div id='cssmenu'>
-				<div class="pullLeft">
-					<a href="index.html" title="ProjectenWebsite.com"><img class="headerLogoImage" src="img/odiseelogo.png"></a>
-			</div>
-			<ul>
-			   <li ><a href='/'><span>Overzicht</span></a></li>
-			   <li ><a href='#'><span>Studenten</span></a></li>
-			   <li ><a href='#'><span>Archief</span></a></li>
-         <li ><a href='/belbin'><span>Belbintest</span></a></li>
-			   <li class='active'><a href='/nieuwproject'><span>Nieuw Project</span></a></li>
-			</ul>
-		</div>
-	</div>
-</div>
-
 </div>
 	<div class="qfc-container">
     <h2>Nieuw Project</h2>
