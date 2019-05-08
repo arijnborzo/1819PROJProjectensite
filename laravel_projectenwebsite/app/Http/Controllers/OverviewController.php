@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Groups;
-use App\Projects;
-use App\Users;
-use App\Students;
+use App\Group;
+use App\Project;
+use App\User;
+use App\Student;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -32,25 +32,20 @@ class OverviewController extends Controller
     public function index()
     {
       $user = Auth::user();
-      $belbin = Students::select('belbintype')->find((int)$user['id']);
-      if ($belbin['belbintype'] == NULL){
-        return redirect('/belbintest');
-      }
-      else{
-        $year = date("Y")-1;
-        $projects = Projects::join('groups', 'projects.id', '=', 'groups.project_id')->join('students', 'students.group_id','=', 'groups.id')->join('users', 'users.id', '=', 'students.id' )->whereYear('created_at', $year)->get();
-        echo $projects;
-        return view('overzicht', [
-          'projects' => $projects,
-          'user' => $user
-        ]);
-      }
+      $year = date("Y")-1;
+      $projects = Project::join('groups', 'projects.id', '=', 'groups.project_id')->join('students', 'students.group_id','=', 'groups.id')->join('users', 'users.id', '=', 'students.id' )->whereYear('created_at', $year)->get();
+      echo $projects;
+      return view('overzicht', [
+        'projects' => $projects,
+        'user' => $user
+      ]);
+
     }
     public function archive()
     {
       $user = Auth::user();
       $year = date("Y")-1;
-      $projects = Projects::whereYear('created_at', '!=', $year)->get();
+      $projects = Project::whereYear('created_at', '!=', $year)->get();
       echo $projects;
       return view('welcome', [
         'projects' => $projects,
@@ -60,8 +55,8 @@ class OverviewController extends Controller
     public function detailProject($id)
     {
       $user = Auth::user();
-      $usergroupid = Students::first($user['id'])->value('group_id');
-      $projectgroupid = Groups::where('project_id', $id)->value('id');
+      $usergroupid = Student::first($user['id'])->value('group_id');
+      $projectgroupid = Group::where('project_id', $id)->value('id');
       if ($usergroupid == $projectgroupid) {
         //user belongs to group of projects
         $belongstoproject = TRUE;
@@ -78,7 +73,7 @@ class OverviewController extends Controller
     public function students()
     {
       $user = Auth::user();
-      $students = Users::rightJoin('students', 'users.id', '=', 'students.id')->get();
+      $students = User::rightJoin('students', 'users.id', '=', 'students.id')->get();
       echo $students;
       return view('welcome', [
         'students' => $students,

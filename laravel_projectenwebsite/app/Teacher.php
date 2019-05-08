@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Teachers extends Model
+class Teacher extends Model
 {
     protected $fillable = ['id',];
     public function users() {
-        return $this->hasOne('App\Users');
+        return $this->hasOne('App\User');
     }
     public function projects() {
-        return $this->hasMany('App\Projects');
+        return $this->hasMany('App\Project');
     }
 }

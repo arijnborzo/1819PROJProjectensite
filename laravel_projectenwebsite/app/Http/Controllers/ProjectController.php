@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Groups;
-use App\Projects;
-use App\Smartcriteria;
-use App\Students;
-use App\Users;
+use App\Group;
+use App\Project;
+use App\Smartcriterium;
+use App\Student;
+use App\User;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -29,19 +29,19 @@ class ProjectController extends Controller
     */
     public function createProject(){
         $user = Auth::user();
-        $groupid = Students::find((int)$user['id'])->value('group_id');
-        $teachers = Users::rightJoin('teachers', 'users.id', '=', 'teachers.id')->get();
+        $groupid = Student::find((int)$user['id'])->value('group_id');
+        $teachers = User::rightJoin('teachers', 'users.id', '=', 'teachers.id')->get();
 
         if($groupid != NULL){
           //user already belongs to group
-          $group = Users::rightJoin('students', 'users.id', '=', 'students.id')->where('group_id', $groupid)->get();
-          $projectid = Groups::where('id', $groupid)->value('project_id');
-          $project = Projects::find($projectid);
+          $group = User::rightJoin('students', 'users.id', '=', 'students.id')->where('group_id', $groupid)->get();
+          $projectid = Group::where('id', $groupid)->value('project_id');
+          $project = Project::find($projectid);
         }
         else{
           //create new project
-          $project = new Projects;
-          $group = new Groups;
+          $project = new Project;
+          $group = new Group;
         }
         echo $project;
         echo $group;
@@ -54,11 +54,11 @@ class ProjectController extends Controller
     }
     public function saveProject(Request $request){
       $user = Auth::user();
-      $groupid = Students::find((int)$user['id'])->value('group_id');
+      $groupid = Student::find((int)$user['id'])->value('group_id');
 
       if($groupid!=NULL){
         //update project
-        $projectid = Groups::where('id', $groupid)->value('project_id');
+        $projectid = Group::where('id', $groupid)->value('project_id');
         $updateProject = [
           'title' => $request->title,
           'short_description' => $request->short_description,
@@ -66,7 +66,7 @@ class ProjectController extends Controller
           'teacher_id' => $request->teacher_id
 
         ];
-        Projects::find($projectid)->update($updateProject);
+        Project::find($projectid)->update($updateProject);
         $updateSmartCriteria = [
           'specific' => $request->specific,
           'measurable' => $request->measurable,
@@ -74,12 +74,12 @@ class ProjectController extends Controller
           'realistic' => $request->realistic,
           'tolerant' => $request->tolerant
         ];
-        Smartcriteria::find($projectid)->update($updateSmartCriteria);
+        Smartcriterium::find($projectid)->update($updateSmartCriteria);
 
       }
       else{
         //create project and create group
-        $project = new Projects;
+        $project = new Project;
         //['id', 'title', 'status', 'short_description', 'full_description', 'teacher_id', 'creator_id',];
         $project->title = $request->title;
         $project->short_description = $request->short_description;
@@ -96,13 +96,13 @@ class ProjectController extends Controller
           $project->status = NULL;
         }
         $project->save();
-        $smartcriteria = new Smartcriteria;
+        $smartcriterium = new Smartcriterium;
         //['group_id', 'specific', 'measurable', 'acceptable', 'realistic', 'tolerant',];
-        $smartcriteria->specific = $request->specific;
-        $smartcriteria->measurable = $request->measurable;
-        $smartcriteria->acceptable = $request->acceptable;
-        $smartcriteria->realistic = $request->realistic;
-        $smartcriteria->tolerant = $request->tolerant;
+        $smartcriterium->specific = $request->specific;
+        $smartcriterium->measurable = $request->measurable;
+        $smartcriterium->acceptable = $request->acceptable;
+        $smartcriterium->realistic = $request->realistic;
+        $smartcriterium->tolerant = $request->tolerant;
         $projectid = Project::where('creator_id', $user['id'])->value('id');
         $group = new Groups;
         $group = [
@@ -113,7 +113,7 @@ class ProjectController extends Controller
     }
     public function sendMemberRequest(Request $request){
       $user = Auth::user();
-      $student=Students::find($user['id']);
+      $student=Student::find($user['id']);
       $updateStudent = [
         'group_id' => $request->group_id,
         'confirmed'=> FALSE
@@ -123,14 +123,14 @@ class ProjectController extends Controller
     }
     public function addMember(Request $request){
       $user = Auth::user();
-      $newMember = Students::first($request->selected_userid);
-      if (Students::first($user['id'])->value('group_id') == $newMember['group_id']) {
+      $newMember = Student::first($request->selected_userid);
+      if (Student::first($user['id'])->value('group_id') == $newMember['group_id']) {
         //securitycheck to see if authenticated user can only accept or deny members that want to join te same group.
         if ($request->answer == 'accept') {
-          Students::find($request->selected_userid)->update(['confirmed'=> TRUE]);
+          Student::find($request->selected_userid)->update(['confirmed'=> TRUE]);
         }
         else {
-          Students::find($request->selected_userid)->update(['group_id'=> NULL]);
+          Student::find($request->selected_userid)->update(['group_id'=> NULL]);
         }
       }
 
