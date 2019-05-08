@@ -1,7 +1,7 @@
 <template>
-   <b-navbar toggleable="md" type="dark" variant="info">
+   <b-navbar toggleable="md" type="dark" variant="primary">
       <b-navbar-brand href="https://www.odisee.be/">
-          <img src="../assets/logo.png" alt="Logo" class="d-inline-block align-top logo">
+          <img src="assets/logo.png" alt="Logo" class="d-inline-block align-top logo">
       </b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>

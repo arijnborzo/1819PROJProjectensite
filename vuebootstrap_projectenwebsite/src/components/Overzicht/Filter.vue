@@ -1,5 +1,6 @@
 <template>
     <div>
+    <b-button v-b-toggle.collapse-1 variant="primary" block>Filter</b-button>
     <b-collapse id="collapse-1" class="">
         <b-card>
             <b-form @submit="onSubmit" @reset="onReset" v-if="show">
@@ -35,7 +36,7 @@
                     </b-form-checkbox-group>
                 </b-form-group>
 
-                <b-button type="submit" variant="primary">Submit</b-button>
+                <b-button type="submit" variant="primary">Pas toe</b-button>
                 <b-button type="reset" variant="danger" style="float: right">Reset</b-button>
             </b-form>
         </b-card>
