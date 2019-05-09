@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Users extends Authenticatable
+class User extends Authenticatable
 {
   protected $fillable = ['id', 'name', 'surname', 'email', 'password', ];
 
@@ -19,19 +19,19 @@ class Users extends Authenticatable
   ];
 
   public function students(){
-    return $this->hasOne('App\Students', 'id');
+    return $this->hasOne('App\Student', 'id');
   }
   public function teachers(){
-    return $this->hasOne('App\Teachers', 'id');
+    return $this->hasOne('App\Teacher', 'id');
   }
   public function externs(){
-    return $this->hasOne('App\Externs', 'id');
+    return $this->hasOne('App\Extern', 'id');
   }
   public function comments()  {
-      return $this->hasMany('App\Comments', 'user_id');
+      return $this->hasMany('App\Comment', 'user_id');
   }
   public function projects(){
-    return $this->hasMany('App\Projects', 'creator_Id');
+    return $this->hasMany('App\Project', 'creator_Id');
   }
   public $timestamps = false;
 }

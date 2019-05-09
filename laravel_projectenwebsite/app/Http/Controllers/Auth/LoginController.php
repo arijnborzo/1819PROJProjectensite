@@ -27,6 +27,18 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/';
 
+    /*
+    // Check if belbin test is done
+    $user = Auth::user();
+    $belbin = Student::select('belbintype')->find((int)$user['id']);
+    if ($belbin['belbintype'] == NULL){
+      return redirect('/belbintest');
+    }
+    else {
+      return redirect('/');
+    }
+    */
+
     /**
      * Create a new controller instance.
      *

@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comments extends Model
+class Comment extends Model
 {
     protected $fillable = ['id', 'user_Id', 'title', 'message', 'project_id',];
     public function users(){
-      return $this->belongsTo('App\Users', 'user_id');
+      return $this->belongsTo('App\User', 'user_id');
     }
     public function projects(){
-      return $this->belongsTo('App\Projects', 'project_id');
+      return $this->belongsTo('App\Project', 'project_id');
     }
     public $timestamps = true;
 }
