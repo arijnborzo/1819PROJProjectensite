@@ -3,7 +3,7 @@
       <b-row align-h="center" class="mt-5">
         <b-col cols="6">
           <b-card class="p-3">
-            <h3>Registreer</h3>
+            <h3>Maak hier uw account aan</h3>
             <app-form></app-form>
           </b-card>
         </b-col>

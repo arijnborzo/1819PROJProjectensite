@@ -3,7 +3,7 @@
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-form-group
         id="input-group-1"
-        label="Email adres:"
+        label="Odisee emailadres:"
         label-for="input-1"
       >
         <b-form-input
@@ -15,7 +15,7 @@
       </b-form-group>
 
 
-      <b-form-group id="input-group-2" label="Password:" label-for="input-2">
+      <b-form-group id="input-group-2" label="Nieuw paswoord:" label-for="input-2">
         <b-form-input
           id="input-2"
           type="password"
@@ -25,7 +25,7 @@
         ></b-form-input>
 
       </b-form-group>
-        <b-form-group id="input-group-3" label="Herhaal Password:" label-for="input-3">
+        <b-form-group id="input-group-3" label="Herhaal paswoord:" label-for="input-3">
         <b-form-input
           id="input-3"
           type="password"
@@ -36,9 +36,7 @@
       </b-form-group>
 
       <!-- Na registratie -->
-      <router-link to="/registreer">
         <b-button type="submit" variant="primary">Registreer</b-button>
-      </router-link>
     </b-form>
 
     <!--
@@ -50,6 +48,11 @@
 </template>
 
 <script>
+import Vue from "vue";
+import VueRouter from "vue-router";
+
+Vue.use(VueRouter);
+
 export default {
   data() {
     return {
@@ -67,6 +70,7 @@ export default {
       if (this.form.paswoord === this.form.herhaalpaswoord) {
         // PW gelijk
         alert(JSON.stringify(this.form));
+        this.$router.push({ path: "belbintest" });
       }
     }
   }

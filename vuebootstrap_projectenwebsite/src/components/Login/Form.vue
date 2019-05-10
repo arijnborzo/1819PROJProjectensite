@@ -34,7 +34,7 @@
     </b-card>
   -->
     <h6 style="margin-top:2rem">Nog niet geregistreerd?</h6>
-    <router-link to="/belbin">
+    <router-link to="/registreer">
       <b-button type="submit" variant="primary">Registreer</b-button>
     </router-link>
   </div>
@@ -54,7 +54,12 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      alert(JSON.stringify(this.form));
+      // Inlog service?
+      AuthService.login(this.credentials)
+        .then(() => this.$router.push(this.$route.query.redirect || "/"))
+        .catch(error => {
+          /*handle errors*/
+        });
     }
   }
 };
