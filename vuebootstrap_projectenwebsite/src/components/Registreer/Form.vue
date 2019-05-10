@@ -35,14 +35,17 @@
         ></b-form-input>
       </b-form-group>
 
-
-      <router-link to="/home">
-           <b-button type="submit" variant="primary">Registreren</b-button>
+      <!-- Na registratie -->
+      <router-link to="/registreer">
+        <b-button type="submit" variant="primary">Registreer</b-button>
       </router-link>
     </b-form>
+
+    <!--
     <b-card class="mt-3" header="Form Data Result">
       <pre class="m-0">{{ form }}</pre>
     </b-card>
+    -->
   </div>
 </template>
 
@@ -53,7 +56,7 @@ export default {
       form: {
         email: "",
         paswoord: "",
-        herhaalpaswoord:""
+        herhaalpaswoord: ""
       },
       show: true
     };
@@ -61,19 +64,10 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      alert(JSON.stringify(this.form));
-    },
-    onReset(evt) {
-      evt.preventDefault();
-      // Reset our form values
-      this.form.email = "";
-      this.form.paswoord = "";
-      this.form.herhaalpaswoord = "";
-      // Trick to reset/clear native browser form validation state
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
+      if (this.form.paswoord === this.form.herhaalpaswoord) {
+        // PW gelijk
+        alert(JSON.stringify(this.form));
+      }
     }
   }
 };

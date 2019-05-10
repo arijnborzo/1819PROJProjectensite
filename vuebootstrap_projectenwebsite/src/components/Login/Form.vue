@@ -25,14 +25,18 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
-      <router-link to="/registreer">
-          <b-button type="submit" variant="primary" class="reset">Registreer</b-button>
-      </router-link>
+      <b-button type="submit" variant="primary">Log in</b-button>
+      
     </b-form>
+    <!--
     <b-card class="mt-3" header="Form Data Result">
       <pre class="m-0">{{ form }}</pre>
     </b-card>
+  -->
+    <h6 style="margin-top:2rem">Nog niet geregistreerd?</h6>
+    <router-link to="/belbin">
+      <b-button type="submit" variant="primary">Registreer</b-button>
+    </router-link>
   </div>
 </template>
 
@@ -51,25 +55,10 @@ export default {
     onSubmit(evt) {
       evt.preventDefault();
       alert(JSON.stringify(this.form));
-    },
-    onReset(evt) {
-      evt.preventDefault();
-      // Reset our form values
-      this.form.email = "";
-      this.form.naam = "";
-      this.form.paswoord = "";
-      // Trick to reset/clear native browser form validation state
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
     }
   }
 };
 </script>
 
 <style>
-.reset {
-  float: right;
-}
 </style>
