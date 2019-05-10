@@ -1,5 +1,5 @@
 <template>
-    <b-container fluid>
+    <b-container id="overzicht" fluid>
       <b-row class="pt-5 justify-content-center">
         <b-col md="5" lg="4" xl="3" class="filter">
           <app-filter></app-filter>
@@ -98,6 +98,13 @@ export default {
 <style>
 body {
   background: #eef1f4;
+}
+html,
+body {
+  height: 100%;
+}
+#overzicht {
+  height: 100%;
 }
 
 /* GRIDLIST */
