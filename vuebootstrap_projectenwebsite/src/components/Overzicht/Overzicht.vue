@@ -5,8 +5,8 @@
           <app-filter></app-filter>
         </b-col>
         <b-col md="7" lg="8" xl="9">
-          <b-card>
             
+            <b-col>
             <!--titel-->
             <h3 id="alleprojecten">Alle projecten</h3>
 
@@ -14,17 +14,17 @@
             <b-form-select id="sorteren" v-model="selected" required :options="sorteeropties"></b-form-select>
 
             <!--gridlistbtns-->
-
             <b-button @click="gridView" class="gridlistbtn">  <i class="fas fa-th-large" style="font-size: 1.2em;"></i></b-button>
             <b-button @click="listView" class="gridlistbtn"><i class="fas fa-list"></i></b-button>
-            
+
+            </b-col>
+
             <!--gridlist-->
-            <ul id="gridlist" class="gridul">
-              <li v-for="project in projecten" v-bind:key=project.titel>
-                <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden></app-project>
-              </li>
-            </ul>
-          </b-card>
+            <div id="gridlist" class="gridul">
+              <div v-for="project in projecten" v-bind:key=project.titel>
+                <app-project :glwidth=glwidth :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden></app-project>
+              </div>
+            </div>
         </b-col>
       </b-row>
     </b-container>
@@ -39,6 +39,7 @@ export default {
     return {
       layout: "grid",
       selected: null,
+      glwidth: "20rem",
       sorteeropties: [
         { value: null, text: "Sorteren op:" },
         { value: "a", text: "Op alfabetische volgorde A-Z" },
@@ -48,14 +49,26 @@ export default {
         {
           titel: "Projectensite",
           beschrijving:
-            "Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, ",
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+          groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"]
+        },
+        {
+          titel: "Robotje maken",
+          beschrijving:
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+          groepsleden: ["Arno Stasssssss", "Arno Stas", "Arno Stas", "/"]
+        },
+        {
+          titel: "Projectensitee",
+          beschrijving:
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
           groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"]
         },
         {
           titel: "MacroKeyboard",
           beschrijving:
-            "Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, ",
-          groepsleden: ["Arno Stas", "Arno Stas"]
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+          groepsleden: ["Arno Stas", "Arno Stas", "/", "/"]
         }
       ]
     };
@@ -69,11 +82,14 @@ export default {
       var ul = document.getElementById("gridlist");
       ul.classList.remove("listul");
       ul.classList.add("gridul");
+      this.glwidth = "20rem";
     },
     listView: function() {
       var ul = document.getElementById("gridlist");
       ul.classList.remove("gridul");
       ul.classList.add("listul");
+      this.glwidth = "auto";
+      console.log(this.glwidth);
     }
   }
 };
@@ -86,15 +102,16 @@ body {
 
 /* GRIDLIST */
 .gridul {
-  float: left;
-  display: flex;
 }
 .listul {
   width: 100%;
-  display: table;
 }
 .gridli {
-  display: table-cell;
+}
+.listli {
+}
+.proj {
+  width: auto;
 }
 #alleprojecten {
   text-align: center;
@@ -110,8 +127,7 @@ ul {
 
 /* SORTEREN */
 #sorteren {
-  width: 30%;
-  float: left;
+  width: 40%;
 }
 
 /* MEDIA QUERY */

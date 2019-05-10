@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+    <b-form @submit="onSubmit" v-if="show">
       <b-form-group
         id="input-group-1"
         label="Odisee emailadres:"
@@ -15,19 +15,29 @@
       </b-form-group>
 
 
-      <b-form-group id="input-group-2" label="Nieuw paswoord:" label-for="input-2">
+      <b-form-group id="input-group-2" label="Oud paswoord:" label-for="input-2">
         <b-form-input
           id="input-2"
           type="password"
           aria-describedby="password-help-block"
-          v-model="form.paswoord"
+          v-model="form.oudpaswoord"
+          required
+        ></b-form-input>
+      </b-form-group>
+
+        <b-form-group id="input-group-3a" label="Nieuw paswoord:" label-for="input-3a">
+        <b-form-input
+          id="input-3a"
+          type="password"
+          aria-describedby="password-help-block"
+          v-model="form.nieuwpaswoord"
           required
         ></b-form-input>
 
       </b-form-group>
-        <b-form-group id="input-group-3" label="Herhaal paswoord:" label-for="input-3">
+        <b-form-group id="input-group-3b" label="Herhaal nieuw paswoord:" label-for="input-3b">
         <b-form-input
-          id="input-3"
+          id="input-3b"
           type="password"
           aria-describedby="password-help-block"
           v-model="form.herhaalpaswoord"
@@ -35,8 +45,7 @@
         ></b-form-input>
       </b-form-group>
 
-      <!-- Na registratie -->
-        <b-button type="submit" variant="primary">Registreer</b-button>
+        <b-button type="submit" variant="primary">Verstuur</b-button>
     </b-form>
 
     <!--
@@ -58,7 +67,8 @@ export default {
     return {
       form: {
         email: "",
-        paswoord: "",
+        oudpaswoord: "",
+        nieuwpaswoord: "",
         herhaalpaswoord: ""
       },
       show: true

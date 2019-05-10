@@ -17,9 +17,13 @@
          <b-navbar-nav class="ml-auto">
             <b-nav-item-dropdown right>
                <!-- Using 'button-content' slot -->
-               <template slot="button-content"><em>User</em></template>
-               <b-dropdown-item href="#">Profile</b-dropdown-item>
-               <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+               <template slot="button-content" ><em>Usernaam</em></template>
+                <router-link to="/mijnproject">
+                    <b-dropdown-item href="#">Mijn project</b-dropdown-item>
+                </router-link>
+                <router-link to="/">
+                    <b-dropdown-item href="#">Uitloggen</b-dropdown-item>
+                </router-link>
             </b-nav-item-dropdown>
          </b-navbar-nav>
       </b-collapse>

@@ -1,7 +1,7 @@
 <template>
     <div>
       <b-row align-h="center" class="mt-5">
-        <b-col cols="10">
+        <b-col cols="10" id="nieuwproj">
           <b-card class="p-3">
             <h3>Nieuw project</h3>
             <h6>Om een nieuw project toe te voegen moet je </h6>
@@ -206,4 +206,7 @@ export default {
 </script>
 
 <style>
+#nieuwproj {
+  padding-bottom: 2rem;
+}
 </style>

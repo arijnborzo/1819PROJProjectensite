@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div id="studenten">
      <b-row align-h="center" class="mt-5">
        <b-col cols="10">
            <b-table responsive striped borderless :items="studenten" :fields="fields" head-variant="dark" :tbody-tr-class="rowClass">
@@ -141,8 +141,11 @@ img {
   width: 29px;
   height: auto;
 }
+html,
+body {
+  height: 100%;
+}
+#studenten {
+  height: 100%;
+}
 </style>
-Message Input
-
-
-Message Arijn

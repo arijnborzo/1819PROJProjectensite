@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <app-header></app-header>
     <router-view></router-view>
     <app-footer></app-footer>
@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/HeaderFooter/Header";
+import Footer from "./components/HeaderFooter/Footer";
 
 export default {
   data() {
@@ -26,5 +26,10 @@ export default {
 body {
   background: #eef1f4;
   font-family: Roboto, Helvetica, "sans-serif";
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 </style>
