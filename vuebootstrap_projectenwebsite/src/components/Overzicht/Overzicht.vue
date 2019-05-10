@@ -14,8 +14,9 @@
             <b-form-select id="sorteren" v-model="selected" required :options="sorteeropties"></b-form-select>
 
             <!--gridlistbtns-->
-            <b-button @click="gridView" class="gridlistbtn">Grid</b-button>
-            <b-button @click="listView" class="gridlistbtn">List</b-button>
+
+            <b-button @click="gridView" class="gridlistbtn">  <i class="fas fa-th-large" style="font-size: 1.2em;"></i></b-button>
+            <b-button @click="listView" class="gridlistbtn"><i class="fas fa-list"></i></b-button>
             
             <!--gridlist-->
             <ul id="gridlist" class="gridul">

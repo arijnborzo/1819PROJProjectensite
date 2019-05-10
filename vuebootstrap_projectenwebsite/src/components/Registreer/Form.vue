@@ -23,11 +23,21 @@
           v-model="form.paswoord"
           required
         ></b-form-input>
+
+      </b-form-group>
+        <b-form-group id="input-group-3" label="Herhaal Password:" label-for="input-3">
+        <b-form-input
+          id="input-3"
+          type="password"
+          aria-describedby="password-help-block"
+          v-model="form.herhaalpaswoord"
+          required
+        ></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
-      <router-link to="/registreer">
-          <b-button type="submit" variant="primary" class="reset">Registreer</b-button>
+
+      <router-link to="/home">
+           <b-button type="submit" variant="primary">Registreren</b-button>
       </router-link>
     </b-form>
     <b-card class="mt-3" header="Form Data Result">
@@ -42,7 +52,8 @@ export default {
     return {
       form: {
         email: "",
-        paswoord: ""
+        paswoord: "",
+        herhaalpaswoord:""
       },
       show: true
     };
@@ -56,8 +67,8 @@ export default {
       evt.preventDefault();
       // Reset our form values
       this.form.email = "";
-      this.form.naam = "";
       this.form.paswoord = "";
+      this.form.herhaalpaswoord = "";
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {

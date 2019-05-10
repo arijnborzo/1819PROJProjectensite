@@ -4,7 +4,7 @@ import Studenten from "./components/Studenten/Studenten";
 import Archief from "./components/Archief/Archief";
 import Belbintest from "./components/Belbintest/Belbintest";
 import Nieuwproject from "./components/NieuwProject/NieuwProject";
-
+import Registreer from "./components/Registreer/RegistreerForm";
 export const routes = [
   { path: "", component: LoginForm },
   { path: "/home", component: Home },
@@ -13,6 +13,7 @@ export const routes = [
   { path: "/archief", component: Archief },
   { path: "/belbintest", component: Belbintest },
   { path: "/nieuwproject", component: Nieuwproject },
+  { path: "/registreer", component: Registreer },
   { path: "/redirect", redirect: { name: "LoginForm" } },
   { path: "*", redirect: { path: "/" } }
 ];
