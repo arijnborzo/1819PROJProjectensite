@@ -1,15 +1,16 @@
-{{-- extend the parent tpl --}}
+ extend the parent tpl
 @extends('layouts.app')
-{{-- set the pagetitle in the parent tpl --}}
+ set the pagetitle in the parent tpl
 @section('name', 'Student')
 @section('content')
 <div class="limiter">
+{{--    <student_vue></student_vue>--}}
     <div class="container-table100">
         <div class="wrap-table100">
             <div class="table">
                 <div class="row header">
                     <div class="cell">
-                        {{-- Miss dit ook automatisch uit kollom naam halen --}}
+                         Miss dit ook automatisch uit kollom naam halen
                         Groep
                     </div>
                     <div class="cell">
@@ -26,7 +27,7 @@
                     @foreach($students as $student)
                         <div class="row">
                             <div class="cell" data-title="Groep">
-{{-- hier moet nog controller om te checken ofdat groep vol is. --}}
+{{-- hier moet nog controller om te checken ofdat groep vol is.--}}
                                 @if ($student->id == "4" )
                                     <p>&#10004;</p>
                                 @elseif ($student->id == "0" )
@@ -40,7 +41,7 @@
                                 {{ $student->surname }} {{ $student->name }}
                             </div>
                             <div class="cell" data-title="Projectvoorstel">
-                                {{-- hier moet nog controller groep te tonen --}}
+{{--                                 hier moet nog controller groep te tonen--}}
                                 {{ $student->title }}
                             </div>
 {{--Nog een ifke met de juiste foto's--}}
