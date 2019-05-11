@@ -25,7 +25,7 @@
 			</div>
 			<ul>
 			   <li class='active' ><a href='/'><span>Overzicht</span></a></li>
-			   <li ><a href='#'><span>Studenten</span></a></li>
+			   <li ><a href='/students'><span>Studenten</span></a></li>
 			   <li ><a href='#'><span>Archief</span></a></li>
 			   <li ><a href='/belbin'><span>Belbintest</span></a></li>
 			   <li class='last'><a href='/nieuwproject'><span>Nieuw Project</span></a></li>

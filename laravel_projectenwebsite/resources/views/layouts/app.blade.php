@@ -49,7 +49,7 @@
     </div>
     <main class="content">
             @yield('content')
-        </main>
+    </main>
     <div class="footer">
         <p>&copy; ICTEO14</p>
     </div>

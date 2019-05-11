@@ -17,8 +17,28 @@
 /*Route::get('/belbin', function(){
     return view('belbin');
 });*/
+
+use App\User;
+
 Route::get('/nieuwproject', function(){
     return view('nieuwproject');
+});
+Route::get('/students', function(){
+    $students = DB::table('students')->get();
+    return view('students', [
+        'students' => $students
+        ]
+    );
+});
+Route::get('/students', function(){
+    $students = DB::table('users')
+        ->rightJoin('students', 'users.id', '=', 'students.id')
+        ->rightJoin('projects', 'students.group_id', '=', 'projects.id')
+        ->get();
+    return view('students', [
+        'students' => $students
+        ]
+    );
 });
 
 Auth::routes();

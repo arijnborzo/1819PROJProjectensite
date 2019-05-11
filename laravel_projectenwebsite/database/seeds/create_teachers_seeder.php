@@ -11,8 +11,14 @@ class create_teachers_seeder extends Seeder
      */
     public function run()
     {
-      DB::table('teachers')->insert([
-          'id' => 1,
-      ]);
+        DB::table('teachers')->insert([
+          'id' => 5,
+        ]);
+        DB::table('teachers')->insert([
+            'id' => 6,
+        ]);
+        DB::table('teachers')->insert([
+            'id' => 7,
+        ]);
     }
 }

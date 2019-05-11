@@ -23,30 +23,34 @@
                     </div>
                 </div>
                 @if($students)
-                    @foreach($students as $key => $student)
-                <div class="row">
-                    <div class="cell" data-title="Groep">
-                        {{-- hier moet nog controller om te checken ofdat groep vol is. --}}
-                        @if ($student->Groepleden == "4" )
-                            <p>&#10004;</p> 
-                        @elseif ($student->Groepleden == "0" )
-                            <p>&#10006;</p>
-                        @else
-                            <p>&#10068;</p>
-                        @endif
-                        
-                    </div>
-                    <div class="cell" data-title="Naam">
-                        {{ $student->Voornaam }} {{ $student->Naam }}
-                    </div>
-                    <div class="cell" data-title="Projectvoorstel">
-                        {{-- hier moet nog controller groep te tonen --}}
-                        {{ $student->Groep }}
-                    </div>
-                    <div class="cell" data-title="Belbin">
-                        <img src="{{ asset("storage/>img/$student->image") }}" style="    width:29px;height: auto;">
-                    </div>
-                </div>
+                    @foreach($students as $student)
+                        <div class="row">
+                            <div class="cell" data-title="Groep">
+{{-- hier moet nog controller om te checken ofdat groep vol is. --}}
+                                @if ($student->id == "4" )
+                                    <p>&#10004;</p>
+                                @elseif ($student->id == "0" )
+                                    <p>&#10006;</p>
+                                @else
+                                    <p>&#10068;</p>
+                                @endif
+
+                            </div>
+                            <div class="cell" data-title="Naam">
+                                {{ $student->surname }} {{ $student->name }}
+                            </div>
+                            <div class="cell" data-title="Projectvoorstel">
+                                {{-- hier moet nog controller groep te tonen --}}
+                                {{ $student->title }}
+                            </div>
+{{--Nog een ifke met de juiste foto's--}}
+                            <div class="cell" data-title="Belbin">
+                                {{ $student->belbintype }}
+{{--                                <img src="{{ asset("storage/>img/$student->image") }}" style="    width:29px;height: auto;">--}}
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
