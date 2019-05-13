@@ -83,7 +83,7 @@ export default {
       ul.classList.remove("listul");
       ul.classList.add("gridul");
       var list = document.getElementsByClassName("project");
-      var li = Array.prototype.filter.call(list, function(proj) {
+      Array.prototype.filter.call(list, function(proj) {
         proj.classList.remove("listli");
         proj.classList.add("gridli");
       });
@@ -93,7 +93,7 @@ export default {
       ul.classList.remove("gridul");
       ul.classList.add("listul");
       var list = document.getElementsByClassName("project");
-      var li = Array.prototype.filter.call(list, function(proj) {
+      Array.prototype.filter.call(list, function(proj) {
         proj.classList.remove("gridli");
         proj.classList.add("listli");
       });
@@ -126,7 +126,7 @@ body {
   width: 20rem;
 }
 .listli {
-  width: 100%;
+  width: 90%;
 }
 .proj {
   width: auto;

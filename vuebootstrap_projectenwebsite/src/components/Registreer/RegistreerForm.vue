@@ -15,10 +15,10 @@
 <b-form-group
       id="fieldset-1"
       description=""
-      label="wachtwoord"
+      label="Wachtwoord"
       label-for="input-1"
     >
-      <b-form-input id="input-1" v-model="wachtwoord"></b-form-input>
+      <b-form-input id="input-1" type="password" v-model="wachtwoord"></b-form-input>
     </b-form-group>
       
   
@@ -32,7 +32,7 @@
       :valid-feedback="validFeedbackww"
       :state="stateww"
     >
-      <b-form-input id="input-1" v-model="herhaalwachtwoord" :state="statenw" trim></b-form-input>
+      <b-form-input id="input-1" v-model="herhaalwachtwoord" type="password" :state="statenw" trim></b-form-input>
     </b-form-group>
 
       <!-- Na registratie -->
@@ -55,31 +55,35 @@ Vue.use(VueRouter);
 
 export default {
   computed: {
-      state() {
-        return (this.email.includes('@') && this.email.includes('odisee.be'))? true : false
-      },
-       statenw() {
-        return (this.wachtwoord.length >= 8 && this.wachtwoord==this.herhaalwachtwoord)? true : false
-      },
-      invalidFeedback() {
-        return 'Geen odisee mail'
-      },
-      invalidFeedbackww() {
-        if(this.wachtwoord.length <8)
-        return 'Wachtwoorden moet minstens 8 karakters bevatten'
-        else if(this.wachtwoord!=this.herhaalwachtwoord)
-        return 'Wachtwoorden komen niet overeen'
-        else
-        return true
-      },
+    state() {
+      return this.email.includes("@") && this.email.includes("odisee.be")
+        ? true
+        : false;
     },
-    data() {
-      return {
-        email: '',
-        wachtwoord: '',
-        herhaalwachtwoord: ''
-      }
+    statenw() {
+      return this.wachtwoord.length >= 8 &&
+        this.wachtwoord == this.herhaalwachtwoord
+        ? true
+        : false;
+    },
+    invalidFeedback() {
+      return "Geen odisee mail";
+    },
+    invalidFeedbackww() {
+      if (this.wachtwoord.length < 8)
+        return "Wachtwoorden moet minstens 8 karakters bevatten";
+      else if (this.wachtwoord != this.herhaalwachtwoord)
+        return "Wachtwoorden komen niet overeen";
+      else return true;
     }
+  },
+  data() {
+    return {
+      email: "",
+      wachtwoord: "",
+      herhaalwachtwoord: ""
+    };
+  }
 };
 </script>
 

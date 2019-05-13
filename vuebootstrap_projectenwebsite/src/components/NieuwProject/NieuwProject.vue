@@ -24,6 +24,7 @@
                 <b-form-textarea
                   id="beschrijving"
                   v-model="form.beschrijving"
+                  rows="3"
                   required
                   placeholder="Beschrijf kort het project"
                 ></b-form-textarea>
@@ -42,6 +43,7 @@
                   id="nevenvragen"
                   v-model="form.nevenvragen"
                   required
+                  rows="5"
                   placeholder="Schrijf hier zoveel mogelijk nevenvragen die bij het project passen"
                 ></b-form-textarea>
               </b-form-group>

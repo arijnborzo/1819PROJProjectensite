@@ -4,7 +4,7 @@
         <b-card class="mb-5 mt-5">
           <b-row>
             <b-col>
-              <h2>{{titel}}</h2>
+              <h2 id="titel">{{titel}}</h2>
             </b-col>
             <b-col>
               <h6 style="line-height:38px; text-align:center">Status: in afwachting tot goedkeuring</h6>
@@ -53,7 +53,7 @@
               </li>
             </ul>
             </b-col>
-            <b-col md="6" align-self="end">
+            <b-col id="btns" md="6" align-self="end">
               <b-button style="float:right" variant="primary">Voeg groepslid toe</b-button>
               <b-button variant="primary">Pas voorstel aan</b-button>
             </b-col>
@@ -116,5 +116,14 @@ export default {
   width: 29px;
   height: auto;
   float: right;
+}
+@media (max-width: 767px) {
+  /* CSS goes here */
+  #titel {
+    text-align: center;
+  }
+  #btns {
+    margin-top: 1.5rem;
+  }
 }
 </style>
