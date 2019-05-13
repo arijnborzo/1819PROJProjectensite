@@ -1,39 +1,39 @@
 <template>
   <div>
-    <b-form @submit="onSubmit" v-if="show">
+    <b-form  >
       <b-form-group
-        id="input-group-1"
-        label="Odisee emailadres:"
-        label-for="input-1"
-      >
-        <b-form-input
-          id="input-1"
-          v-model="form.email"
-          type="email"
-          required
-        ></b-form-input>
-      </b-form-group>
+      id="fieldset-1"
+      description=""
+      label="Odisee E-mail"
+      label-for="input-1"
+      :invalid-feedback="invalidFeedback"
+      :state="state"
+    >
+      <b-form-input id="input-1" v-model="email" :state="state" trim></b-form-input>
+      
+    </b-form-group>
+<b-form-group
+      id="fieldset-1"
+      description=""
+      label="wachtwoord"
+      label-for="input-1"
+    >
+      <b-form-input id="input-1" v-model="wachtwoord"></b-form-input>
+    </b-form-group>
+      
+  
 
-
-      <b-form-group id="input-group-2" label="Nieuw paswoord:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          type="password"
-          aria-describedby="password-help-block"
-          v-model="form.paswoord"
-          required
-        ></b-form-input>
-
-      </b-form-group>
-        <b-form-group id="input-group-3" label="Herhaal paswoord:" label-for="input-3">
-        <b-form-input
-          id="input-3"
-          type="password"
-          aria-describedby="password-help-block"
-          v-model="form.herhaalpaswoord"
-          required
-        ></b-form-input>
-      </b-form-group>
+        <b-form-group
+      id="fieldset-1"
+      description=""
+      label="Herhaal wachtwoord"
+      label-for="input-1"
+      :invalid-feedback="invalidFeedbackww"
+      :valid-feedback="validFeedbackww"
+      :state="stateww"
+    >
+      <b-form-input id="input-1" v-model="herhaalwachtwoord" :state="statenw" trim></b-form-input>
+    </b-form-group>
 
       <!-- Na registratie -->
         <b-button type="submit" variant="primary">Registreer</b-button>
@@ -54,26 +54,32 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 export default {
-  data() {
-    return {
-      form: {
-        email: "",
-        paswoord: "",
-        herhaalpaswoord: ""
+  computed: {
+      state() {
+        return (this.email.includes('@') && this.email.includes('odisee.be'))? true : false
       },
-      show: true
-    };
-  },
-  methods: {
-    onSubmit(evt) {
-      evt.preventDefault();
-      if (this.form.paswoord === this.form.herhaalpaswoord) {
-        // PW gelijk
-        alert(JSON.stringify(this.form));
-        this.$router.push({ path: "belbintest" });
+       statenw() {
+        return (this.wachtwoord.length >= 8 && this.wachtwoord==this.herhaalwachtwoord)? true : false
+      },
+      invalidFeedback() {
+        return 'Geen odisee mail'
+      },
+      invalidFeedbackww() {
+        if(this.wachtwoord.length <8)
+        return 'Wachtwoorden moet minstens 8 karakters bevatten'
+        else if(this.wachtwoord!=this.herhaalwachtwoord)
+        return 'Wachtwoorden komen niet overeen'
+        else
+        return true
+      },
+    },
+    data() {
+      return {
+        email: '',
+        wachtwoord: '',
+        herhaalwachtwoord: ''
       }
     }
-  }
 };
 </script>
 
