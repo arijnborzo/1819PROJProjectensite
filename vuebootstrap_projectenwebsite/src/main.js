@@ -12,6 +12,8 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCoffee  } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import FlashMessage from '@smartweb/vue-flash-message';
+Vue.use(FlashMessage);
 
 library.add(faCoffee )
 

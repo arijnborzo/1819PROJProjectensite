@@ -41,6 +41,7 @@ export const routes = [
       groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"]
     }
   },
+  
   { path: "/registreer", component: Registreer },
   { path: "/paswoordvergeten", component: PaswoordVergeten },
   { path: "/redirect", redirect: { name: "LoginForm" } },
