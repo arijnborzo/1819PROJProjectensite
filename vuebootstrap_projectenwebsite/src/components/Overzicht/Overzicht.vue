@@ -99,12 +99,14 @@ export default {
 body {
   background: #eef1f4;
 }
-html,
-body {
-  height: 100%;
-}
-#overzicht {
-  height: 100%;
+@media screen and (max-height: 700px) {
+  html,
+  body {
+    height: 100%;
+  }
+  #overzicht {
+    height: 100%;
+  }
 }
 
 /* GRIDLIST */
