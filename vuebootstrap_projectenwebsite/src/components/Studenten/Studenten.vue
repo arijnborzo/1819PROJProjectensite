@@ -97,35 +97,37 @@ export default {
     },
     belbinResult(value) {
       if (value === "Z")
-        return `<img src=${
+        return `<img class="belbinimg" src=${
           this.photo.coordinator
         } alt="CO-ORDINATOR" v-b-tooltip.click title="Co-ordinator">`;
       if (value === "Y")
-        return `<img src=${
+        return `<img class="belbinimg" src=${
           this.photo.completor
         } alt="COMPLETOR" v-b-tooltip.click title="Completor">`;
       if (value === "X")
-        return `<img src=${
+        return `<img class="belbinimg" src=${
           this.photo.implementor
         } alt="IMPLEMENTOR" v-b-tooltip.click title="Implementor">`;
       if (value === "W")
-        return `<img src=${
+        return `<img class="belbinimg" src=${
           this.photo.investigator
         } alt="INVESTIGATOR" v-b-tooltip.click title="Investigator">`;
       if (value === "V")
-        return `<img src=${
+        return `<img class="belbinimg" src=${
           this.photo.monitor
         } alt="MONITOR" v-b-tooltip.click title="Monitor">`;
       if (value === "Q")
-        return `<img src=${
+        return `<img class="belbinimg" src=${
           this.photo.shaper
         } alt="SHAPER" v-b-tooltip.click title="Shaper">`;
       if (value === "T")
-        return `<img src=${
+        return `<img class="belbinimg" src=${
           this.photo.plant
         } alt="PLANT" v-b-tooltip.click title="Plant">`;
       if (value === "S")
-        return `<img src=${this.photo.teamworker} alt="TEAMWORKER">`;
+        return `<img class="belbinimg" src=${
+          this.photo.teamworker
+        } alt="TEAMWORKER">`;
     },
     groepResult(value) {
       if (value === "4") return `✔`;
@@ -137,7 +139,7 @@ export default {
 </script>
 
 <style>
-img {
+.belbinimg {
   width: 29px;
   height: auto;
 }

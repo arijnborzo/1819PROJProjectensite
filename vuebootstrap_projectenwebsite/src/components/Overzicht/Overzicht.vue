@@ -22,7 +22,7 @@
             <!--gridlist-->
             <div id="gridlist" class="gridul">
               <div v-for="project in projecten" v-bind:key=project.titel>
-                <app-project :glwidth=glwidth :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden></app-project>
+                <app-project class="project" :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden></app-project>
               </div>
             </div>
         </b-col>
@@ -82,14 +82,21 @@ export default {
       var ul = document.getElementById("gridlist");
       ul.classList.remove("listul");
       ul.classList.add("gridul");
-      this.glwidth = "20rem";
+      var list = document.getElementsByClassName("project");
+      var li = Array.prototype.filter.call(list, function(proj) {
+        proj.classList.remove("listli");
+        proj.classList.add("gridli");
+      });
     },
     listView: function() {
       var ul = document.getElementById("gridlist");
       ul.classList.remove("gridul");
       ul.classList.add("listul");
-      this.glwidth = "auto";
-      console.log(this.glwidth);
+      var list = document.getElementsByClassName("project");
+      var li = Array.prototype.filter.call(list, function(proj) {
+        proj.classList.remove("gridli");
+        proj.classList.add("listli");
+      });
     }
   }
 };
@@ -116,8 +123,10 @@ body {
   width: 100%;
 }
 .gridli {
+  width: 20rem;
 }
 .listli {
+  width: 100%;
 }
 .proj {
   width: auto;

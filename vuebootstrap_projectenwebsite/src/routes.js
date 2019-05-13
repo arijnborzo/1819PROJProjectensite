@@ -38,10 +38,15 @@ export const routes = [
         tijdsgebonden:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ."
       },
-      groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"]
+      groepsleden: {
+        "Arno Stas": "implementor",
+        "Andreas Lauwers": "coordinator",
+        "Lukas Petit": "plant",
+        "Arijn Borzo": "implementor"
+      }
     }
   },
-  
+
   { path: "/registreer", component: Registreer },
   { path: "/paswoordvergeten", component: PaswoordVergeten },
   { path: "/redirect", redirect: { name: "LoginForm" } },

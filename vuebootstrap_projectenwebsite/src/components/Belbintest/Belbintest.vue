@@ -965,7 +965,7 @@
               ></b-form-radio-group>
             </b-form-group>
             <b-button class="error" type="submit" variant="primary" @click="flashMessage.error({ title: 'Error Title', message: 'error' });">Verzenden(error)</b-button>
-            <b-button class="Succes" type="submit" variant="primary" @click="flashMessage.success({ title: 'Belbintest Vezonden', message: 'succes' });">Verzenden(Succes)</b-button>
+            <b-button class="succes" type="submit" variant="primary" @click="flashMessage.success({ title: 'Belbintest Vezonden', message: 'succes' });">Verzenden(Succes)</b-button>
             <p>{{ callbackText }}</p>
             <FlashMessage></FlashMessage>
           </b-card>                                   
@@ -986,7 +986,6 @@ export default {
         { text: "Heel kenmerkend", value: "2" }
       ]
     };
-    
   }
 };
 </script>

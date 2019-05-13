@@ -48,8 +48,8 @@
               Groepsleden
             </h4>
             <ul>
-              <li v-for="lid in groepsleden" v-bind:key="lid">
-                <p>{{lid}}</p>
+              <li v-for="(belbin, naam) in groepsleden" v-bind:key="naam">
+                <p>{{naam}} <span><img class="lidbelbin" :src=belbinResult(belbin) :alt="belbin" v-b-tooltip.click.hover :title=belbin></span></p>
               </li>
             </ul>
             </b-col>
@@ -74,7 +74,32 @@ export default {
     "smart",
     "groepsleden"
   ],
-  methods: {}
+  data() {
+    return {
+      photo: {
+        coordinator: "../../assets/co-ordinator.png",
+        completor: "../../assets/completor.png",
+        implementor: "../../assets/implementor.png",
+        investigator: "../../assets/investigator.png",
+        monitor: "../../assets/monitor-evaluator.png",
+        shaper: "../../assets/shaper.png",
+        plant: "../../assets/plant.png",
+        teamworker: "../../assets/teamworker.png"
+      }
+    };
+  },
+  methods: {
+    belbinResult(value) {
+      if (value === "coordinator") return this.photo.coordinator;
+      if (value === "completor") return this.photo.completor;
+      if (value === "implementor") return this.photo.implementor;
+      if (value === "investigator") return this.photo.investigator;
+      if (value === "monitor") return this.photo.monitor;
+      if (value === "shaper") return this.photo.shaper;
+      if (value === "plant") return this.photo.plant;
+      if (value === "teamworker") return this.photo.teamworker;
+    }
+  }
 };
 </script>
 
@@ -85,5 +110,11 @@ export default {
   padding: 1.5rem;
   margin-left: -1.2rem;
   margin-right: -1.2rem;
+}
+
+.lidbelbin {
+  width: 29px;
+  height: auto;
+  float: right;
 }
 </style>
