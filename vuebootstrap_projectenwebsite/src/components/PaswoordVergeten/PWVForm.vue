@@ -1,94 +1,82 @@
 <template>
-  <div>
-    <b-form @submit="onSubmit" v-if="show">
-      <b-form-group
-        id="input-group-1"
-        label="Odisee emailadres:"
-        label-for="input-1"
-      >
-        <b-form-input
-          id="input-1"
-          v-model="form.email"
-          type="email"
-          required
-        ></b-form-input>
-      </b-form-group>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 offset-sm-2">
+                    <div>
+                      <h3>Vraag hier een nieuw wachtwoord aan</h3>
+                        <form @submit.prevent="handleSubmit">
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" v-model="user.email" id="email" name="email" class="form-control" :class="{ 'is-invalid': submitted && $v.user.email.$error }" />
+                                <div v-if="submitted && $v.user.email.$error" class="invalid-feedback">
+                                    <span v-if="!$v.user.email.required">E-mail is vereist</span>
+                                    <span v-if="!$v.user.email.email">E-mail ongeldig</span>
+                                </div>
+                            </div>
 
-
-      <b-form-group id="input-group-2" label="Oud paswoord:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          type="password"
-          aria-describedby="password-help-block"
-          v-model="form.oudpaswoord"
-          required
-        ></b-form-input>
-      </b-form-group>
-
-        <b-form-group id="input-group-3a" label="Nieuw paswoord:" label-for="input-3a">
-        <b-form-input
-          id="input-3a"
-          type="password"
-          aria-describedby="password-help-block"
-          v-model="form.nieuwpaswoord"
-          required
-        ></b-form-input>
-
-      </b-form-group>
-        <b-form-group id="input-group-3b" label="Herhaal nieuw paswoord:" label-for="input-3b">
-        <b-form-input
-          id="input-3b"
-          type="password"
-          aria-describedby="password-help-block"
-          v-model="form.herhaalpaswoord"
-          required
-        ></b-form-input>
-      </b-form-group>
-
-        <b-button type="submit" variant="primary">Verstuur</b-button>
-    </b-form>
-
-    <!--
-    <b-card class="mt-3" header="Form Data Result">
-      <pre class="m-0">{{ form }}</pre>
-    </b-card>
-    -->
-  </div>
+                            <div class="form-group">
+                                <label for="password">Niew wachtwoord</label>
+                                <input type="password" v-model="user.password" id="password" name="password" class="form-control" :class="{ 'is-invalid': submitted && $v.user.password.$error }" />
+                                <div v-if="submitted && $v.user.password.$error" class="invalid-feedback">
+                                    <span v-if="!$v.user.password.required"> Wachtwoord is vereist</span>
+                                    <span v-if="!$v.user.password.minLength">Wachtwoord moet minstens 6 karakters lang zijn.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Bevestig wachtwoord</label>
+                                <input type="password" v-model="user.confirmPassword" id="confirmPassword" name="confirmPassword" class="form-control" :class="{ 'is-invalid': submitted && $v.user.confirmPassword.$error }" />
+                                <div v-if="submitted && $v.user.confirmPassword.$error" class="invalid-feedback">
+                                    <span v-if="!$v.user.confirmPassword.required">Bevestig Wachtwoord is vereist</span>
+                                    <span v-else-if="!$v.user.confirmPassword.sameAsPassword">Wachtwoorden moeten overeenkomen</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary">Registreer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 </template>
 
 <script>
-import Vue from "vue";
-import VueRouter from "vue-router";
+    import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
 
-Vue.use(VueRouter);
+    export default {
+        name: "app",
+        data() {
+            return {
+                user: {
+                    email: "",
+                    password: "",
+                    confirmPassword: ""
+                },
+                submitted: false
+            };
+        },
+        validations: {
+            user: {
+                email: { required, email },
+                password: { required, minLength: minLength(6) },
+                confirmPassword: { required, sameAsPassword: sameAs('password') }
+            }
+        },
+        methods: {
+            handleSubmit(e) {
+                this.submitted = true;
 
-export default {
-  data() {
-    return {
-      form: {
-        email: "",
-        oudpaswoord: "",
-        nieuwpaswoord: "",
-        herhaalpaswoord: ""
-      },
-      show: true
+                // stop here if form is invalid
+                this.$v.$touch();
+                if (this.$v.$invalid) {
+                    return;
+                }
+
+                alert("SUCCESS!!\n\n" + JSON.stringify(this.user));
+                this.$router.push({ path: "login" });
+
+            }
+        }
     };
-  },
-  methods: {
-    onSubmit(evt) {
-      evt.preventDefault();
-      if (this.form.paswoord === this.form.herhaalpaswoord) {
-        // PW gelijk
-        alert(JSON.stringify(this.form));
-        this.$router.push({ path: "belbintest" });
-      }
-    }
-  }
-};
 </script>
-
-<style>
-.reset {
-  float: right;
-}
-</style>

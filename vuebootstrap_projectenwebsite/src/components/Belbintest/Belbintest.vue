@@ -734,7 +734,8 @@
                 name="radio-btn-outline"
               ></b-form-radio-group>
             </b-form-group><br>
-            <strong><p>Tot slot een aantal uitspraken. Geef per zin aan in hoeverre dit van jou een typische uitspraak zou zijn in een team</p></strong>
+            <strong><p>Tot slot een aantal uitspraken. 
+              <br> per zin aan in hoeverre dit van jou een typische uitspraak zou zijn in een team</p></strong>
             <b-form-group
                 label="Ik heb de voors en tegens op een rijtje gezet"
                 label-cols="4"
@@ -963,11 +964,11 @@
                 name="radio-btn-outline"
               ></b-form-radio-group>
             </b-form-group>
-           
-
-
-
-          </b-card>
+            <b-button class="error" type="submit" variant="primary" @click="flashMessage.error({ title: 'Error Title', message: 'error' });">Verzenden(error)</b-button>
+            <b-button class="succes" type="submit" variant="primary" @click="flashMessage.success({ title: 'Belbintest Vezonden', message: 'succes' });">Verzenden(Succes)</b-button>
+            <p>{{ callbackText }}</p>
+            <FlashMessage></FlashMessage>
+          </b-card>                                   
         </b-col>
       </b-row>
       </b-container>
