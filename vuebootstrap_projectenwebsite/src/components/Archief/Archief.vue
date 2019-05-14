@@ -106,6 +106,7 @@ export default {
 body {
   background: #eef1f4;
 }
+/*
 @media screen and (max-height: 700px) {
   html,
   body {
@@ -115,8 +116,8 @@ body {
     height: 100%;
   }
 }
-
-/* GRIDLIST */
+*/
+/* GRIDLIST 
 .gridul {
 }
 .listul {
@@ -144,13 +145,14 @@ ul {
 }
 
 /* SORTEREN */
+/*
 #sorteren {
   width: 40%;
 }
 
 /* MEDIA QUERY */
+/*
 @media (max-width: 992px) {
-  /* CSS goes here */
   .projecten {
     -ms-flex-align: center !important;
     align-items: center !important;
@@ -162,7 +164,6 @@ ul {
   }
 }
 @media (max-width: 767px) {
-  /* CSS goes here */
   #alleprojecten {
     margin-top: 1.5rem;
   }
@@ -176,4 +177,5 @@ ul {
     width: 100%;
   }
 }
+*/
 </style>

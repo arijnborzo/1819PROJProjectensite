@@ -6,28 +6,35 @@
         </b-col>
         <b-col md="7" lg="8" xl="9">
             
-            <b-col>
-            <!--titel-->
-            <h3 id="alleprojecten">Alle projecten</h3>
-
-            <!--sorteren-->
-            <b-form-select id="sorteren" v-model="selected" required :options="sorteeropties"></b-form-select>
-
-            <!--gridlistbtns-->
-            <b-button @click="gridView" class="gridlistbtn">  <i class="fas fa-th-large" style="font-size: 1.2em;"></i></b-button>
-            <b-button @click="listView" class="gridlistbtn"><i class="fas fa-list"></i></b-button>
-
-            </b-col>
+            <b-row>
+              <b-col>
+              <!--titel-->
+                <h3 id="alleprojecten">Alle projecten</h3>
+              </b-col>
+            </b-row>
+              <!--sorteren-->
+            <b-row>
+              <b-col>
+                <b-form-select id="sorteren" v-model="selected" required :options="sorteeropties"></b-form-select>
+              </b-col>
+              <!--gridlistbtns-->
+              <b-col v-if="showicons">
+                <b-button @click="gridView" class="gridlistbtn">  <i class="fas fa-th-large" style="font-size: 1.2em;"></i></b-button>
+                <b-button @click="listView" class="gridlistbtn"><i class="fas fa-list"></i></b-button>
+              </b-col>
+            </b-row>
 
             <!--gridlist-->
-            <div id="gridlist" class="gridul">
+            <b-row id="gridlist" class="gridul">
               <div v-for="project in projecten" v-bind:key=project.titel>
                 <transition name="fade">
-                  <app-project class="project" :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden></app-project>
+                  <b-col>
+                    <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden></app-project>
+                  </b-col>
                 </transition>
               </div>
-            </div>
-        </b-col>
+            </b-row>
+          </b-col>
       </b-row>
     </b-container>
 </template>
@@ -72,14 +79,31 @@ export default {
           groepsleden: ["Arno Stas", "Arno Stas", "/", "/"]
         }
       ],
-      show: true
+      show: true,
+      showicons: true,
+      width: 0
     };
   },
   components: {
     appFilter: Filter,
     appProject: Project
   },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.handleResize);
+  },
   methods: {
+    handleResize() {
+      this.width = window.innerWidth;
+      if (this.width < 1070) {
+        this.showicons = false;
+      } else {
+        this.showicons = true;
+      }
+    },
     gridView: function() {
       var ul = document.getElementById("gridlist");
       ul.classList.remove("listul");
@@ -119,7 +143,8 @@ body {
 }
 
 /* GRIDLIST */
-.gridul {
+.gridlist {
+  margin: 0;
 }
 .listul {
   width: 100%;
@@ -128,7 +153,7 @@ body {
   width: 20rem;
 }
 .listli {
-  width: 90%;
+  width: 100%;
 }
 .proj {
   width: auto;
@@ -157,11 +182,11 @@ ul {
 
 /* SORTEREN */
 #sorteren {
-  width: 40%;
+  width: 80%;
 }
 
 /* MEDIA QUERY */
-@media (max-width: 992px) {
+@media (max-width: 1070px) {
   /* CSS goes here */
   .projecten {
     -ms-flex-align: center !important;
@@ -170,16 +195,27 @@ ul {
     display: flex !important;
   }
   .gridlistbtn {
-    display: none;
+    /*display: none;*/
+  }
+  .gridul {
+    width: auto;
+  }
+  .project {
+    width: 100%;
+  }
+  #sorteren {
+    width: 100%;
   }
 }
 @media (max-width: 767px) {
-  /* CSS goes here */
   .projecten {
     margin-top: 2.5rem;
   }
   #sorteren {
-    width: 60%;
+    width: 100%;
+  }
+  #alleprojecten {
+    margin-top: 1rem;
   }
 }
 </style>

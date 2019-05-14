@@ -3,8 +3,9 @@ import Home from "./components/Overzicht/Overzicht";
 import Studenten from "./components/Studenten/Studenten";
 import Archief from "./components/Archief/Archief";
 import Belbintest from "./components/Belbintest/Belbintest";
-import Nieuwproject from "./components/NieuwProject/NieuwProject";
-import Mijnproject from "./components/NieuwProject/MijnProject";
+import NieuwProject from "./components/NieuwProject/NieuwProject";
+import MijnProject from "./components/MijnProject/MijnProject";
+import DetailProject from "./components/MijnProject/DetailProject";
 import Registreer from "./components/Registreer/Registreren";
 import PaswoordVergeten from "./components/PaswoordVergeten/PaswoordVergeten";
 
@@ -15,10 +16,10 @@ export const routes = [
   { path: "/studenten", component: Studenten },
   { path: "/archief", component: Archief },
   { path: "/belbintest", component: Belbintest },
-  { path: "/nieuwproject", component: Nieuwproject },
+  { path: "/nieuwproject", component: NieuwProject },
   {
     path: "/mijnproject",
-    component: Mijnproject,
+    component: MijnProject,
     props: {
       titel: "Projectenwebsite",
       status: false,
@@ -46,7 +47,12 @@ export const routes = [
       }
     }
   },
-
+  {
+    path: "/project/:projectId",
+    name: "detailproject",
+    component: DetailProject,
+    props: true
+  },
   { path: "/registreer", component: Registreer },
   { path: "/paswoordvergeten", component: PaswoordVergeten },
   { path: "/redirect", redirect: { name: "LoginForm" } },

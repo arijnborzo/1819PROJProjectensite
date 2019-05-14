@@ -2,7 +2,7 @@
      <b-card
         v-bind:title=titel 
         tag="article"
-        class="m-3 project"
+        class="mt-3 mb-3 project"
         >
         <b-card-text id="beschrijving">
         <h6>Beschrijving</h6>
@@ -14,18 +14,14 @@
             <span>{{lid}}</span>
           </li>
         </ul>
+        <p style="float:left"><span>Status: </span>✔</p>
         <b-button href="#" variant="primary" size="sm" class="bekijkbtn">Bekijk</b-button>
     </b-card>
 </template>
 
 <script>
 export default {
-  props: ["beschrijving", "titel", "groepsleden", "glwidth"],
-  computed: {
-    styling() {
-      return "width: " + this.glwidth;
-    }
-  }
+  props: ["beschrijving", "titel", "groepsleden", "glwidth"]
 };
 </script>
 
