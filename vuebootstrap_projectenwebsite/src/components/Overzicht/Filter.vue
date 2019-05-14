@@ -36,6 +36,17 @@
                     </b-form-checkbox-group>
                 </b-form-group>
 
+                <b-form-group id="input-group-4" 
+                    label="Status"
+                    label-for="input-4"
+                >
+                    <b-form-checkbox-group v-model="form.status" id="status">
+                    <b-form-checkbox value="1">Goedgekeurd</b-form-checkbox>
+                    <b-form-checkbox value="2">Nog in beraad</b-form-checkbox>
+                    <b-form-checkbox value="3">Afgekeurd</b-form-checkbox>
+                    </b-form-checkbox-group>
+                </b-form-group>
+
                 <b-button type="submit" variant="primary">Pas toe</b-button>
                 <b-button type="reset" variant="danger" style="float: right">Reset</b-button>
             </b-form>
@@ -51,7 +62,8 @@ export default {
       form: {
         groep: "",
         categorie: null,
-        checked: []
+        checked: [],
+        status: []
       },
       categorien: [
         { text: "Geen voorkeur", value: null },
@@ -74,6 +86,7 @@ export default {
       this.form.groep = "";
       this.form.categorie = null;
       this.form.checked = [];
+      this.form.status = [];
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {

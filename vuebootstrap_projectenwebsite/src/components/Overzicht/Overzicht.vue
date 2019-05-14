@@ -22,7 +22,9 @@
             <!--gridlist-->
             <div id="gridlist" class="gridul">
               <div v-for="project in projecten" v-bind:key=project.titel>
-                <app-project class="project" :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden></app-project>
+                <transition name="fade">
+                  <app-project class="project" :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden></app-project>
+                </transition>
               </div>
             </div>
         </b-col>
@@ -39,7 +41,6 @@ export default {
     return {
       layout: "grid",
       selected: null,
-      glwidth: "20rem",
       sorteeropties: [
         { value: null, text: "Sorteren op:" },
         { value: "a", text: "Op alfabetische volgorde A-Z" },
@@ -70,7 +71,8 @@ export default {
             "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
           groepsleden: ["Arno Stas", "Arno Stas", "/", "/"]
         }
-      ]
+      ],
+      show: true
     };
   },
   components: {
@@ -138,6 +140,16 @@ ul {
   list-style-type: none;
   padding: 0;
 }
+
+/*TRANSITIONS */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 .gridlistbtn {
   margin: 0 0.3rem;
   float: right;

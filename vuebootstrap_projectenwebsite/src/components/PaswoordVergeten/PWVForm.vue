@@ -16,7 +16,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password">Niew wachtwoord</label>
+                                <label for="password">Nieuw wachtwoord</label>
                                 <input type="password" v-model="user.password" id="password" name="password" class="form-control" :class="{ 'is-invalid': submitted && $v.user.password.$error }" />
                                 <div v-if="submitted && $v.user.password.$error" class="invalid-feedback">
                                     <span v-if="!$v.user.password.required"> Wachtwoord is vereist</span>
@@ -42,41 +42,40 @@
 </template>
 
 <script>
-    import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
+import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
 
-    export default {
-        name: "app",
-        data() {
-            return {
-                user: {
-                    email: "",
-                    password: "",
-                    confirmPassword: ""
-                },
-                submitted: false
-            };
-        },
-        validations: {
-            user: {
-                email: { required, email },
-                password: { required, minLength: minLength(6) },
-                confirmPassword: { required, sameAsPassword: sameAs('password') }
-            }
-        },
-        methods: {
-            handleSubmit(e) {
-                this.submitted = true;
-
-                // stop here if form is invalid
-                this.$v.$touch();
-                if (this.$v.$invalid) {
-                    return;
-                }
-
-                alert("SUCCESS!!\n\n" + JSON.stringify(this.user));
-                this.$router.push({ path: "login" });
-
-            }
-        }
+export default {
+  name: "app",
+  data() {
+    return {
+      user: {
+        email: "",
+        password: "",
+        confirmPassword: ""
+      },
+      submitted: false
     };
+  },
+  validations: {
+    user: {
+      email: { required, email },
+      password: { required, minLength: minLength(6) },
+      confirmPassword: { required, sameAsPassword: sameAs("password") }
+    }
+  },
+  methods: {
+    handleSubmit(e) {
+      this.submitted = true;
+
+      // stop here if form is invalid
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
+      }
+
+      alert("SUCCESS!!\n\n" + JSON.stringify(this.user));
+      this.$router.push({ path: "login" });
+    }
+  }
+};
 </script>
