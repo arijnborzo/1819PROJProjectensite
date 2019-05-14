@@ -48,10 +48,10 @@
 </template>
 
 <script>
-import Vue from "vue/types";
-import VueRouter from "vue-router";
+// import Vue from "vue/types";
+// import VueRouter from "vue-router";
 
-Vue.use(VueRouter);
+// Vue.use(VueRouter);
 
 export default {
   data() {
@@ -70,7 +70,7 @@ export default {
       if (this.form.paswoord === this.form.herhaalpaswoord) {
         // PW gelijk
         alert(JSON.stringify(this.form));
-        this.$router.push({ path: "belbintest" });
+        // this.$router.push({ path: "belbintest" });
       }
     }
   }

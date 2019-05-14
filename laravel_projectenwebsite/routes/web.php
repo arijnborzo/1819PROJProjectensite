@@ -30,16 +30,16 @@ Route::get('/students', function(){
         ]
     );
 });
-Route::get('/students', function(){
-    $students = DB::table('users')
-        ->rightJoin('students', 'users.id', '=', 'students.id')
-        ->rightJoin('projects', 'students.group_id', '=', 'projects.id')
-        ->get();
-    return view('students', [
-        'students' => $students
-        ]
-    );
-});
+//Route::get('/students', function(){
+//    $students = DB::table('users')
+//        ->rightJoin('students', 'users.id', '=', 'students.id')
+//        ->rightJoin('projects', 'students.group_id', '=', 'projects.id')
+//        ->get();
+//    return view('students', [
+//            'students' => $students
+//        ]
+//    );
+//});
 
 Auth::routes();
 
@@ -48,5 +48,5 @@ Route::get('/archief', 'OverviewController@archive')->name('archief');
 Route::get('/maakproject', 'ProjectController@createProject')->name('maakproject');
 Route::get('/belbintest' , 'BelbintestController@showBelbintest')->name('belbintest');
 Route::post('/belbintest', 'BelbintestController@addBelbintype');
-Route::get('/studenten', 'OverviewController@students')->name('studenten');
+Route::get('/students', 'OverviewController@students')->name('studenten');
 Route::get('/project/{id}', 'OverviewController@detail')->name('detail');

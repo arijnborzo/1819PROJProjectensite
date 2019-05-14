@@ -23,7 +23,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/modernizr.js') }}"></script> <!-- Modernizr -->
-{{--    <script src="{{ asset('/resources/js/app.js') }}"></script>--}}
+    <script src="'../../js/app.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <title>{{ config('app.name', 'Projectenwebsite ICTEO14') }}</title>
 </head>
 <body>
@@ -47,7 +48,7 @@
             </div>
         </div>
     </div>
-    <main class="content">
+    <main id="app" class="content">
             @yield('content')
     </main>
     <div class="footer">

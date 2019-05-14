@@ -57,10 +57,10 @@
 </template>
 
 <script>
-import Vue from "vue/types";
-import VueRouter from "vue-router";
-
-Vue.use(VueRouter);
+// import Vue from "vue/types";
+// import VueRouter from "vue-router";
+//
+// Vue.use(VueRouter);
 
 export default {
   data() {

@@ -11,6 +11,7 @@
     },
     "devDependencies": {
         "axios": "^0.18",
+        "@fortawesome/fontawesome-free": "^5.8.2",
         "bootstrap": "^4.0.0",
         "cross-env": "^5.1",
         "jquery": "^3.2",
@@ -20,10 +21,19 @@
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
-        "vue": "^2.5.17"
+        "vue": "^2.5.17",
+        "@vue/cli-plugin-babel": "^3.5.0",
+        "@vue/cli-plugin-eslint": "^3.5.0",
+        "@vue/cli-service": "^3.5.0",
+        "babel-eslint": "^10.0.1",
+        "eslint": "^5.8.0",
+        "eslint-plugin-vue": "^5.0.0",
+        "vue-template-compiler": "^2.5.21"
     },
     "dependencies": {
-        "appjs": "0.0.20",
-        "appjs-darwin": "0.0.19"
+        "bootstrap-vue": "^2.0.0-rc.18",
+        "@fortawesome/fontawesome-svg-core": "^1.2.18",
+        "@fortawesome/free-solid-svg-icons": "^5.8.2",
+        "@fortawesome/vue-fontawesome": "^0.1.6"
     }
 }

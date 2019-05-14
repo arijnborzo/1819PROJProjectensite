@@ -73,11 +73,13 @@ class OverviewController extends Controller
     public function students()
     {
       $user = Auth::user();
-      $students = User::rightJoin('students', 'users.id', '=', 'students.id')->get();
-      echo $students;
-      return view('welcome', [
-        'students' => $students,
-        'user' => $user
-      ]);
+      $students = User::rightJoin('students', 'users.id', '=', 'students.id')
+            ->rightJoin('projects', 'students.group_id', '=', 'projects.id')
+            ->get();
+      return view('students', [
+          'students' => $students,
+             'user' => $user
+            ]
+        );
     }
 }
