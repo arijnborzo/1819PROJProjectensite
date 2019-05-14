@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
   protected $fillable = ['id', 'project_id', ];
-  public function students(){
+  public function student(){
     return $this->hasMany('App\Student');
   }
-  public function projects(){
+  public function project(){
     return $this->hasOne('App\Project', 'id', 'project_id');
   }
 }

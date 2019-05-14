@@ -18,13 +18,13 @@ class User extends Authenticatable
     'password', 'remember_token',
   ];
 
-  public function students(){
+  public function student(){
     return $this->hasOne('App\Student', 'id');
   }
-  public function teachers(){
+  public function teacher(){
     return $this->hasOne('App\Teacher', 'id');
   }
-  public function externs(){
+  public function extern(){
     return $this->hasOne('App\Extern', 'id');
   }
   public function comments()  {

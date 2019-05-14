@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $fillable = ['id', 'user_Id', 'title', 'message', 'project_id',];
-    public function users(){
+    public function user(){
       return $this->belongsTo('App\User', 'user_id');
     }
-    public function projects(){
+    public function project(){
       return $this->belongsTo('App\Project', 'project_id');
     }
     public $timestamps = true;

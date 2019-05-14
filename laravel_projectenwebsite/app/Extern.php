@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Extern extends Model
 {
     protected $fillable = ['id', 'companie', ];
-    public function users(){
+    public function user(){
       return $this->hasOne('App\User');
     }
 }

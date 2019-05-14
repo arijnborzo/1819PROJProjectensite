@@ -4,8 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Student;
 
-class RedirectIfAuthenticated
+class Belbin
 {
     /**
      * Handle an incoming request.
@@ -17,10 +19,13 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/');            
+        $user = Auth::user();
+        $student = $user->student;
+        if (is_null($student->belbintype)){
+          return redirect('/belbintest');
         }
-
-        return $next($request);
+        else {
+          return $next($request);
+        }
     }
 }

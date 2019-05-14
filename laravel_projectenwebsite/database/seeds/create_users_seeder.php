@@ -17,6 +17,7 @@ class create_users_seeder extends Seeder
           'surname' => "Andreas",
           'email' => "andreas.lauwers@student.odisee.be",
           'password' => bcrypt('test'),
+          'created_at' => date("Y-m-d H:i:s"),
       ]);
       DB::table('users')->insert([
           'id' => 2,
@@ -24,6 +25,7 @@ class create_users_seeder extends Seeder
           'surname' => "Lukas",
           'email' => "lukas.petit@student.odisee.be",
           'password' => bcrypt('test1'),
+          'created_at' => date("Y-m-d H:i:s"),
       ]);
       DB::table('users')->insert([
           'id' => 3,
@@ -31,6 +33,7 @@ class create_users_seeder extends Seeder
           'surname' => "Arijn",
           'email' => "arijn.borzo@student.odisee.be",
           'password' => bcrypt('test2'),
+          'created_at' => date("Y-m-d H:i:s"),
       ]);
       DB::table('users')->insert([
           'id' => 4,
@@ -38,6 +41,7 @@ class create_users_seeder extends Seeder
           'surname' => "Arno",
           'email' => "arno.stas@student.odisee.be",
           'password' => bcrypt('test3'),
+          'created_at' => date("Y-m-d H:i:s"),
       ]);
       DB::table('users')->insert([
           'id' => 5,
@@ -45,6 +49,7 @@ class create_users_seeder extends Seeder
           'surname' => "Pieter",
           'email' => "pieter.vanpeteghem@odisee.be",
           'password' => bcrypt('test4'),
+          'created_at' => date("Y-m-d H:i:s"),
       ]);
         DB::table('users')->insert([
             'id' => 6,
@@ -52,6 +57,7 @@ class create_users_seeder extends Seeder
             'surname' => "Peter",
             'email' => "peter.demeester@odisee.be",
             'password' => bcrypt('test5'),
+            'created_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('users')->insert([
             'id' => 7,
@@ -59,6 +65,7 @@ class create_users_seeder extends Seeder
             'surname' => "Joris",
             'email' => "joris.maervoet@odisee.be",
             'password' => bcrypt('test6'),
+            'created_at' => date("Y-m-d H:i:s"),
     ]);
         DB::table('users')->insert([
             'id' => 8,
@@ -66,6 +73,7 @@ class create_users_seeder extends Seeder
             'surname' => "Boemba",
             'email' => "boemba.beloe@odisee.be",
             'password' => bcrypt('test7'),
+            'created_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('users')->insert([
             'id' => 9,
@@ -73,6 +81,7 @@ class create_users_seeder extends Seeder
             'surname' => "Nemo",
             'email' => "nemo.devis@odisee.be",
             'password' => bcrypt('test8'),
+            'created_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('users')->insert([
             'id' => 10,
@@ -80,6 +89,7 @@ class create_users_seeder extends Seeder
             'surname' => "Filip",
             'email' => "Filip.vanbelgie@odisee.be",
             'password' => bcrypt('test9'),
+            'created_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('users')->insert([
             'id' => 11,
@@ -87,6 +97,7 @@ class create_users_seeder extends Seeder
             'surname' => "Martine",
             'email' => "martine.tanghe@odisee.be",
             'password' => bcrypt('test10'),
+            'created_at' => date("Y-m-d H:i:s"),
         ]);
     }
 }

@@ -22,6 +22,7 @@ class OverviewController extends Controller
     public function __construct()
      {
          $this->middleware('auth');
+         $this->middleware('belbin');
      }
 
     /**
@@ -33,7 +34,7 @@ class OverviewController extends Controller
     {
       $user = Auth::user();
       $year = date("Y")-1;
-      $projects = Project::join('groups', 'projects.id', '=', 'groups.project_id')->join('students', 'students.group_id','=', 'groups.id')->join('users', 'users.id', '=', 'students.id' )->whereYear('created_at', $year)->get();
+      $projects = Project::join('groups', 'projects.id', '=', 'groups.project_id')->join('students', 'students.group_id','=', 'groups.id')->join('users', 'users.id', '=', 'students.id' )->whereYear('projects.created_at', $year)->get();
       echo $projects;
       return view('overzicht', [
         'projects' => $projects,

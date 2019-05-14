@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Students;
+use App\Student;
+use App\User;
 use Illuminate\Http\Request;
 
 class BelbintestController extends Controller
@@ -25,6 +26,8 @@ class BelbintestController extends Controller
     */
     public function showBelbintest(){
       $user = Auth::user();
+      $student = $user->student;
+      echo($student->belbintype);
       return view('welcome', [
         'user' => $user
       ]);
@@ -32,7 +35,7 @@ class BelbintestController extends Controller
     public function addBelbintype(Request $request){
       $id = $request['id'];
       $type = $request['type'];
-      User::where('id', $id)->update(['belbinbtype' => $type]);
+      Student::where('id', $id)->update(['belbinbtype' => $type]);
       return redirect('/');
     }
 }
