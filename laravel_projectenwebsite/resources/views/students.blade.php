@@ -4,7 +4,10 @@
 @section('name', 'Student')
 @section('content')
  <studenten_vue></studenten_vue>
-{{--<div class="limiter">--}}
+
+{{-- <studenten_vue :students="'{!! json_encode($students) !!}'"></studenten_vue>--}}
+
+ {{--<div class="limiter">--}}
 {{--<example-component></example-component>--}}
 {{--    <div class="container-table100">--}}
 {{--        <div class="wrap-table100">--}}
@@ -57,5 +60,5 @@
 {{--        </div>--}}
 {{--    </div>--}}
 {{--</div>--}}
-<a href="#0" class="cd-close">Sluiten</a>
+{{--<a href="#0" class="cd-close">Sluiten</a>--}}
 @endsection

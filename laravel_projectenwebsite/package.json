@@ -34,6 +34,16 @@
         "bootstrap-vue": "^2.0.0-rc.18",
         "@fortawesome/fontawesome-svg-core": "^1.2.18",
         "@fortawesome/free-solid-svg-icons": "^5.8.2",
-        "@fortawesome/vue-fontawesome": "^0.1.6"
+        "@fortawesome/vue-fontawesome": "^0.1.6",
+        "@smartweb/vue-flash-message": "^0.4.1",
+        "bootstrap": "^4.3.1",
+        "core-js": "^2.6.5",
+        "oct-vue-form": "^1.0.0",
+        "vee-validate": "^2.2.7",
+        "vue": "^2.6.10",
+        "vue-router": "^3.0.3",
+        "vuejs-model-validator": "^1.1.0",
+        "vuelidate": "^0.7.4",
+        "vuetify": "^1.5.14"
     }
 }

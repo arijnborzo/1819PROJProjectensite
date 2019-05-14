@@ -9,11 +9,29 @@ require('./bootstrap.js');
 
 // window.Vue = require('vue/types');
 import Vue from 'vue';
+import App from './components/App.vue';
+import '@fortawesome/fontawesome-free/css/all.css'
+import Vuetify from 'vuetify'
+Vue.use(Vuetify, {
+    iconfont: 'fa'
+})
 // BOOTSTRAP VUE
 import BootstrapVue from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
-import App from './components/App.vue';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCoffee  } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import FlashMessage from '@smartweb/vue-flash-message';
+Vue.use(FlashMessage);
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
+
+library.add(faCoffee )
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.config.productionTip = false;
+Vue.use(BootstrapVue);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -27,8 +45,9 @@ import App from './components/App.vue';
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('studenten_vue', require('./components/Studenten/Studenten.vue'));
-//Vue.component('registreerForm_vue', require('./components/Registreer/RegistreerForm.vue'));
-//Vue.component('registreren_vue', require('./components/Registreer/Registreren.vue'));
+//used
+Vue.component('registreerForm_vue', require('./components/Registreer/RegistreerForm.vue'));
+Vue.component('registreren_vue', require('./components/Registreer/Registreren.vue'));
 Vue.component('paswoordVergeten_vue', require('./components/PaswoordVergeten/PaswoordVergeten.vue'));
 Vue.component('PWVForm_vue', require('./components/PaswoordVergeten/PWVForm.vue'));
 Vue.component('filter_vue', require('./components/Overzicht/Filter.vue'));
@@ -38,7 +57,9 @@ Vue.component('nieuwProject_vue', require('./components/NieuwProject/NieuwProjec
 Vue.component('login_vue', require('./components/Login/Login.vue'));
 Vue.component('loginForm_vue', require('./components/Login/LoginForm.vue'));
 Vue.component('footer_vue', require('./components/HeaderFooter/Footer.vue'));
+//used
 Vue.component('header_vue', require('./components/HeaderFooter/Header.vue'));
+//userd
 Vue.component('belbintest_vue', require('./components/Belbintest/Belbintest.vue'));
 Vue.component('archief_vue', require('./components/Archief/Archief.vue'));
 
@@ -51,10 +72,15 @@ Vue.component('archief_vue', require('./components/Archief/Archief.vue'));
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-import studenten_vue from './components/Studenten/Studenten';
+import studenten_vue from './components/Studenten/Studenten'
+import footer_vue from './components/HeaderFooter/Footer'
+import header_vue from './components/HeaderFooter/Header'
 window.onload = function () {
     const app = new Vue({
         el: '#app',
-        components: {studenten_vue}
+        components: {'studenten_vue' : studenten_vue,
+        'footer_vue' : footer_vue,
+            'header_vue' : header_vue
+        }
     });
 }

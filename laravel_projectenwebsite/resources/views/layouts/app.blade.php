@@ -5,6 +5,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,7 +24,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/modernizr.js') }}"></script> <!-- Modernizr -->
-    <script src="'../../js/app.js"></script>
+{{--    <script src="'../../js/app.js"></script>--}}
     <script src="{{ asset('js/app.js') }}"></script>
     <title>{{ config('app.name', 'Projectenwebsite ICTEO14') }}</title>
 </head>
@@ -49,11 +50,14 @@
         </div>
     </div>
     <main id="app" class="content">
-            @yield('content')
+        <header_vue></header_vue>
+        @yield('content')
+        <footer_vue></footer_vue>
+
     </main>
-    <div class="footer">
-        <p>&copy; ICTEO14</p>
-    </div>
+{{--    <div id="app">--}}
+{{--        <footer_vue></footer_vue>--}}
+{{--    </div>--}}
     <script src={{ asset('js/jquery-2.1.1.js') }}></script>
     <script src={{ asset('js/jquery.mixitup.min.js') }}></script>
     <script src={{ asset('js/main.js') }}></script> <!-- Resource jQuery -->
