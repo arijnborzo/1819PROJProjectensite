@@ -1,101 +1,82 @@
 <template>
-  <div>
-    <b-form  >
-      <b-form-group
-      id="fieldset-1"
-      description=""
-      label="Odisee E-mail"
-      label-for="input-1"
-      :invalid-feedback="invalidFeedback"
-      :state="state"
-    >
-      <b-form-input id="input-1" v-model="email" :state="state" trim></b-form-input>
-      
-    </b-form-group>
-<b-form-group
-      id="fieldset-1"
-      description=""
-      label="Wachtwoord"
-      label-for="input-1"
-    >
-      <b-form-input id="input-1" v-model="wachtwoord" type="password"></b-form-input>
-    </b-form-group>
-      
-    <b-form-group
-      id="fieldset-1"
-      description=""
-      label="Nieuw wachtwoord"
-      label-for="input-1"
-    >
-      <b-form-input id="input-1" v-model="nieuwwachtwoord" type="password"></b-form-input>
-    </b-form-group>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 offset-sm-2">
+                    <div>
+                      <h3>Vraag hier een nieuw wachtwoord aan</h3>
+                        <form @submit.prevent="handleSubmit">
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" v-model="user.email" id="email" name="email" class="form-control" :class="{ 'is-invalid': submitted && $v.user.email.$error }" />
+                                <div v-if="submitted && $v.user.email.$error" class="invalid-feedback">
+                                    <span v-if="!$v.user.email.required">E-mail is vereist</span>
+                                    <span v-if="!$v.user.email.email">E-mail ongeldig</span>
+                                </div>
+                            </div>
 
-        <b-form-group
-      id="fieldset-1"
-      description=""
-      label="Herhaal wachtwoord"
-      label-for="input-1"
-      :invalid-feedback="invalidFeedbackww"
-      :valid-feedback="validFeedbackww"
-      :state="stateww"
-    >
-      <b-form-input id="input-1" v-model="herhaalwachtwoord" type="password" :state="statenw" trim></b-form-input>
-    </b-form-group>
-
-
-        <b-button type="submit" variant="primary">Verstuur</b-button>
-    </b-form>
-
-    <!--
-    <b-card class="mt-3" header="Form Data Result">
-      <pre class="m-0">{{ form }}</pre>
-    </b-card>
-    -->
-  </div>
+                            <div class="form-group">
+                                <label for="password">Niew wachtwoord</label>
+                                <input type="password" v-model="user.password" id="password" name="password" class="form-control" :class="{ 'is-invalid': submitted && $v.user.password.$error }" />
+                                <div v-if="submitted && $v.user.password.$error" class="invalid-feedback">
+                                    <span v-if="!$v.user.password.required"> Wachtwoord is vereist</span>
+                                    <span v-if="!$v.user.password.minLength">Wachtwoord moet minstens 6 karakters lang zijn.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Bevestig wachtwoord</label>
+                                <input type="password" v-model="user.confirmPassword" id="confirmPassword" name="confirmPassword" class="form-control" :class="{ 'is-invalid': submitted && $v.user.confirmPassword.$error }" />
+                                <div v-if="submitted && $v.user.confirmPassword.$error" class="invalid-feedback">
+                                    <span v-if="!$v.user.confirmPassword.required">Bevestig Wachtwoord is vereist</span>
+                                    <span v-else-if="!$v.user.confirmPassword.sameAsPassword">Wachtwoorden moeten overeenkomen</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary">Registreer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 </template>
 
 <script>
-import Vue from "vue";
-import VueRouter from "vue-router";
+    import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
 
-Vue.use(VueRouter);
+    export default {
+        name: "app",
+        data() {
+            return {
+                user: {
+                    email: "",
+                    password: "",
+                    confirmPassword: ""
+                },
+                submitted: false
+            };
+        },
+        validations: {
+            user: {
+                email: { required, email },
+                password: { required, minLength: minLength(6) },
+                confirmPassword: { required, sameAsPassword: sameAs('password') }
+            }
+        },
+        methods: {
+            handleSubmit(e) {
+                this.submitted = true;
 
-export default {
-  computed: {
-    state() {
-      return this.email.includes("@") && this.email.includes("odisee.be")
-        ? true
-        : false;
-    },
-    statenw() {
-      return this.nieuwwachtwoord.length >= 8 &&
-        this.nieuwwachtwoord == this.herhaalwachtwoord
-        ? true
-        : false;
-    },
-    invalidFeedback() {
-      return "Geen odisee mail";
-    },
-    invalidFeedbackww() {
-      if (this.nieuwwachtwoord.length < 8)
-        return "Wachtwoorden moet minstens 8 karakters bevatten";
-      else if (this.nieuwwachtwoord != this.herhaalwachtwoord)
-        return "Wachtwoorden komen niet overeen";
-      else return true;
-    }
-  },
-  data() {
-    return {
-      email: "",
-      nieuwwachtwoord: "",
-      herhaalwachtwoord: ""
+                // stop here if form is invalid
+                this.$v.$touch();
+                if (this.$v.$invalid) {
+                    return;
+                }
+
+                alert("SUCCESS!!\n\n" + JSON.stringify(this.user));
+                this.$router.push({ path: "login" });
+
+            }
+        }
     };
-  }
-};
 </script>
-
-<style>
-.reset {
-  float: right;
-}
-</style>
