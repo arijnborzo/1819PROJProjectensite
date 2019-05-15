@@ -14,7 +14,10 @@ class CreateTeachersTable extends Migration
     public function up()
     {
         Schema::create('teachers', function (Blueprint $table) {
-            $table->integer('id');
+            $table->integer('id')->unsigned();
+        });
+
+        Schema::table('teachers', function (Blueprint $table) {
             $table->foreign('id')->references('id')->on('users');
         });
     }

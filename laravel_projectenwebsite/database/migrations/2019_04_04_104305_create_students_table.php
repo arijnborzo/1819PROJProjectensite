@@ -14,10 +14,12 @@ class CreateStudentsTable extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->integer('id');
+            $table->integer('id')->unsigned();
             $table->enum('belbintype', ['Bedrijfsman', 'Brononderzoeker', 'Plant', 'Monitor', 'Vormer', 'Voozitter', 'Zorgdrager', 'Groepsdrager', 'Specialist'])->nullable();
-            $table->integer('group_id')->nullable();
+            $table->integer('group_id')->nullable()->unsigned();
             $table->boolean('confirmed')->nullable ();
+        });
+        Schema::table('students', function (Blueprint $table) {
             $table->foreign('id')->references('id')->on('users');
             $table->foreign('group_id')->references('id')->on('groups');
         });
