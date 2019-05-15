@@ -147,7 +147,7 @@ body {
   margin: 0;
 }
 .listul {
-  width: 100%;
+  width: auto;
 }
 .gridli {
   width: 20rem;
@@ -193,9 +193,6 @@ ul {
     align-items: center !important;
     display: -ms-flexbox !important;
     display: flex !important;
-  }
-  .gridlistbtn {
-    /*display: none;*/
   }
   .gridul {
     width: auto;

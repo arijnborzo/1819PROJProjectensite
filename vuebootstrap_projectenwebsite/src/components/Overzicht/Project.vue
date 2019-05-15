@@ -15,7 +15,12 @@
           </li>
         </ul>
         <p style="float:left"><span>Status: </span>✔</p>
-        <b-button href="#" variant="primary" size="sm" class="bekijkbtn">Bekijk</b-button>
+        
+        <b-button href="#" variant="primary" size="sm" class="bekijkbtn">
+          <router-link :to="{ name: 'detailproject', params: { titel: titel }}">
+            Bekijk
+          </router-link>
+        </b-button>
     </b-card>
 </template>
 
@@ -33,5 +38,8 @@ export default {
   width: 20rem;
   background-color: #e0e0e0;
   float: left;
+}
+.project a {
+  color: white;
 }
 </style>

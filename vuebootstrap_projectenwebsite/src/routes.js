@@ -48,7 +48,7 @@ export const routes = [
     }
   },
   {
-    path: "/project/:projectId",
+    path: "/project/:titel",
     name: "detailproject",
     component: DetailProject,
     props: true
