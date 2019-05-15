@@ -3,7 +3,7 @@
 {{-- set the pagetitle in the parent tpl--}}
 @section('name', 'Overzicht')
 @section('content')
-	<overzicht_vue></overzicht_vue>
+	<overzicht_vue :projects="{{ $projects }}></overzicht_vue>
 
 {{--	</div>--}}
 {{--	<main class="cd-main-content">--}}

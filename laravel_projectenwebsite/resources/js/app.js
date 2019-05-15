@@ -27,6 +27,15 @@ Vue.use(FlashMessage);
 import Vuelidate from 'vuelidate'
 Vue.use(Vuelidate)
 
+// VUE ROUTER
+import VueRouter from "vue-router";
+import { routes } from "./routes";
+Vue.use(VueRouter);
+const router = new VueRouter({
+    routes,
+    mode: "history"
+});
+
 library.add(faCoffee )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
@@ -65,7 +74,7 @@ Vue.component('header_vue', require('./components/HeaderFooter/Header.vue'));
 //used
 Vue.component('belbintest_vue', require('./components/Belbintest/Belbintest.vue'));
 Vue.component('archief_vue', require('./components/Archief/Archief.vue'));
-
+Vue.component('newproject_vue', require('./components/NieuwProject/NieuwProject.vue'));
 
 
 
@@ -81,10 +90,12 @@ import header_vue from './components/HeaderFooter/Header'
 import overzicht_vue from './components/Overzicht/Overzicht'
 import project_vue from './components/Overzicht/Project'
 import filter_vue from './components/Overzicht/Filter'
+import newproject_vue from './components/NieuwProject/NieuwProject'
 window.onload = function () {
     const app = new Vue({
+        router,
         el: '#app',
-        components: {studenten_vue, footer_vue, header_vue, overzicht_vue, project_vue, filter_vue
+        components: {studenten_vue, footer_vue, header_vue, overzicht_vue, project_vue, filter_vue, newproject_vue
         }
     });
 }

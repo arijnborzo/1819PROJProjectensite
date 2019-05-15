@@ -4,7 +4,7 @@
         <b-col cols="10" id="nieuwproj">
           <b-card class="p-3">
             <h3>Nieuw project</h3>
-            <h6>Om een nieuw project toe te voegen moet je </h6>
+            <h6>Om een nieuw project toe te voegen moet je elk veld invullen.</h6>
 
             <b-form @submit="onSubmit" @reset="onReset" v-if="show">
               <b-form-group
@@ -24,6 +24,7 @@
                 <b-form-textarea
                   id="beschrijving"
                   v-model="form.beschrijving"
+                  rows="3"
                   required
                   placeholder="Beschrijf kort het project"
                 ></b-form-textarea>
@@ -42,6 +43,7 @@
                   id="nevenvragen"
                   v-model="form.nevenvragen"
                   required
+                  rows="5"
                   placeholder="Schrijf hier zoveel mogelijk nevenvragen die bij het project passen"
                 ></b-form-textarea>
               </b-form-group>
@@ -62,7 +64,7 @@
                   <b-form-input
                     id="Meetbaar"
                     v-model="form.smart.meetbaar"
-                    placeholder="Het doel moet "
+                    placeholder="Het proces naar het doel moet stuk voor stuk gemeten kunnen worden zodat men een goed beeld kan scheppen of het project zal slagen."
                     v-on:keyup="smartMonitor"
                     required
                   ></b-form-input>
@@ -70,7 +72,7 @@
                   <b-form-input
                     id="Acceptabel"
                     v-model="form.smart.acceptabel"
-                    placeholder="Het moet een project zijn dat met 4 studenten te doen is."
+                    placeholder="Het moet een project zijn dat met 3 medestudenten werkelijkheid kan worden."
                     v-on:keyup="smartMonitor"
                     required
                   ></b-form-input>
@@ -78,7 +80,7 @@
                   <b-form-input
                     id="Realiseerbaar"
                     v-model="form.smart.realiseerbaar"
-                    placeholder="Het moet realiseerbaar zijn voor de groep."
+                    placeholder="Het moet realiseerbaar zijn in alle aspecten, voor de groep."
                     v-on:keyup="smartMonitor"
                     required
                   ></b-form-input>
@@ -86,7 +88,7 @@
                   <b-form-input
                     id="Tijdsgebonden"
                     v-model="form.smart.tijdsgebonden"
-                    placeholder="Het moet binnen de tijd verworven kunnen worden"
+                    placeholder="Het moet binnen de tijd verworven kunnen worden."
                     v-on:keyup="smartMonitor"
                     required
                   ></b-form-input>

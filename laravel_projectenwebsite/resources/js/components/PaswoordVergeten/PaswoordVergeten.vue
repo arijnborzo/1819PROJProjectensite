@@ -1,9 +1,8 @@
 <template>
     <div id="pwv">
       <b-row align-h="center" class="mt-5">
-        <b-col cols="6">
+        <b-col cols="11" md="10" lg="8" xl="6">
           <b-card class="p-3">
-            <h3>Vraag hier uw nieuw paswoord aan</h3>
             <app-p-w-v-form></app-p-w-v-form>
           </b-card>
         </b-col>

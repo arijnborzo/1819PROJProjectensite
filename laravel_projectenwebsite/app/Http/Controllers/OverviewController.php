@@ -34,7 +34,12 @@ class OverviewController extends Controller
     {
       $user = Auth::user();
       $year = date("Y")-1;
-      $projects = Project::join('groups', 'projects.id', '=', 'groups.project_id')->join('students', 'students.group_id','=', 'groups.id')->join('users', 'users.id', '=', 'students.id' )->whereYear('projects.created_at', $year)->get();
+      $projects = Project::join('groups', 'projects.id', '=', 'groups.project_id')
+          ->join('students', 'students.group_id','=', 'groups.id')
+          ->join('users', 'users.id', '=', 'students.id' )
+          ->select('projects.title as titel', 'projects.short_description as beschrijving',  'users.*', 'students.*')
+//          ->whereYear('projects.created_at', $year)
+          ->get();
       echo $projects;
       return view('overzicht', [
         'projects' => $projects,
@@ -78,7 +83,7 @@ class OverviewController extends Controller
             ->rightJoin('projects', 'students.group_id', '=', 'projects.id')
             ->select('students.group_id as groep', 'users.name as naam', 'projects.title as projectvoorstel', 'students.belbintype as belbin')
             ->get();
-      echo $students;
+     // echo $students;
       return view('students', [
           'students' => $students,
              'user' => $user
