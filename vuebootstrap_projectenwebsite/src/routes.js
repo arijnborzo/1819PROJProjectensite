@@ -18,7 +18,8 @@ export const routes = [
       projects: {
         project1: {
           title: "Projectensite",
-          short_description: "Jeu",
+          short_description:
+            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
           name: "Andreas",
           surname: "Lauwers",
           status: "Accepted",
@@ -26,7 +27,8 @@ export const routes = [
         },
         project2: {
           title: "Projectensite",
-          short_description: "Jeu",
+          short_description:
+            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
           name: "Lukas",
           surname: "Petit",
           status: "Accepted",
@@ -35,7 +37,7 @@ export const routes = [
         project3: {
           title: "MacroKeyboard",
           short_description:
-            "HeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeee",
+            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
           name: "Arno",
           surname: "Stas",
           status: "Declined",
@@ -44,7 +46,7 @@ export const routes = [
         project4: {
           title: "MacroKeyboard",
           short_description:
-            "HeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeee",
+            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
           name: "Pol",
           surname: "Lol",
           status: "Declined",
