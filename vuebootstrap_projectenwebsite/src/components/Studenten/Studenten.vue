@@ -45,39 +45,44 @@ export default {
           groep: "4",
           naam: "Lukas Petit",
           projectvoorstel: "Projectenwebsite",
-          belbin: "X"
+          belbin: "Plant"
         },
         {
           groep: "4",
           naam: "Arno Stas",
           projectvoorstel: "Projectenwebsite",
-          belbin: "Y"
+          belbin: "Completor"
         },
         {
           groep: "4",
           naam: "Andreas Lauwers",
           projectvoorstel: "Projectenwebsite",
-          belbin: "Z"
+          belbin: "Teamworker"
         },
         {
           groep: "4",
           naam: "Arijn Borzo",
           projectvoorstel: "Projectenwebsite",
-          belbin: "W"
+          belbin: "Coordinator"
         },
         {
           groep: "2",
           naam: "Nummer twee",
           projectvoorstel: "Macro Keyboard",
-          belbin: "Z"
+          belbin: "Implementor"
         },
         {
           groep: "2",
           naam: "Nummer een",
           projectvoorstel: "Macro Keyboard",
-          belbin: "Y"
+          belbin: "Shaper"
         },
-        { groep: "1", naam: "Nummer drie", projectvoorstel: "", belbin: "X" }
+        {
+          groep: "1",
+          naam: "Nummer drie",
+          projectvoorstel: "",
+          belbin: "Completor"
+        }
       ],
       photo: {
         coordinator: "../../assets/co-ordinator.png",

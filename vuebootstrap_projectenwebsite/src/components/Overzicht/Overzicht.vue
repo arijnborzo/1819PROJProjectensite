@@ -25,7 +25,7 @@
             </b-row>
 
             <!--gridlist-->
-            <b-row id="gridlist" class="gridul">
+            <b-row id="gridlist" class="gridul flexxx">
               
               <!-- HIER WORDT DE VIA LARAVEL DOORGEGEVEN PROJECTEN BEHANDELD
               PROJECT is elk project, PROJECTEN de prop (zie onder export default remember studenten)-->
@@ -153,6 +153,10 @@ body {
 }
 
 /* GRIDLIST */
+.flexxx {
+  display: flex;
+}
+
 #alleprojecten {
   text-align: center;
 }
