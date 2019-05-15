@@ -28,7 +28,7 @@ class BelbintestController extends Controller
       $user = Auth::user();
       $student = $user->student;
       echo($student->belbintype);
-      return view('welcome', [
+      return view('belbin', [
         'user' => $user
       ]);
     }
