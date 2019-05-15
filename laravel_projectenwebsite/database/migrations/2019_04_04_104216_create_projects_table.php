@@ -1,4 +1,4 @@
-<?php
+µ<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,11 +19,13 @@ class CreateProjectsTable extends Migration
             $table->enum('status', ['Declined', 'Pending', 'Accepted'])->nullable();
             $table->mediumText('short_description')->nullable();
             $table->longText('full_description')->nullable();
-            $table->integer('teacher_id')->nullable();
-            $table->integer('creator_id')->nullable();
+            $table->integer('teacher_id')->unsigned()->nullable();
+            $table->integer('creator_id')->unsigned()->nullable();
             $table->timestamps();
-            $table->foreign('id')->references('project_id')->on('groups');
-            $table->foreign('id')->references('project_id')->on('smartcriteria');
+        });
+        Schema::table('projects', function (Blueprint $table) {
+            $table->foreign('creator_id')->references('id')->on('users');
+            $table->foreign('teacher_id')->references('id')->on('teachers');
         });
     }
 
