@@ -11,7 +11,36 @@ import PaswoordVergeten from "./components/PaswoordVergeten/PaswoordVergeten";
 
 export const routes = [
   { path: "", component: LoginForm },
-  { path: "/home", component: Home },
+  {
+    path: "/home",
+    component: Home,
+    props: {
+      projects: {
+        project1: {
+          title: "Projectensite",
+          short_description: "Jeu",
+          name: "Andreas",
+          surname: "Lauwers",
+          group_id: 1
+        },
+        project2: {
+          title: "Projectensite",
+          short_description: "Jeu",
+          name: "Lukas",
+          surname: "Petit",
+          group_id: 1
+        },
+        project3: {
+          title: "MacroKeyboard",
+          short_description:
+            "HeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeee",
+          name: "Arno",
+          surname: "Stas",
+          group_id: 2
+        }
+      }
+    }
+  },
   { path: "/login", component: LoginForm },
   { path: "/studenten", component: Studenten },
   { path: "/archief", component: Archief },

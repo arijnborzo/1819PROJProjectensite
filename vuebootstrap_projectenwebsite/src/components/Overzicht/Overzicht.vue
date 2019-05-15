@@ -26,9 +26,13 @@
 
             <!--gridlist-->
             <b-row id="gridlist" class="gridul">
+              
+              <!-- HIER WORDT DE VIA LARAVEL DOORGEGEVEN PROJECTEN BEHANDELD
+              PROJECT is elk project, PROJECTEN de prop (zie onder export default remember studenten)-->
               <div v-for="project in projecten" v-bind:key=project.titel>
                 <transition name="fade">
                   <b-col>
+                    <!-- HIER GEVEN WE FIELDS MEE AAN HET APP-PROJECT COMPONENT -->
                     <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden></app-project>
                   </b-col>
                 </transition>
@@ -44,6 +48,10 @@ import Filter from "./Filter";
 import Project from "./Project";
 
 export default {
+  /* LARAVEL*/
+  props: {
+    projects: Object
+  },
   data() {
     return {
       layout: "grid",
@@ -53,32 +61,7 @@ export default {
         { value: "a", text: "Op alfabetische volgorde A-Z" },
         { value: "b", text: "Op alfabetische volgorde Z-A" }
       ],
-      projecten: [
-        {
-          titel: "Projectensite",
-          beschrijving:
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-          groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"]
-        },
-        {
-          titel: "Robotje maken",
-          beschrijving:
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-          groepsleden: ["Arno Stasssssss", "Arno Stas", "Arno Stas", "/"]
-        },
-        {
-          titel: "Projectensitee",
-          beschrijving:
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-          groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"]
-        },
-        {
-          titel: "MacroKeyboard",
-          beschrijving:
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-          groepsleden: ["Arno Stas", "Arno Stas", "/", "/"]
-        }
-      ],
+      projecten: [],
       show: true,
       showicons: true,
       width: 0
@@ -87,6 +70,46 @@ export default {
   components: {
     appFilter: Filter,
     appProject: Project
+  },
+  mounted() {
+    for (var proj in this.projects) {
+      // Neem project
+      var project = this.projects[proj];
+
+      if (this.projecten.length == 0) {
+        var naam = `${project.name} ${project.surname}`;
+        var groepsleden = [naam];
+        var titel = project.title;
+        var beschrijving = project.short_description;
+        var vueproject = { titel, beschrijving, groepsleden };
+        this.projecten.push(vueproject);
+        continue;
+      }
+      // Zoek in alle projecten of het huidige project er al in zit
+      for (var i = 0; i < this.projecten.length; i++) {
+        if (this.projecten[i].titel == project.title) {
+          // Voeg naam toe aan project
+          var naam = `${project.name} ${project.surname}`;
+          this.projecten[i].groepsleden.push(naam);
+          // Stop met forloop indien gevonden
+          break;
+          // Indien nog niet gevonden maak nieuw project aan
+        } else {
+          // Instantieer de fields
+          // Maak naam aan
+          var naam = `${project.name} ${project.surname}`;
+          // Nieuwe array voor groepsleden en naam toevoegen
+          var groepsleden = [naam];
+          var titel = project.title;
+          // beschrijving toevoegen
+          var beschrijving = project.short_description;
+          // object nieuwe vueproject aanmaken
+          var vueproject = { titel, beschrijving, groepsleden };
+          // toevoegen aan vue component array genaamd projecten
+          this.projecten.push(vueproject);
+        }
+      }
+    }
   },
   created() {
     window.addEventListener("resize", this.handleResize);

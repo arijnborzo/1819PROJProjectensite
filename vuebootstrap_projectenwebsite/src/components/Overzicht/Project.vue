@@ -8,7 +8,7 @@
         <h6>Beschrijving</h6>
         {{beschrijving}}
         </b-card-text>
-        <h6>Groepsleden {{glwidth}}</h6>
+        <h6>Groepsleden</h6>
         <ul>
           <li v-for="(lid, index) in groepsleden" v-bind:key=index>
             <span>{{lid}}</span>
@@ -17,7 +17,7 @@
         <p style="float:left"><span>Status: </span>✔</p>
         
         <b-button href="#" variant="primary" size="sm" class="bekijkbtn">
-          <router-link :to="{ name: 'detailproject', params: { titel: titel }}">
+          <router-link :to="{ name: 'detailproject', params: { titel: titel, beschrijving: beschrijving }}">
             Bekijk
           </router-link>
         </b-button>
@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  props: ["beschrijving", "titel", "groepsleden", "glwidth"]
+  props: ["titel", "beschrijving", "groepsleden"]
 };
 </script>
 
