@@ -96,35 +96,35 @@ export default {
       if (!item) return;
     },
     belbinResult(value) {
-      if (value === "Z")
+      if (value === "Coordinator")
         return `<img class="belbinimg" src=${
           this.photo.coordinator
         } alt="CO-ORDINATOR" v-b-tooltip.click title="Co-ordinator">`;
-      if (value === "Y")
+      if (value === "Completor")
         return `<img class="belbinimg" src=${
           this.photo.completor
         } alt="COMPLETOR" v-b-tooltip.click title="Completor">`;
-      if (value === "X")
+      if (value === "Implementor")
         return `<img class="belbinimg" src=${
           this.photo.implementor
         } alt="IMPLEMENTOR" v-b-tooltip.click title="Implementor">`;
-      if (value === "W")
+      if (value === "Investigator")
         return `<img class="belbinimg" src=${
           this.photo.investigator
         } alt="INVESTIGATOR" v-b-tooltip.click title="Investigator">`;
-      if (value === "V")
+      if (value === "Monitor")
         return `<img class="belbinimg" src=${
           this.photo.monitor
         } alt="MONITOR" v-b-tooltip.click title="Monitor">`;
-      if (value === "Q")
+      if (value === "Shaper")
         return `<img class="belbinimg" src=${
           this.photo.shaper
         } alt="SHAPER" v-b-tooltip.click title="Shaper">`;
-      if (value === "T")
+      if (value === "Plant")
         return `<img class="belbinimg" src=${
           this.photo.plant
         } alt="PLANT" v-b-tooltip.click title="Plant">`;
-      if (value === "S")
+      if (value === "Teamworker")
         return `<img class="belbinimg" src=${
           this.photo.teamworker
         } alt="TEAMWORKER">`;
