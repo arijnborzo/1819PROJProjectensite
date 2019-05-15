@@ -20,6 +20,8 @@ class CreateCommentsTable extends Migration
             $table->text('message');
             $table->integer('project_id');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('project_id')->references('id')->on('projects');
         });
     }
 

@@ -22,6 +22,8 @@ class CreateProjectsTable extends Migration
             $table->integer('teacher_id')->nullable();
             $table->integer('creator_id')->nullable();
             $table->timestamps();
+            $table->foreign('id')->references('project_id')->on('groups');
+            $table->foreign('id')->references('project_id')->on('smartcriteria');
         });
     }
 

@@ -16,6 +16,7 @@ class CreateExternsTable extends Migration
         Schema::create('externs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('companie');
+            $table->foreign('id')->references('id')->on('users');
         });
     }
 
