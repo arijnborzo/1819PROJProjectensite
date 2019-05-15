@@ -51,15 +51,18 @@ Vue.component('registreren_vue', require('./components/Registreer/Registreren.vu
 Vue.component('paswoordVergeten_vue', require('./components/PaswoordVergeten/PaswoordVergeten.vue'));
 Vue.component('PWVForm_vue', require('./components/PaswoordVergeten/PWVForm.vue'));
 Vue.component('filter_vue', require('./components/Overzicht/Filter.vue'));
+//used
 Vue.component('overzicht_vue', require('./components/Overzicht/Overzicht.vue'));
+//used
 Vue.component('project_vue', require('./components/Overzicht/Project.vue'));
+//used
 Vue.component('nieuwProject_vue', require('./components/NieuwProject/NieuwProject.vue'));
 Vue.component('login_vue', require('./components/Login/Login.vue'));
 Vue.component('loginForm_vue', require('./components/Login/LoginForm.vue'));
 Vue.component('footer_vue', require('./components/HeaderFooter/Footer.vue'));
 //used
 Vue.component('header_vue', require('./components/HeaderFooter/Header.vue'));
-//userd
+//used
 Vue.component('belbintest_vue', require('./components/Belbintest/Belbintest.vue'));
 Vue.component('archief_vue', require('./components/Archief/Archief.vue'));
 
@@ -75,12 +78,13 @@ Vue.component('archief_vue', require('./components/Archief/Archief.vue'));
 import studenten_vue from './components/Studenten/Studenten'
 import footer_vue from './components/HeaderFooter/Footer'
 import header_vue from './components/HeaderFooter/Header'
+import overzicht_vue from './components/Overzicht/Overzicht'
+import project_vue from './components/Overzicht/Project'
+import filter_vue from './components/Overzicht/Filter'
 window.onload = function () {
     const app = new Vue({
         el: '#app',
-        components: {'studenten_vue' : studenten_vue,
-        'footer_vue' : footer_vue,
-            'header_vue' : header_vue
+        components: {studenten_vue, footer_vue, header_vue, overzicht_vue, project_vue, filter_vue
         }
     });
 }

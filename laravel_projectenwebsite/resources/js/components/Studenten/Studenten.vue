@@ -2,7 +2,7 @@
    <div id="studenten">
      <b-row align-h="center" class="mt-5">
        <b-col cols="10">
-           <b-table responsive striped borderless :items="studenten" :fields="fields" head-variant="dark" :tbody-tr-class="rowClass">
+           <b-table responsive striped borderless :items="students" :fields="fields" head-variant="dark" :tbody-tr-class="rowClass">
              <span slot="belbin" slot-scope="data" v-html="data.value"></span>
              <span slot="groep" slot-scope="data" v-html="data.value"></span>
            </b-table>
@@ -13,6 +13,7 @@
 
 <script>
 export default {
+    props: ['students'],
   data() {
     return {
       fields: [
@@ -33,52 +34,12 @@ export default {
           // Variant applies to the whole column, including the header and footer
         },
         {
-          key: "belbin",
+          key: "belbintype",
           label: "Belbin",
           sortable: false,
           formatter: "belbinResult",
           html: true
         }
-      ],
-      studenten: [
-          // 'students'
-        {
-          groep: "4",
-          naam: "Lukas Petit",
-          projectvoorstel: "Projectenwebsite",
-          belbin: "X"
-        },
-        {
-          groep: "4",
-          naam: "Arno Stas",
-          projectvoorstel: "Projectenwebsite",
-          belbin: "Y"
-        },
-        {
-          groep: "4",
-          naam: "Andreas Lauwers",
-          projectvoorstel: "Projectenwebsite",
-          belbin: "Z"
-        },
-        {
-          groep: "4",
-          naam: "Arijn Borzo",
-          projectvoorstel: "Projectenwebsite",
-          belbin: "W"
-        },
-        {
-          groep: "2",
-          naam: "Nummer twee",
-          projectvoorstel: "Macro Keyboard",
-          belbin: "Z"
-        },
-        {
-          groep: "2",
-          naam: "Nummer een",
-          projectvoorstel: "Macro Keyboard",
-          belbin: "Y"
-        },
-        { groep: "1", naam: "Nummer drie", projectvoorstel: "", belbin: "X" }
       ],
       photo: {
         coordinator: "../../img/co-ordinator.png",

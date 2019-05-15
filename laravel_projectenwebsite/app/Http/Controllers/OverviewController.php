@@ -22,7 +22,7 @@ class OverviewController extends Controller
     public function __construct()
      {
          $this->middleware('auth');
-         $this->middleware('belbin');
+       //  $this->middleware('belbin');
      }
 
     /**
@@ -78,6 +78,7 @@ class OverviewController extends Controller
             ->rightJoin('projects', 'students.group_id', '=', 'projects.id')
             ->select('students.group_id as groep', 'users.name as naam', 'projects.title as projectvoorstel', 'students.belbintype as belbin')
             ->get();
+      echo $students;
       return view('students', [
           'students' => $students,
              'user' => $user

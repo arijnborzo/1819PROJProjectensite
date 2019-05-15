@@ -29,31 +29,30 @@
     <title>{{ config('app.name', 'Projectenwebsite ICTEO14') }}</title>
 </head>
 <body>
-    <header class="cd-header">
-    </header>
-    <div class="headerFixedBar">
-        <div class="row">
-            <div class="col-lg-12">
-                <div id='cssmenu'>
-                    <div class="pullLeft">
-                        <a href="{{ url('/') }}" title="ProjectenWebsite.com"><img class="headerLogoImage" src="img/odiseelogo.png"></a>
-                    </div>
-                    <ul>
-                        <li ><a href="{{ url('/') }}"><span>Overzicht</span></a></li>
-                        <li class='active' ><a href='/students'><span>Studenten</span></a></li>
-                        <li ><a href='/archief'><span>Archief</span></a></li>
-                        <li ><a href='/belbin'><span>Belbintest</span></a></li>
-                        <li class='last'><a href='/nieuwProject'><span>Nieuw Project</span></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <header class="cd-header">--}}
+{{--    </header>--}}
+{{--    <div class="headerFixedBar">--}}
+{{--        <div class="row">--}}
+{{--            <div class="col-lg-12">--}}
+{{--                <div id='cssmenu'>--}}
+{{--                    <div class="pullLeft">--}}
+{{--                        <a href="{{ url('/') }}" title="ProjectenWebsite.com"><img class="headerLogoImage" src="img/odiseelogo.png"></a>--}}
+{{--                    </div>--}}
+{{--                    <ul>--}}
+{{--                        <li ><a href="{{ url('/') }}"><span>Overzicht</span></a></li>--}}
+{{--                        <li class='active' ><a href='/students'><span>Studenten</span></a></li>--}}
+{{--                        <li ><a href='/archief'><span>Archief</span></a></li>--}}
+{{--                        <li ><a href='/belbin'><span>Belbintest</span></a></li>--}}
+{{--                        <li class='last'><a href='/nieuwProject'><span>Nieuw Project</span></a></li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <main id="app" class="content">
         <header_vue></header_vue>
         @yield('content')
         <footer_vue></footer_vue>
-
     </main>
 {{--    <div id="app">--}}
 {{--        <footer_vue></footer_vue>--}}
