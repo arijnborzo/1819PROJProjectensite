@@ -14,10 +14,10 @@
             <span>{{lid}}</span>
           </li>
         </ul>
-        <p style="float:left"><span>Status: </span>✔</p>
+        <p style="float:left">Status: <span>{{status}}</span></p>
         
         <b-button href="#" variant="primary" size="sm" class="bekijkbtn">
-          <router-link :to="{ name: 'detailproject', params: { titel: titel, beschrijving: beschrijving }}">
+          <router-link :to="{ name: 'detailproject', params: { titel: titel, beschrijving: beschrijving, status: status }}">
             Bekijk
           </router-link>
         </b-button>
@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  props: ["titel", "beschrijving", "groepsleden"]
+  props: ["titel", "beschrijving", "groepsleden", "status"]
 };
 </script>
 

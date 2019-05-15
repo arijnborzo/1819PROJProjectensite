@@ -21,6 +21,7 @@ export const routes = [
           short_description: "Jeu",
           name: "Andreas",
           surname: "Lauwers",
+          status: "Accepted",
           group_id: 1
         },
         project2: {
@@ -28,6 +29,7 @@ export const routes = [
           short_description: "Jeu",
           name: "Lukas",
           surname: "Petit",
+          status: "Accepted",
           group_id: 1
         },
         project3: {
@@ -36,6 +38,16 @@ export const routes = [
             "HeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeee",
           name: "Arno",
           surname: "Stas",
+          status: "Declined",
+          group_id: 2
+        },
+        project4: {
+          title: "MacroKeyboard",
+          short_description:
+            "HeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeeeHeyeee",
+          name: "Pol",
+          surname: "Lol",
+          status: "Declined",
           group_id: 2
         }
       }

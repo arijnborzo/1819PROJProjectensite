@@ -33,7 +33,7 @@
                 <transition name="fade">
                   <b-col>
                     <!-- HIER GEVEN WE FIELDS MEE AAN HET APP-PROJECT COMPONENT -->
-                    <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden></app-project>
+                    <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden :status=project.status></app-project>
                   </b-col>
                 </transition>
               </div>
@@ -72,42 +72,29 @@ export default {
     appProject: Project
   },
   mounted() {
+    var currentGroup = 0;
     for (var proj in this.projects) {
       // Neem project
       var project = this.projects[proj];
-
-      if (this.projecten.length == 0) {
+      // Check of we aan een nieuw voorstel begonnen zijn
+      if (project.group_id != currentGroup) {
+        currentGroup++;
+        // Groepsleden aanmaken
+        var groepsleden = [];
+        // Eerste lid toevoegen
         var naam = `${project.name} ${project.surname}`;
-        var groepsleden = [naam];
+        groepsleden.push(naam);
         var titel = project.title;
+        // beschrijving toevoegen
         var beschrijving = project.short_description;
-        var vueproject = { titel, beschrijving, groepsleden };
+        var status = project.status;
+        // object nieuwe vueproject aanmaken
+        var vueproject = { titel, beschrijving, groepsleden, status };
+        // toevoegen aan vue component array genaamd projecten
         this.projecten.push(vueproject);
-        continue;
-      }
-      // Zoek in alle projecten of het huidige project er al in zit
-      for (var i = 0; i < this.projecten.length; i++) {
-        if (this.projecten[i].titel == project.title) {
-          // Voeg naam toe aan project
-          var naam = `${project.name} ${project.surname}`;
-          this.projecten[i].groepsleden.push(naam);
-          // Stop met forloop indien gevonden
-          break;
-          // Indien nog niet gevonden maak nieuw project aan
-        } else {
-          // Instantieer de fields
-          // Maak naam aan
-          var naam = `${project.name} ${project.surname}`;
-          // Nieuwe array voor groepsleden en naam toevoegen
-          var groepsleden = [naam];
-          var titel = project.title;
-          // beschrijving toevoegen
-          var beschrijving = project.short_description;
-          // object nieuwe vueproject aanmaken
-          var vueproject = { titel, beschrijving, groepsleden };
-          // toevoegen aan vue component array genaamd projecten
-          this.projecten.push(vueproject);
-        }
+      } else {
+        var naam = `${project.name} ${project.surname}`;
+        this.projecten[currentGroup - 1].groepsleden.push(naam);
       }
     }
   },
@@ -166,6 +153,9 @@ body {
 }
 
 /* GRIDLIST */
+#alleprojecten {
+  text-align: center;
+}
 .gridlist {
   margin: 0;
 }
@@ -181,26 +171,18 @@ body {
 .proj {
   width: auto;
 }
-#alleprojecten {
-  text-align: center;
-}
 ul {
   list-style-type: none;
   padding: 0;
 }
 
-/*TRANSITIONS */
+/*TRANSITIONS ON PROJECTS */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.9s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
-}
-
-.gridlistbtn {
-  margin: 0 0.3rem;
-  float: right;
 }
 
 /* SORTEREN */
@@ -208,9 +190,14 @@ ul {
   width: 80%;
 }
 
-/* MEDIA QUERY */
+/* BTNS */
+.gridlistbtn {
+  margin: 0 0.3rem;
+  float: right;
+}
+
+/* MEDIA QUERYS */
 @media (max-width: 1070px) {
-  /* CSS goes here */
   .projecten {
     -ms-flex-align: center !important;
     align-items: center !important;
