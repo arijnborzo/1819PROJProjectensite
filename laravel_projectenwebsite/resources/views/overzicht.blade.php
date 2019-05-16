@@ -4,4 +4,5 @@
 @section('name', 'Overzicht')
 @section('content')
 	<overzicht_vue :projects="{{ $projects }}"></overzicht_vue>
+{{--	<overzicht_vue :archief="{{ $archief }}"></overzicht_vue>--}}
 @endsection
