@@ -6,11 +6,11 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
          <ul>
-             <li class="nav-link"><a href="/"> Overzicht</a> </li>
-             <li class="nav-link"><a href="/students"> Studenten</a> </li>
-             <li class="nav-link"><a href="/archief"> Archief</a> </li>
-             <li class="nav-link"><a href="/belbintest"> BELBIN test</a> </li>
-             <li class="nav-link"><a href="/nieuwproject"> Nieuw project</a> </li>
+             <li class="linkz"><a href="/"> Overzicht</a> </li>
+             <li class="linkz"><a href="/studenten"> Studenten</a> </li>
+             <li class="linkz"><a href="/archief"> Archief</a> </li>
+             <li class="linkz"><a href="/belbintest"> BELBIN test</a> </li>
+             <li class="linkz"><a href="/nieuwproject"> Nieuw project</a> </li>
          </ul>
 
          <!-- Right aligned nav items -->
@@ -35,11 +35,11 @@ export default {};
   width: 12rem;
   height: auto;
 }
-.nav-link {
+.linkz {
   display: inline-block;
   padding: 0.5rem 1rem;
 }
-.nav-link a {
+.linkz a {
   color: white;
 }
 </style>

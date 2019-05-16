@@ -13,12 +13,14 @@
 
 <script>
 export default {
+  props: {
+    students: Object
+  },
   data() {
     return {
       fields: [
         {
           key: "groep",
-          label: "Groep",
           sortable: true,
           formatter: "groepResult",
           html: true
@@ -30,7 +32,6 @@ export default {
         {
           key: "projectvoorstel",
           sortable: true
-          // Variant applies to the whole column, including the header and footer
         },
         {
           key: "belbin",
@@ -40,50 +41,8 @@ export default {
           html: true
         }
       ],
-      studenten: [
-        {
-          groep: "4",
-          naam: "Lukas Petit",
-          projectvoorstel: "Projectenwebsite",
-          belbin: "Plant"
-        },
-        {
-          groep: "4",
-          naam: "Arno Stas",
-          projectvoorstel: "Projectenwebsite",
-          belbin: "Completor"
-        },
-        {
-          groep: "4",
-          naam: "Andreas Lauwers",
-          projectvoorstel: "Projectenwebsite",
-          belbin: "Teamworker"
-        },
-        {
-          groep: "4",
-          naam: "Arijn Borzo",
-          projectvoorstel: "Projectenwebsite",
-          belbin: "Coordinator"
-        },
-        {
-          groep: "2",
-          naam: "Nummer twee",
-          projectvoorstel: "Macro Keyboard",
-          belbin: "Implementor"
-        },
-        {
-          groep: "2",
-          naam: "Nummer een",
-          projectvoorstel: "Macro Keyboard",
-          belbin: "Shaper"
-        },
-        {
-          groep: "1",
-          naam: "Nummer drie",
-          projectvoorstel: "",
-          belbin: "Completor"
-        }
-      ],
+      studenten: [],
+      groepen: [],
       photo: {
         coordinator: "../../assets/co-ordinator.png",
         completor: "../../assets/completor.png",
@@ -95,6 +54,48 @@ export default {
         teamworker: "../../assets/teamworker.png"
       }
     };
+  },
+  mounted() {
+    var currentGroup = 0;
+    for (var stud in this.students) {
+      var student = this.students[stud];
+      // Check of we aan een nieuwe groepsvoorstel begonnen zijn
+      if (student.group_id != currentGroup) {
+        this.groepen[currentGroup] = 1;
+        currentGroup++;
+      } else {
+        this.groepen[currentGroup - 1]++;
+      }
+    }
+    var currentStudentGroup = 0;
+    for (var stud in this.students) {
+      // Neem student
+      var student = this.students[stud];
+      // Check of we aan een nieuwe groepsvoorstel begonnen zijn
+      if (student.group_id != currentStudentGroup) {
+        currentStudentGroup++;
+        // Groep vinden
+        var groep = this.groepen[currentStudentGroup - 1];
+        // Eerste lid toevoegen
+        var naam = `${student.surname} ${student.name}`;
+        // Project voorstel
+        var projectvoorstel = student.projectvoorstel;
+        // Belbin
+        var belbin = student.belbin;
+        // object nieuwe vueproject aanmaken
+        var vuestudent = { groep, naam, projectvoorstel, belbin };
+        // toevoegen aan vue component array genaamd projecten
+        this.studenten.push(vuestudent);
+      } else {
+        var groep = this.groepen[currentStudentGroup - 1];
+        var naam = `${student.surname} ${student.name}`;
+        var projectvoorstel = student.projectvoorstel;
+        var belbin = student.belbin;
+        var vuestudent = { groep, naam, projectvoorstel, belbin };
+        this.studenten.push(vuestudent);
+      }
+    }
+    console.log(this.studenten);
   },
   methods: {
     rowClass(item) {
@@ -135,8 +136,9 @@ export default {
         } alt="TEAMWORKER">`;
     },
     groepResult(value) {
-      if (value === "4") return `✔`;
-      if (value === "1") return "✖";
+      console.log(value);
+      if (value === 4) return `✔`;
+      if (value === 1) return "✖";
       else return "❔";
     }
   }

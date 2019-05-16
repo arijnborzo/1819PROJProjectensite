@@ -72,7 +72,6 @@ export default {
     appProject: Project
   },
   created() {
-      console.log("kjsefbkjhqsd");
     var currentGroup = 0;
     for (var proj in this.projects) {
       // Neem project
@@ -96,14 +95,13 @@ export default {
       } else {
         var naam = `${project.name} ${project.surname}`;
         this.projecten[currentGroup - 1].groepsleden.push(naam);
-
       }
     }
   },
-  // created() {
-  //   window.addEventListener("resize", this.handleResize);
-  //   this.handleResize();
-  // },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
   destroyed() {
     window.removeEventListener("resize", this.handleResize);
   },

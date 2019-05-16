@@ -56,7 +56,64 @@ export const routes = [
     }
   },
   { path: "/login", component: LoginForm },
-  { path: "/studenten", component: Studenten },
+  {
+    path: "/studenten",
+    component: Studenten,
+    props: {
+      students: {
+        stud1: {
+          name: "Lukas",
+          surname: "Petit",
+          group_id: 1,
+          projectvoorstel: "Projectenwebsite",
+          belbin: "Plant"
+        },
+        stud2: {
+          name: "Lukas",
+          surname: "Petit",
+          group_id: 1,
+          projectvoorstel: "Projectenwebsite",
+          belbin: "Completor"
+        },
+        stud3: {
+          groep: "4",
+          name: "Lukas",
+          surname: "Petit",
+          group_id: 1,
+          projectvoorstel: "Projectenwebsite",
+          belbin: "Teamworker"
+        },
+        stud4: {
+          name: "Lukas",
+          surname: "Petit",
+          group_id: 1,
+          projectvoorstel: "Projectenwebsite",
+          belbin: "Coordinator"
+        },
+        stud5: {
+          name: "Lukas",
+          surname: "Petit",
+          group_id: 2,
+          projectvoorstel: "Macro Keyboard",
+          belbin: "Implementor"
+        },
+        stud6: {
+          name: "Lukas",
+          surname: "Petit",
+          group_id: 2,
+          projectvoorstel: "Macro Keyboard",
+          belbin: "Shaper"
+        },
+        stud7: {
+          name: "Lukas",
+          surname: "Petit",
+          group_id: 3,
+          projectvoorstel: "",
+          belbin: "Completor"
+        }
+      }
+    }
+  },
   { path: "/archief", component: Archief },
   { path: "/belbintest", component: Belbintest },
   { path: "/nieuwproject", component: NieuwProject },
