@@ -17,7 +17,7 @@
         <p style="float:left">Status: <span>{{status}}</span></p>
 
         <b-button href="#" variant="primary" size="sm" class="bekijkbtn">
-            <li  href="/project/" class="nav-link"><a> Bekijk</a> </li>
+            <li v-bind:href="/project/" class="nav-link"><a> Bekijk</a> </li>
         </b-button>
     </b-card>
 </template>

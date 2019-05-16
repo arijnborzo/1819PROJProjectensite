@@ -70,25 +70,28 @@ class OverviewController extends Controller
         'user' => $user
       ]);
     }
-    public function detailProject($id)
+    public function detail($id)
     {
       $user = Auth::user();
-      $usergroupid = Student::first($user['id'])->value('group_id');
+
+//      $usergroupid = Student::where('id', $user.id)->value('group_id');
       $projectgroupid = Group::where('project_id', $id)->value('id');
-      if ($usergroupid == $projectgroupid) {
-        //user belongs to group of projects
-        $belongstoproject = TRUE;
-      }
-      else {
-        $belongstoproject = FALSE;
-      }
+        $project = Project::where('id', $id) ->get();
+        echo $user;
+//      if ($usergroupid == $id) {
+//        //user belongs to group of projects
+//        $belongstoproject = TRUE;
+//      }
+//      else {
+//        $belongstoproject = FALSE;
+//      }
       return view('detail',[
-//        'project' => $project,
-        'user' => $user,
-        'belongstoproject' => $belongstoproject
+        'project' => $project,
+        'user' => $user
+//        'belongstoproject' => $belongstoproject
       ]);
     }
-//DB::students('CONCAT(surname, ", ", users.name AS full_name')'
+
     public function students()
     {
       $user = Auth::user();

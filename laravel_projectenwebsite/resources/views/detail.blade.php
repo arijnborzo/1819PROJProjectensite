@@ -1,7 +1,11 @@
 {{-- extend the parent tpl--}}
 @extends('layouts.app')
 {{-- set the pagetitle in the parent tpl--}}
-@section('name', 'Belbin')
+@section('name', 'Mijn Project')
 @section('content')
-    <belbin_vue></belbin_vue>
+{{--@if()--}}
+{{--    <mijnproject_vue></mijnproject_vue>--}}
+{{--    @else--}}
+    <details_vue></details_vue>
+{{--    @endif--}}
 @endsection
