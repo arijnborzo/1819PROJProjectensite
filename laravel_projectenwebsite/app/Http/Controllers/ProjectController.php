@@ -20,7 +20,7 @@ class ProjectController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('belbin');
+        //$this->middleware('belbin');
     }
 
     /**
@@ -46,10 +46,10 @@ class ProjectController extends Controller
         }
         echo $project;
         echo $group;
-        return view('welcome',[
+        return view('nieuwproject',[
           'project'  => $project,
           'group' => $group,
-          'teachers*' => $teachers,
+          'teachers' => $teachers,
           'user' => $user
         ]);
     }

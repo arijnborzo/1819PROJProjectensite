@@ -44,7 +44,7 @@ Route::get('/students', function(){
 Auth::routes();
 Route::get('/', 'OverviewController@index')->name('home');
 Route::get('/archief', 'OverviewController@archive')->name('archief');
-Route::get('/maakproject', 'ProjectController@createProject')->name('maakproject');
+Route::get('/nieuwproject', 'ProjectController@createProject')->name('maakproject');
 Route::get('/belbintest' , 'BelbintestController@showBelbintest')->name('belbintest');
 Route::post('/belbintest', 'BelbintestController@addBelbintype');
 Route::get('/students', 'OverviewController@students')->name('studenten');
