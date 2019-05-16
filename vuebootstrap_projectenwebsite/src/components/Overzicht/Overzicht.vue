@@ -25,11 +25,11 @@
             </b-row>
 
             <!--gridlist-->
-            <b-row id="gridlist" class="gridul flexxx">
+            <b-row id="gridlist" class="gridul">
               
               <!-- HIER WORDT DE VIA LARAVEL DOORGEGEVEN PROJECTEN BEHANDELD
               PROJECT is elk project, PROJECTEN de prop (zie onder export default remember studenten)-->
-              <div v-for="project in projecten" v-bind:key=project.titel>
+              <div v-for="project in projectenX" v-bind:key=project.titel>
                 <transition name="fade">
                   <b-col>
                     <!-- HIER GEVEN WE FIELDS MEE AAN HET APP-PROJECT COMPONENT -->
@@ -61,7 +61,38 @@ export default {
         { value: "a", text: "Op alfabetische volgorde A-Z" },
         { value: "b", text: "Op alfabetische volgorde Z-A" }
       ],
+      jaartallen: [],
       projecten: [],
+      projectenX: [
+        {
+          titel: "Projectensite",
+          beschrijving:
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+          groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
+          created_at: "2019-05-11 14:27:11"
+        },
+        {
+          titel: "Robotje maken",
+          beschrijving:
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+          groepsleden: ["Arno Stasssssss", "Arno Stas", "Arno Stas", "/"],
+          created_at: "2019-05-11 14:27:11"
+        },
+        {
+          titel: "Projectensitee",
+          beschrijving:
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+          groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
+          created_at: "2019-05-11 14:27:11"
+        },
+        {
+          titel: "MacroKeyboard",
+          beschrijving:
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+          groepsleden: ["Arno Stas", "Arno Stas", "/", "/"],
+          created_at: "2019-05-11 14:27:11"
+        }
+      ],
       show: true,
       showicons: true,
       width: 0
@@ -71,8 +102,9 @@ export default {
     appFilter: Filter,
     appProject: Project
   },
-  created() {
+  mounted() {
     var currentGroup = 0;
+
     for (var proj in this.projects) {
       // Neem project
       var project = this.projects[proj];

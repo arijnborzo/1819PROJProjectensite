@@ -20,13 +20,22 @@
                 ></b-form-input>
               </b-form-group>
 
-              <b-form-group id="input-group-2" label="Beschrijving" label-for="beschrijving">
+              <b-form-group id="input-group-2" label="Korte beschrijving" label-for="kortebeschrijving">
                 <b-form-textarea
-                  id="beschrijving"
-                  v-model="form.beschrijving"
-                  rows="3"
+                  id="kortebeschrijving"
+                  v-model="form.kortebeschrijving"
                   required
                   placeholder="Beschrijf kort het project"
+                ></b-form-textarea>
+              </b-form-group>
+
+              <b-form-group id="input-group-2a" label="Lange beschrijving" label-for="langebeschrijving">
+                <b-form-textarea
+                  id="langebeschrijving"
+                  v-model="form.langebeschrijving"
+                  rows="4"
+                  required
+                  placeholder="Beschrijf uitgebreid het project"
                 ></b-form-textarea>
               </b-form-group>
 
@@ -95,10 +104,11 @@
               </b-card>
               </b-form-group>
 
+<!--
               <b-form-group id="input-group-5" label="Kies een categorie" label-for="categorie">
                 <b-form-select id="categorie" v-model="selected" required :options="categorien"></b-form-select>
               </b-form-group>
-
+-->
               <b-form-group id="input-group-6" label="Reeds besproken met een docent?">
                   <b-form-radio v-model="docentBoolean" button button-variant="success" value="Ja" style="margin-right:2rem">Ja</b-form-radio>
                   <b-form-radio v-model="docentBoolean" button button-variant="danger" value="Neen">Neen</b-form-radio>
@@ -134,7 +144,8 @@ export default {
     return {
       form: {
         titel: "",
-        beschrijving: "",
+        kortebeschrijving: "",
+        langebeschrijving: "",
         hoofdvraag: "",
         nevenvragen: "",
         categorie: "",
@@ -176,7 +187,8 @@ export default {
       evt.preventDefault();
       // Reset our form values
       this.form.titel = "";
-      this.form.beschrijving = "";
+      this.form.kortebeschrijving = "";
+      this.form.langebeschrijving = "";
       this.form.hoofdvraag = "";
       this.form.nevenvragen = "";
       this.form.categorie = "";
