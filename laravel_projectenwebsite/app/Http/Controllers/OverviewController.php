@@ -38,7 +38,7 @@ class OverviewController extends Controller
       $projects = Project::join('groups', 'projects.id', '=', 'groups.project_id')
           ->join('students', 'students.group_id','=', 'groups.id')
           ->join('users', 'users.id', '=', 'students.id' )
-          ->select('projects.title', 'projects.short_description', 'users.name', 'users.surname', 'students.group_id')
+          ->select('projects.*','users.name', 'users.surname', 'students.group_id')
           ->whereYear('projects.created_at', $year)
           ->orderBy('group_id', 'ASC')
           ->get();
@@ -47,6 +47,7 @@ class OverviewController extends Controller
         'projects' => $projects,
         'user' => $user,
           'archief' => $archief
+
       ]);
 
     }
@@ -58,7 +59,7 @@ class OverviewController extends Controller
       $projects = Project::join('groups', 'projects.id', '=', 'groups.project_id')
           ->join('students', 'students.group_id','=', 'groups.id')
           ->join('users', 'users.id', '=', 'students.id' )
-          ->select('projects.title', 'projects.short_description', 'users.name', 'users.surname', 'students.group_id', 'projects.created_at')
+          ->select('projects.*','users.name', 'users.surname', 'students.group_id', 'projects.created_at')
           ->whereYear('projects.created_at', '!=', $year)
           ->orderBy('group_id', 'ASC')
           ->get();
@@ -82,7 +83,7 @@ class OverviewController extends Controller
         $belongstoproject = FALSE;
       }
       return view('detail',[
-        'project' => $project,
+//        'project' => $project,
         'user' => $user,
         'belongstoproject' => $belongstoproject
       ]);
@@ -93,7 +94,7 @@ class OverviewController extends Controller
       $user = Auth::user();
       $students = User::rightJoin('students', 'users.id', '=', 'students.id')
             ->rightJoin('projects', 'students.group_id', '=', 'projects.id')
-            ->select('students.group_id as groep','users.surname', 'projects.title as projectvoorstel', 'students.belbintype as belbin')
+            ->select('students.group_id','users.name', 'users.surname', 'projects.title as projectvoorstel', 'students.belbintype as belbin')
             ->get();
       //echo $students;
       return view('students', [

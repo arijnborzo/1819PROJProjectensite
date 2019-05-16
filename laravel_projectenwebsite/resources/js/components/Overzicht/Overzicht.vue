@@ -33,7 +33,7 @@
                         <transition name="fade">
                             <b-col>
                                 <!-- HIER GEVEN WE FIELDS MEE AAN HET APP-PROJECT COMPONENT -->
-                                <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden :status=project.status></app-project>
+                                <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden :status=project.status :proj_id=project.id></app-project>
                             </b-col>
                         </transition>
                     </div>
@@ -88,8 +88,9 @@
                     // beschrijving toevoegen
                     var beschrijving = project.short_description;
                     var status = project.status;
+                    var id = project.id;
                     // object nieuwe vueproject aanmaken
-                    var vueproject = { titel, beschrijving, groepsleden, status };
+                    var vueproject = { titel, beschrijving, groepsleden, status, id };
                     // toevoegen aan vue component array genaamd projecten
                     this.projecten.push(vueproject);
                 } else {

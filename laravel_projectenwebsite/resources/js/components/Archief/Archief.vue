@@ -22,7 +22,7 @@
                 <!--gridlist-->
                 <div id="gridlist" class="gridul">
                     <div v-for="project in projecten" v-bind:key=project.titel>
-                        <app-project class="project" :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden></app-project>
+                        <app-project class="project" :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden :status=project.status :id="project.id"></app-project>
                     </div>
                 </div>
             </b-col>
