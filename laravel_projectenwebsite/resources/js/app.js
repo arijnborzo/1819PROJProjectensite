@@ -77,6 +77,7 @@ Vue.component('header_vue', require('./components/HeaderFooter/Header.vue'));
 Vue.component('belbintest_vue', require('./components/Belbintest/Belbintest.vue'));
 //used
 Vue.component('archief_vue', require('./components/Archief/Archief.vue'));
+//used
 Vue.component('newproject_vue', require('./components/NieuwProject/NieuwProject.vue'));
 //used
 
@@ -97,11 +98,12 @@ import loginForm_vue from './components/Login/LoginForm'
 import filter_vue from './components/Login/Login'
 import newproject_vue from './components/NieuwProject/NieuwProject'
 import belbin_vue from './components/Belbintest/Belbintest'
+import archief_vue from './components/Archief/Archief'
 window.onload = function () {
     const app = new Vue({
         router,
         el: '#app',
-        components: {studenten_vue, footer_vue, header_vue, overzicht_vue, project_vue, filter_vue, newproject_vue, login_vue, loginForm_vue, belbin_vue
+        components: {studenten_vue, footer_vue, header_vue, overzicht_vue, project_vue, filter_vue, newproject_vue, login_vue, loginForm_vue, belbin_vue, archief_vue
         }
     });
 }

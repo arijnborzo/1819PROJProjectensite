@@ -10,21 +10,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+{{--    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>--}}
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href={{ asset('css/reset.css') }}> <!-- CSS reset -->
-    <link rel="stylesheet" href={{ asset('css/style.css') }}> <!-- Resource style -->
+{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+{{--    <link rel="stylesheet" href={{ asset('css/reset.css') }}> <!-- CSS reset -->--}}
+{{--    <link rel="stylesheet" href={{ asset('css/style.css') }}> <!-- Resource style -->--}}
 {{--    <link rel="stylesheet" type="text/css" href={{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}>--}}
 {{--    <link rel="stylesheet" type="text/css" href={{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}>--}}
-    <link rel="stylesheet" type="text/css" href={{ asset('css/util_Student.css') }}>
-    <link rel="stylesheet" type="text/css" href={{ asset('css/main_Student.css') }}>
-    <link rel="stylesheet" href={{ asset('css/formstyle.css') }}>
+{{--    <link rel="stylesheet" type="text/css" href={{ asset('css/util_Student.css') }}>--}}
+{{--    <link rel="stylesheet" type="text/css" href={{ asset('css/main_Student.css') }}>--}}
+{{--    <link rel="stylesheet" href={{ asset('css/formstyle.css') }}>--}}
 
     <!-- Scripts -->
     <script src="{{ asset('js/modernizr.js') }}"></script> <!-- Modernizr -->
-{{--    <script src="'../../js/app.js"></script>--}}
     <script src="{{ asset('js/app.js') }}"></script>
     <title>{{ config('app.name', 'Projectenwebsite ICTEO14') }}</title>
 </head>

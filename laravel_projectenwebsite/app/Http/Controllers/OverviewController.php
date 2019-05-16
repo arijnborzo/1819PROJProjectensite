@@ -62,7 +62,7 @@ class OverviewController extends Controller
           ->whereYear('projects.created_at', '!=', $year)
           ->orderBy('group_id', 'ASC')
           ->get();
-      echo $projects;
+      //echo $projects;
       return view('overzicht', [
         'projects' => $projects,
         'archief' => $archief,
@@ -95,7 +95,7 @@ class OverviewController extends Controller
             ->rightJoin('projects', 'students.group_id', '=', 'projects.id')
             ->select('students.group_id as groep','users.surname', 'projects.title as projectvoorstel', 'students.belbintype as belbin')
             ->get();
-      echo $students;
+      //echo $students;
       return view('students', [
           'students' => $students,
              'user' => $user
