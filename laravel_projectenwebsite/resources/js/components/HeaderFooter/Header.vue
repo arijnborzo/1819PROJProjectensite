@@ -5,13 +5,13 @@
       </b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
-         <b-navbar-nav>
-             <router-link to="/home" class="nav-link">Overzicht</router-link>
-             <router-link to="/studenten" class="nav-link">Studenten</router-link>
-             <router-link to="/archief" class="nav-link">Archief</router-link>
-             <router-link to="/belbintest" class="nav-link">BELBIN test</router-link>
-             <router-link to="/nieuwproject" class="nav-link">Nieuw project</router-link>
-         </b-navbar-nav>
+         <ul>
+             <li class="nav-link"><a href="/"> Overzicht</a> </li>
+             <li class="nav-link"><a href="/students"> Studenten</a> </li>
+             <li class="nav-link"><a href="/archief"> Archief</a> </li>
+             <li class="nav-link"><a href="/belbintest"> BELBIN test</a> </li>
+             <li class="nav-link"><a href="/nieuwproject"> Nieuw project</a> </li>
+         </ul>
 
          <!-- Right aligned nav items -->
          <b-navbar-nav class="ml-auto">

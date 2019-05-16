@@ -54,9 +54,6 @@
         @yield('content')
         <footer_vue></footer_vue>
     </main>
-{{--    <div id="app">--}}
-{{--        <footer_vue></footer_vue>--}}
-{{--    </div>--}}
     <script src={{ asset('js/jquery-2.1.1.js') }}></script>
     <script src={{ asset('js/jquery.mixitup.min.js') }}></script>
     <script src={{ asset('js/main.js') }}></script> <!-- Resource jQuery -->

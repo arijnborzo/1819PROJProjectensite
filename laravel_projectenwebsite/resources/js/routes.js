@@ -13,7 +13,7 @@ export const routes = [
   { path: "", component: LoginForm },
   { path: "/home", component: Home },
   { path: "/login", component: LoginForm },
-  { path: "/studenten", component: Studenten },
+  { path: "/students", component: Studenten },
   { path: "/archief", component: Archief },
   { path: "/belbintest", component: Belbintest },
   { path: "/nieuwproject", component: NieuwProject },

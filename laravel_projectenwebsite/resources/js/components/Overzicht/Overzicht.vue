@@ -49,9 +49,7 @@
 
     export default {
         /* LARAVEL*/
-        props: {
-            projects: Object
-        },
+        props: ['projects'],
         data() {
             return {
                 layout: "grid",
@@ -72,10 +70,12 @@
             appProject: Project
         },
         mounted() {
+            console.log("kjhqkfjlh");
             var currentGroup = 0;
             for (var proj in this.projects) {
                 // Neem project
                 var project = this.projects[proj];
+                console.log(project);
                 // Check of we aan een nieuw voorstel begonnen zijn
                 if (project.group_id != currentGroup) {
                     currentGroup++;
@@ -99,6 +99,7 @@
             }
         },
         created() {
+            console.log("lololol");
             window.addEventListener("resize", this.handleResize);
             this.handleResize();
         },

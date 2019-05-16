@@ -81,14 +81,14 @@ export default {
       //   { groep: "1", naam: "Nummer drie", projectvoorstel: "", belbin: "X" }
       // ],
       photo: {
-        coordinator: "../../assets/co-ordinator.png",
-        completor: "../../assets/completor.png",
-        implementor: "../../assets/implementor.png",
-        investigator: "../../assets/investigator.png",
-        monitor: "../../assets/monitor-evaluator.png",
-        shaper: "../../assets/shaper.png",
-        plant: "../../assets/plant.png",
-        teamworker: "../../assets/teamworker.png"
+        coordinator: "../../img/co-ordinator.png",
+        completor: "../../img/completor.png",
+        implementor: "../../img/implementor.png",
+        investigator: "../../img/investigator.png",
+        monitor: "../../img/monitor-evaluator.png",
+        shaper: "../../img/shaper.png",
+        plant: "../../img/plant.png",
+        teamworker: "../../img/teamworker.png"
       }
     };
   },

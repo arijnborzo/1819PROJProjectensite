@@ -40,7 +40,6 @@ class OverviewController extends Controller
           ->select('projects.title', 'projects.short_description', 'users.name', 'users.surname', 'students.group_id')
 //          ->whereYear('projects.created_at', $year)
           ->get();
-      echo $projects;
       return view('overzicht', [
         'projects' => $projects,
         'user' => $user
@@ -76,12 +75,13 @@ class OverviewController extends Controller
         'belongstoproject' => $belongstoproject
       ]);
     }
+//DB::students('CONCAT(surname, ", ", users.name AS full_name')'
     public function students()
     {
       $user = Auth::user();
       $students = User::rightJoin('students', 'users.id', '=', 'students.id')
             ->rightJoin('projects', 'students.group_id', '=', 'projects.id')
-            ->select('students.group_id as groep','users.surname', 'users.name', 'projects.title as projectvoorstel', 'students.belbintype as belbin')
+            ->select('students.group_id as groep','users.surname', 'projects.title as projectvoorstel', 'students.belbintype as belbin')
             ->get();
       echo $students;
       return view('students', [
