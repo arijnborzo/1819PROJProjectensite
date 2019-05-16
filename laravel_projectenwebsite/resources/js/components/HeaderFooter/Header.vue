@@ -6,11 +6,11 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
          <ul>
-             <li class="nav-link"><a href="/"> Overzicht</a> </li>
-             <li class="nav-link"><a href="/students"> Studenten</a> </li>
-             <li class="nav-link"><a href="/archief"> Archief</a> </li>
-             <li class="nav-link"><a href="/belbintest"> BELBIN test</a> </li>
-             <li class="nav-link"><a href="/nieuwproject"> Nieuw project</a> </li>
+             <li class="nav-btn"><a href="/"> Overzicht</a> </li>
+             <li class="nav-btn"><a href="/students"> Studenten</a> </li>
+             <li class="nav-btn"><a href="/archief"> Archief</a> </li>
+             <li class="nav-btn"><a href="/belbintest"> BELBIN test</a> </li>
+             <li class="nav-btn"><a href="/nieuwproject"> Nieuw project</a> </li>
          </ul>
 
          <!-- Right aligned nav items -->
@@ -31,8 +31,20 @@ export default {};
 </script>
 
 <style>
-.logo {
-  width: 12rem;
-  height: auto;
-}
+    .logo {
+        width: 12rem;
+        height: auto;
+    }
+    .nav-btn {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+    }
+    .nav-btn a {
+        color: white;
+    }
+    .nav-btn a:hover {
+        color: white;
+        text-decoration: none;
+    }
 </style>
+

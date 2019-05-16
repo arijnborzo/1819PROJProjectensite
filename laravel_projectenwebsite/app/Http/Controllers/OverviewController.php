@@ -33,16 +33,20 @@ class OverviewController extends Controller
     public function index()
     {
       $user = Auth::user();
-      $year = date("Y")-1;
+      $year = date("Y"); //-1
+      $archief = false;
       $projects = Project::join('groups', 'projects.id', '=', 'groups.project_id')
           ->join('students', 'students.group_id','=', 'groups.id')
           ->join('users', 'users.id', '=', 'students.id' )
           ->select('projects.title', 'projects.short_description', 'users.name', 'users.surname', 'students.group_id')
-//          ->whereYear('projects.created_at', $year)
+          ->whereYear('projects.created_at', $year)
+          ->orderBy('group_id', 'ASC')
           ->get();
+//      echo $projects;
       return view('overzicht', [
         'projects' => $projects,
-        'user' => $user
+        'user' => $user,
+          'archief' => $archief
       ]);
 
     }
@@ -50,10 +54,18 @@ class OverviewController extends Controller
     {
       $user = Auth::user();
       $year = date("Y")-1;
-      $projects = Project::whereYear('created_at', '!=', $year)->get();
-      echo $projects;
-      return view('welcome', [
+      $archief = true;
+      $projects = Project::join('groups', 'projects.id', '=', 'groups.project_id')
+          ->join('students', 'students.group_id','=', 'groups.id')
+          ->join('users', 'users.id', '=', 'students.id' )
+          ->select('projects.title', 'projects.short_description', 'users.name', 'users.surname', 'students.group_id', 'projects.created_at')
+          ->whereYear('projects.created_at', '!=', $year)
+          ->orderBy('group_id', 'ASC')
+          ->get();
+      //echo $projects;
+      return view('overzicht', [
         'projects' => $projects,
+        'archief' => $archief,
         'user' => $user
       ]);
     }
@@ -83,7 +95,7 @@ class OverviewController extends Controller
             ->rightJoin('projects', 'students.group_id', '=', 'projects.id')
             ->select('students.group_id as groep','users.surname', 'projects.title as projectvoorstel', 'students.belbintype as belbin')
             ->get();
-      echo $students;
+      //echo $students;
       return view('students', [
           'students' => $students,
              'user' => $user

@@ -17,6 +17,7 @@
         <p style="float:left"><span>Status: </span>✔</p>
         
         <b-button href="#" variant="primary" size="sm" class="bekijkbtn">
+
           <router-link :to="{ name: 'detailproject', params: { titel: titel }}">
             Bekijk
           </router-link>
