@@ -19,7 +19,7 @@ export default {
       fields: [
         {
           key: "groep",
-          label: "Groep",
+          // label: "Groep",
           sortable: true,
           formatter: "groepResult",
           html: true
@@ -35,51 +35,51 @@ export default {
         },
         {
           key: "belbin",
-          label: "Belbin",
+          //label: "belbin",
           sortable: false,
           formatter: "belbinResult",
           html: true
         }
       ],
-      studenten: [
-        {
-          groep: "4",
-          naam: "Lukas Petit",
-          projectvoorstel: "Projectenwebsite",
-          belbin: "X"
-        },
-        {
-          groep: "4",
-          naam: "Arno Stas",
-          projectvoorstel: "Projectenwebsite",
-          belbin: "Y"
-        },
-        {
-          groep: "4",
-          naam: "Andreas Lauwers",
-          projectvoorstel: "Projectenwebsite",
-          belbin: "Z"
-        },
-        {
-          groep: "4",
-          naam: "Arijn Borzo",
-          projectvoorstel: "Projectenwebsite",
-          belbin: "W"
-        },
-        {
-          groep: "2",
-          naam: "Nummer twee",
-          projectvoorstel: "Macro Keyboard",
-          belbin: "Z"
-        },
-        {
-          groep: "2",
-          naam: "Nummer een",
-          projectvoorstel: "Macro Keyboard",
-          belbin: "Y"
-        },
-        { groep: "1", naam: "Nummer drie", projectvoorstel: "", belbin: "X" }
-      ],
+      // studenten: [
+      //   {
+      //     groep: "4",
+      //     naam: "Lukas Petit",
+      //     projectvoorstel: "Projectenwebsite",
+      //     belbin: "X"
+      //   },
+      //   {
+      //     groep: "4",
+      //     naam: "Arno Stas",
+      //     projectvoorstel: "Projectenwebsite",
+      //     belbin: "Plant"
+      //   },
+      //   {
+      //     groep: "4",
+      //     naam: "Andreas Lauwers",
+      //     projectvoorstel: "Projectenwebsite",
+      //     belbin: "Z"
+      //   },
+      //   {
+      //     groep: "4",
+      //     naam: "Arijn Borzo",
+      //     projectvoorstel: "Projectenwebsite",
+      //     belbin: "W"
+      //   },
+      //   {
+      //     groep: "2",
+      //     naam: "Nummer twee",
+      //     projectvoorstel: "Macro Keyboard",
+      //     belbin: "Z"
+      //   },
+      //   {
+      //     groep: "2",
+      //     naam: "Nummer een",
+      //     projectvoorstel: "Macro Keyboard",
+      //     belbin: "Y"
+      //   },
+      //   { groep: "1", naam: "Nummer drie", projectvoorstel: "", belbin: "X" }
+      // ],
       photo: {
         coordinator: "../../assets/co-ordinator.png",
         completor: "../../assets/completor.png",
@@ -92,63 +92,64 @@ export default {
       }
     };
   },
-  methods: {
-    rowClass(item) {
-      if (!item) return;
-    },
-    belbinResult(value) {
-      if (value === "Z")
-        return `<img class="belbinimg" src=${
-          this.photo.coordinator
-        } alt="CO-ORDINATOR" v-b-tooltip.click title="Co-ordinator">`;
-      if (value === "Y")
-        return `<img class="belbinimg" src=${
-          this.photo.completor
-        } alt="COMPLETOR" v-b-tooltip.click title="Completor">`;
-      if (value === "X")
-        return `<img class="belbinimg" src=${
-          this.photo.implementor
-        } alt="IMPLEMENTOR" v-b-tooltip.click title="Implementor">`;
-      if (value === "W")
-        return `<img class="belbinimg" src=${
-          this.photo.investigator
-        } alt="INVESTIGATOR" v-b-tooltip.click title="Investigator">`;
-      if (value === "V")
-        return `<img class="belbinimg" src=${
-          this.photo.monitor
-        } alt="MONITOR" v-b-tooltip.click title="Monitor">`;
-      if (value === "Q")
-        return `<img class="belbinimg" src=${
-          this.photo.shaper
-        } alt="SHAPER" v-b-tooltip.click title="Shaper">`;
-      if (value === "T")
-        return `<img class="belbinimg" src=${
-          this.photo.plant
-        } alt="PLANT" v-b-tooltip.click title="Plant">`;
-      if (value === "S")
-        return `<img class="belbinimg" src=${
-          this.photo.teamworker
-        } alt="TEAMWORKER">`;
-    },
-    groepResult(value) {
-      if (value === "4") return `✔`;
-      if (value === "1") return "✖";
-      else return "❔";
+    methods: {
+        rowClass(item) {
+            if (!item) return;
+        },
+        belbinResult(value) {
+            console.log(value);
+            if (value === "Coordinator")
+                return `<img class="belbinimg" src=${
+                    this.photo.coordinator
+                    } alt="CO-ORDINATOR" v-b-tooltip.click title="Co-ordinator">`;
+            if (value === "Completor")
+                return `<img class="belbinimg" src=${
+                    this.photo.completor
+                    } alt="COMPLETOR" v-b-tooltip.click title="Completor">`;
+            if (value === "Implementor")
+                return `<img class="belbinimg" src=${
+                    this.photo.implementor
+                    } alt="IMPLEMENTOR" v-b-tooltip.click title="Implementor">`;
+            if (value === "Investigator")
+                return `<img class="belbinimg" src=${
+                    this.photo.investigator
+                    } alt="INVESTIGATOR" v-b-tooltip.click title="Investigator">`;
+            if (value === "Monitor")
+                return `<img class="belbinimg" src=${
+                    this.photo.monitor
+                    } alt="MONITOR" v-b-tooltip.click title="Monitor">`;
+            if (value === "Shaper")
+                return `<img class="belbinimg" src=${
+                    this.photo.shaper
+                    } alt="SHAPER" v-b-tooltip.click title="Shaper">`;
+            if (value === "Plant")
+                return `<img class="belbinimg" src=${
+                    this.photo.plant
+                    } alt="PLANT" v-b-tooltip.click title="Plant">`;
+            if (value === "Teamworker")
+                return `<img class="belbinimg" src=${
+                    this.photo.teamworker
+                    } alt="TEAMWORKER">`;
+        },
+        groepResult(value) {
+            if (value === "4") return `✔`;
+            if (value === "1") return "✖";
+            else return "❔";
+        }
     }
-  }
 };
 </script>
 
 <style>
-.belbinimg {
-  width: 29px;
-  height: auto;
-}
-html,
-body {
-  height: 100%;
-}
-#studenten {
-  height: 100%;
-}
+    .belbinimg {
+        width: 29px;
+        height: auto;
+    }
+    html,
+    body {
+        height: 100%;
+    }
+    #studenten {
+        height: 100%;
+    }
 </style>
