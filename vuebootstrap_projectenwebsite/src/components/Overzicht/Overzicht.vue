@@ -25,11 +25,15 @@
             </b-row>
 
             <!--gridlist-->
-            <b-row id="gridlist" class="gridul">
+            <b-row id="gridlist" class="gridul flexxx">
+              
+              <!-- HIER WORDT DE VIA LARAVEL DOORGEGEVEN PROJECTEN BEHANDELD
+              PROJECT is elk project, PROJECTEN de prop (zie onder export default remember studenten)-->
               <div v-for="project in projecten" v-bind:key=project.titel>
                 <transition name="fade">
                   <b-col>
-                    <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden></app-project>
+                    <!-- HIER GEVEN WE FIELDS MEE AAN HET APP-PROJECT COMPONENT -->
+                    <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden :status=project.status></app-project>
                   </b-col>
                 </transition>
               </div>
@@ -44,6 +48,10 @@ import Filter from "./Filter";
 import Project from "./Project";
 
 export default {
+  /* LARAVEL*/
+  props: {
+    projects: Object
+  },
   data() {
     return {
       layout: "grid",
@@ -53,32 +61,7 @@ export default {
         { value: "a", text: "Op alfabetische volgorde A-Z" },
         { value: "b", text: "Op alfabetische volgorde Z-A" }
       ],
-      projecten: [
-        {
-          titel: "Projectensite",
-          beschrijving:
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-          groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"]
-        },
-        {
-          titel: "Robotje maken",
-          beschrijving:
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-          groepsleden: ["Arno Stasssssss", "Arno Stas", "Arno Stas", "/"]
-        },
-        {
-          titel: "Projectensitee",
-          beschrijving:
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-          groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"]
-        },
-        {
-          titel: "MacroKeyboard",
-          beschrijving:
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-          groepsleden: ["Arno Stas", "Arno Stas", "/", "/"]
-        }
-      ],
+      projecten: [],
       show: true,
       showicons: true,
       width: 0
@@ -87,6 +70,33 @@ export default {
   components: {
     appFilter: Filter,
     appProject: Project
+  },
+  mounted() {
+    var currentGroup = 0;
+    for (var proj in this.projects) {
+      // Neem project
+      var project = this.projects[proj];
+      // Check of we aan een nieuw voorstel begonnen zijn
+      if (project.group_id != currentGroup) {
+        currentGroup++;
+        // Groepsleden aanmaken
+        var groepsleden = [];
+        // Eerste lid toevoegen
+        var naam = `${project.name} ${project.surname}`;
+        groepsleden.push(naam);
+        var titel = project.title;
+        // beschrijving toevoegen
+        var beschrijving = project.short_description;
+        var status = project.status;
+        // object nieuwe vueproject aanmaken
+        var vueproject = { titel, beschrijving, groepsleden, status };
+        // toevoegen aan vue component array genaamd projecten
+        this.projecten.push(vueproject);
+      } else {
+        var naam = `${project.name} ${project.surname}`;
+        this.projecten[currentGroup - 1].groepsleden.push(naam);
+      }
+    }
   },
   created() {
     window.addEventListener("resize", this.handleResize);
@@ -143,6 +153,13 @@ body {
 }
 
 /* GRIDLIST */
+.flexxx {
+  display: flex;
+}
+
+#alleprojecten {
+  text-align: center;
+}
 .gridlist {
   margin: 0;
 }
@@ -158,26 +175,18 @@ body {
 .proj {
   width: auto;
 }
-#alleprojecten {
-  text-align: center;
-}
 ul {
   list-style-type: none;
   padding: 0;
 }
 
-/*TRANSITIONS */
+/*TRANSITIONS ON PROJECTS */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.9s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
-}
-
-.gridlistbtn {
-  margin: 0 0.3rem;
-  float: right;
 }
 
 /* SORTEREN */
@@ -185,9 +194,14 @@ ul {
   width: 80%;
 }
 
-/* MEDIA QUERY */
+/* BTNS */
+.gridlistbtn {
+  margin: 0 0.3rem;
+  float: right;
+}
+
+/* MEDIA QUERYS */
 @media (max-width: 1070px) {
-  /* CSS goes here */
   .projecten {
     -ms-flex-align: center !important;
     align-items: center !important;

@@ -16,7 +16,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected1"
                 :options="options"
                 buttons
                 size= "sm"
@@ -32,7 +32,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected2"
                 :options="options"
                 buttons
                 size= "sm"
@@ -48,7 +48,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected3"
                 :options="options"
                 buttons
                 size= "sm"
@@ -64,7 +64,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected4"
                 :options="options"
                 buttons
                 size= "sm"
@@ -79,7 +79,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected5"
                 :options="options"
                 buttons
                 size= "sm"
@@ -94,7 +94,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected6"
                 :options="options"
                 buttons
                 size= "sm"
@@ -108,7 +108,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected7"
                 :options="options"
                 buttons
                 size= "sm"
@@ -123,7 +123,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected8"
                 :options="options"
                 buttons
                 size= "sm"
@@ -138,7 +138,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected9"
                 :options="options"
                 buttons
                 size= "sm"
@@ -153,7 +153,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected10"
                 :options="options"
                 buttons
                 size= "sm"
@@ -168,7 +168,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected11"
                 :options="options"
                 buttons
                 size= "sm"
@@ -183,7 +183,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected12"
                 :options="options"
                 buttons
                 size= "sm"
@@ -198,7 +198,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected13"
                 :options="options"
                 buttons
                 size= "sm"
@@ -213,7 +213,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected14"
                 :options="options"
                 buttons
                 size= "sm"
@@ -228,7 +228,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected15"
                 :options="options"
                 buttons
                 size= "sm"
@@ -243,7 +243,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected16"
                 :options="options"
                 buttons
                 size= "sm"
@@ -258,7 +258,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected17"
                 :options="options"
                 buttons
                 size= "sm"
@@ -273,7 +273,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected18"
                 :options="options"
                 buttons
                 size= "sm"
@@ -288,7 +288,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected19"
                 :options="options"
                 buttons
                 size= "sm"
@@ -303,7 +303,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected20"
                 :options="options"
                 buttons
                 size= "sm"
@@ -318,7 +318,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected21"
                 :options="options"
                 buttons
                 size= "sm"
@@ -333,7 +333,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected22"
                 :options="options"
                 buttons
                 size= "sm"
@@ -348,7 +348,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected23"
                 :options="options"
                 buttons
                 size= "sm"
@@ -363,7 +363,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikhouvan.selected24"
                 :options="options"
                 buttons
                 size= "sm"
@@ -379,7 +379,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected1"
                 :options="options"
                 buttons
                 size= "sm"
@@ -388,14 +388,13 @@
               ></b-form-radio-group>
             </b-form-group>
 
-            <!-- O & B -->
             <b-form-group
                 label="stellig"
                 label-cols="4"
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected2"
                 :options="options"
                 buttons
                 size= "sm"
@@ -404,14 +403,13 @@
               ></b-form-radio-group>
             </b-form-group>
 
-            <!-- UITDAGING -->
             <b-form-group
                 label="behulpzaam"
                 label-cols="4"
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected3"
                 :options="options"
                 buttons
                 size= "sm"
@@ -420,14 +418,13 @@
               ></b-form-radio-group>
             </b-form-group>
 
-              <!-- AVONTUUR -->
             <b-form-group
                 label="niet goed in delegeren"
                 label-cols="4"
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected4"
                 :options="options"
                 buttons
                 size= "sm"
@@ -442,7 +439,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected5"
                 :options="options"
                 buttons
                 size= "sm"
@@ -457,7 +454,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected6"
                 :options="options"
                 buttons
                 size= "sm"
@@ -471,7 +468,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected7"
                 :options="options"
                 buttons
                 size= "sm"
@@ -486,7 +483,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected8"
                 :options="options"
                 buttons
                 size= "sm"
@@ -501,7 +498,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected9"
                 :options="options"
                 buttons
                 size= "sm"
@@ -516,7 +513,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected10"
                 :options="options"
                 buttons
                 size= "sm"
@@ -531,7 +528,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected11"
                 :options="options"
                 buttons
                 size= "sm"
@@ -546,7 +543,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected12"
                 :options="options"
                 buttons
                 size= "sm"
@@ -561,7 +558,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected13"
                 :options="options"
                 buttons
                 size= "sm"
@@ -576,7 +573,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected14"
                 :options="options"
                 buttons
                 size= "sm"
@@ -591,7 +588,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected15"
                 :options="options"
                 buttons
                 size= "sm"
@@ -606,7 +603,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected16"
                 :options="options"
                 buttons
                 size= "sm"
@@ -621,7 +618,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected17"
                 :options="options"
                 buttons
                 size= "sm"
@@ -636,7 +633,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected18"
                 :options="options"
                 buttons
                 size= "sm"
@@ -651,7 +648,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected19"
                 :options="options"
                 buttons
                 size= "sm"
@@ -666,7 +663,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected20"
                 :options="options"
                 buttons
                 size= "sm"
@@ -681,7 +678,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected21"
                 :options="options"
                 buttons
                 size= "sm"
@@ -696,7 +693,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected22"
                 :options="options"
                 buttons
                 size= "sm"
@@ -711,7 +708,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected23"
                 :options="options"
                 buttons
                 size= "sm"
@@ -726,7 +723,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="ikben.selected24"
                 :options="options"
                 buttons
                 size= "sm"
@@ -734,15 +731,14 @@
                 name="radio-btn-outline"
               ></b-form-radio-group>
             </b-form-group><br>
-            <strong><p>Tot slot een aantal uitspraken. 
-              <br> per zin aan in hoeverre dit van jou een typische uitspraak zou zijn in een team</p></strong>
+            <strong><p>Tot slot een aantal uitspraken. Duid per zin aan in hoeverre dit van jou een typische uitspraak zou zijn in een team</p></strong>
             <b-form-group
                 label="Ik heb de voors en tegens op een rijtje gezet"
                 label-cols="4"
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected1"
                 :options="options"
                 buttons
                 size= "sm"
@@ -757,7 +753,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected2"
                 :options="options"
                 buttons
                 size= "sm"
@@ -773,7 +769,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected3"
                 :options="options"
                 buttons
                 size= "sm"
@@ -788,7 +784,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected4"
                 :options="options"
                 buttons
                 size= "sm"
@@ -802,7 +798,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected5"
                 :options="options"
                 buttons
                 size= "sm"
@@ -816,7 +812,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected6"
                 :options="options"
                 buttons
                 size= "sm"
@@ -830,7 +826,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected7"
                 :options="options"
                 buttons
                 size= "sm"
@@ -844,7 +840,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected8"
                 :options="options"
                 buttons
                 size= "sm"
@@ -858,7 +854,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected9"
                 :options="options"
                 buttons
                 size= "sm"
@@ -872,7 +868,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected10"
                 :options="options"
                 buttons
                 size= "sm"
@@ -886,7 +882,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected11"
                 :options="options"
                 buttons
                 size= "sm"
@@ -900,7 +896,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected12"
                 :options="options"
                 buttons
                 size= "sm"
@@ -914,7 +910,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected13"
                 :options="options"
                 buttons
                 size= "sm"
@@ -928,7 +924,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected14"
                 :options="options"
                 buttons
                 size= "sm"
@@ -942,7 +938,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected15"
                 :options="options"
                 buttons
                 size= "sm"
@@ -956,7 +952,7 @@
                 label-align-lg="left" class="mb-2"
             >
               <b-form-radio-group
-                v-model="selected1"
+                v-model="uitspraken.selected16"
                 :options="options"
                 buttons
                 size= "sm"
@@ -964,10 +960,7 @@
                 name="radio-btn-outline"
               ></b-form-radio-group>
             </b-form-group>
-            <b-button class="error" type="submit" variant="primary" @click="flashMessage.error({ title: 'Error Title', message: 'error' });">Verzenden(error)</b-button>
-            <b-button class="succes" type="submit" variant="primary" @click="flashMessage.success({ title: 'Belbintest Vezonden', message: 'succes' });">Verzenden(Succes)</b-button>
-            <p>{{ callbackText }}</p>
-            <FlashMessage></FlashMessage>
+            <b-button type="submit" variant="primary">Verzenden</b-button>
           </b-card>                                   
         </b-col>
       </b-row>
@@ -979,7 +972,77 @@
 export default {
   data() {
     return {
-      selected: "radio1",
+      ikhouvan: [
+        { selected1: "" },
+        { selected2: "" },
+        { selected3: "" },
+        { selected4: "" },
+        { selected5: "" },
+        { selected6: "" },
+        { selected7: "" },
+        { selected8: "" },
+        { selected9: "" },
+        { selected10: "" },
+        { selected11: "" },
+        { selected12: "" },
+        { selected13: "" },
+        { selected14: "" },
+        { selected15: "" },
+        { selected16: "" },
+        { selected17: "" },
+        { selected18: "" },
+        { selected19: "" },
+        { selected20: "" },
+        { selected21: "" },
+        { selected22: "" },
+        { selected23: "" },
+        { selected24: "" }
+      ],
+      ikben: [
+        { selected1: "" },
+        { selected2: "" },
+        { selected3: "" },
+        { selected4: "" },
+        { selected5: "" },
+        { selected6: "" },
+        { selected7: "" },
+        { selected8: "" },
+        { selected9: "" },
+        { selected10: "" },
+        { selected11: "" },
+        { selected12: "" },
+        { selected13: "" },
+        { selected14: "" },
+        { selected15: "" },
+        { selected16: "" },
+        { selected17: "" },
+        { selected18: "" },
+        { selected19: "" },
+        { selected20: "" },
+        { selected21: "" },
+        { selected22: "" },
+        { selected23: "" },
+        { selected24: "" }
+      ],
+      uitspraken: [
+        { selected1: "" },
+        { selected2: "" },
+        { selected3: "" },
+        { selected4: "" },
+        { selected5: "" },
+        { selected6: "" },
+        { selected7: "" },
+        { selected8: "" },
+        { selected9: "" },
+        { selected10: "" },
+        { selected11: "" },
+        { selected12: "" },
+        { selected13: "" },
+        { selected14: "" },
+        { selected15: "" },
+        { selected16: "" },
+        { selected17: "" }
+      ],
       options: [
         { text: "Niet kenmerkend", value: "0" },
         { text: "Enigszins kenmerkend", value: "1" },

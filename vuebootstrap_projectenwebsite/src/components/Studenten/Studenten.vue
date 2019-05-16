@@ -45,39 +45,44 @@ export default {
           groep: "4",
           naam: "Lukas Petit",
           projectvoorstel: "Projectenwebsite",
-          belbin: "X"
+          belbin: "Plant"
         },
         {
           groep: "4",
           naam: "Arno Stas",
           projectvoorstel: "Projectenwebsite",
-          belbin: "Y"
+          belbin: "Completor"
         },
         {
           groep: "4",
           naam: "Andreas Lauwers",
           projectvoorstel: "Projectenwebsite",
-          belbin: "Z"
+          belbin: "Teamworker"
         },
         {
           groep: "4",
           naam: "Arijn Borzo",
           projectvoorstel: "Projectenwebsite",
-          belbin: "W"
+          belbin: "Coordinator"
         },
         {
           groep: "2",
           naam: "Nummer twee",
           projectvoorstel: "Macro Keyboard",
-          belbin: "Z"
+          belbin: "Implementor"
         },
         {
           groep: "2",
           naam: "Nummer een",
           projectvoorstel: "Macro Keyboard",
-          belbin: "Y"
+          belbin: "Shaper"
         },
-        { groep: "1", naam: "Nummer drie", projectvoorstel: "", belbin: "X" }
+        {
+          groep: "1",
+          naam: "Nummer drie",
+          projectvoorstel: "",
+          belbin: "Completor"
+        }
       ],
       photo: {
         coordinator: "../../assets/co-ordinator.png",
@@ -96,35 +101,35 @@ export default {
       if (!item) return;
     },
     belbinResult(value) {
-      if (value === "Z")
+      if (value === "Coordinator")
         return `<img class="belbinimg" src=${
           this.photo.coordinator
         } alt="CO-ORDINATOR" v-b-tooltip.click title="Co-ordinator">`;
-      if (value === "Y")
+      if (value === "Completor")
         return `<img class="belbinimg" src=${
           this.photo.completor
         } alt="COMPLETOR" v-b-tooltip.click title="Completor">`;
-      if (value === "X")
+      if (value === "Implementor")
         return `<img class="belbinimg" src=${
           this.photo.implementor
         } alt="IMPLEMENTOR" v-b-tooltip.click title="Implementor">`;
-      if (value === "W")
+      if (value === "Investigator")
         return `<img class="belbinimg" src=${
           this.photo.investigator
         } alt="INVESTIGATOR" v-b-tooltip.click title="Investigator">`;
-      if (value === "V")
+      if (value === "Monitor")
         return `<img class="belbinimg" src=${
           this.photo.monitor
         } alt="MONITOR" v-b-tooltip.click title="Monitor">`;
-      if (value === "Q")
+      if (value === "Shaper")
         return `<img class="belbinimg" src=${
           this.photo.shaper
         } alt="SHAPER" v-b-tooltip.click title="Shaper">`;
-      if (value === "T")
+      if (value === "Plant")
         return `<img class="belbinimg" src=${
           this.photo.plant
         } alt="PLANT" v-b-tooltip.click title="Plant">`;
-      if (value === "S")
+      if (value === "Teamworker")
         return `<img class="belbinimg" src=${
           this.photo.teamworker
         } alt="TEAMWORKER">`;
