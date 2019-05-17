@@ -9,7 +9,7 @@
             <b-row>
               <b-col>
               <!--titel-->
-                <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren {{geselecteerdeJaartallen}}</h3>
+                <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren</h3>
               </b-col>
             </b-row>
               <!--sorteren-->
