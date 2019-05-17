@@ -11,8 +11,8 @@
                 >
                     <b-form-input
                     id="input-1"
-                    v-model="form.groep"
-                    placeholder="Op groepsnummer/naam"
+                    v-model="form.naam"
+                    placeholder="Op naam"
                     ></b-form-input>
                 </b-form-group>
 <!--
@@ -28,7 +28,7 @@
                     label="Aantal groepsleden"
                     label-for="input-3"
                 >
-                <b-form-checkbox-group v-model="form.checked" id="checkboxes">
+                <b-form-checkbox-group v-model="form.groepsleden" id="checkboxes">
                     <b-form-checkbox value="1">1</b-form-checkbox>
                     <b-form-checkbox value="2">2</b-form-checkbox>
                     <b-form-checkbox value="3">3</b-form-checkbox>
@@ -41,9 +41,9 @@
                     label-for="input-4"
                 >
                 <b-form-checkbox-group stacked v-model="form.status" id="status">
-                    <b-form-checkbox value="1">Goedgekeurd</b-form-checkbox>
-                    <b-form-checkbox value="2">Nog in beraad</b-form-checkbox>
-                    <b-form-checkbox value="3">Afgekeurd</b-form-checkbox>
+                    <b-form-checkbox value="Goedgekeurd">Goedgekeurd</b-form-checkbox>
+                    <b-form-checkbox value="In beraad">In beraad</b-form-checkbox>
+                    <b-form-checkbox value="Afgekeurd">Afgekeurd</b-form-checkbox>
                     </b-form-checkbox-group>
                 </b-form-group>
 
@@ -60,9 +60,9 @@ export default {
   data() {
     return {
       form: {
-        groep: "",
+        naam: "",
         //categorie: null,
-        checked: [],
+        groepsleden: [],
         status: []
       },
       /*
@@ -85,9 +85,9 @@ export default {
     onReset(evt) {
       evt.preventDefault();
       // Reset our form values
-      this.form.groep = "";
+      this.form.naam = "";
       //this.form.categorie = null;
-      this.form.checked = [];
+      this.form.groepsleden = [];
       this.form.status = [];
       // Trick to reset/clear native browser form validation state
       this.show = false;

@@ -12,7 +12,7 @@
               <!--titel-->
             <b-row>
               <b-col>
-                <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren</h3>
+                <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren {{this.height}}</h3>
               </b-col>
             </b-row>
 
@@ -95,7 +95,8 @@ export default {
       ],
       show: true,
       showicons: true,
-      width: 0
+      width: 0,
+      height: 0
     };
   },
   components: {
@@ -187,7 +188,6 @@ export default {
         var isInJarenList = this.geselecteerdeJaartallen.indexOf(jaar) > -1;
         if (isInJarenList) {
           if (maand < 9) {
-            console.log(maand);
             return true;
           } else {
             return false;
@@ -195,9 +195,6 @@ export default {
         }
       }
     }
-  },
-  watch: {
-    selected: function(keuze) {}
   }
 };
 </script>

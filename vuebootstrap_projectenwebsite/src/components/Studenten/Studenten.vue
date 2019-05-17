@@ -56,6 +56,7 @@ export default {
     };
   },
   mounted() {
+    // Aantal groepsleden per groep toekennen
     var currentGroup = 0;
     for (var stud in this.students) {
       var student = this.students[stud];
@@ -67,6 +68,8 @@ export default {
         this.groepen[currentGroup - 1]++;
       }
     }
+
+    // Alle studenten toevoegen
     var currentStudentGroup = 0;
     for (var stud in this.students) {
       // Neem student
@@ -77,7 +80,7 @@ export default {
         // Groep vinden
         var groep = this.groepen[currentStudentGroup - 1];
         // Eerste lid toevoegen
-        var naam = `${student.surname} ${student.name}`;
+        var naam = `${student.name} ${student.surname}`;
         // Project voorstel
         var projectvoorstel = student.projectvoorstel;
         // Belbin
@@ -88,14 +91,13 @@ export default {
         this.studenten.push(vuestudent);
       } else {
         var groep = this.groepen[currentStudentGroup - 1];
-        var naam = `${student.surname} ${student.name}`;
+        var naam = `${student.name} ${student.surname}`;
         var projectvoorstel = student.projectvoorstel;
         var belbin = student.belbin;
         var vuestudent = { groep, naam, projectvoorstel, belbin };
         this.studenten.push(vuestudent);
       }
     }
-    console.log(this.studenten);
   },
   methods: {
     rowClass(item) {
@@ -136,7 +138,6 @@ export default {
         } alt="TEAMWORKER">`;
     },
     groepResult(value) {
-      console.log(value);
       if (value === 4) return `✔`;
       if (value === 1) return "✖";
       else return "❔";

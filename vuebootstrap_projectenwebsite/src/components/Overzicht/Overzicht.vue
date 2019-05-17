@@ -9,7 +9,7 @@
             <b-row>
               <b-col>
               <!--titel-->
-                <h3 id="alleprojecten">Alle projecten {{this.filterForm}}</h3>
+                <h3 id="alleprojecten">Alle projecten</h3>
               </b-col>
             </b-row>
               <!--sorteren-->
@@ -27,12 +27,9 @@
             <!--gridlist-->
             <b-row id="gridlist" class="gridul">
               
-              <!-- HIER WORDT DE VIA LARAVEL DOORGEGEVEN PROJECTEN BEHANDELD
-              PROJECT is elk project, PROJECTEN de prop (zie onder export default remember studenten)-->
               <div v-for="project in projectenX" v-bind:key=project.titel>
                 <transition name="fade">
-                  <b-col>
-                    <!-- HIER GEVEN WE FIELDS MEE AAN HET APP-PROJECT COMPONENT -->
+                  <b-col v-show="filtered(project)">
                     <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden :status=project.status></app-project>
                   </b-col>
                 </transition>
@@ -48,7 +45,6 @@ import Filter from "./Filter";
 import Project from "./Project";
 
 export default {
-  /* LARAVEL*/
   props: {
     projects: Object
   },
@@ -57,8 +53,8 @@ export default {
       selected: null,
       sorteeropties: [
         { value: null, text: "Sorteren op:" },
-        { value: "a", text: "Op alfabetische volgorde A-Z" },
-        { value: "b", text: "Op alfabetische volgorde Z-A" }
+        { value: "az", text: "Op alfabetische volgorde A-Z" },
+        { value: "za", text: "Op alfabetische volgorde Z-A" }
       ],
       projecten: [],
       projectenX: [
@@ -67,28 +63,32 @@ export default {
           beschrijving:
             "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
           groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
-          created_at: "2019-05-11 14:27:11"
+          created_at: "2019-05-11 14:27:11",
+          status: "Goedgekeurd"
         },
         {
           titel: "Robotje maken",
           beschrijving:
             "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-          groepsleden: ["Arno Stasssssss", "Arno Stas", "Arno Stas", "/"],
-          created_at: "2019-05-11 14:27:11"
+          groepsleden: ["Arno Stas", "Arno Stas"],
+          created_at: "2019-05-11 14:27:11",
+          status: "In beraad"
         },
         {
           titel: "Projectensitee",
           beschrijving:
             "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
           groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
-          created_at: "2019-05-11 14:27:11"
+          created_at: "2019-05-11 14:27:11",
+          status: "Goedgekeurd"
         },
         {
           titel: "MacroKeyboard",
           beschrijving:
             "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-          groepsleden: ["Arno Stas", "Arno Stas", "/", "/"],
-          created_at: "2019-05-11 14:27:11"
+          groepsleden: ["Arno Stas"],
+          created_at: "2019-05-11 14:27:11",
+          status: "Afgekeurd"
         }
       ],
       filterForm: {},
@@ -164,6 +164,74 @@ export default {
         proj.classList.remove("gridli");
         proj.classList.add("listli");
       });
+    },
+    filterOpNaam(waardeZoeken, projectenNaam) {
+      var woordenlijst = waardeZoeken.split(" ");
+      for (var i = 0; i < woordenlijst.length; i++) {
+        if (
+          projectenNaam.toLowerCase().indexOf(woordenlijst[i].toLowerCase()) !==
+          -1
+        ) {
+          return true;
+        }
+      }
+      return false;
+    },
+    filterOpGroepsleden(aantalGroepsleden, groepsleden) {
+      for (var i = 0; i < aantalGroepsleden.length; i++) {
+        if (aantalGroepsleden[i] == groepsleden.length) {
+          return true;
+        }
+      }
+      return false;
+    },
+    filterOpStatus(keuzeStatus, status) {
+      for (var i = 0; i < keuzeStatus.length; i++) {
+        if (keuzeStatus[i] === status) {
+          return true;
+        }
+      }
+      return false;
+    },
+    filtered(project) {
+      /* Filter op naam */
+      if (
+        typeof this.filterForm.naam === "undefined" ||
+        this.filterForm.naam === ""
+      ) {
+        var naamFilter = true;
+      } else {
+        var naamFilter = this.filterOpNaam(this.filterForm.naam, project.titel);
+      }
+      /* Filter op groepsleden */
+      if (
+        typeof this.filterForm.groepsleden === "undefined" ||
+        this.filterForm.groepsleden.length == 0
+      ) {
+        var groepsledenFilter = true;
+      } else {
+        var groepsledenFilter = this.filterOpGroepsleden(
+          this.filterForm.groepsleden,
+          project.groepsleden
+        );
+      }
+      /* Filter op status */
+      if (
+        typeof this.filterForm.status === "undefined" ||
+        this.filterForm.status.length == 0
+      ) {
+        var statusFilter = true;
+      } else {
+        var statusFilter = this.filterOpStatus(
+          this.filterForm.status,
+          project.status
+        );
+      }
+      if (naamFilter && groepsledenFilter && statusFilter) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 };
