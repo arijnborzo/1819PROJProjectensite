@@ -2,14 +2,14 @@
     <b-container id="overzicht" fluid>
       <b-row class="pt-5 justify-content-center">
         <b-col md="5" lg="4" xl="3" class="filter">
-          <app-filter></app-filter>
+          <app-filter @filtersAangepast="filterForm = $event"></app-filter>
         </b-col>
         <b-col md="7" lg="8" xl="9">
             
             <b-row>
               <b-col>
               <!--titel-->
-                <h3 id="alleprojecten">Alle projecten</h3>
+                <h3 id="alleprojecten">Alle projecten {{this.filterForm}}</h3>
               </b-col>
             </b-row>
               <!--sorteren-->
@@ -54,14 +54,12 @@ export default {
   },
   data() {
     return {
-      layout: "grid",
       selected: null,
       sorteeropties: [
         { value: null, text: "Sorteren op:" },
         { value: "a", text: "Op alfabetische volgorde A-Z" },
         { value: "b", text: "Op alfabetische volgorde Z-A" }
       ],
-      jaartallen: [],
       projecten: [],
       projectenX: [
         {
@@ -93,6 +91,7 @@ export default {
           created_at: "2019-05-11 14:27:11"
         }
       ],
+      filterForm: {},
       show: true,
       showicons: true,
       width: 0
@@ -174,7 +173,7 @@ export default {
 body {
   background: #eef1f4;
 }
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 900px) {
   html,
   body {
     height: 100%;

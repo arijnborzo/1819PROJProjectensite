@@ -15,7 +15,7 @@
                     placeholder="Op groepsnummer/naam"
                     ></b-form-input>
                 </b-form-group>
-
+<!--
                 <b-form-group id="input-group-2" label="Categorie:" label-for="input-2">
                     <b-form-select
                     id="input-2"
@@ -23,12 +23,12 @@
                     :options="categorien"
                     ></b-form-select>
                 </b-form-group>
-
+-->
                 <b-form-group id="input-group-3" 
                     label="Aantal groepsleden"
                     label-for="input-3"
                 >
-                    <b-form-checkbox-group v-model="form.checked" id="checkboxes">
+                <b-form-checkbox-group v-model="form.checked" id="checkboxes">
                     <b-form-checkbox value="1">1</b-form-checkbox>
                     <b-form-checkbox value="2">2</b-form-checkbox>
                     <b-form-checkbox value="3">3</b-form-checkbox>
@@ -40,7 +40,7 @@
                     label="Status"
                     label-for="input-4"
                 >
-                    <b-form-checkbox-group v-model="form.status" id="status">
+                <b-form-checkbox-group stacked v-model="form.status" id="status">
                     <b-form-checkbox value="1">Goedgekeurd</b-form-checkbox>
                     <b-form-checkbox value="2">Nog in beraad</b-form-checkbox>
                     <b-form-checkbox value="3">Afgekeurd</b-form-checkbox>
@@ -61,30 +61,32 @@ export default {
     return {
       form: {
         groep: "",
-        categorie: null,
+        //categorie: null,
         checked: [],
         status: []
       },
+      /*
       categorien: [
         { text: "Geen voorkeur", value: null },
         "Elektronica",
         "Webdevelopment",
         "Robotica",
         "Netwerkinfrastructuur"
-      ],
+      ],*/
       show: true
     };
   },
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      alert(JSON.stringify(this.form));
+      this.$emit("filtersAangepast", this.form);
+      //alert(JSON.stringify(this.form));
     },
     onReset(evt) {
       evt.preventDefault();
       // Reset our form values
       this.form.groep = "";
-      this.form.categorie = null;
+      //this.form.categorie = null;
       this.form.checked = [];
       this.form.status = [];
       // Trick to reset/clear native browser form validation state

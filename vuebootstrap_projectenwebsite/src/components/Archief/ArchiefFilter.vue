@@ -3,17 +3,8 @@
     <b-button v-b-toggle.collapse-1 variant="primary" block>Filter</b-button>
     <b-collapse id="collapse-1" class="">
         <b-card>
-            <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-                <!--
-                <b-form-group id="input-group-2" label="Categorie:" label-for="input-2">
-                    <b-form-select
-                    id="input-2"
-                    v-model="form.categorie"
-                    :options="categorien"
-                    ></b-form-select>
-                </b-form-group>
-                -->
-
+            <b-form @submit="onSubmit" v-if="show">
+                <!-- Filter op jaar -->
                 <b-form-group id="input-group-1" 
                     label="Welk jaar?"
                     label-for="input-1"
@@ -25,8 +16,7 @@
                     </b-form-checkbox-group>
                 </b-form-group>
 
-                <b-button variant="primary" @click="filtersFn">Pas toe</b-button>
-                <b-button type="reset" variant="danger" style="float: right">Reset</b-button>
+                <b-button type="submit" variant="primary">Pas toe</b-button>
             </b-form>
         </b-card>
     </b-collapse>
@@ -45,34 +35,13 @@ export default {
     return {
       categorie: null,
       geselecteerdeJaartallen: [],
-      /*
-      categorien: [
-        { text: "Geen voorkeur", value: null },
-        "Elektronica",
-        "Webdevelopment",
-        "Robotica",
-        "Netwerkinfrastructuur"
-      ]*/
       show: true
     };
   },
   methods: {
-    filtersFn() {
-      this.$emit("filtersAangepast", this.geselecteerdeJaartallen);
-    },
     onSubmit(evt) {
       evt.preventDefault();
-      alert(JSON.stringify(this.form));
-    },
-    onReset(evt) {
-      evt.preventDefault();
-      // Reset our form values
-      this.geselecteerdeJaartallen = null;
-      // Trick to reset/clear native browser form validation state
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
+      this.$emit("filtersAangepast", this.geselecteerdeJaartallen);
     }
   }
 };

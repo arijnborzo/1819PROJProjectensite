@@ -1,19 +1,23 @@
 <template>
     <b-container id="overzicht" fluid>
+      <!-- Filter en projecten -->
       <b-row class="pt-5 justify-content-center">
+
+        <!-- Filter -->
         <b-col md="5" lg="4" xl="3" class="filter">
           <app-archief-filter :jaartallen=this.jaartallen @filtersAangepast="geselecteerdeJaartallen = $event"></app-archief-filter>
         </b-col>
-        <b-col md="7" lg="8" xl="9">
-            
+        <!-- Projecten -->
+        <b-col md="7" lg="8" xl="9">            
+              <!--titel-->
             <b-row>
               <b-col>
-              <!--titel-->
                 <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren</h3>
               </b-col>
             </b-row>
-              <!--sorteren-->
+
             <b-row>
+              <!--sorteren-->
               <b-col>
                 <b-form-select id="sorteren" v-model="selected" required :options="sorteeropties"></b-form-select>
               </b-col>
@@ -26,13 +30,9 @@
 
             <!--gridlist-->
             <b-row id="gridlist" class="gridul">
-              
-              <!-- HIER WORDT DE VIA LARAVEL DOORGEGEVEN PROJECTEN BEHANDELD
-              PROJECT is elk project, PROJECTEN de prop (zie onder export default remember studenten)-->
               <div v-for="project in projectenX" v-bind:key=project.titel>
                 <transition name="fade">
-                  <b-col>
-                    <!-- HIER GEVEN WE FIELDS MEE AAN HET APP-PROJECT COMPONENT -->
+                  <b-col v-show="filteredOpJaar(project.created_at)">
                     <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden :status=project.status></app-project>
                   </b-col>
                 </transition>
@@ -54,12 +54,11 @@ export default {
   },
   data() {
     return {
-      layout: "grid",
       selected: null,
       sorteeropties: [
         { value: null, text: "Sorteren op:" },
-        { value: "a", text: "Op alfabetische volgorde A-Z" },
-        { value: "b", text: "Op alfabetische volgorde Z-A" }
+        { value: "az", text: "Op alfabetische volgorde A-Z" },
+        { value: "za", text: "Op alfabetische volgorde Z-A" }
       ],
       jaartallen: [],
       geselecteerdeJaartallen: [],
@@ -107,7 +106,6 @@ export default {
     var currentGroup = 0;
     for (var projjj in this.projectenX) {
       var jaar = this.projectenX[projjj].created_at.slice(0, 4);
-      var maand = this.projectenX[projjj].created_at.slice(5, 7);
       var jaarInArrayBoolean = this.jaartallen.includes(jaar);
       if (!jaarInArrayBoolean) {
         this.jaartallen.push(jaar);
@@ -160,9 +158,6 @@ export default {
         this.showicons = true;
       }
     },
-    filtersAangepast(event) {
-      console.log(event);
-    },
     gridView: function() {
       var ul = document.getElementById("gridlist");
       ul.classList.remove("listul");
@@ -183,7 +178,26 @@ export default {
         proj.classList.add("listli");
       });
     },
-    filtersAangepast(value) {}
+    filteredOpJaar(datum) {
+      if (this.geselecteerdeJaartallen.length === 0) {
+        return true;
+      } else {
+        var jaar = datum.slice(0, 4);
+        var maand = datum.slice(5, 7);
+        var isInJarenList = this.geselecteerdeJaartallen.indexOf(jaar) > -1;
+        if (isInJarenList) {
+          if (maand < 9) {
+            console.log(maand);
+            return true;
+          } else {
+            return false;
+          }
+        }
+      }
+    }
+  },
+  watch: {
+    selected: function(keuze) {}
   }
 };
 </script>
