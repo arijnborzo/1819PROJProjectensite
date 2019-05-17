@@ -25,7 +25,7 @@
                     </b-form-checkbox-group>
                 </b-form-group>
 
-                <b-button variant="primary" @click="pasToe">Pas toe</b-button>
+                <b-button variant="primary" @click="filtersFn">Pas toe</b-button>
                 <b-button type="reset" variant="danger" style="float: right">Reset</b-button>
             </b-form>
         </b-card>
@@ -35,7 +35,12 @@
 
 <script>
 export default {
-  props: ["jaartallen"],
+  props: {
+    jaartallen: {
+      type: Array,
+      required: true
+    }
+  },
   data() {
     return {
       categorie: null,
@@ -52,6 +57,9 @@ export default {
     };
   },
   methods: {
+    filtersFn() {
+      this.$emit("filtersAangepast", this.geselecteerdeJaartallen);
+    },
     onSubmit(evt) {
       evt.preventDefault();
       alert(JSON.stringify(this.form));
@@ -65,9 +73,6 @@ export default {
       this.$nextTick(() => {
         this.show = true;
       });
-    },
-    pasToe(event) {
-      this.$emit("clicked", this.geselecteerdeJaartallen);
     }
   }
 };

@@ -2,14 +2,14 @@
     <b-container id="overzicht" fluid>
       <b-row class="pt-5 justify-content-center">
         <b-col md="5" lg="4" xl="3" class="filter">
-          <app-archief-filter :jaartallen=this.jaartallen></app-archief-filter>
+          <app-archief-filter :jaartallen=this.jaartallen @filtersAangepast="geselecteerdeJaartallen = $event"></app-archief-filter>
         </b-col>
         <b-col md="7" lg="8" xl="9">
             
             <b-row>
               <b-col>
               <!--titel-->
-                <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren</h3>
+                <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren {{geselecteerdeJaartallen}}</h3>
               </b-col>
             </b-row>
               <!--sorteren-->
@@ -62,6 +62,7 @@ export default {
         { value: "b", text: "Op alfabetische volgorde Z-A" }
       ],
       jaartallen: [],
+      geselecteerdeJaartallen: [],
       projecten: [],
       projectenX: [
         {
@@ -159,8 +160,8 @@ export default {
         this.showicons = true;
       }
     },
-    pasToe(value) {
-      console.log(value);
+    filtersAangepast(event) {
+      console.log(event);
     },
     gridView: function() {
       var ul = document.getElementById("gridlist");
@@ -181,7 +182,8 @@ export default {
         proj.classList.remove("gridli");
         proj.classList.add("listli");
       });
-    }
+    },
+    filtersAangepast(value) {}
   }
 };
 </script>

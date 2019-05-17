@@ -114,8 +114,8 @@ export default {
         // Groepsleden aanmaken
         var groepsleden = [];
         // Eerste lid toevoegen
-        var naam = `${project.name} ${project.surname}`;
-        groepsleden.push(naam);
+        var ifnaam = `${project.name} ${project.surname}`;
+        groepsleden.push(ifnaam);
         var titel = project.title;
         // beschrijving toevoegen
         var beschrijving = project.short_description;
@@ -125,8 +125,8 @@ export default {
         // toevoegen aan vue component array genaamd projecten
         this.projecten.push(vueproject);
       } else {
-        var naam = `${project.name} ${project.surname}`;
-        this.projecten[currentGroup - 1].groepsleden.push(naam);
+        var elsenaam = `${project.name} ${project.surname}`;
+        this.projecten[currentGroup - 1].groepsleden.push(elsenaam);
       }
     }
   },
