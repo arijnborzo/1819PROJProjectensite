@@ -49,9 +49,9 @@ export default {
         implementor: "../../assets/implementor.png",
         investigator: "../../assets/investigator.png",
         monitor: "../../assets/monitor-evaluator.png",
-        shaper: "../../assets/shaper.png",
+        vormer: "../../assets/vormer.png",
         plant: "../../assets/plant.png",
-        teamworker: "../../assets/teamworker.png"
+        teamworker: "../../assets/groepswerker.png"
       }
     };
   },
@@ -71,24 +71,29 @@ export default {
 
     // Alle studenten toevoegen
     var currentStudentGroup = 0;
-    for (var stud in this.students) {
+    for (var nieuwestud in this.students) {
       // Neem student
-      var student = this.students[stud];
+      var nieuwestudent = this.students[nieuwestud];
       // Check of we aan een nieuwe groepsvoorstel begonnen zijn
-      if (student.group_id != currentStudentGroup) {
+      if (nieuwestudent.group_id != currentStudentGroup) {
         currentStudentGroup++;
         // Groep vinden
-        var groep = this.groepen[currentStudentGroup - 1];
+        var nieuwegroep = this.groepen[currentStudentGroup - 1];
         // Eerste lid toevoegen
-        var naam = `${student.name} ${student.surname}`;
+        var nieuwenaam = `${nieuwestudent.name} ${nieuwestudent.surname}`;
         // Project voorstel
-        var projectvoorstel = student.projectvoorstel;
+        var nieuweprojectvoorstel = nieuwestudent.projectvoorstel;
         // Belbin
-        var belbin = student.belbin;
+        var nieuwebelbin = nieuwestudent.belbin;
         // object nieuwe vueproject aanmaken
-        var vuestudent = { groep, naam, projectvoorstel, belbin };
+        var nieuwevuestudent = {
+          nieuwegroep,
+          nieuwenaam,
+          nieuweprojectvoorstel,
+          nieuwebelbin
+        };
         // toevoegen aan vue component array genaamd projecten
-        this.studenten.push(vuestudent);
+        this.studenten.push(nieuwevuestudent);
       } else {
         var groep = this.groepen[currentStudentGroup - 1];
         var naam = `${student.name} ${student.surname}`;
@@ -124,17 +129,17 @@ export default {
         return `<img class="belbinimg" src=${
           this.photo.monitor
         } alt="MONITOR" v-b-tooltip.click title="Monitor">`;
-      if (value === "Shaper")
+      if (value === "Vormer")
         return `<img class="belbinimg" src=${
-          this.photo.shaper
-        } alt="SHAPER" v-b-tooltip.click title="Shaper">`;
+          this.photo.vormer
+        } alt="VORMER" v-b-tooltip.click title="Vormer">`;
       if (value === "Plant")
         return `<img class="belbinimg" src=${
           this.photo.plant
         } alt="PLANT" v-b-tooltip.click title="Plant">`;
-      if (value === "Teamworker")
+      if (value === "Groepswerker")
         return `<img class="belbinimg" src=${
-          this.photo.teamworker
+          this.photo.groepswerker
         } alt="TEAMWORKER">`;
     },
     groepResult(value) {

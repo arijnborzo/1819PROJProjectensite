@@ -207,23 +207,27 @@ export default {
       return false;
     },
     filtered(project) {
+      var naamFilter = true;
+      var groepsledenFilter = true;
+      var statusFilter = true;
+
       /* Filter op naam */
       if (
         typeof this.filterForm.naam === "undefined" ||
         this.filterForm.naam === ""
       ) {
-        var naamFilter = true;
+        naamFilter = true;
       } else {
-        var naamFilter = this.filterOpNaam(this.filterForm.naam, project.titel);
+        naamFilter = this.filterOpNaam(this.filterForm.naam, project.titel);
       }
       /* Filter op groepsleden */
       if (
         typeof this.filterForm.groepsleden === "undefined" ||
         this.filterForm.groepsleden.length == 0
       ) {
-        var groepsledenFilter = true;
+        groepsledenFilter = true;
       } else {
-        var groepsledenFilter = this.filterOpGroepsleden(
+        groepsledenFilter = this.filterOpGroepsleden(
           this.filterForm.groepsleden,
           project.groepsleden
         );
@@ -233,9 +237,9 @@ export default {
         typeof this.filterForm.status === "undefined" ||
         this.filterForm.status.length == 0
       ) {
-        var statusFilter = true;
+        statusFilter = true;
       } else {
-        var statusFilter = this.filterOpStatus(
+        statusFilter = this.filterOpStatus(
           this.filterForm.status,
           project.status
         );

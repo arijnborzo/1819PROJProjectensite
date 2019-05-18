@@ -4,11 +4,11 @@
       <b-row class="pt-5 justify-content-center">
 
         <!-- Filter -->
-        <b-col md="5" lg="4" xl="3" class="filter">
+        <b-col md="4" lg="3" xl="2" class="filter">
           <app-archief-filter :jaartallen=this.jaartallen @filtersAangepast="geselecteerdeJaartallen = $event"></app-archief-filter>
         </b-col>
         <!-- Projecten -->
-        <b-col md="7" lg="8" xl="9">            
+        <b-col md="8" lg="9" xl="10">            
               <!--titel-->
             <b-row>
               <b-col>
@@ -44,9 +44,8 @@
 </template>
 
 <script>
-import Filter from "./ArchiefFilter";
+import ArchiefFilter from "./ArchiefFilter";
 import Project from "../Overzicht/Project";
-import ArchiefFilterVue from "./ArchiefFilter.vue";
 
 export default {
   props: {
@@ -100,20 +99,21 @@ export default {
     };
   },
   components: {
-    appArchiefFilter: Filter,
+    appArchiefFilter: ArchiefFilter,
     appProject: Project
   },
   mounted() {
     var currentGroup = 0;
+    var jaarInArrayBoolean = true;
     for (var projjj in this.projectenX) {
       var jaar = this.projectenX[projjj].created_at.slice(0, 4);
-      var jaarInArrayBoolean = this.jaartallen.includes(jaar);
+      jaarInArrayBoolean = this.jaartallen.includes(jaar);
       if (!jaarInArrayBoolean) {
         this.jaartallen.push(jaar);
       }
     }
 
-    var jaarInArrayBoolean = this.jaartallen.includes(jaar);
+    jaarInArrayBoolean = this.jaartallen.includes(jaar);
     if (!jaarInArrayBoolean) {
       this.jaartallen.push(jaar);
     }
@@ -138,8 +138,8 @@ export default {
         // toevoegen aan vue component array genaamd projecten
         this.projecten.push(vueproject);
       } else {
-        var naam = `${project.name} ${project.surname}`;
-        this.projecten[currentGroup - 1].groepsleden.push(naam);
+        var elsenaam = `${project.name} ${project.surname}`;
+        this.projecten[currentGroup - 1].groepsleden.push(elsenaam);
       }
     }
   },
