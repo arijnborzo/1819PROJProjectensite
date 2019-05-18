@@ -1,7 +1,7 @@
 <template>
     <div>
     <b-button v-b-toggle.collapse-1 variant="primary" block>Filter</b-button>
-    <b-collapse id="collapse-1" class="">
+    <b-collapse id="collapse-1" visible>
         <b-card>
             <b-form @submit="onSubmit" @reset="onReset" v-if="show">
                 <b-form-group

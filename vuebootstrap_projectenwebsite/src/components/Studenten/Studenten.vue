@@ -51,7 +51,7 @@ export default {
         monitor: "../../assets/monitor-evaluator.png",
         vormer: "../../assets/vormer.png",
         plant: "../../assets/plant.png",
-        teamworker: "../../assets/groepswerker.png"
+        groepswerker: "../../assets/groepswerker.png"
       }
     };
   },

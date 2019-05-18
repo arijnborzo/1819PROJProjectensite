@@ -62,8 +62,8 @@ export const routes = [
     props: {
       students: {
         stud1: {
-          name: "Lukas",
-          surname: "Petit",
+          name: "Arno",
+          surname: "Stas",
           group_id: 1,
           projectvoorstel: "Projectenwebsite",
           belbin: "Plant"
@@ -76,36 +76,35 @@ export const routes = [
           belbin: "Completor"
         },
         stud3: {
-          groep: "4",
-          name: "Lukas",
-          surname: "Petit",
+          name: "Andreas",
+          surname: "Lauwers",
           group_id: 1,
           projectvoorstel: "Projectenwebsite",
-          belbin: "Teamworker"
+          belbin: "Groepswerker"
         },
         stud4: {
-          name: "Lukas",
-          surname: "Petit",
+          name: "Arijn",
+          surname: "Borzo",
           group_id: 1,
           projectvoorstel: "Projectenwebsite",
           belbin: "Coordinator"
         },
         stud5: {
-          name: "Lukas",
+          name: "Jonas",
           surname: "Petit",
           group_id: 2,
           projectvoorstel: "Macro Keyboard",
           belbin: "Implementor"
         },
         stud6: {
-          name: "Lukas",
+          name: "Elias",
           surname: "Petit",
           group_id: 2,
           projectvoorstel: "Macro Keyboard",
-          belbin: "Shaper"
+          belbin: "Vormer"
         },
         stud7: {
-          name: "Lukas",
+          name: "Tom",
           surname: "Petit",
           group_id: 3,
           projectvoorstel: "",

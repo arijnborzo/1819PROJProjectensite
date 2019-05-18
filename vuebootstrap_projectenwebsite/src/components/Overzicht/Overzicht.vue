@@ -1,6 +1,6 @@
 <template>
     <b-container id="overzicht" fluid>
-      <b-row class="pt-5 justify-content-center">
+      <b-row class="justify-content-center">
         <b-col md="5" lg="4" xl="3" class="filter">
           <app-filter @filtersAangepast="filterForm = $event"></app-filter>
         </b-col>
@@ -258,6 +258,7 @@ export default {
 body {
   background: #eef1f4;
 }
+/*
 @media screen and (max-height: 900px) {
   html,
   body {
@@ -267,10 +268,11 @@ body {
     height: 100%;
   }
 }
-
+*/
 /* GRIDLIST */
 #alleprojecten {
   text-align: center;
+  margin-bottom: 2rem;
 }
 .gridlist {
   margin: 0;
