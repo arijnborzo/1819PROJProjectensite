@@ -9,7 +9,7 @@
                     label="Welk jaar?"
                     label-for="input-1"
                 >
-                    <b-form-checkbox-group stacked size="lg" v-model="geselecteerdeJaartallen" id="jaartal">
+                    <b-form-checkbox-group stacked v-model="geselecteerdeJaartallen" id="jaartal">
                       <b-form-checkbox  v-for="jaar in jaartallen" :key="jaar" :value="jaar">
                         {{ jaar }}
                       </b-form-checkbox>

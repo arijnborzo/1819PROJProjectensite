@@ -73,7 +73,7 @@
                   <b-form-input
                     id="Meetbaar"
                     v-model="form.smart.meetbaar"
-                    placeholder="Het proces naar het doel moet stuk voor stuk gemeten kunnen worden zodat men een goed beeld kan scheppen of het project zal slagen."
+                    placeholder="Het proces moet deel per deel gemeten kunnen worden zodat men een goed beeld kan scheppen of het project een slaagkans heeft."
                     v-on:keyup="smartMonitor"
                     required
                   ></b-form-input>
@@ -118,7 +118,7 @@
                 <b-form-select v-model="form.docent" :options="docenten"></b-form-select>
               </b-form-group>
 
-              <b-form-group id="input-group-8" label="Indien u al document(en) wilt voorleggen aan de docent, kan u deze in een ZIP versturen" v-if="showDocenten">
+              <b-form-group id="input-group-8" label="Indien u al document(en) wilt voorleggen aan de docent, kan u deze in een ZIP versturen">
                 <b-form-file
                   v-model="form.bestand"
                   :state="Boolean(form.bestand)"

@@ -2,9 +2,10 @@
    <div id="studenten">
      <b-row align-h="center" class="mt-5">
        <b-col cols="10">
-           <b-table responsive striped borderless :items="studenten" :fields="fields" head-variant="dark" :tbody-tr-class="rowClass">
-             <span slot="belbin" slot-scope="data" v-html="data.value"></span>
-             <span slot="groep" slot-scope="data" v-html="data.value"></span>
+           <b-table responsive striped borderless :items="studenten" :fields="fields" head-variant="dark" caption-top :tbody-tr-class="rowClass">
+              <template slot="table-caption">✔: zit in een volle groep | ✖: heeft nog geen groep | ❔: zit in groep maar is nog niet vol</template>
+              <span slot="belbin" slot-scope="data" v-html="data.value"></span>
+              <span slot="groep" slot-scope="data" v-html="data.value"></span>
            </b-table>
        </b-col>
      </b-row>
@@ -155,12 +156,5 @@ export default {
 .belbinimg {
   width: 29px;
   height: auto;
-}
-html,
-body {
-  height: 100%;
-}
-#studenten {
-  height: 100%;
 }
 </style>
