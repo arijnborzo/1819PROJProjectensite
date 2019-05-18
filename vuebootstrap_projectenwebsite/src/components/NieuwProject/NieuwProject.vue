@@ -33,7 +33,7 @@
                 <b-form-textarea
                   id="langebeschrijving"
                   v-model="form.langebeschrijving"
-                  rows="4"
+                  rows="6"
                   required
                   placeholder="Beschrijf uitgebreid het project"
                 ></b-form-textarea>

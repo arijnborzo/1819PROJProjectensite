@@ -12,7 +12,7 @@
               <!--titel-->
             <b-row>
               <b-col>
-                <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren {{this.height}}</h3>
+                <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren</h3>
               </b-col>
             </b-row>
 
@@ -67,7 +67,7 @@ export default {
         {
           titel: "Projectensite",
           beschrijving:
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui vivamus arcu felis bibendum. Eu mi bibendum neque egestas congue quisque egestas. At auctor urna nunc id cursus metus. Enim ut sem viverra aliquet eget. Ultrices sagittis orci a scelerisque purus semper eget duis at. Semper feugiat nibh sed pulvinar proin gravida. Metus vulputate eu scelerisque felis imperdiet proin. Id aliquet risus feugiat in ante metus dictum at tempor. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Dui nunc mattis enim ut tellus elementum sagittis. Nibh ipsum consequat nisl vel pretium lectus. Enim tortor at auctor urna nunc id cursus metus. At risus viverra adipiscing at in tellus. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Dictum non consectetur a erat nam at lectus urna. Pretium vulputate sapien nec sagittis. Vitae purus faucibus ornare suspendisse sed nisi. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus.",
           groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
           created_at: "2019-05-11 14:27:11"
         },
@@ -177,6 +177,14 @@ export default {
       Array.prototype.filter.call(list, function(proj) {
         proj.classList.remove("gridli");
         proj.classList.add("listli");
+      });
+      var beschrijvingtekst = document.getElementsByClassName("beschrijving");
+      Array.prototype.filter.call(beschrijvingtekst, function(beschr) {
+        beschr.style.height = "auto";
+      });
+      var groepsledentekst = document.getElementsByClassName("groepsleden");
+      Array.prototype.filter.call(groepsledentekst, function(groepslid) {
+        groepslid.style.height = "auto";
       });
     },
     filteredOpJaar(datum) {
