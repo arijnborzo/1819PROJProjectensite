@@ -4,8 +4,6 @@
         <b-col cols="10" id="nieuwproj">
           <b-card class="p-3">
             <h3>Nieuw project</h3>
-            <h6>Om een nieuw project toe te voegen moet je elk veld invullen.</h6>
-
             <b-form @submit="onSubmit" @reset="onReset" v-if="show">
               <b-form-group
                 id="input-group-1"
@@ -128,7 +126,7 @@
               </b-form-group>
 
               <hr />
-              <b-button type="submit" variant="primary">Verzend</b-button>
+              <b-button type="submit" class="btns">Verzend</b-button>
               <b-button type="reset" variant="danger" style="float: right">Reset</b-button>
             </b-form>
 

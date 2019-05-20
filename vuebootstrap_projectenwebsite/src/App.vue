@@ -38,4 +38,7 @@ body {
 #wrapper {
   padding-bottom: 4rem;
 }
+h3 {
+  color: #093667;
+}
 </style>

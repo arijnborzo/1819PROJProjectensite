@@ -19,7 +19,7 @@
         </b-card-text>
         <p style="float:left">Status: <span>{{status}}</span></p>
         
-        <b-button href="#" variant="primary" size="sm" class="bekijkbtn">
+        <b-button href="#" size="sm" class="bekijkbtn">
           <router-link :to="{ name: 'detailproject', params: { titel: titel, beschrijving: beschrijving, status: status }}">
             Bekijk
           </router-link>
@@ -36,12 +36,14 @@ export default {
 <style>
 .bekijkbtn {
   float: right;
+  background-color: #093667;
 }
 .project {
-  width: 20.5rem;
+  width: 20rem;
   height: 28rem;
-  background-color: #e0e0e0;
+  border: 1px;
   float: left;
+  background: linear-gradient(135deg, #fad961 0%, #f8a13e 100%);
 }
 .beschrijving {
   height: 10.75rem;
@@ -53,5 +55,93 @@ export default {
 }
 .project a {
   color: white;
+}
+/* Zotte border */
+* {
+  box-sizing: border-box;
+}
+.project {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  overflow: hidden;
+}
+.project:before,
+.project:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #252525;
+}
+.project:before {
+  top: 0;
+}
+.project:after {
+  bottom: 0;
+}
+.project:hover > * > *:before,
+.project:hover > * > *:after {
+  transform: translate3d(0, 0, 0);
+}
+.project:hover > * > * > *:before,
+.project:hover > * > * > *:after {
+  transform: translate3d(0, 0, 0);
+}
+.project > *:before,
+.project > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: #252525;
+}
+.project > *:before {
+  left: 0;
+}
+.project > *:after {
+  right: 0;
+}
+.project > * > *:before,
+.project > * > *:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 9;
+  height: 2px;
+  width: 100%;
+  background-color: #f8a13e;
+}
+.project > * > *:before {
+  top: 0;
+  transform: translate3d(-105%, 0, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.project > * > *:after {
+  bottom: 0;
+  transform: translate3d(105%, 0, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.project > * > * > *:before,
+.project > * > * > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 9;
+  height: 100%;
+  width: 2px;
+  background-color: #f8a13e;
+}
+.project > * > * > *:before {
+  left: 0;
+  transform: translate3d(0, 105%, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.project > * > * > *:after {
+  right: 0;
+  transform: translate3d(0, -105%, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 </style>

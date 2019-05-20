@@ -19,8 +19,8 @@
               </b-col>
               <!--gridlistbtns-->
               <b-col v-if="showicons">
-                <b-button @click="gridView" class="gridlistbtn">  <i class="fas fa-th-large" style="font-size: 1.2em;"></i></b-button>
-                <b-button @click="listView" class="gridlistbtn"><i class="fas fa-list"></i></b-button>
+                <b-button @click="gridView" class="gridlistbtn btns">  <i class="fas fa-th-large" style="font-size: 1.2em;"></i></b-button>
+                <b-button @click="listView" class="gridlistbtn btns"><i class="fas fa-list"></i></b-button>
               </b-col>
             </b-row>
 

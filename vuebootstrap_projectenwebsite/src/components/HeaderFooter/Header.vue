@@ -19,8 +19,8 @@
             <b-nav-item-dropdown right>
                <!-- Using 'button-content' slot -->
                <template slot="button-content" ><em>Usernaam</em></template>
-                    <b-dropdown-item href="#"><router-link to="/mijnproject">Mijn project</router-link></b-dropdown-item>
-                    <b-dropdown-item href="#"><router-link to="/">Uitloggen</router-link></b-dropdown-item>
+                    <b-dropdown-item href="#">Mijn project</b-dropdown-item>
+                    <b-dropdown-item href="#">Uitloggen</b-dropdown-item>
             </b-nav-item-dropdown>
          </b-navbar-nav>
    </b-navbar>
@@ -45,9 +45,10 @@ export default {};
 }
 .nav-link a {
   display: block;
-  padding: 1rem 5px;
+  padding: 0.5rem;
   text-decoration: none;
   font-weight: 600;
+  color: #093667;
   margin: 0 0.8rem;
 }
 nav ul li a:hover {
@@ -76,7 +77,7 @@ nav ul li a:hover {
   width: 0%;
   content: ".";
   color: transparent;
-  background: #007bff;
+  background: #093667;
   height: 1px;
 }
 .stroke ul li a:hover:after {
@@ -117,7 +118,7 @@ nav ul li a:hover {
   100% {
     width: 100%;
     height: 100%;
-    background: #007bff;
+    background: #093667;
   }
 }
 @keyframes fill {
@@ -132,7 +133,7 @@ nav ul li a:hover {
   100% {
     width: 100%;
     height: 100%;
-    background: #007bff;
+    background: #093667;
   }
 }
 @-moz-keyframes fill {
@@ -147,7 +148,7 @@ nav ul li a:hover {
   100% {
     width: 100%;
     height: 100%;
-    background: #007bff;
+    background: #093667;
   }
 }
 
