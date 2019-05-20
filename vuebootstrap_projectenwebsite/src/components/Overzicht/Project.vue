@@ -71,7 +71,7 @@ export default {
   content: "";
   position: absolute;
   left: 0;
-  height: 2px;
+  height: 1px;
   width: 100%;
   background-color: #252525;
 }
@@ -95,7 +95,7 @@ export default {
   position: absolute;
   top: 0;
   height: 100%;
-  width: 2px;
+  width: 1px;
   background-color: #252525;
 }
 .project > *:before {
@@ -110,7 +110,7 @@ export default {
   position: absolute;
   left: 0;
   z-index: 9;
-  height: 2px;
+  height: 1px;
   width: 100%;
   background-color: #f8a13e;
 }
@@ -131,7 +131,7 @@ export default {
   top: 0;
   z-index: 9;
   height: 100%;
-  width: 2px;
+  width: 1px;
   background-color: #f8a13e;
 }
 .project > * > * > *:before {
