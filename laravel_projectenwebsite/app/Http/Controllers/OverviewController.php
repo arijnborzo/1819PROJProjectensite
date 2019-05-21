@@ -76,27 +76,25 @@ class OverviewController extends Controller
       $user = Auth::user();
       $projectgroup = Project::find($id)->group;
       $students = Group::find($projectgroup['id'])->students;
-      $groupsmembers = [];
-      foreach ($students as $student) {
-        array_push($groupsmembers, Student::find($student['id'])->user);
-        echo Student::find($student['id'])->user;
-      }
+      echo $projectgroup;
+      $groupmembers=[];
+      $groupmembers = Student::join('users', 'students.id', '=', 'users.id')->where('group_id', '=', $projectgroup['id'])->get();
+      /*foreach ($students as $student) {
+        array_push($groupmembers, Student::find($student['id'])->user);
+      }*/
       if (Student::find((int)$user['id'])->value('group_id') == $projectgroup['id']){
-        echo 'Dit is mijn groep';
         $belongstoproject = TRUE;
       } else{
-        echo 'Dit is NIET mijn groep';
         $belongstoproject = FALSE;
       }
-
       $projectsmartcriteria = Project::find($id)->smartcriterium;
       $project = Project::where('id', $id)->get();
       $teacher =Project::find($id)->teacher->user;
       $creator = Project::find($id)->user;
       //echo $usergroupid, PHP_EOL;
-      //print_r($groupsmembers);
+      echo($groupmembers);
       return view('detail',[
-        'groupsmembers' => $groupsmembers,
+        'groupmembers' => $groupmembers,
         'project' => $project,
         'teacher' => $teacher,
         'creator' => $creator,

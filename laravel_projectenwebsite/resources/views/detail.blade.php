@@ -6,7 +6,7 @@
   @if($belongstoproject)
     <mijnproject_vue :project="{{ $project }}" :creator="{{ $creator }}" :teacher="{{ $teacher }}"></mijnproject_vue>
   @else
-    <details_vue :project="{{ $project }}" :creator="{{ $creator }}" :teacher="{{ $teacher }}"></details_vue>
+    <details_vue :project="{{ $project }}" :creator="{{ $creator }}" :teacher="{{ $teacher }}" :groupmembers="{{ $groupmembers[0] }}"></details_vue>
   @endif
 
 @endsection

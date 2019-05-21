@@ -49,8 +49,10 @@
               Groepsleden
             </h4>
             <ul>
-              <li v-for="(belbin, naam) in groepsleden" v-bind:key="naam">
-                <p>{{naam}} <span><img class="lidbelbin" :src=belbinResult(belbin) :alt="belbin" v-b-tooltip.click.hover :title=belbin></span></p>
+
+              <li v-for="member in groupmembers" v-bind:key="member">
+
+                <p>{{member}}<span><img class="lidbelbin" :src=belbinResult(belbin) :alt="belbin" v-b-tooltip.click.hover :title=belbin></span></p>
               </li>
             </ul>
           </b-col>
@@ -67,7 +69,7 @@
 <script>
   export default {
     props: [
-      'project', 'teachers'],
+      'project', 'teachers', 'groupmembers'],
     data() {
       return {
 
