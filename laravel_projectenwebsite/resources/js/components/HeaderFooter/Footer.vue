@@ -13,7 +13,6 @@
         text-align: center;
         background: #093667;
         line-height: 2rem;
-        position: absolute;
         color: navajowhite;
         bottom: 0;
         width: 100%;

@@ -1,13 +1,13 @@
 <template>
     <b-navbar toggleable="md">
         <b-navbar-brand href="https://www.odisee.be/">
-            <img src="assets/logo.png" alt="Logo" class="d-inline-block align-top logo">
+            <img src="img/logo.png" alt="Logo" class="d-inline-block align-top logo">
         </b-navbar-brand>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" class="fill stroke" is-nav>
             <ul id="navbarmenu">
-                <li class="nav-link"><a href="/home"> Overzicht</a> </li>
-                <li class="nav-link"><a href="/studenten"> Studenten</a> </li>
+                <li class="nav-link"><a href="/"> Overzicht</a> </li>
+                <li class="nav-link"><a href="/students"> Studenten</a> </li>
                 <li class="nav-link"><a href="/archief"> Archief</a> </li>
                 <li class="nav-link"><a href="/belbintest"> BELBIN test</a> </li>
                 <li class="nav-link"><a href="/nieuwproject"> Nieuw project</a> </li>
