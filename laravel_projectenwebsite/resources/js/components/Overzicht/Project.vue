@@ -18,17 +18,15 @@
            <span>{{status}}</span>
        </p>
 
-       <b-button href="#" size="sm" class="bekijkbtn">
-           <router-link
-                   :to="{ name: 'detailproject', params: { titel: titel, beschrijving: beschrijving, status: status }}"
-           >Bekijk</router-link>
+       <b-button :href="'/project/${proj_id}'" size="sm" class="bekijkbtn">
+           <li><a> Bekijk{{proj_id}}</a> </li>
        </b-button>
    </b-card>
 </template>
 
 <script>
    export default {
-       props: ["titel", "beschrijving", "groepsleden", "status"]
+       props: ["titel", "beschrijving", "groepsleden", "status", "proj_id"]
    };
 </script>
 
@@ -36,6 +34,7 @@
    .bekijkbtn {
        float: right;
        background-color: #093667;
+       list-style-type: none;
    }
    .project {
        width: 20rem;
@@ -71,7 +70,7 @@
        left: 0;
        height: 1px;
        width: 100%;
-       background-color: #252525;
+       background-color: #fff;
    }
    .project:before {
        top: 0;
@@ -94,7 +93,7 @@
        top: 0;
        height: 100%;
        width: 1px;
-       background-color: #252525;
+       background-color: #fff;
    }
    .project > *:before {
        left: 0;
@@ -110,7 +109,7 @@
        z-index: 9;
        height: 1px;
        width: 100%;
-       background-color: #f8a13e;
+       background-color: #093667;
    }
    .project > * > *:before {
        top: 0;
@@ -130,7 +129,7 @@
        z-index: 9;
        height: 100%;
        width: 1px;
-       background-color: #f8a13e;
+       background-color: #093667;
    }
    .project > * > * > *:before {
        left: 0;

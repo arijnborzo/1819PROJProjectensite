@@ -1,6 +1,7 @@
 <template>
     <div id="studenten">
-        <b-row align-h="center" class="mt-5">
+        <h3 id="alleprojecten">Alle studenten die ingeschreven zijn</h3>
+        <b-row align-h="center">
             <b-col cols="10">
                 <b-table responsive striped borderless :items="studenten" :fields="fields" head-variant="dark" caption-top :tbody-tr-class="rowClass">
                     <template slot="table-caption">✔: zit in een volle groep | ✖: heeft nog geen groep | ❔: zit in groep maar is nog niet vol</template>

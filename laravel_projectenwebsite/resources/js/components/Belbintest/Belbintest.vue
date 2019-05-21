@@ -60,4 +60,7 @@
 </script>
 
 <style>
+  h3 a {
+    color: #093667;
+  }
 </style>

@@ -1,17 +1,16 @@
 <template>
     <b-container id="overzicht" fluid>
+        <b-row>
+            <b-col cols="12">
+                <!--titel-->
+                <h3 id="alleprojecten">Alle projecten</h3>
+            </b-col>
+        </b-row>
         <b-row class="justify-content-center">
             <b-col md="5" lg="4" xl="3" class="filter">
                 <app-filter @filtersAangepast="filterForm = $event"></app-filter>
             </b-col>
             <b-col md="7" lg="8" xl="9">
-
-                <b-row>
-                    <b-col>
-                        <!--titel-->
-                        <h3 id="alleprojecten">Alle projecten</h3>
-                    </b-col>
-                </b-row>
                 <!--sorteren-->
                 <b-row>
                     <b-col>
@@ -19,7 +18,7 @@
                     </b-col>
                     <!--gridlistbtns-->
                     <b-col v-if="showicons">
-                            <b-button @click="gridView" class="gridlistbtn btns"><i class="fas fa-th-large" style="font-size: 1.2em;"></i></b-button>
+                        <b-button @click="gridView" class="gridlistbtn btns"><i class="fas fa-th-large" style="font-size: 1.2em;"></i></b-button>
                         <b-button @click="listView" class="gridlistbtn btns"><i class="fas fa-list"></i></b-button>
                     </b-col>
                 </b-row>
@@ -269,6 +268,10 @@ image.png
     #alleprojecten {
         text-align: center;
         margin-bottom: 2rem;
+    }
+    #alleprojecten {
+        text-align: center;
+        margin: 2rem 0;
     }
     .gridlist {
         margin: 0;
