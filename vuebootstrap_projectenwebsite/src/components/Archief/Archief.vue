@@ -1,7 +1,13 @@
 <template>
   <b-container id="overzicht" fluid>
+    <!--titel-->
+    <b-row>
+      <b-col>
+        <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren</h3>
+      </b-col>
+    </b-row>
     <!-- Filter en projecten -->
-    <b-row class="pt-5 justify-content-center">
+    <b-row class="justify-content-center">
       <!-- Filter -->
       <b-col md="4" lg="3" xl="2" class="filter">
         <app-archief-filter
@@ -11,13 +17,6 @@
       </b-col>
       <!-- Projecten -->
       <b-col md="8" lg="9" xl="10">
-        <!--titel-->
-        <b-row>
-          <b-col>
-            <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren</h3>
-          </b-col>
-        </b-row>
-
         <b-row>
           <!--sorteren-->
           <b-col>
