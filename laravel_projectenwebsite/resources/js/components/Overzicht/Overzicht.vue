@@ -102,6 +102,15 @@
         destroyed() {
             window.removeEventListener("resize", this.handleResize);
         },
+        watch: {
+            selected: function(nieuw, oud) {
+                if (nieuw == "az") {
+                    this.projecten.sort(this.compare);
+                } else if (nieuw === "za") {
+                    this.projecten.sort(this.compareReverse);
+                }
+            }
+        },
         methods: {
             handleResize() {
                 this.width = window.innerWidth;
@@ -110,6 +119,33 @@
                 } else {
                     this.showicons = true;
                 }
+            },
+            // Sorteren
+            compare(a, b) {
+                // Use toUpperCase() to ignore character casing
+                const titelA = a.titel.toUpperCase();
+                const titelB = b.titel.toUpperCase();
+
+                let comparison = 0;
+                if (titelA > titelB) {
+                    comparison = 1;
+                } else if (titelA < titelB) {
+                    comparison = -1;
+                }
+                return comparison;
+            },
+            compareReverse(a, b) {
+                // Use toUpperCase() to ignore character casing
+                const titelA = a.titel.toUpperCase();
+                const titelB = b.titel.toUpperCase();
+
+                let comparison = 0;
+                if (titelA > titelB) {
+                    comparison = 1;
+                } else if (titelA < titelB) {
+                    comparison = -1;
+                }
+                return comparison * -1;
             },
             gridView: function() {
                 var ul = document.getElementById("gridlist");

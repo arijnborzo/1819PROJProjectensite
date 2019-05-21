@@ -4,7 +4,7 @@
       <b-card class="mb-5 mt-5">
         <b-row>
           <b-col>
-            <h2 id="titel">{{project}}</h2>
+            <h2 id="titel">{{project[0].title}}</h2>
           </b-col>
           <b-col>
             <h6 style="line-height:38px; text-align:center">Status: in afwachting tot goedkeuring</h6>
@@ -12,7 +12,7 @@
         </b-row>
         <b-row id="beschrijvingVoorstel">
           <h6>Beschrijving</h6>
-          <p>{{project.full_description}}</p>
+          <p>{{project[0].full_description}}</p>
         </b-row>
         <b-row>
           <b-col cols="12" md="6">
@@ -20,14 +20,15 @@
               Hoofdvraag
             </h4>
             <p>
-              {{hoofdvraag}}
+              {{project[0].main_question}}
             </p>
             <h4>
               Nevenvragen
             </h4>
             <ul>
+              <p>{{project[0].side_questions}}</p>
               <li v-for="vraag in nevenvragen" v-bind:key="vraag">
-                <p>{{vraag}}</p>
+
               </li>
             </ul>
           </b-col>

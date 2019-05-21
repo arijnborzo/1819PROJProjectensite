@@ -96,6 +96,7 @@ class OverviewController extends Controller
       //echo $usergroupid, PHP_EOL;
       //print_r($groupsmembers);
       return view('detail',[
+        'groupsmembers' => $groupsmembers,
         'project' => $project,
         'teacher' => $teacher,
         'creator' => $creator,
