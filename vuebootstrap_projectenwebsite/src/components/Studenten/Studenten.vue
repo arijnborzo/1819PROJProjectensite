@@ -1,15 +1,26 @@
 <template>
-   <div id="studenten">
-     <b-row align-h="center" class="mt-5">
-       <b-col cols="10">
-           <b-table responsive striped borderless :items="studenten" :fields="fields" head-variant="dark" caption-top :tbody-tr-class="rowClass">
-              <template slot="table-caption">✔: zit in een volle groep | ✖: heeft nog geen groep | ❔: zit in groep maar is nog niet vol</template>
-              <span slot="belbin" slot-scope="data" v-html="data.value"></span>
-              <span slot="groep" slot-scope="data" v-html="data.value"></span>
-           </b-table>
-       </b-col>
-     </b-row>
-   </div>
+  <div id="studenten">
+    <b-row align-h="center" class="mt-5">
+      <b-col cols="10">
+        <b-table
+          responsive
+          striped
+          borderless
+          :items="studenten"
+          :fields="fields"
+          head-variant="dark"
+          caption-top
+          :tbody-tr-class="rowClass"
+        >
+          <template
+            slot="table-caption"
+          >✔: zit in een volle groep | ✖: heeft nog geen groep | ❔: zit in groep maar is nog niet vol</template>
+          <span slot="belbin" slot-scope="data" v-html="data.value"></span>
+          <span slot="groep" slot-scope="data" v-html="data.value"></span>
+        </b-table>
+      </b-col>
+    </b-row>
+  </div>
 </template>
 
 <script>
@@ -72,32 +83,27 @@ export default {
 
     // Alle studenten toevoegen
     var currentStudentGroup = 0;
-    for (var nieuwestud in this.students) {
+    for (var stud in this.students) {
       // Neem student
-      var nieuwestudent = this.students[nieuwestud];
+      var student = this.students[stud];
       // Check of we aan een nieuwe groepsvoorstel begonnen zijn
-      if (nieuwestudent.group_id != currentStudentGroup) {
+      if (student.group_id != currentStudentGroup) {
         currentStudentGroup++;
         // Groep vinden
-        var nieuwegroep = this.groepen[currentStudentGroup - 1];
+        var groep = this.groepen[currentStudentGroup - 1];
         // Eerste lid toevoegen
-        var nieuwenaam = `${nieuwestudent.name} ${nieuwestudent.surname}`;
+        var naam = `${student.surname} ${student.name}`;
         // Project voorstel
-        var nieuweprojectvoorstel = nieuwestudent.projectvoorstel;
+        var projectvoorstel = student.projectvoorstel;
         // Belbin
-        var nieuwebelbin = nieuwestudent.belbin;
+        var belbin = student.belbin;
         // object nieuwe vueproject aanmaken
-        var nieuwevuestudent = {
-          nieuwegroep,
-          nieuwenaam,
-          nieuweprojectvoorstel,
-          nieuwebelbin
-        };
+        var vuestudent = { groep, naam, projectvoorstel, belbin };
         // toevoegen aan vue component array genaamd projecten
-        this.studenten.push(nieuwevuestudent);
+        this.studenten.push(vuestudent);
       } else {
         var groep = this.groepen[currentStudentGroup - 1];
-        var naam = `${student.name} ${student.surname}`;
+        var naam = `${student.surname} ${student.name}`;
         var projectvoorstel = student.projectvoorstel;
         var belbin = student.belbin;
         var vuestudent = { groep, naam, projectvoorstel, belbin };

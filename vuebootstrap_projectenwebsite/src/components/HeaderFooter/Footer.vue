@@ -1,7 +1,10 @@
 <template>
-   <div class="footer">
-       <span>2018-2019: Projecten 1 - &copy;ICTEO14<br />Andreas Lauwers - Arijn Borzo - Arno Stas - Lukas Petit </span>
-   </div>
+  <div class="footer">
+    <span>
+      2018-2019: Projecten 1 - &copy;ICTEO14
+      <br>Andreas Lauwers - Arijn Borzo - Arno Stas - Lukas Petit
+    </span>
+  </div>
 </template>
 
 <script>

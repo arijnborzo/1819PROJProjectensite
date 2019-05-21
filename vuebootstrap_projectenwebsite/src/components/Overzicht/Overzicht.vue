@@ -1,43 +1,50 @@
 <template>
-    <b-container id="overzicht" fluid>
-      <b-row class="justify-content-center">
-        <b-col md="5" lg="4" xl="3" class="filter">
-          <app-filter @filtersAangepast="filterForm = $event"></app-filter>
-        </b-col>
-        <b-col md="7" lg="8" xl="9">
-            
-            <b-row>
-              <b-col>
-              <!--titel-->
-                <h3 id="alleprojecten">Alle projecten</h3>
-              </b-col>
-            </b-row>
-              <!--sorteren-->
-            <b-row>
-              <b-col>
-                <b-form-select id="sorteren" v-model="selected" required :options="sorteeropties"></b-form-select>
-              </b-col>
-              <!--gridlistbtns-->
-              <b-col v-if="showicons">
-                <b-button @click="gridView" class="gridlistbtn btns">  <i class="fas fa-th-large" style="font-size: 1.2em;"></i></b-button>
-                <b-button @click="listView" class="gridlistbtn btns"><i class="fas fa-list"></i></b-button>
-              </b-col>
-            </b-row>
-
-            <!--gridlist-->
-            <b-row id="gridlist" class="gridul">
-              
-              <div v-for="project in projectenX" v-bind:key=project.titel>
-                <transition name="fade">
-                  <b-col v-show="filtered(project)">
-                    <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden :status=project.status></app-project>
-                  </b-col>
-                </transition>
-              </div>
-            </b-row>
+  <b-container id="overzicht" fluid>
+    <b-row>
+      <b-col cols="12">
+        <!--titel-->
+        <h3 id="alleprojecten">Alle projecten</h3>
+      </b-col>
+    </b-row>
+    <b-row class="justify-content-center">
+      <b-col md="5" lg="4" xl="3" class="filter">
+        <app-filter @filtersAangepast="filterForm = $event"></app-filter>
+      </b-col>
+      <b-col md="7" lg="8" xl="9">
+        <!--sorteren-->
+        <b-row>
+          <b-col>
+            <b-form-select id="sorteren" v-model="selected" required :options="sorteeropties"></b-form-select>
           </b-col>
-      </b-row>
-    </b-container>
+          <!--gridlistbtns-->
+          <b-col v-if="showicons">
+            <b-button @click="gridView" class="gridlistbtn btns">
+              <i class="fas fa-th-large" style="font-size: 1.2em;"></i>
+            </b-button>
+            <b-button @click="listView" class="gridlistbtn btns">
+              <i class="fas fa-list"></i>
+            </b-button>
+          </b-col>
+        </b-row>
+
+        <!--gridlist-->
+        <b-row id="gridlist" class="gridul">
+          <div v-for="project in projectenX" v-bind:key="project.titel">
+            <transition name="fade">
+              <b-col v-show="filtered(project)">
+                <app-project
+                  :titel="project.titel"
+                  :beschrijving="project.beschrijving"
+                  :groepsleden="project.groepsleden"
+                  :status="project.status"
+                ></app-project>
+              </b-col>
+            </transition>
+          </div>
+        </b-row>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -141,6 +148,15 @@ export default {
   destroyed() {
     window.removeEventListener("resize", this.handleResize);
   },
+  watch: {
+    selected: function(nieuw, oud) {
+      if (nieuw == "az") {
+        this.projecten.sort(this.compare);
+      } else if (nieuw === "za") {
+        this.projecten.sort(this.compareReverse);
+      }
+    }
+  },
   methods: {
     handleResize() {
       this.width = window.innerWidth;
@@ -149,6 +165,33 @@ export default {
       } else {
         this.showicons = true;
       }
+    },
+    // Sorteren
+    compare(a, b) {
+      // Use toUpperCase() to ignore character casing
+      const titelA = a.titel.toUpperCase();
+      const titelB = b.titel.toUpperCase();
+
+      let comparison = 0;
+      if (titelA > titelB) {
+        comparison = 1;
+      } else if (titelA < titelB) {
+        comparison = -1;
+      }
+      return comparison;
+    },
+    compareReverse(a, b) {
+      // Use toUpperCase() to ignore character casing
+      const titelA = a.titel.toUpperCase();
+      const titelB = b.titel.toUpperCase();
+
+      let comparison = 0;
+      if (titelA > titelB) {
+        comparison = 1;
+      } else if (titelA < titelB) {
+        comparison = -1;
+      }
+      return comparison * -1;
     },
     gridView: function() {
       var ul = document.getElementById("gridlist");
@@ -159,6 +202,7 @@ export default {
         proj.classList.remove("listli");
         proj.classList.add("gridli");
       });
+      this.gridListTekstStyling("7.75rem", "10.75rem");
     },
     listView: function() {
       var ul = document.getElementById("gridlist");
@@ -169,13 +213,17 @@ export default {
         proj.classList.remove("gridli");
         proj.classList.add("listli");
       });
+      this.gridListTekstStyling("auto", "auto");
+    },
+    gridListTekstStyling(grheight, beschrheight) {
       var beschrijvingtekst = document.getElementsByClassName("beschrijving");
       Array.prototype.filter.call(beschrijvingtekst, function(beschr) {
-        beschr.style.height = "auto";
+        beschr.style.height = beschrheight;
       });
+
       var groepsledentekst = document.getElementsByClassName("groepsleden");
       Array.prototype.filter.call(groepsledentekst, function(groepslid) {
-        groepslid.style.height = "auto";
+        groepslid.style.height = grheight;
       });
     },
     filterOpNaam(waardeZoeken, projectenNaam) {
@@ -258,17 +306,6 @@ export default {
 body {
   background: #eef1f4;
 }
-/*
-@media screen and (max-height: 900px) {
-  html,
-  body {
-    height: 100%;
-  }
-  #overzicht {
-    height: 100%;
-  }
-}
-*/
 /* GRIDLIST */
 #alleprojecten {
   text-align: center;
@@ -277,6 +314,7 @@ body {
 .gridlist {
   margin: 0;
 }
+
 .listul {
   width: auto;
 }
@@ -331,6 +369,7 @@ ul {
   }
   #sorteren {
     width: 100%;
+    margin-top: 1rem;
   }
 }
 @media (max-width: 767px) {
