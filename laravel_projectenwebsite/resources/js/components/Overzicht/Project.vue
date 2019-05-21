@@ -18,8 +18,8 @@
            <span>{{status}}</span>
        </p>
 
-       <b-button :href="'/project/${proj_id}'" size="sm" class="bekijkbtn">
-           <li><a> Bekijk{{proj_id}}</a> </li>
+       <b-button :href="'/project/' + proj_id" size="sm" class="bekijkbtn">
+           Bekijk
        </b-button>
    </b-card>
 </template>

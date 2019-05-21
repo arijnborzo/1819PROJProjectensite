@@ -60,7 +60,7 @@ class OverviewController extends Controller
       $projects = Project::join('groups', 'projects.id', '=', 'groups.project_id')
           ->join('students', 'students.group_id','=', 'groups.id')
           ->join('users', 'users.id', '=', 'students.id' )
-          ->select('projects.*','users.name', 'users.surname', 'students.group_id', 'projects.created_at')
+          ->select('projects.*','users.name', 'users.surname', 'students.group_id')
           ->whereYear('projects.created_at', '!=', $year)
           ->orderBy('group_id', 'ASC')
           ->get();
