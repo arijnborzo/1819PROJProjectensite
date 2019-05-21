@@ -13,47 +13,7 @@ export const routes = [
   { path: "", component: LoginForm },
   {
     path: "/home",
-    component: Home,
-    props: {
-      projects: {
-        project1: {
-          title: "Projectensite",
-          short_description:
-            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
-          name: "Andreas",
-          surname: "Lauwers",
-          status: "Accepted",
-          group_id: 1
-        },
-        project2: {
-          title: "Projectensite",
-          short_description:
-            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
-          name: "Lukas",
-          surname: "Petit",
-          status: "Accepted",
-          group_id: 1
-        },
-        project3: {
-          title: "MacroKeyboard",
-          short_description:
-            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
-          name: "Arno",
-          surname: "Stas",
-          status: "Declined",
-          group_id: 2
-        },
-        project4: {
-          title: "MacroKeyboard",
-          short_description:
-            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
-          name: "Pol",
-          surname: "Lol",
-          status: "Declined",
-          group_id: 2
-        }
-      }
-    }
+    component: Home
   },
   { path: "/login", component: LoginForm },
   {
@@ -113,7 +73,54 @@ export const routes = [
       }
     }
   },
-  { path: "/archief", component: Archief },
+  {
+    path: "/archief",
+    component: Archief,
+    props: {
+      projects: {
+        project1: {
+          title: "Projectensite",
+          short_description:
+            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
+          name: "Andreas",
+          surname: "Lauwers",
+          status: "Accepted",
+          group_id: 1,
+          created_at: "2019-05-10"
+        },
+        project2: {
+          title: "Projectensite",
+          short_description:
+            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
+          name: "Lukas",
+          surname: "Petit",
+          status: "Accepted",
+          group_id: 1,
+          created_at: "2019-05-10"
+        },
+        project3: {
+          title: "MacroKeyboard",
+          short_description:
+            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
+          name: "Arno",
+          surname: "Stas",
+          status: "Declined",
+          group_id: 2,
+          created_at: "2018-05-10"
+        },
+        project4: {
+          title: "MacroKeyboard",
+          short_description:
+            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
+          name: "Pol",
+          surname: "Lol",
+          status: "Declined",
+          group_id: 2,
+          created_at: "2018-05-10"
+        }
+      }
+    }
+  },
   { path: "/belbintest", component: Belbintest },
   { path: "/nieuwproject", component: NieuwProject },
   {

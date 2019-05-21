@@ -14,10 +14,10 @@ export default {};
 <style>
 .footer {
   text-align: center;
-  background: #093667;
+  background-color: #ced9e6;
   line-height: 2rem;
   position: absolute;
-  color: navajowhite;
+  color: #093667;
   bottom: 0;
   width: 100%;
   height: 4rem;

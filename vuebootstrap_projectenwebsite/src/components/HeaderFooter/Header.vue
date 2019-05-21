@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="md">
+  <b-navbar id="bordermenu" toggleable="md">
     <b-navbar-brand href="https://www.odisee.be/">
       <img src="assets/logo.png" alt="Logo" class="d-inline-block align-top logo">
     </b-navbar-brand>
@@ -51,7 +51,10 @@ export default {};
   list-style: none;
   text-align: center;
   margin: 0;
-  border-bottom: 1px solid #093667;
+}
+#bordermenu {
+  background-color: #ced9e6;
+  box-shadow: 0px -5px 20px #093667;
 }
 .nav-link {
   float: left;
@@ -121,7 +124,7 @@ nav ul li a:hover {
 
 /* MEDIA QUERYS */
 @media (max-width: 1070px) {
-  #navbarmenu {
+  #bordermenu {
     border-bottom: none;
   }
 }

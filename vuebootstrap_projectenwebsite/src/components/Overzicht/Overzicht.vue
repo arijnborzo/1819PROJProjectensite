@@ -53,7 +53,7 @@ import Project from "./Project";
 
 export default {
   props: {
-    projects: Object
+    projects: Array
   },
   data() {
     return {
@@ -258,7 +258,6 @@ export default {
       var naamFilter = true;
       var groepsledenFilter = true;
       var statusFilter = true;
-
       /* Filter op naam */
       if (
         typeof this.filterForm.naam === "undefined" ||
@@ -309,7 +308,7 @@ body {
 /* GRIDLIST */
 #alleprojecten {
   text-align: center;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 .gridlist {
   margin: 0;

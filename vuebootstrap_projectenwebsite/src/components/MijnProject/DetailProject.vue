@@ -56,8 +56,16 @@
             </ul>
           </b-col>
           <b-col id="btns" md="6" align-self="end">
-            <b-button @click="check()" style="float:right" variant="primary">Voeg groepslid toe</b-button>
-            <b-button variant="primary">Pas voorstel aan</b-button>
+            <b-button
+              v-b-modal.modal-1
+              @click="verstuurGroepsverzoek()"
+              class="btns"
+              style="float:right"
+              v-show="showButton()"
+            >Verstuur verzoek om lid te worden</b-button>
+            <b-modal id="modal-1" title="Lidmaatschap" hide-footer>
+              <p>Er is een verzoek verstuurd!</p>
+            </b-modal>
           </b-col>
         </b-row>
       </b-card>
@@ -87,7 +95,8 @@ export default {
         shaper: "../../assets/shaper.png",
         plant: "../../assets/plant.png",
         teamworker: "../../assets/teamworker.png"
-      }
+      },
+      showBtn: true
     };
   },
   methods: {
@@ -101,8 +110,17 @@ export default {
       if (value === "plant") return this.photo.plant;
       if (value === "teamworker") return this.photo.teamworker;
     },
-    check() {
-      console.log(this.project);
+    verstuurGroepsverzoek() {
+      this.showBtn = false;
+    },
+    showButton() {
+      if (this.showBtn == false) {
+        return false;
+      } else if (this.project.groupmembers > 3) {
+        return false;
+      } else {
+        return true;
+      }
     }
   }
 };

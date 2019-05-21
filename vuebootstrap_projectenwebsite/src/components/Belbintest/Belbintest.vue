@@ -1,7 +1,6 @@
 <template>
-    <div>
-      <b-container>
-      
+  <div>
+    <b-container>
       <b-row class="mt-5">
         <b-col cols="12">
           <h3 class="text-center">De Belbin test</h3>
@@ -14,22 +13,32 @@
         <b-col cols="12">
           <b-card class="p-2">
             <b-card-text>
-              <h3><a href="https://www.thesis.nl/testen/belbin-test" target="_blank">Klik hier voor de Belbintest</a><br /></h3>
-              De Belbintest wordt afgenomen op de site www.thesis.nl.<br />
-              Daarna krijgt u een resultaat toegewezen. Gelieve de correcte teamrol hieronder te selecteren:<br />
+              <h3>
+                <a
+                  href="https://www.thesis.nl/testen/belbin-test"
+                  target="_blank"
+                >Klik hier voor de Belbintest</a>
+                <br>
+              </h3>De Belbintest wordt afgenomen op de site www.thesis.nl.
+              <br>Daarna krijgt u een resultaat toegewezen. Gelieve de correcte teamrol hieronder te selecteren:
+              <br>
             </b-card-text>
             <b-form @submit="onSubmit">
-              <b-form-group id="input-group-1" label="Selecteer jouw Belbinrol" label-for="belbinrol">
+              <b-form-group
+                id="input-group-1"
+                label="Selecteer jouw Belbinrol"
+                label-for="belbinrol"
+              >
                 <b-form-select id="belbinrol" v-model="belbin" required :options="belbinrollen"></b-form-select>
               </b-form-group>
               <p>Je kan niet bij een groep horen of er kan geen voorstel ingediend worden zonder dat je een Belbinrol hebt.</p>
-            <b-button type="submit" class="btns">Verzenden</b-button>
+              <b-button type="submit" class="btns">Verzenden</b-button>
             </b-form>
-          </b-card>                                   
+          </b-card>
         </b-col>
       </b-row>
-      </b-container>
-    </div>
+    </b-container>
+  </div>
 </template>
 
 <script>
@@ -60,4 +69,7 @@ export default {
 </script>
 
 <style>
+h3 a {
+  color: #093667;
+}
 </style>

@@ -47,7 +47,6 @@ export default {
     return {
       form: {
         naam: "",
-        //categorie: null,
         groepsleden: [],
         status: []
       },

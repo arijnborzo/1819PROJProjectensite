@@ -36,9 +36,9 @@
 
         <!--gridlist-->
         <b-row id="gridlist" class="gridul">
-          <div v-for="project in projectenX" v-bind:key="project.titel">
+          <div v-for="project in projecten" v-bind:key="project.titel">
             <transition name="fade">
-              <b-col v-show="filteredOpJaar(project.created_at)">
+              <b-col v-show="filteredOpJaar(project.aanmaakdatum)">
                 <app-project
                   :titel="project.titel"
                   :beschrijving="project.beschrijving"
@@ -73,36 +73,6 @@ export default {
       jaartallen: [],
       geselecteerdeJaartallen: [],
       projecten: [],
-      projectenX: [
-        {
-          titel: "Projectensite",
-          beschrijving:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui vivamus arcu felis bibendum. Eu mi bibendum neque egestas congue quisque egestas. At auctor urna nunc id cursus metus. Enim ut sem viverra aliquet eget. Ultrices sagittis orci a scelerisque purus semper eget duis at. Semper feugiat nibh sed pulvinar proin gravida. Metus vulputate eu scelerisque felis imperdiet proin. Id aliquet risus feugiat in ante metus dictum at tempor. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Dui nunc mattis enim ut tellus elementum sagittis. Nibh ipsum consequat nisl vel pretium lectus. Enim tortor at auctor urna nunc id cursus metus. At risus viverra adipiscing at in tellus. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Dictum non consectetur a erat nam at lectus urna. Pretium vulputate sapien nec sagittis. Vitae purus faucibus ornare suspendisse sed nisi. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus.",
-          groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
-          created_at: "2019-05-11 14:27:11"
-        },
-        {
-          titel: "Robotje maken",
-          beschrijving:
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-          groepsleden: ["Arno Stasssssss", "Arno Stas", "Arno Stas", "/"],
-          created_at: "2018-05-11 14:27:11"
-        },
-        {
-          titel: "Projectensitee",
-          beschrijving:
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-          groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
-          created_at: "2019-05-11 14:27:11"
-        },
-        {
-          titel: "MacroKeyboard",
-          beschrijving:
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-          groepsleden: ["Arno Stas", "Arno Stas", "/", "/"],
-          created_at: "2017-05-11 14:27:11"
-        }
-      ],
       show: true,
       showicons: true,
       width: 0,
@@ -116,8 +86,8 @@ export default {
   mounted() {
     var currentGroup = 0;
     var jaarInArrayBoolean = true;
-    for (var projjj in this.projectenX) {
-      var jaar = this.projectenX[projjj].created_at.slice(0, 4);
+    for (var projjj in this.projects) {
+      var jaar = this.projects[projjj].created_at.slice(0, 4);
       jaarInArrayBoolean = this.jaartallen.includes(jaar);
       if (!jaarInArrayBoolean) {
         this.jaartallen.push(jaar);
@@ -143,9 +113,18 @@ export default {
         var titel = project.title;
         // beschrijving toevoegen
         var beschrijving = project.short_description;
+        // status vh project toevoegen
         var status = project.status;
+        // aanmaakdatum (voor filter op jaar)
+        var aanmaakdatum = project.created_at;
         // object nieuwe vueproject aanmaken
-        var vueproject = { titel, beschrijving, groepsleden, status };
+        var vueproject = {
+          titel,
+          beschrijving,
+          groepsleden,
+          status,
+          aanmaakdatum
+        };
         // toevoegen aan vue component array genaamd projecten
         this.projecten.push(vueproject);
       } else {
@@ -161,6 +140,15 @@ export default {
   destroyed() {
     window.removeEventListener("resize", this.handleResize);
   },
+  watch: {
+    selected: function(nieuw, oud) {
+      if (nieuw == "az") {
+        this.projecten.sort(this.compare);
+      } else if (nieuw === "za") {
+        this.projecten.sort(this.compareReverse);
+      }
+    }
+  },
   methods: {
     handleResize() {
       this.width = window.innerWidth;
@@ -169,6 +157,33 @@ export default {
       } else {
         this.showicons = true;
       }
+    },
+    // Sorteren
+    compare(a, b) {
+      // Use toUpperCase() to ignore character casing
+      const titelA = a.titel.toUpperCase();
+      const titelB = b.titel.toUpperCase();
+
+      let comparison = 0;
+      if (titelA > titelB) {
+        comparison = 1;
+      } else if (titelA < titelB) {
+        comparison = -1;
+      }
+      return comparison;
+    },
+    compareReverse(a, b) {
+      // Use toUpperCase() to ignore character casing
+      const titelA = a.titel.toUpperCase();
+      const titelB = b.titel.toUpperCase();
+
+      let comparison = 0;
+      if (titelA > titelB) {
+        comparison = 1;
+      } else if (titelA < titelB) {
+        comparison = -1;
+      }
+      return comparison * -1;
     },
     gridView: function() {
       var ul = document.getElementById("gridlist");
