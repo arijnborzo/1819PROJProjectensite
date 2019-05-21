@@ -1,46 +1,57 @@
 <template>
-    <b-container id="overzicht" fluid>
-      <!-- Filter en projecten -->
-      <b-row class="pt-5 justify-content-center">
-
-        <!-- Filter -->
-        <b-col md="4" lg="3" xl="2" class="filter">
-          <app-archief-filter :jaartallen=this.jaartallen @filtersAangepast="geselecteerdeJaartallen = $event"></app-archief-filter>
-        </b-col>
-        <!-- Projecten -->
-        <b-col md="8" lg="9" xl="10">            
-              <!--titel-->
-            <b-row>
-              <b-col>
-                <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren</h3>
-              </b-col>
-            </b-row>
-
-            <b-row>
-              <!--sorteren-->
-              <b-col>
-                <b-form-select id="sorteren" v-model="selected" required :options="sorteeropties"></b-form-select>
-              </b-col>
-              <!--gridlistbtns-->
-              <b-col v-if="showicons">
-                <b-button @click="gridView" class="gridlistbtn btns">  <i class="fas fa-th-large" style="font-size: 1.2em;"></i></b-button>
-                <b-button @click="listView" class="gridlistbtn btns"><i class="fas fa-list"></i></b-button>
-              </b-col>
-            </b-row>
-
-            <!--gridlist-->
-            <b-row id="gridlist" class="gridul">
-              <div v-for="project in projectenX" v-bind:key=project.titel>
-                <transition name="fade">
-                  <b-col v-show="filteredOpJaar(project.created_at)">
-                    <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden :status=project.status></app-project>
-                  </b-col>
-                </transition>
-              </div>
-            </b-row>
+  <b-container id="overzicht" fluid>
+    <!-- Filter en projecten -->
+    <b-row class="pt-5 justify-content-center">
+      <!-- Filter -->
+      <b-col md="4" lg="3" xl="2" class="filter">
+        <app-archief-filter
+          :jaartallen="this.jaartallen"
+          @filtersAangepast="geselecteerdeJaartallen = $event"
+        ></app-archief-filter>
+      </b-col>
+      <!-- Projecten -->
+      <b-col md="8" lg="9" xl="10">
+        <!--titel-->
+        <b-row>
+          <b-col>
+            <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren</h3>
           </b-col>
-      </b-row>
-    </b-container>
+        </b-row>
+
+        <b-row>
+          <!--sorteren-->
+          <b-col>
+            <b-form-select id="sorteren" v-model="selected" required :options="sorteeropties"></b-form-select>
+          </b-col>
+          <!--gridlistbtns-->
+          <b-col v-if="showicons">
+            <b-button @click="gridView" class="gridlistbtn btns">
+              <i class="fas fa-th-large" style="font-size: 1.2em;"></i>
+            </b-button>
+            <b-button @click="listView" class="gridlistbtn btns">
+              <i class="fas fa-list"></i>
+            </b-button>
+          </b-col>
+        </b-row>
+
+        <!--gridlist-->
+        <b-row id="gridlist" class="gridul">
+          <div v-for="project in projectenX" v-bind:key="project.titel">
+            <transition name="fade">
+              <b-col v-show="filteredOpJaar(project.created_at)">
+                <app-project
+                  :titel="project.titel"
+                  :beschrijving="project.beschrijving"
+                  :groepsleden="project.groepsleden"
+                  :status="project.status"
+                ></app-project>
+              </b-col>
+            </transition>
+          </div>
+        </b-row>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -168,6 +179,7 @@ export default {
         proj.classList.remove("listli");
         proj.classList.add("gridli");
       });
+      this.gridListTekstStyling("7.75rem", "10.75rem");
     },
     listView: function() {
       var ul = document.getElementById("gridlist");
@@ -178,13 +190,17 @@ export default {
         proj.classList.remove("gridli");
         proj.classList.add("listli");
       });
+      this.gridListTekstStyling("auto", "auto");
+    },
+    gridListTekstStyling(grheight, beschrheight) {
       var beschrijvingtekst = document.getElementsByClassName("beschrijving");
       Array.prototype.filter.call(beschrijvingtekst, function(beschr) {
-        beschr.style.height = "auto";
+        beschr.style.height = beschrheight;
       });
+
       var groepsledentekst = document.getElementsByClassName("groepsleden");
       Array.prototype.filter.call(groepsledentekst, function(groepslid) {
-        groepslid.style.height = "auto";
+        groepslid.style.height = grheight;
       });
     },
     filteredOpJaar(datum) {

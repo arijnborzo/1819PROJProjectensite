@@ -1,30 +1,29 @@
 <template>
-     <b-card
-        v-bind:title=titel 
-        tag="article"
-        class="mt-3 mb-3 project"
-        >
-        <b-card-text class="beschrijving">
-          <h6>Beschrijving</h6>
-          {{beschrijving}}
-        </b-card-text>
+  <b-card v-bind:title="titel" tag="article" class="mt-3 mb-3 project">
+    <b-card-text class="beschrijving">
+      <h6>Beschrijving</h6>
+      {{beschrijving}}
+    </b-card-text>
 
-        <b-card-text class="groepsleden">
-          <h6>Groepsleden</h6>
-          <ul>
-            <li v-for="(lid, index) in groepsleden" v-bind:key=index>
-              <span>{{lid}}</span>
-            </li>
-          </ul>
-        </b-card-text>
-        <p style="float:left">Status: <span>{{status}}</span></p>
-        
-        <b-button href="#" size="sm" class="bekijkbtn">
-          <router-link :to="{ name: 'detailproject', params: { titel: titel, beschrijving: beschrijving, status: status }}">
-            Bekijk
-          </router-link>
-        </b-button>
-    </b-card>
+    <b-card-text class="groepsleden">
+      <h6>Groepsleden</h6>
+      <ul>
+        <li v-for="(lid, index) in groepsleden" v-bind:key="index">
+          <span>{{lid}}</span>
+        </li>
+      </ul>
+    </b-card-text>
+    <p style="float:left">
+      Status:
+      <span>{{status}}</span>
+    </p>
+
+    <b-button href="#" size="sm" class="bekijkbtn">
+      <router-link
+        :to="{ name: 'detailproject', params: { titel: titel, beschrijving: beschrijving, status: status }}"
+      >Bekijk</router-link>
+    </b-button>
+  </b-card>
 </template>
 
 <script>
@@ -43,7 +42,6 @@ export default {
   height: 28rem;
   border: 1px;
   float: left;
-  background: linear-gradient(135deg, #fad961 0%, #f8a13e 100%);
 }
 .beschrijving {
   height: 10.75rem;
@@ -112,7 +110,7 @@ export default {
   z-index: 9;
   height: 1px;
   width: 100%;
-  background-color: #f8a13e;
+  background-color: #3998ff;
 }
 .project > * > *:before {
   top: 0;
@@ -132,7 +130,7 @@ export default {
   z-index: 9;
   height: 100%;
   width: 1px;
-  background-color: #f8a13e;
+  background-color: #3998ff;
 }
 .project > * > * > *:before {
   left: 0;
