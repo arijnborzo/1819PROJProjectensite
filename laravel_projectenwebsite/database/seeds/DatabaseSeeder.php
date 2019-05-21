@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(create_comments_seeder::class);
         $this->call(create_externs_seeder::class);
         $this->call(create_smartcriteria_seeder::class);
+        $this->call(create_questions_seeder::Class);
     }
 }

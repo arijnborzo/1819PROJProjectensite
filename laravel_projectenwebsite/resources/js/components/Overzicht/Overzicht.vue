@@ -70,7 +70,6 @@
             appProject: Project
         },
         mounted() {
-            console.log("kjhqkfjlh");
             var currentGroup = 0;
             for (var proj in this.projects) {
                 // Neem project
@@ -100,7 +99,6 @@
             }
         },
         created() {
-            console.log("lololol");
             window.addEventListener("resize", this.handleResize);
             this.handleResize();
         },

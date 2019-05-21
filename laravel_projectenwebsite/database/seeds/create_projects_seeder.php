@@ -20,6 +20,7 @@ class create_projects_seeder extends Seeder
             'teacher_id' => 5,
             'creator_id' => 1,
             'created_at' => date("Y-m-d H:i:s"),
+            'main_question' => 'Is het mogelijk de nieuwe Projectenwebsite te maken?'
         ]);
         DB::table('projects')->insert([
             'id' => 2,
@@ -30,6 +31,7 @@ class create_projects_seeder extends Seeder
             'teacher_id' => 6,
             'creator_id' => 8,
             'created_at' => date("Y-m-d H:i:s"),
+            'main_question' => 'kunnen we met een boot varen?'
         ]);
         DB::table('projects')->insert([
             'id' => 3,
@@ -40,6 +42,7 @@ class create_projects_seeder extends Seeder
             'teacher_id' => 7,
             'creator_id' => 9,
             'created_at' => date("Y-m-d H:i:s"),
+            'main_question' => 'Laten we het gras groeien of rijden we het af?'
         ]);
         DB::table('projects')->insert([
             'id' => 4,
@@ -50,6 +53,7 @@ class create_projects_seeder extends Seeder
             'teacher_id' => 5,
             'creator_id' => 10,
             'created_at' => date("Y-m-d H:i:s"),
+            'main_question' => 'Smaakt het?'
         ]);
         DB::table('projects')->insert([
             'id' => 5,
@@ -60,6 +64,7 @@ class create_projects_seeder extends Seeder
             'teacher_id' => 6,
             'creator_id' => 2,
             'created_at' => date("Y-m-d H:i:s"),
+            'main_question' => 'Was het ei er eerder of de kip?'
         ]);
     }
 }

@@ -4,7 +4,7 @@
       <b-card class="mb-5 mt-5">
         <b-row>
           <b-col>
-            <h2 id="titel">{{titel}}</h2>
+            <h2 id="titel">{{project.title}}</h2>
           </b-col>
           <b-col>
             <h6 style="line-height:38px; text-align:center">Status: in afwachting tot goedkeuring</h6>
@@ -12,7 +12,7 @@
         </b-row>
         <b-row id="beschrijvingVoorstel">
           <h6>Beschrijving</h6>
-          <p>{{beschrijving}}</p>
+          <p>{{project.full_description}}</p>
         </b-row>
         <b-row>
           <b-col cols="12" md="6">
@@ -66,16 +66,19 @@
 <script>
   export default {
     props: [
-      "titel",
-      "status",
-      "beschrijving",
-      "hoofdvraag",
-      "nevenvragen",
-      "smart",
-      "groepsleden"
-    ],
+      'project', 'teacher'],
     data() {
       return {
+        fields: [
+            {
+                key: "project.title",
+                html: true
+            },
+            {
+                key: "project.full_description",
+                sortable: true
+            },
+        ],
         photo: {
           coordinator: "../../assets/co-ordinator.png",
           completor: "../../assets/completor.png",

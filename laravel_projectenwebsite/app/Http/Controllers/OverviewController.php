@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Group;
 use App\Project;
-use App\User;
 use App\Student;
+use App\Teacher;
+use App\User;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -73,22 +74,33 @@ class OverviewController extends Controller
     public function detail($id)
     {
       $user = Auth::user();
+      $projectgroup = Project::find($id)->group;
+      $students = Group::find($projectgroup['id'])->students;
+      $groupsmembers = [];
+      foreach ($students as $student) {
+        array_push($groupsmembers, Student::find($student['id'])->user);
+        echo Student::find($student['id'])->user;
+      }
+      if (Student::find((int)$user['id'])->value('group_id') == $projectgroup['id']){
+        echo 'Dit is mijn groep';
+        $belongstoproject = TRUE;
+      } else{
+        echo 'Dit is NIET mijn groep';
+        $belongstoproject = FALSE;
+      }
 
-//      $usergroupid = Student::where('id', $user.id)->value('group_id');
-      $projectgroupid = Group::where('project_id', $id)->value('id');
-        $project = Project::where('id', $id) ->get();
-        echo $user;
-//      if ($usergroupid == $id) {
-//        //user belongs to group of projects
-//        $belongstoproject = TRUE;
-//      }
-//      else {
-//        $belongstoproject = FALSE;
-//      }
+      $projectsmartcriteria = Project::find($id)->smartcriterium;
+      $project = Project::where('id', $id)->get();
+      $teacher =Project::find($id)->teacher->user;
+      $creator = Project::find($id)->user;
+      //echo $usergroupid, PHP_EOL;
+      //print_r($groupsmembers);
       return view('detail',[
         'project' => $project,
-        'user' => $user
-//        'belongstoproject' => $belongstoproject
+        'teacher' => $teacher,
+        'creator' => $creator,
+        'user' => $user,
+        'belongstoproject' => $belongstoproject
       ]);
     }
 

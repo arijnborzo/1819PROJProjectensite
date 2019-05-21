@@ -22,7 +22,7 @@ class CreateSmartcriteriaTable extends Migration
             $table->string('tolerant');
         });
         Schema::table('smartcriteria', function (Blueprint $table) {
-            $table->foreign('project_id')->references('id')->on('users');
+            $table->foreign('project_id')->references('id')->on('projects');
         });
     }
 

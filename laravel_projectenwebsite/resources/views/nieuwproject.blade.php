@@ -4,5 +4,5 @@
 @section('name', 'NewProject')
 @section('content')
     <newproject_vue></newproject_vue>
-{{--    <newproject_vue :projects="{{ $projects }}></newproject_vue>--}}
+{{--    <newproject_vue :projects="{{ $projects }}"></newproject_vue>--}}
 @endsection
