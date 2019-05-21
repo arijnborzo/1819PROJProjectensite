@@ -1,6 +1,7 @@
 <template>
   <div id="studenten">
-    <b-row align-h="center" class="mt-5">
+    <h3 id="alleprojecten">Alle studenten die ingeschreven zijn</h3>
+    <b-row align-h="center">
       <b-col cols="10">
         <b-table
           responsive

@@ -114,6 +114,7 @@ export default {
     appProject: Project
   },
   mounted() {
+    console.log(project);
     var currentGroup = 0;
 
     for (var proj in this.projects) {
