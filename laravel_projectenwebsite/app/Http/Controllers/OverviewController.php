@@ -76,7 +76,6 @@ class OverviewController extends Controller
       $user = Auth::user();
       $projectgroup = Project::find($id)->group;
       $students = Group::find($projectgroup['id'])->students;
-      echo $projectgroup;
       $groupmembers=[];
       $groupmembers = Student::join('users', 'students.id', '=', 'users.id')->where('group_id', '=', $projectgroup['id'])->get();
       /*foreach ($students as $student) {
@@ -87,19 +86,18 @@ class OverviewController extends Controller
       } else{
         $belongstoproject = FALSE;
       }
-      $projectsmartcriteria = Project::find($id)->smartcriterium;
+      $projectsmartcriteria = Project::find($id)->smartcriterium->select('specific', 'measurable', 'acceptable', 'realistic', 'tolerant')->get();
       $project = Project::where('id', $id)->get();
       $teacher =Project::find($id)->teacher->user;
       $creator = Project::find($id)->user;
-      //echo $usergroupid, PHP_EOL;
-      echo($groupmembers);
       return view('detail',[
         'groupmembers' => $groupmembers,
         'project' => $project,
         'teacher' => $teacher,
         'creator' => $creator,
         'user' => $user,
-        'belongstoproject' => $belongstoproject
+        'belongstoproject' => $belongstoproject,
+        'projectsmartcriteria' => $projectsmartcriteria
       ]);
     }
 
