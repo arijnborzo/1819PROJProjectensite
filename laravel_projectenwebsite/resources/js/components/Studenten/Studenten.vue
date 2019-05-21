@@ -2,7 +2,8 @@
     <div id="studenten">
         <b-row align-h="center" class="mt-5">
             <b-col cols="10">
-                <b-table responsive striped borderless :items="studenten" :fields="fields" head-variant="dark" :tbody-tr-class="rowClass">
+                <b-table responsive striped borderless :items="studenten" :fields="fields" head-variant="dark" caption-top :tbody-tr-class="rowClass">
+                    <template slot="table-caption">✔: zit in een volle groep | ✖: heeft nog geen groep | ❔: zit in groep maar is nog niet vol</template>
                     <span slot="belbin" slot-scope="data" v-html="data.value"></span>
                     <span slot="groep" slot-scope="data" v-html="data.value"></span>
                 </b-table>
@@ -44,18 +45,19 @@
                 studenten: [],
                 groepen: [],
                 photo: {
-                    coordinator: "../../img/co-ordinator.png",
-                    completor: "../../img/completor.png",
-                    implementor: "../../img/implementor.png",
-                    investigator: "../../img/investigator.png",
-                    monitor: "../../img/monitor-evaluator.png",
-                    shaper: "../../img/shaper.png",
-                    plant: "../../img/plant.png",
-                    teamworker: "../../img/teamworker.png"
+                    coordinator: "../../assets/co-ordinator.png",
+                    completor: "../../assets/completor.png",
+                    implementor: "../../assets/implementor.png",
+                    investigator: "../../assets/investigator.png",
+                    monitor: "../../assets/monitor-evaluator.png",
+                    vormer: "../../assets/vormer.png",
+                    plant: "../../assets/plant.png",
+                    groepswerker: "../../assets/groepswerker.png"
                 }
             };
         },
         mounted() {
+            // Aantal groepsleden per groep toekennen
             var currentGroup = 0;
             for (var stud in this.students) {
                 var student = this.students[stud];
@@ -67,35 +69,41 @@
                     this.groepen[currentGroup - 1]++;
                 }
             }
+
+            // Alle studenten toevoegen
             var currentStudentGroup = 0;
-            for (var stud in this.students) {
+            for (var nieuwestud in this.students) {
                 // Neem student
-                var student = this.students[stud];
+                var nieuwestudent = this.students[nieuwestud];
                 // Check of we aan een nieuwe groepsvoorstel begonnen zijn
-                if (student.group_id != currentStudentGroup) {
+                if (nieuwestudent.group_id != currentStudentGroup) {
                     currentStudentGroup++;
                     // Groep vinden
-                    var groep = this.groepen[currentStudentGroup - 1];
+                    var nieuwegroep = this.groepen[currentStudentGroup - 1];
                     // Eerste lid toevoegen
-                    var naam = `${student.surname} ${student.name}`;
+                    var nieuwenaam = `${nieuwestudent.name} ${nieuwestudent.surname}`;
                     // Project voorstel
-                    var projectvoorstel = student.projectvoorstel;
+                    var nieuweprojectvoorstel = nieuwestudent.projectvoorstel;
                     // Belbin
-                    var belbin = student.belbin;
+                    var nieuwebelbin = nieuwestudent.belbin;
                     // object nieuwe vueproject aanmaken
-                    var vuestudent = { groep, naam, projectvoorstel, belbin };
+                    var nieuwevuestudent = {
+                        nieuwegroep,
+                        nieuwenaam,
+                        nieuweprojectvoorstel,
+                        nieuwebelbin
+                    };
                     // toevoegen aan vue component array genaamd projecten
-                    this.studenten.push(vuestudent);
+                    this.studenten.push(nieuwevuestudent);
                 } else {
                     var groep = this.groepen[currentStudentGroup - 1];
-                    var naam = `${student.surname} ${student.name}`;
+                    var naam = `${student.name} ${student.surname}`;
                     var projectvoorstel = student.projectvoorstel;
                     var belbin = student.belbin;
                     var vuestudent = { groep, naam, projectvoorstel, belbin };
                     this.studenten.push(vuestudent);
                 }
             }
-            console.log(this.studenten);
         },
         methods: {
             rowClass(item) {
@@ -122,21 +130,20 @@
                     return `<img class="belbinimg" src=${
                         this.photo.monitor
                         } alt="MONITOR" v-b-tooltip.click title="Monitor">`;
-                if (value === "Shaper")
+                if (value === "Vormer")
                     return `<img class="belbinimg" src=${
-                        this.photo.shaper
-                        } alt="SHAPER" v-b-tooltip.click title="Shaper">`;
+                        this.photo.vormer
+                        } alt="VORMER" v-b-tooltip.click title="Vormer">`;
                 if (value === "Plant")
                     return `<img class="belbinimg" src=${
                         this.photo.plant
                         } alt="PLANT" v-b-tooltip.click title="Plant">`;
-                if (value === "Teamworker")
+                if (value === "Groepswerker")
                     return `<img class="belbinimg" src=${
-                        this.photo.teamworker
+                        this.photo.groepswerker
                         } alt="TEAMWORKER">`;
             },
             groepResult(value) {
-                console.log(value);
                 if (value === 4) return `✔`;
                 if (value === 1) return "✖";
                 else return "❔";
@@ -149,12 +156,5 @@
     .belbinimg {
         width: 29px;
         height: auto;
-    }
-    html,
-    body {
-        height: 100%;
-    }
-    #studenten {
-        height: 100%;
     }
 </style>

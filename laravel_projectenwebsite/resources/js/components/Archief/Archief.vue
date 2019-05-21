@@ -1,84 +1,164 @@
 <template>
     <b-container id="overzicht" fluid>
+        <!-- Filter en projecten -->
         <b-row class="pt-5 justify-content-center">
-            <b-col md="5" lg="4" xl="3" class="filter">
-                <app-archief-filter></app-archief-filter>
+
+            <!-- Filter -->
+            <b-col md="4" lg="3" xl="2" class="filter">
+                <app-archief-filter :jaartallen=this.jaartallen @filtersAangepast="geselecteerdeJaartallen = $event"></app-archief-filter>
             </b-col>
-            <b-col md="7" lg="8" xl="9">
+            <!-- Projecten -->
+            <b-col md="8" lg="9" xl="10">
+                <!--titel-->
+                <b-row>
+                    <b-col>
+                        <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren</h3>
+                    </b-col>
+                </b-row>
 
-                <b-col>
-                    <!--titel-->
-                    <h3 id="alleprojecten">Doorblader projecten van vorige jaren</h3>
-
+                <b-row>
                     <!--sorteren-->
-                    <b-form-select id="sorteren" v-model="selected" required :options="sorteeropties"></b-form-select>
-
+                    <b-col>
+                        <b-form-select id="sorteren" v-model="selected" required :options="sorteeropties"></b-form-select>
+                    </b-col>
                     <!--gridlistbtns-->
-                    <b-button @click="gridView" class="gridlistbtn">  <i class="fas fa-th-large" style="font-size: 1.2em;"></i></b-button>
-                    <b-button @click="listView" class="gridlistbtn"><i class="fas fa-list"></i></b-button>
-
-                </b-col>
+                    <b-col v-if="showicons">
+                        <b-button @click="gridView" class="gridlistbtn btns">  <i class="fas fa-th-large" style="font-size: 1.2em;"></i></b-button>
+                        <b-button @click="listView" class="gridlistbtn btns"><i class="fas fa-list"></i></b-button>
+                    </b-col>
+                </b-row>
 
                 <!--gridlist-->
-                <div id="gridlist" class="gridul">
-                    <div v-for="project in projecten" v-bind:key=project.titel>
-                        <app-project class="project" :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden :status=project.status :id="project.id"></app-project>
+                <b-row id="gridlist" class="gridul">
+                    <div v-for="project in projectenX" v-bind:key=project.titel>
+                        <transition name="fade">
+                            <b-col v-show="filteredOpJaar(project.created_at)">
+                                <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden :status=project.status></app-project>
+                            </b-col>
+                        </transition>
                     </div>
-                </div>
+                </b-row>
             </b-col>
         </b-row>
     </b-container>
 </template>
 
 <script>
-    import Filter from "./ArchiefFilter";
+    import ArchiefFilter from "./ArchiefFilter";
     import Project from "../Overzicht/Project";
 
     export default {
-        props: ['projects'],
+        props: {
+            projects: Object
+        },
         data() {
             return {
-                layout: "grid",
                 selected: null,
-                glwidth: "20rem",
                 sorteeropties: [
                     { value: null, text: "Sorteren op:" },
-                    { value: "a", text: "Op alfabetische volgorde A-Z" },
-                    { value: "b", text: "Op alfabetische volgorde Z-A" }
+                    { value: "az", text: "Op alfabetische volgorde A-Z" },
+                    { value: "za", text: "Op alfabetische volgorde Z-A" }
                 ],
-                projecten: [
+                jaartallen: [],
+                geselecteerdeJaartallen: [],
+                projecten: [],
+                projectenX: [
                     {
                         titel: "Projectensite",
                         beschrijving:
-                            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-                        groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"]
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui vivamus arcu felis bibendum. Eu mi bibendum neque egestas congue quisque egestas. At auctor urna nunc id cursus metus. Enim ut sem viverra aliquet eget. Ultrices sagittis orci a scelerisque purus semper eget duis at. Semper feugiat nibh sed pulvinar proin gravida. Metus vulputate eu scelerisque felis imperdiet proin. Id aliquet risus feugiat in ante metus dictum at tempor. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Dui nunc mattis enim ut tellus elementum sagittis. Nibh ipsum consequat nisl vel pretium lectus. Enim tortor at auctor urna nunc id cursus metus. At risus viverra adipiscing at in tellus. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Dictum non consectetur a erat nam at lectus urna. Pretium vulputate sapien nec sagittis. Vitae purus faucibus ornare suspendisse sed nisi. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus.",
+                        groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
+                        created_at: "2019-05-11 14:27:11"
                     },
                     {
                         titel: "Robotje maken",
                         beschrijving:
                             "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-                        groepsleden: ["Arno Stasssssss", "Arno Stas", "Arno Stas", "/"]
+                        groepsleden: ["Arno Stasssssss", "Arno Stas", "Arno Stas", "/"],
+                        created_at: "2018-05-11 14:27:11"
                     },
                     {
                         titel: "Projectensitee",
                         beschrijving:
                             "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-                        groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"]
+                        groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
+                        created_at: "2019-05-11 14:27:11"
                     },
                     {
                         titel: "MacroKeyboard",
                         beschrijving:
                             "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-                        groepsleden: ["Arno Stas", "Arno Stas", "/", "/"]
+                        groepsleden: ["Arno Stas", "Arno Stas", "/", "/"],
+                        created_at: "2017-05-11 14:27:11"
                     }
-                ]
+                ],
+                show: true,
+                showicons: true,
+                width: 0,
+                height: 0
             };
         },
         components: {
-            appArchiefFilter: Filter,
+            appArchiefFilter: ArchiefFilter,
             appProject: Project
         },
+        mounted() {
+            var currentGroup = 0;
+            var jaarInArrayBoolean = true;
+            for (var projjj in this.projectenX) {
+                var jaar = this.projectenX[projjj].created_at.slice(0, 4);
+                jaarInArrayBoolean = this.jaartallen.includes(jaar);
+                if (!jaarInArrayBoolean) {
+                    this.jaartallen.push(jaar);
+                }
+            }
+
+            jaarInArrayBoolean = this.jaartallen.includes(jaar);
+            if (!jaarInArrayBoolean) {
+                this.jaartallen.push(jaar);
+            }
+
+            for (var proj in this.projects) {
+                // Neem project
+                var project = this.projects[proj];
+                // Check of we aan een nieuw voorstel begonnen zijn
+                if (project.group_id != currentGroup) {
+                    currentGroup++;
+                    // Groepsleden aanmaken
+                    var groepsleden = [];
+                    // Eerste lid toevoegen
+                    var naam = `${project.name} ${project.surname}`;
+                    groepsleden.push(naam);
+                    var titel = project.title;
+                    // beschrijving toevoegen
+                    var beschrijving = project.short_description;
+                    var status = project.status;
+                    // object nieuwe vueproject aanmaken
+                    var vueproject = { titel, beschrijving, groepsleden, status };
+                    // toevoegen aan vue component array genaamd projecten
+                    this.projecten.push(vueproject);
+                } else {
+                    var elsenaam = `${project.name} ${project.surname}`;
+                    this.projecten[currentGroup - 1].groepsleden.push(elsenaam);
+                }
+            }
+        },
+        created() {
+            window.addEventListener("resize", this.handleResize);
+            this.handleResize();
+        },
+        destroyed() {
+            window.removeEventListener("resize", this.handleResize);
+        },
         methods: {
+            handleResize() {
+                this.width = window.innerWidth;
+                if (this.width < 1070) {
+                    this.showicons = false;
+                } else {
+                    this.showicons = true;
+                }
+            },
             gridView: function() {
                 var ul = document.getElementById("gridlist");
                 ul.classList.remove("listul");
@@ -98,85 +178,31 @@
                     proj.classList.remove("gridli");
                     proj.classList.add("listli");
                 });
+                var beschrijvingtekst = document.getElementsByClassName("beschrijving");
+                Array.prototype.filter.call(beschrijvingtekst, function(beschr) {
+                    beschr.style.height = "auto";
+                });
+                var groepsledentekst = document.getElementsByClassName("groepsleden");
+                Array.prototype.filter.call(groepsledentekst, function(groepslid) {
+                    groepslid.style.height = "auto";
+                });
+            },
+            filteredOpJaar(datum) {
+                if (this.geselecteerdeJaartallen.length === 0) {
+                    return true;
+                } else {
+                    var jaar = datum.slice(0, 4);
+                    var maand = datum.slice(5, 7);
+                    var isInJarenList = this.geselecteerdeJaartallen.indexOf(jaar) > -1;
+                    if (isInJarenList) {
+                        if (maand < 9) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                }
             }
         }
     };
 </script>
-
-<style>
-    body {
-        background: #eef1f4;
-    }
-    /*
-    @media screen and (max-height: 700px) {
-      html,
-      body {
-        height: 100%;
-      }
-      #overzicht {
-        height: 100%;
-      }
-    }
-    */
-    /* GRIDLIST
-    .gridul {
-    }
-    .listul {
-      width: 93%;
-    }
-    .gridli {
-      width: 20rem;
-    }
-    .listli {
-      width: 100%;
-    }
-    .proj {
-      width: auto;
-    }
-    #alleprojecten {
-      text-align: center;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    .gridlistbtn {
-      margin: 0 0.3rem;
-      float: right;
-    }
-
-    /* SORTEREN */
-    /*
-    #sorteren {
-      width: 40%;
-    }
-
-    /* MEDIA QUERY */
-    /*
-    @media (max-width: 992px) {
-      .projecten {
-        -ms-flex-align: center !important;
-        align-items: center !important;
-        display: -ms-flexbox !important;
-        display: flex !important;
-      }
-      .gridlistbtn {
-        display: none;
-      }
-    }
-    @media (max-width: 767px) {
-      #alleprojecten {
-        margin-top: 1.5rem;
-      }
-      #sorteren {
-        width: 100%;
-      }
-      .listli {
-        width: 100%;
-      }
-      .project {
-        width: 100%;
-      }
-    }
-    */
-</style>

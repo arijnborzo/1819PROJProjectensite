@@ -1,18 +1,22 @@
 <template>
-   <div class="bg-primary footer">
-       <span>&copy;ICTEO14 </span>
-   </div>
+    <div class="footer">
+        <span>2018-2019: Projecten 1 - &copy;ICTEO14<br />Andreas Lauwers - Arijn Borzo - Arno Stas - Lukas Petit </span>
+    </div>
 </template>
 
 <script>
-export default {};
+    export default {};
 </script>
 
 <style>
-.footer {
-  height: 5rem;
-  text-align: center;
-  line-height: 5rem;
-  width: 100%;
-}
+    .footer {
+        text-align: center;
+        background: #093667;
+        line-height: 2rem;
+        position: absolute;
+        color: navajowhite;
+        bottom: 0;
+        width: 100%;
+        height: 4rem;
+    }
 </style>
