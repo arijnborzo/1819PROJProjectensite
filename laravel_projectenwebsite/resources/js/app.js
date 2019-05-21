@@ -9,7 +9,7 @@ require('./bootstrap.js');
 
 // window.Vue = require('vue/types');
 import Vue from 'vue';
-import App from './components/App.vue';
+import App from './App.vue';
 import '@fortawesome/fontawesome-free/css/all.css'
 import Vuetify from 'vuetify'
 Vue.use(Vuetify, {

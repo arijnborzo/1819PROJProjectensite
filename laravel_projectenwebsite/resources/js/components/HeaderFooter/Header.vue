@@ -17,17 +17,34 @@
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
             <b-nav-item-dropdown right>
-                <!-- Using 'button-content' slot -->
-                <template slot="button-content" ><em>Usernaam</em></template>
-                <b-dropdown-item href="#">Mijn project</b-dropdown-item>
-                <b-dropdown-item href="#">Uitloggen</b-dropdown-item>
+                <template slot="button-content" >{{user.name}} {{user.surname}}</template>
+                <b-dropdown-item href="#"><a>Mijn project</a></b-dropdown-item>
+                <b-dropdown-item href="#"><a onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Uitloggen</a></b-dropdown-item>
             </b-nav-item-dropdown>
         </b-navbar-nav>
     </b-navbar>
 </template>
 
 <script>
-    export default {};
+    export default {
+        props: ['user'],
+        data() {
+            return {
+                fields: [
+                    {
+                        key: "name",
+                        html: true
+                    },
+                    {
+                        key: "surname",
+                        html: true
+                    }
+                ],
+            };
+        },
+        methods:{
+        }
+    };
 </script>
 
 <style>

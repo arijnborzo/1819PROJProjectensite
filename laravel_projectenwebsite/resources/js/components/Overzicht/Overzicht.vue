@@ -1,8 +1,8 @@
 <template>
     <b-container id="overzicht" fluid>
-        <b-row class="pt-5 justify-content-center">
+        <b-row class="justify-content-center">
             <b-col md="5" lg="4" xl="3" class="filter">
-                <app-filter></app-filter>
+                <app-filter @filtersAangepast="filterForm = $event"></app-filter>
             </b-col>
             <b-col md="7" lg="8" xl="9">
 
@@ -19,21 +19,18 @@
                     </b-col>
                     <!--gridlistbtns-->
                     <b-col v-if="showicons">
-                        <b-button @click="gridView" class="gridlistbtn">  <i class="fas fa-th-large" style="font-size: 1.2em;"></i></b-button>
-                        <b-button @click="listView" class="gridlistbtn"><i class="fas fa-list"></i></b-button>
+                            <b-button @click="gridView" class="gridlistbtn btns"><i class="fas fa-th-large" style="font-size: 1.2em;"></i></b-button>
+                        <b-button @click="listView" class="gridlistbtn btns"><i class="fas fa-list"></i></b-button>
                     </b-col>
                 </b-row>
 
                 <!--gridlist-->
-                <b-row id="gridlist" class="gridul flexxx">
+                <b-row id="gridlist" class="gridul">
 
-                    <!-- HIER WORDT DE VIA LARAVEL DOORGEGEVEN PROJECTEN BEHANDELD
-                    PROJECT is elk project, PROJECTEN de prop (zie onder export default remember studenten)-->
                     <div v-for="project in projecten" v-bind:key=project.titel>
                         <transition name="fade">
-                            <b-col>
-                                <!-- HIER GEVEN WE FIELDS MEE AAN HET APP-PROJECT COMPONENT -->
-                                <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden :status=project.status :proj_id=project.id></app-project>
+                            <b-col v-show="filtered(project)">
+                                <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden :status=project.status></app-project>
                             </b-col>
                         </transition>
                     </div>
@@ -48,18 +45,19 @@
     import Project from "./Project";
 
     export default {
-        /* LARAVEL*/
-        props: ['projects'],
+        props: {
+            projects: Array
+        },
         data() {
             return {
-                layout: "grid",
                 selected: null,
                 sorteeropties: [
                     { value: null, text: "Sorteren op:" },
-                    { value: "a", text: "Op alfabetische volgorde A-Z" },
-                    { value: "b", text: "Op alfabetische volgorde Z-A" }
+                    { value: "az", text: "Op alfabetische volgorde A-Z" },
+                    { value: "za", text: "Op alfabetische volgorde Z-A" }
                 ],
                 projecten: [],
+                filterForm: {},
                 show: true,
                 showicons: true,
                 width: 0
@@ -71,30 +69,29 @@
         },
         mounted() {
             var currentGroup = 0;
+
             for (var proj in this.projects) {
                 // Neem project
                 var project = this.projects[proj];
-                console.log(project);
                 // Check of we aan een nieuw voorstel begonnen zijn
                 if (project.group_id != currentGroup) {
                     currentGroup++;
                     // Groepsleden aanmaken
                     var groepsleden = [];
                     // Eerste lid toevoegen
-                    var naam = `${project.name} ${project.surname}`;
-                    groepsleden.push(naam);
+                    var ifnaam = `${project.name} ${project.surname}`;
+                    groepsleden.push(ifnaam);
                     var titel = project.title;
                     // beschrijving toevoegen
                     var beschrijving = project.short_description;
                     var status = project.status;
-                    var id = project.id;
                     // object nieuwe vueproject aanmaken
-                    var vueproject = { titel, beschrijving, groepsleden, status, id };
+                    var vueproject = { titel, beschrijving, groepsleden, status };
                     // toevoegen aan vue component array genaamd projecten
                     this.projecten.push(vueproject);
                 } else {
-                    var naam = `${project.name} ${project.surname}`;
-                    this.projecten[currentGroup - 1].groepsleden.push(naam);
+                    var elsenaam = `${project.name} ${project.surname}`;
+                    this.projecten[currentGroup - 1].groepsleden.push(elsenaam);
                 }
             }
         },
@@ -123,6 +120,7 @@
                     proj.classList.remove("listli");
                     proj.classList.add("gridli");
                 });
+                this.gridListTekstStyling("7.75rem", "10.75rem");
             },
             listView: function() {
                 var ul = document.getElementById("gridlist");
@@ -133,36 +131,113 @@
                     proj.classList.remove("gridli");
                     proj.classList.add("listli");
                 });
+                this.gridListTekstStyling("auto", "auto");
+            },
+            gridListTekstStyling(grheight, beschrheight) {
+                var beschrijvingtekst = document.getElementsByClassName("beschrijving");
+                Array.prototype.filter.call(beschrijvingtekst, function(beschr) {
+                    beschr.style.height = beschrheight;
+                });
+
+                var groepsledentekst = document.getElementsByClassName("groepsleden");
+                Array.prototype.filter.call(groepsledentekst, function(groepslid) {
+                    groepslid.style.height = grheight;
+                });
+            },
+            filterOpNaam(waardeZoeken, projectenNaam) {
+                var woordenlijst = waardeZoeken.split(" ");
+                for (var i = 0; i < woordenlijst.length; i++) {
+                    if (
+                        projectenNaam.toLowerCase().indexOf(woordenlijst[i].toLowerCase()) !==
+                        -1
+                    ) {
+                        return true;
+                    }
+                }
+                return false;
+            },
+            filterOpGroepsleden(aantalGroepsleden, groepsleden) {
+                for (var i = 0; i < aantalGroepsleden.length; i++) {
+                    if (aantalGroepsleden[i] == groepsleden.length) {
+                        return true;
+                    }
+                }
+                return false;
+            },
+            filterOpStatus(keuzeStatus, status) {
+                for (var i = 0; i < keuzeStatus.length; i++) {
+                    if (keuzeStatus[i] === status) {
+                        return true;
+                    }
+                }
+                return false;
+            },
+            filtered(project) {
+                var naamFilter = true;
+                var groepsledenFilter = true;
+                var statusFilter = true;
+                /* Filter op naam */
+                if (
+                    typeof this.filterForm.naam === "undefined" ||
+                    this.filterForm.naam === ""
+                ) {
+                    naamFilter = true;
+                } else {
+                    naamFilter = this.filterOpNaam(this.filterForm.naam, project.titel);
+                }
+                /* Filter op groepsleden */
+                if (
+                    typeof this.filterForm.groepsleden === "undefined" ||
+                    this.filterForm.groepsleden.length == 0
+                ) {
+                    groepsledenFilter = true;
+                } else {
+                    groepsledenFilter = this.filterOpGroepsleden(
+                        this.filterForm.groepsleden,
+                        project.groepsleden
+                    );
+                }
+                /* Filter op status */
+                if (
+                    typeof this.filterForm.status === "undefined" ||
+                    this.filterForm.status.length == 0
+                ) {
+                    statusFilter = true;
+                } else {
+                    statusFilter = this.filterOpStatus(
+                        this.filterForm.status,
+                        project.status
+                    );
+                }
+                if (naamFilter && groepsledenFilter && statusFilter) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         }
     };
 </script>
 
+card ttiel
+image.png
+
+beschr
+image.png
+
 <style>
     body {
         background: #eef1f4;
     }
-    @media screen and (max-height: 700px) {
-        html,
-        body {
-            height: 100%;
-        }
-        #overzicht {
-            height: 100%;
-        }
-    }
-
     /* GRIDLIST */
-    .flexxx {
-        display: flex;
-    }
-
     #alleprojecten {
         text-align: center;
+        margin-bottom: 2rem;
     }
     .gridlist {
         margin: 0;
     }
+
     .listul {
         width: auto;
     }
@@ -171,6 +246,7 @@
     }
     .listli {
         width: 100%;
+        height: auto;
     }
     .proj {
         width: auto;
@@ -180,10 +256,10 @@
         padding: 0;
     }
 
-    /*TRANSITIONS ON PROJECTS */
+    /*TRANSITIONS ON PROJECTS* /
     .fade-enter-active,
     .fade-leave-active {
-        transition: opacity 0.9s;
+     transition: opacity 0.9s;
     }
     .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
         opacity: 0;

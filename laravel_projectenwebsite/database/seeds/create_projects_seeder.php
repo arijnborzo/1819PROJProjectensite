@@ -20,7 +20,8 @@ class create_projects_seeder extends Seeder
             'teacher_id' => 5,
             'creator_id' => 1,
             'created_at' => date("Y-m-d H:i:s"),
-            'main_question' => 'Is het mogelijk de nieuwe Projectenwebsite te maken?'
+            'main_question' => 'Is het mogelijk de nieuwe Projectenwebsite te maken?',
+            'side_questions' => 'Het maken van een degelijke site.'
         ]);
         DB::table('projects')->insert([
             'id' => 2,

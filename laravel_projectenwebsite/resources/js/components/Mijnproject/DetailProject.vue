@@ -4,7 +4,7 @@
       <b-card class="mb-5 mt-5">
         <b-row>
           <b-col>
-            <h2 id="titel">{{project.title}}</h2>
+            <h2 id="titel">{{project}}</h2>
           </b-col>
           <b-col>
             <h6 style="line-height:38px; text-align:center">Status: in afwachting tot goedkeuring</h6>
@@ -69,16 +69,7 @@
       'project', 'teachers'],
     data() {
       return {
-        fields: [
-            {
-                key: "project.title",
-                html: true
-            },
-            {
-                key: "project.full_description",
-                sortable: true
-            },
-        ],
+
         photo: {
           coordinator: "../../assets/co-ordinator.png",
           completor: "../../assets/completor.png",

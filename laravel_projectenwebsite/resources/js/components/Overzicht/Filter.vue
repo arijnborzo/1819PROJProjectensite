@@ -41,7 +41,7 @@
                                   label-for="input-4"
                     >
                         <b-form-checkbox-group stacked v-model="form.status" id="status">
-                            <b-form-checkbox value="Goedgekeurd">Goedgekeurd</b-form-checkbox>
+                            <b-form-checkbox value="Accepted">Accepted</b-form-checkbox>
                             <b-form-checkbox value="In beraad">In beraad</b-form-checkbox>
                             <b-form-checkbox value="Afgekeurd">Afgekeurd</b-form-checkbox>
                         </b-form-checkbox-group>

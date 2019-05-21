@@ -21,7 +21,8 @@ class CreateProjectsTable extends Migration
             $table->longText('full_description')->nullable();
             $table->integer('teacher_id')->unsigned()->nullable();
             $table->integer('creator_id')->unsigned()->nullable();
-            $table->string('main_question');
+            $table->string('main_question')->nullable();
+            $table->mediumText('side_questions')->nullable();
             $table->timestamps();
         });
         Schema::table('projects', function (Blueprint $table) {
