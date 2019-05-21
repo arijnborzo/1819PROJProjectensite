@@ -66,7 +66,7 @@
 <script>
   export default {
     props: [
-      'project', 'teacher'],
+      'project', 'teachers'],
     data() {
       return {
         fields: [
