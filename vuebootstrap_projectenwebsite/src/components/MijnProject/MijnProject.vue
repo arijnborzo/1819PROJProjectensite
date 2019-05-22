@@ -7,7 +7,7 @@
             <h2 id="titel">{{titel}}</h2>
           </b-col>
           <b-col>
-            <h6 style="line-height:38px; text-align:center">Status: in afwachting tot goedkeuring</h6>
+            <h6 id="status">Status: in afwachting tot goedkeuring</h6>
           </b-col>
         </b-row>
         <b-row id="beschrijvingVoorstel">
@@ -56,8 +56,8 @@
             </ul>
           </b-col>
           <b-col id="btns" md="6" align-self="end">
-            <b-button style="float:right" variant="primary">Voeg groepslid toe</b-button>
-            <b-button variant="primary">Pas voorstel aan</b-button>
+            <b-button style="float:right" class="btns">Voeg groepslid toe</b-button>
+            <b-button class="btns">Pas voorstel aan</b-button>
           </b-col>
         </b-row>
       </b-card>
