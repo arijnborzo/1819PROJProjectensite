@@ -29,7 +29,7 @@
 
         <!--gridlist-->
         <b-row id="gridlist" class="gridul">
-          <div v-for="project in projectenX" v-bind:key="project.titel">
+          <div v-for="project in projecten" v-bind:key="project.titel">
             <transition name="fade">
               <b-col v-show="filtered(project)">
                 <app-project
@@ -37,6 +37,7 @@
                   :beschrijving="project.beschrijving"
                   :groepsleden="project.groepsleden"
                   :status="project.status"
+                  :proj_id="project.id"
                 ></app-project>
               </b-col>
             </transition>
@@ -52,9 +53,9 @@ import Filter from "./Filter";
 import Project from "./Project";
 
 export default {
-  props: {
+  /*props: {
     projects: Array
-  },
+  },*/
   data() {
     return {
       selected: null,
@@ -64,11 +65,10 @@ export default {
         { value: "za", text: "Op alfabetische volgorde Z-A" }
       ],
       projecten: [],
-      projectenX: [
+      projects: [
         {
           titel: "Projectensite",
-          beschrijving:
-            "Voor dit vak de projectenwebsite opnieuw maken, een platform waar studenten een voorstel kunnen indienen en groepsleden toevoegen en docenten kunnen de voorstellen goedkeuren of afkeuren. Maar indien er nog meer tekst is zal er toch iets meoten gebeuren",
+          short_description: "Voor dit vak de projectenwebsite opnieuw maken",
           groepsleden: [
             "Pieterjan Van Beneden",
             "Arno Stas",
@@ -77,30 +77,6 @@ export default {
           ],
           created_at: "2019-05-11 14:27:11",
           status: "Goedgekeurd"
-        },
-        {
-          titel: "Robotje maken",
-          beschrijving:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui vivamus arcu felis bibendum. Eu mi bibendum neque egestas congue quisque egestas. At auctor urna nunc id cursus metus. Enim ut sem viverra aliquet eget. Ultrices sagittis orci a scelerisque purus semper eget duis at. Semper feugiat nibh sed pulvinar proin gravida. Metus vulputate eu scelerisque felis imperdiet proin. Id aliquet risus feugiat in ante metus dictum at tempor. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Dui nunc mattis enim ut tellus elementum sagittis. Nibh ipsum consequat nisl vel pretium lectus. Enim tortor at auctor urna nunc id cursus metus. At risus viverra adipiscing at in tellus. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Dictum non consectetur a erat nam at lectus urna. Pretium vulputate sapien nec sagittis. Vitae purus faucibus ornare suspendisse sed nisi. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus.",
-          groepsleden: ["Arno Stas", "Arno Stas"],
-          created_at: "2019-05-11 14:27:11",
-          status: "In beraad"
-        },
-        {
-          titel: "Projectensitee",
-          beschrijving:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui vivamus arcu felis bibendum. Eu mi bibendum neque egestas congue quisque egestas. At auctor urna nunc id cursus metus. Enim ut sem viverra aliquet eget. Ultrices sagittis orci a scelerisque purus semper eget duis at. Semper feugiat nibh sed pulvinar proin gravida. Metus vulputate eu scelerisque felis imperdiet proin. Id aliquet risus feugiat in ante metus dictum at tempor. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Dui nunc mattis enim ut tellus elementum sagittis. Nibh ipsum consequat nisl vel pretium lectus. Enim tortor at auctor urna nunc id cursus metus. At risus viverra adipiscing at in tellus. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Dictum non consectetur a erat nam at lectus urna. Pretium vulputate sapien nec sagittis. Vitae purus faucibus ornare suspendisse sed nisi. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus.",
-          groepsleden: ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
-          created_at: "2019-05-11 14:27:11",
-          status: "Goedgekeurd"
-        },
-        {
-          titel: "MacroKeyboard",
-          beschrijving:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dui vivamus arcu felis bibendum. Eu mi bibendum neque egestas congue quisque egestas. At auctor urna nunc id cursus metus. Enim ut sem viverra aliquet eget. Ultrices sagittis orci a scelerisque purus semper eget duis at. Semper feugiat nibh sed pulvinar proin gravida. Metus vulputate eu scelerisque felis imperdiet proin. Id aliquet risus feugiat in ante metus dictum at tempor. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Dui nunc mattis enim ut tellus elementum sagittis. Nibh ipsum consequat nisl vel pretium lectus. Enim tortor at auctor urna nunc id cursus metus. At risus viverra adipiscing at in tellus. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Dictum non consectetur a erat nam at lectus urna. Pretium vulputate sapien nec sagittis. Vitae purus faucibus ornare suspendisse sed nisi. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus.",
-          groepsleden: ["Arno Stas"],
-          created_at: "2019-05-11 14:27:11",
-          status: "Afgekeurd"
         }
       ],
       filterForm: {},
@@ -114,7 +90,6 @@ export default {
     appProject: Project
   },
   mounted() {
-    console.log(project);
     var currentGroup = 0;
 
     for (var proj in this.projects) {
@@ -132,8 +107,9 @@ export default {
         // beschrijving toevoegen
         var beschrijving = project.short_description;
         var status = project.status;
+        var id = project.id;
         // object nieuwe vueproject aanmaken
-        var vueproject = { titel, beschrijving, groepsleden, status };
+        var vueproject = { titel, beschrijving, groepsleden, status, id };
         // toevoegen aan vue component array genaamd projecten
         this.projecten.push(vueproject);
       } else {
@@ -309,6 +285,10 @@ body {
 /* GRIDLIST */
 #alleprojecten {
   text-align: center;
+  margin-bottom: 2rem;
+}
+#alleprojecten {
+  text-align: center;
   margin: 2rem 0;
 }
 .gridlist {
@@ -333,18 +313,10 @@ ul {
   padding: 0;
 }
 
-/*TRANSITIONS ON PROJECTS */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.9s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-
 /* SORTEREN */
 #sorteren {
   width: 80%;
+  margin-top: 1rem;
 }
 
 /* BTNS */
@@ -366,10 +338,17 @@ ul {
   }
   .project {
     width: 100%;
+    height: auto;
   }
   #sorteren {
     width: 100%;
     margin-top: 1rem;
+  }
+  .beschrijving {
+    height: auto;
+  }
+  .groepsleden {
+    height: auto;
   }
 }
 @media (max-width: 767px) {
