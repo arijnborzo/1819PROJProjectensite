@@ -4,38 +4,62 @@
       <b-card class="mb-5 mt-5">
         <b-row>
           <b-col>
-            <h2 id="titel">{{project[0].title}}</h2>
+            <h2 id="titel">Projectensite</h2>
           </b-col>
           <b-col>
-            <h5
-              style="line-height:38px; text-align:center"
-            >Status: {{statusProject(project[0].status)}}</h5>
+            <h5 id="status">Status: {{statusProject("Accepted")}}</h5>
           </b-col>
         </b-row>
         <div id="beschrijvingVoorstel">
+          <h5>Beschrijving</h5>
           <b-row>
-            <h5>Beschrijving</h5>
-          </b-row>
-          <b-row>
-            <p>{{project[0].full_description}}</p>
+            <b-col>
+              <p>DESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTION</p>
+            </b-col>
           </b-row>
         </div>
         <b-row>
           <b-col cols="12" md="6">
             <h4>Hoofdvraag</h4>
-            <p>{{project[0].main_question}}</p>
+            <p>WAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAAAAAAROM?</p>
             <h4>Nevenvragen</h4>
             <ul>
-              <p>{{project[0].side_questions}}</p>
-              <li v-for="vraag in nevenvragen" v-bind:key="vraag"></li>
+              <li>
+                <p>waarom zou ik dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat doen?</p>
+              </li>
+              <li>
+                <p>waarom zou ik dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat doen?</p>
+              </li>
+              <li>
+                <p>waarom zou ik dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat doen?</p>
+              </li>
+              <li>
+                <p>waarom zou ik dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat dat of dat doen?</p>
+              </li>
             </ul>
           </b-col>
-          <b-col id="smart" cols="12" md="6">
+          <b-col md="6">
             <h4>SMART-criteria</h4>
             <ul>
-              <li v-for="(value, criteria) in smartcriteria[0]" v-bind:key="criteria">
-                <h6>{{criteria}}</h6>
-                <p>{{value}}</p>
+              <li>
+                <h6>CRITERIA</h6>
+                <p>TEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekst</p>
+              </li>
+              <li>
+                <h6>CRITERIA</h6>
+                <p>TEKSTTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekst</p>
+              </li>
+              <li>
+                <h6>CRITERIA</h6>
+                <p>TEKSTTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekst</p>
+              </li>
+              <li>
+                <h6>CRITERIA</h6>
+                <p>TEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekstTEKSTtekst</p>
+              </li>
+              <li>
+                <h6>CRITERIA</h6>
+                <p>TEKST</p>
               </li>
             </ul>
           </b-col>
@@ -44,24 +68,62 @@
           <b-col md="6">
             <h4>Groepsleden</h4>
             <ul>
-              <li v-for="member in groupmembers" v-bind:key="member">
+              <li>
                 <p>
-                  {{member.surname}} {{member.name}}
-                  <span>
-                    <img
-                      class="lidbelbin"
-                      :src="belbinResult(member.belbintype)"
-                      :alt="belbin"
-                      v-b-tooltip.click.hover
-                    >
-                  </span>
+                  Stas Arno
+                  <img
+                    class="lidbelbin"
+                    src="https://www.belbin.com/media/1833/tw-icon-margin.png"
+                    alt="belbin"
+                    v-b-tooltip.hover="'ToolTip!'"
+                  >
+                </p>
+              </li>
+              <li>
+                <p>
+                  Stas Arno
+                  <img
+                    class="lidbelbin"
+                    src="https://www.belbin.com/media/1833/tw-icon-margin.png"
+                    alt="belbin"
+                    v-b-tooltip.hover="'ToolTip!'"
+                  >
+                </p>
+              </li>
+              <li>
+                <p>
+                  Stas Arno
+                  <img
+                    class="lidbelbin"
+                    src="https://www.belbin.com/media/1833/tw-icon-margin.png"
+                    alt="belbin"
+                    v-b-tooltip.hover="'ToolTip!'"
+                  >
+                </p>
+              </li>
+              <li>
+                <p>
+                  Stas Arno
+                  <img
+                    class="lidbelbin"
+                    src="https://www.belbin.com/media/1833/tw-icon-margin.png"
+                    alt="belbin"
+                    v-b-tooltip.hover="'ToolTip!'"
+                  >
                 </p>
               </li>
             </ul>
           </b-col>
           <b-col id="btns" md="6" align-self="end">
-            <b-button style="float:right" variant="primary">Voeg groepslid toe</b-button>
-            <b-button variant="primary">Pas voorstel aan</b-button>
+            <b-button
+              v-b-modal.modal-1
+              @click="verstuurGroepsverzoek()"
+              class="btns"
+              v-show="showBtn"
+            >Stel kandidaat</b-button>
+            <b-modal id="modal-1" title="Lidmaatschap" hide-footer>
+              <p>Er is een verzoek verstuurd!</p>
+            </b-modal>
           </b-col>
         </b-row>
       </b-card>
@@ -74,6 +136,7 @@ export default {
   props: ["project", "teacher", "groupmembers", "creator", "smartcriteria"],
   data() {
     return {
+      showBtn: true,
       photo: {
         coordinator: "../../img/co-ordinator.png",
         completor: "../../img/completor.png",
@@ -101,10 +164,27 @@ export default {
       if (value === "shaper") return this.photo.shaper;
       if (value === "plant") return this.photo.plant;
       if (value === "teamworker") return this.photo.teamworker;
+    },
+    verstuurGroepsverzoek() {
+      this.showBtn = false;
+    },
+    showButton() {
+      if (this.showBtn == false) {
+        return false;
+        /*
+      } else if (this.project.groupmembers > 3) {
+        return false;*/
+      } else {
+        return true;
+      }
     }
   }
 };
 </script>
 
 <style>
+#status {
+  line-height: 38px;
+  text-align: end;
+}
 </style>

@@ -7,9 +7,7 @@
             <h2 id="titel">{{project[0].title}}</h2>
           </b-col>
           <b-col>
-            <h5
-              style="line-height:38px; text-align:center"
-            >Status: {{statusProject(project[0].status)}}</h5>
+            <h5 id="status">Status: {{statusProject(project[0].status)}}</h5>
           </b-col>
         </b-row>
         <div id="beschrijvingVoorstel">
@@ -21,7 +19,7 @@
           </b-row>
         </div>
         <b-row>
-          <b-col cols="12" md="6">
+          <b-col md="6">
             <h4>Hoofdvraag</h4>
             <p>{{project[0].main_question}}</p>
             <h4>Nevenvragen</h4>
@@ -30,7 +28,7 @@
               <li v-for="vraag in nevenvragen" v-bind:key="vraag"></li>
             </ul>
           </b-col>
-          <b-col id="smart" cols="12" md="6">
+          <b-col md="6">
             <h4>SMART-criteria</h4>
             <ul>
               <li v-for="(value, criteria) in smartcriteria[0]" v-bind:key="criteria">
@@ -82,6 +80,7 @@ export default {
   props: ["project", "teacher", "groupmembers", "creator", "smartcriteria"],
   data() {
     return {
+      showBtn: true,
       photo: {
         coordinator: "../../img/co-ordinator.png",
         completor: "../../img/completor.png",
