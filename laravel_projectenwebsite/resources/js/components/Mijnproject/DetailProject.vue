@@ -49,8 +49,9 @@
                     <img
                       class="lidbelbin"
                       :src="belbinResult(member.belbintype)"
-                      :alt="belbin"
+                      :alt="member.belbintype"
                       v-b-tooltip.click.hover
+                      :title="member.belbintype"
                     >
                   </span>
                 </p>
