@@ -107,7 +107,8 @@ export default {
 
 <style>
 #beschrijvingVoorstel {
-  background-color: skyblue;
+  background-color: #ced9e6;
+  box-shadow: 0px 0px 1px #093667;
   margin: 2rem 0;
   padding: 1.5rem;
   margin-left: -1.2rem;

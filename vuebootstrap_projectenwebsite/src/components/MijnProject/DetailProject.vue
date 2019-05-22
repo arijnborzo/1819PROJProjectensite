@@ -119,6 +119,7 @@
               v-b-modal.modal-1
               @click="verstuurGroepsverzoek()"
               class="btns"
+              style="float:right"
               v-show="showBtn"
             >Stel kandidaat</b-button>
             <b-modal id="modal-1" title="Lidmaatschap" hide-footer>
