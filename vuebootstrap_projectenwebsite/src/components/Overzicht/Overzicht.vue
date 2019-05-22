@@ -67,7 +67,7 @@ export default {
       projecten: [],
       projects: [
         {
-          titel: "Projectensite",
+          title: "Projectensite",
           short_description: "Voor dit vak de projectenwebsite opnieuw maken",
           groepsleden: [
             "Pieterjan Van Beneden",
@@ -75,7 +75,7 @@ export default {
             "Arno Stas",
             "Arno Stas"
           ],
-          created_at: "2019-05-11 14:27:11",
+          id: 1,
           status: "Goedgekeurd"
         }
       ],

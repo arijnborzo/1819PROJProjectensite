@@ -154,10 +154,8 @@ export const routes = [
     }
   },
   {
-    path: "/project/:titel",
-    name: "detailproject",
-    component: DetailProject,
-    props: true
+    path: "/detailproject",
+    component: DetailProject
   },
   { path: "/registreer", component: Registreer },
   { path: "/paswoordvergeten", component: PaswoordVergeten },
