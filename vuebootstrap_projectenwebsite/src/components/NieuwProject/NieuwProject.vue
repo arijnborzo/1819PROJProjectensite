@@ -110,6 +110,11 @@
               </b-card>
             </b-form-group>
 
+            <!--
+                                      <b-form-group id="input-group-5" label="Kies een categorie" label-for="categorie">
+                                        <b-form-select id="categorie" v-model="selected" required :options="categorien"></b-form-select>
+                                      </b-form-group>
+            -->
             <b-form-group id="input-group-6" label="Reeds besproken met een docent?">
               <b-form-radio
                 v-model="docentBoolean"
@@ -149,7 +154,6 @@
 
 <script>
 export default {
-  props: ["teachers"],
   data() {
     return {
       form: {
@@ -158,6 +162,7 @@ export default {
         langebeschrijving: "",
         hoofdvraag: "",
         nevenvragen: "",
+        categorie: "",
         docent: "",
         bestand: "",
         smart: {
@@ -171,6 +176,12 @@ export default {
       },
       selected: "",
       docentBoolean: "",
+      categorien: [
+        { value: null, text: "Selecteer" },
+        { value: "a", text: "Elektronica" },
+        { value: "b", text: "Robotica" },
+        { value: "c", text: "Webdevelopment" }
+      ],
       docenten: [
         { value: null, text: "Selecteer" },
         { value: "a", text: "Peter Demeester" },
@@ -194,6 +205,7 @@ export default {
       this.form.langebeschrijving = "";
       this.form.hoofdvraag = "";
       this.form.nevenvragen = "";
+      this.form.categorie = "";
       this.form.bestand = "";
       this.form.docent = "";
       this.$nextTick(() => {

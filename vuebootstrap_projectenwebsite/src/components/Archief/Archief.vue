@@ -37,7 +37,7 @@
         <b-row id="gridlist" class="gridul">
           <div v-for="project in projecten" v-bind:key="project.titel">
             <transition name="fade">
-              <b-col v-show="filteredOpJaar(project.aanmaakdatum)">
+              <b-col v-show="filteredOpJaar(project.created_at)">
                 <app-project
                   :titel="project.titel"
                   :beschrijving="project.beschrijving"
@@ -112,18 +112,9 @@ export default {
         var titel = project.title;
         // beschrijving toevoegen
         var beschrijving = project.short_description;
-        // status vh project toevoegen
         var status = project.status;
-        // aanmaakdatum (voor filter op jaar)
-        var aanmaakdatum = project.created_at;
         // object nieuwe vueproject aanmaken
-        var vueproject = {
-          titel,
-          beschrijving,
-          groepsleden,
-          status,
-          aanmaakdatum
-        };
+        var vueproject = { titel, beschrijving, groepsleden, status };
         // toevoegen aan vue component array genaamd projecten
         this.projecten.push(vueproject);
       } else {
@@ -157,7 +148,6 @@ export default {
         this.showicons = true;
       }
     },
-    // Sorteren
     compare(a, b) {
       // Use toUpperCase() to ignore character casing
       const titelA = a.titel.toUpperCase();
@@ -193,7 +183,6 @@ export default {
         proj.classList.remove("listli");
         proj.classList.add("gridli");
       });
-      this.gridListTekstStyling("7.75rem", "10.75rem");
     },
     listView: function() {
       var ul = document.getElementById("gridlist");
@@ -204,17 +193,13 @@ export default {
         proj.classList.remove("gridli");
         proj.classList.add("listli");
       });
-      this.gridListTekstStyling("auto", "auto");
-    },
-    gridListTekstStyling(grheight, beschrheight) {
       var beschrijvingtekst = document.getElementsByClassName("beschrijving");
       Array.prototype.filter.call(beschrijvingtekst, function(beschr) {
-        beschr.style.height = beschrheight;
+        beschr.style.height = "auto";
       });
-
       var groepsledentekst = document.getElementsByClassName("groepsleden");
       Array.prototype.filter.call(groepsledentekst, function(groepslid) {
-        groepslid.style.height = grheight;
+        groepslid.style.height = "auto";
       });
     },
     filteredOpJaar(datum) {
