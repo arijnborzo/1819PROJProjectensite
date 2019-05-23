@@ -17,7 +17,7 @@ class Project extends Model
         return $this->belongsTo('App\User', 'creator_id', 'id');
     }
     public function group(){
-        return $this->hasOne('App\Group', 'project_id');
+        return $this->hasOne('App\Group', 'id', 'project_id');
     }
     public function comments(){
         return $this->hasMany('App\Comment', 'project_id');

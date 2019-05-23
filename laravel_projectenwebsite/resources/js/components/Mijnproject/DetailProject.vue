@@ -25,7 +25,7 @@
             <h4>Nevenvragen</h4>
             <ul>
               <p>{{project.side_questions}}</p>
-              <li v-for="vraag in nevenvragen" v-bind:key="vraag"></li>
+              <li v-for="vraag in project.side_questions" v-bind:key="vraag"></li>
             </ul>
           </b-col>
           <b-col md="6">
@@ -40,11 +40,11 @@
         </b-row>
         <b-row>
           <b-col md="6">
-            <h4>Groepsleden</h4>
+            <h4>Groepsledennn</h4>
             <ul>
               <li v-for="member in groupmembers" v-bind:key="member">
                 <p>
-                  {{member.surname}} {{member.name}}
+                  {{member}}
                   <span>
                     <img
                       class="lidbelbin"
@@ -78,7 +78,7 @@
 
 <script>
 export default {
-  props: ["project", "teacher", "groupmembers", "creator", "smartcriteria"],
+props: ["project", "teacher", "groupmembers", "smartcriteria"],
   data() {
     return {
       showBtn: true,
@@ -93,6 +93,12 @@ export default {
         teamworker: "../../img/teamworker.png"
       }
     };
+  },
+  mounted() {
+    console.log("x");
+
+    console.log(this.project);
+    console.log("y");
   },
   methods: {
     statusProject(value) {

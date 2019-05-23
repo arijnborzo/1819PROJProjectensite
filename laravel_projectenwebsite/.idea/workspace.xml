@@ -2,8 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3b26ce3-d036-4294-8c86-cb7757ecf672" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/laradock/nginx/logrotate/nginx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/laradock/php-fpm/xhprof.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Project.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Student.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Student.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laradock" beforeDir="false" afterPath="$PROJECT_DIR$/laradock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laradock/env-example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/laradock/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/laradock/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laradock/DOCUMENTATION/content/documentation/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/laradock/DOCUMENTATION/content/documentation/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laradock/env-example" beforeDir="false" afterPath="$PROJECT_DIR$/laradock/env-example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laradock/nginx/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/laradock/nginx/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laradock/nginx/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/laradock/nginx/startup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laradock/php-fpm/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/laradock/php-fpm/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laradock/workspace/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/laradock/workspace/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/HeaderFooter/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/HeaderFooter/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Mijnproject/DetailProject.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Mijnproject/DetailProject.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/Overzicht/Overzicht.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+            <state relative-caret-position="165">
+              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -32,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/resources/js/components/Overzicht/Project.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="246">
-              <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
@@ -40,17 +57,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/HeaderFooter/Header.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+            <state relative-caret-position="294">
+              <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="664">
+              <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/detail.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="17" lean-forward="true" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+            <state relative-caret-position="135">
+              <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -58,7 +84,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/OverviewController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
+            <state relative-caret-position="412">
               <caret line="79" column="18" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
               <folding>
                 <element signature="e#40#49#0#PHP" expanded="true" />
@@ -71,26 +97,16 @@
         <entry file="file://$PROJECT_DIR$/resources/js/components/Mijnproject/MijnProject.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="350">
-              <caret line="83" column="54" selection-start-line="83" selection-start-column="54" selection-end-line="83" selection-end-column="54" />
+              <caret line="83" column="12" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/Mijnproject/DetailProject.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-319" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/App.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
-              <folding>
-                <element signature="e#151#194#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="306">
+              <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -98,12 +114,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
+            <state relative-caret-position="1350">
               <caret line="109" column="195" selection-start-line="109" selection-start-column="195" selection-end-line="109" selection-end-column="195" />
               <folding>
                 <element signature="e#290#312#0" expanded="true" />
-                <element signature="e#956#991#0" expanded="true" />
-                <element signature="e#3594#3654#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,8 +126,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProjectController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="52" column="25" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="25" />
+            <state relative-caret-position="196">
+              <caret line="153" column="31" selection-start-line="153" selection-start-column="31" selection-end-line="153" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -122,9 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>groepr</find>
-      <find>studenten</find>
-      <find>footer</find>
       <find>belbinResult</find>
       <find>tp</find>
       <find>r</find>
@@ -138,7 +149,6 @@
       <find>select</find>
       <find>projecten</find>
       <find>mounted</find>
-      <find>project</find>
       <find>nav-link</find>
       <find>v</find>
       <find>overz</find>
@@ -152,6 +162,10 @@
       <find>id</find>
       <find>mijn</find>
       <find>where</find>
+      <find>project</find>
+      <find>title</find>
+      <find>nevenvragen</find>
+      <find>groe</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/resources/lang</dir>
@@ -181,7 +195,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/BelbintestController.php" />
         <option value="$PROJECT_DIR$/resources/views/belbin.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/routes.js" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/../vuebootstrap_projectenwebsite/src/components/Overzicht/Overzicht.vue" />
         <option value="$PROJECT_DIR$/../vuebootstrap_projectenwebsite/src/components/Belbintest/Belbintest.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Belbintest/Belbintest.vue" />
@@ -191,11 +204,14 @@
         <option value="$PROJECT_DIR$/resources/js/components/Archief/Archief.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Overzicht/Overzicht.vue" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/HeaderFooter/Header.vue" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/resources/js/components/Overzicht/Project.vue" />
-        <option value="$PROJECT_DIR$/resources/views/detail.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/OverviewController.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/HeaderFooter/Header.vue" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" />
+        <option value="$PROJECT_DIR$/resources/views/detail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/Mijnproject/DetailProject.vue" />
       </list>
     </option>
   </component>
@@ -280,7 +296,7 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="797" />
@@ -530,17 +546,18 @@
       <workItem from="1557929267273" duration="647000" />
       <workItem from="1557935497699" duration="1810000" />
       <workItem from="1557994891861" duration="19569000" />
+      <workItem from="1558616763273" duration="4554000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63352000" />
+    <option name="totallyTimeSpent" value="67906000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.17310444" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17310444" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -553,7 +570,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49499285" weight="0.2433735" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49499285" visible="true" weight="0.2433735" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50500715" side_tool="true" weight="0.2433735" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -685,27 +702,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_04_113558_create_groups_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_04_104629_create_projects_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_04_104458_create_teachers_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_04_113558_create_groups_table.php" />
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_04_104629_create_projects_table.php" />
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_04_104458_create_teachers_table.php" />
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_04_104305_create_students_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -860,38 +859,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/resources/js/components/App.vue" />
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Overzicht/Overzicht.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="50" column="70" selection-start-line="50" selection-start-column="64" selection-end-line="50" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProjectController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="52" column="25" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
-          <folding>
-            <element signature="e#151#194#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="165">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
+        <state relative-caret-position="1350">
           <caret line="109" column="195" selection-start-line="109" selection-start-column="195" selection-end-line="109" selection-end-column="195" />
           <folding>
             <element signature="e#290#312#0" expanded="true" />
-            <element signature="e#956#991#0" expanded="true" />
-            <element signature="e#3594#3654#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -899,32 +880,27 @@
     <entry file="file://$PROJECT_DIR$/resources/js/components/Mijnproject/MijnProject.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
-          <caret line="83" column="54" selection-start-line="83" selection-start-column="54" selection-end-line="83" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Mijnproject/DetailProject.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-319" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Overzicht/Overzicht.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <caret line="83" column="12" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Overzicht/Project.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
-          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/HeaderFooter/Header.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/OverviewController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
+        <state relative-caret-position="412">
           <caret line="79" column="18" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
           <folding>
             <element signature="e#40#49#0#PHP" expanded="true" />
@@ -932,17 +908,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/HeaderFooter/Header.vue">
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+        <state relative-caret-position="664">
+          <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProjectController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="153" column="31" selection-start-line="153" selection-start-column="31" selection-end-line="153" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/detail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="17" lean-forward="true" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        <state relative-caret-position="135">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Mijnproject/DetailProject.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
         </state>
       </provider>
     </entry>

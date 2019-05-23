@@ -11,7 +11,7 @@ class Student extends Model
       return $this->hasOne('App\User', 'id', 'id');
     }
     public function group(){
-      return $this->belongsTo('App\Group', 'id', 'group_id');
+      return $this->belongsTo('App\Group', 'group_id', 'id');
     }
     public $timestamps = true;
 }
