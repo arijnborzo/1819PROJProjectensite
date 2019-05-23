@@ -245,7 +245,7 @@ export default {
         proj.classList.remove("listli");
         proj.classList.add("gridli");
       });
-      this.gridListTekstStyling("8rem");
+      this.gridListTekstStyling("7.75rem", "8rem");
     },
     listView: function() {
       var ul = document.getElementById("gridlist");
@@ -256,12 +256,16 @@ export default {
         proj.classList.remove("gridli");
         proj.classList.add("listli");
       });
-      this.gridListTekstStyling("auto");
+      this.gridListTekstStyling("auto", "auto");
     },
-    gridListTekstStyling(beschrheight) {
+    gridListTekstStyling(grheight, beschrheight) {
       var beschrijvingtekst = document.getElementsByClassName("beschrijving");
       Array.prototype.filter.call(beschrijvingtekst, function(beschr) {
         beschr.style.height = beschrheight;
+      });
+      var groepstekst = document.getElementsByClassName("groepsleden");
+      Array.prototype.filter.call(groepstekst, function(groepsleden) {
+        groepsleden.style.height = grheight;
       });
     },
     filterOpNaam(waardeZoeken, projectenNaam) {
@@ -407,10 +411,10 @@ ul {
     margin-top: 1rem;
   }
   .beschrijving {
-    height: auto;
+    height: auto !important;
   }
   .groepsleden {
-    height: auto;
+    height: auto !important;
   }
   #listgrid div:nth-child(3n + 2) > .project {
     margin: auto;
