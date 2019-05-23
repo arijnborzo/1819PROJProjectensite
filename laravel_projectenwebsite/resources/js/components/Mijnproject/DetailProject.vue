@@ -4,10 +4,10 @@
       <b-card class="mb-5 mt-5">
         <b-row>
           <b-col>
-            <h2 id="titel">{{project[0].title}}</h2>
+            <h2 id="titel">{{project.title}}</h2>
           </b-col>
           <b-col>
-            <h5 id="status">Status: {{statusProject(project[0].status)}}</h5>
+            <h5 id="status">Status: {{statusProject(project.status)}}</h5>
           </b-col>
         </b-row>
         <div id="beschrijvingVoorstel">
@@ -15,16 +15,16 @@
             <h5>Beschrijving</h5>
           </b-row>
           <b-row>
-            <p>{{project[0].full_description}}</p>
+            <p>{{project.full_description}}</p>
           </b-row>
         </div>
         <b-row>
           <b-col md="6">
             <h4>Hoofdvraag</h4>
-            <p>{{project[0].main_question}}</p>
+            <p>{{project.main_question}}</p>
             <h4>Nevenvragen</h4>
             <ul>
-              <p>{{project[0].side_questions}}</p>
+              <p>{{project.side_questions}}</p>
               <li v-for="vraag in nevenvragen" v-bind:key="vraag"></li>
             </ul>
           </b-col>
@@ -101,14 +101,14 @@ export default {
       if (value === "Declined") return "✖";
     },
     belbinResult(value) {
-      if (value === "coordinator") return this.photo.coordinator;
-      if (value === "completor") return this.photo.completor;
-      if (value === "implementor") return this.photo.implementor;
-      if (value === "investigator") return this.photo.investigator;
-      if (value === "monitor") return this.photo.monitor;
-      if (value === "shaper") return this.photo.shaper;
-      if (value === "plant") return this.photo.plant;
-      if (value === "teamworker") return this.photo.teamworker;
+      if (value === "Voorzitter") return this.photo.coordinator;
+      if (value === "Zorgdrager") return this.photo.completor;
+      if (value === "Specialist") return this.photo.implementor;
+      if (value === "Brononderzoeker") return this.photo.investigator;
+      if (value === "Monitor") return this.photo.monitor;
+      if (value === "Vormer") return this.photo.shaper;
+      if (value === "Plant") return this.photo.plant;
+      if (value === "Groepsdrager") return this.photo.teamworker;
     },
     verstuurGroepsverzoek() {
       this.showBtn = false;
