@@ -24,16 +24,20 @@
                 </b-row>
 
                 <!--gridlist-->
-                <b-row id="gridlist" class="gridul">
-
-                    <div v-for="project in projecten" v-bind:key=project.titel>
+                <div id="listgrid">
+                    <div id="gridlist" v-for="project in projecten" v-bind:key="project.titel">
                         <transition name="fade">
-                            <b-col v-show="filtered(project)">
-                                <app-project :titel=project.titel :beschrijving=project.beschrijving :groepsleden=project.groepsleden :status=project.status :proj_id=project.id></app-project>
-                            </b-col>
+                            <app-project
+                                    v-if="filtered(project)"
+                                    :titel="project.titel"
+                                    :beschrijving="project.beschrijving"
+                                    :groepsleden="project.groepsleden"
+                                    :status="project.status"
+                                    :proj_id="project.id"
+                            ></app-project>
                         </transition>
                     </div>
-                </b-row>
+                </div>
             </b-col>
         </b-row>
     </b-container>
@@ -114,7 +118,7 @@
         methods: {
             handleResize() {
                 this.width = window.innerWidth;
-                if (this.width < 1070) {
+                if (this.width < 1200) {
                     this.showicons = false;
                 } else {
                     this.showicons = true;
@@ -156,7 +160,7 @@
                     proj.classList.remove("listli");
                     proj.classList.add("gridli");
                 });
-                this.gridListTekstStyling("7.75rem", "10.75rem");
+                this.gridListTekstStyling("7.75rem", "8rem");
             },
             listView: function() {
                 var ul = document.getElementById("gridlist");
@@ -255,12 +259,6 @@
     };
 </script>
 
-card ttiel
-image.png
-
-beschr
-image.png
-
 <style>
     body {
         background: #eef1f4;
@@ -274,19 +272,21 @@ image.png
         text-align: center;
         margin: 2rem 0;
     }
-    .gridlist {
-        margin: 0;
+    #listgrid div:nth-child(3n + 2) > .project {
+        margin: 0 2%;
     }
-
     .listul {
         width: auto;
     }
     .gridli {
-        width: 20rem;
+        overflow: hidden;
+        float: left;
+        width: 32%;
     }
     .listli {
         width: 100%;
         height: auto;
+        margin-left: auto !important;
     }
     .proj {
         width: auto;
@@ -296,29 +296,19 @@ image.png
         padding: 0;
     }
 
-    /*TRANSITIONS ON PROJECTS* /
-    .fade-enter-active,
-    .fade-leave-active {
-     transition: opacity 0.9s;
-    }
-    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-        opacity: 0;
-    }
-
     /* SORTEREN */
     #sorteren {
         width: 80%;
-        margin-top: 1rem;
     }
 
     /* BTNS */
     .gridlistbtn {
-        margin: 0 0.3rem;
+        margin-left: 0.3rem;
         float: right;
     }
 
     /* MEDIA QUERYS */
-    @media (max-width: 1070px) {
+    @media (max-width: 1200px) {
         .projecten {
             -ms-flex-align: center !important;
             align-items: center !important;
@@ -330,9 +320,20 @@ image.png
         }
         .project {
             width: 100%;
+            height: auto;
         }
         #sorteren {
             width: 100%;
+            margin-top: 1rem;
+        }
+        .beschrijving {
+            height: auto !important;
+        }
+        .groepsleden {
+            height: auto !important;
+        }
+        #listgrid div:nth-child(3n + 2) > .project {
+            margin: auto;
         }
     }
     @media (max-width: 767px) {

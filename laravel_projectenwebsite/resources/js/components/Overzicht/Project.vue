@@ -34,14 +34,8 @@ export default {
   background-color: #093667;
   list-style-type: none;
 }
-.project {
-  width: 20rem;
-  height: 28rem;
-  border: 1px;
-  float: left;
-}
 .beschrijving {
-  height: 10.75rem;
+  height: 7.75rem;
   overflow: overlay;
   padding-right: 1.25rem;
 }
@@ -56,10 +50,9 @@ export default {
   box-sizing: border-box;
 }
 .project {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
   overflow: hidden;
+  float: left;
+  width: 32%;
 }
 .project:before,
 .project:after {

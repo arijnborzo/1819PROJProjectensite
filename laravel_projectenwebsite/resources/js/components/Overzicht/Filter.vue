@@ -28,7 +28,7 @@
                                   label="Aantal groepsleden"
                                   label-for="input-3"
                     >
-                        <b-form-checkbox-group v-model="form.groepsleden" id="checkboxes">
+                        <b-form-checkbox-group stacked v-model="form.groepsleden" id="checkboxes">
                             <b-form-checkbox value="1">1</b-form-checkbox>
                             <b-form-checkbox value="2">2</b-form-checkbox>
                             <b-form-checkbox value="3">3</b-form-checkbox>
@@ -40,7 +40,7 @@
                                   label="Status"
                                   label-for="input-4"
                     >
-                        <b-form-checkbox-group stacked v-model="form.status" id="status">
+                        <b-form-checkbox-group stacked v-model="form.status">
                             <b-form-checkbox value="Accepted">Accepted</b-form-checkbox>
                             <b-form-checkbox value="In beraad">In beraad</b-form-checkbox>
                             <b-form-checkbox value="Afgekeurd">Afgekeurd</b-form-checkbox>

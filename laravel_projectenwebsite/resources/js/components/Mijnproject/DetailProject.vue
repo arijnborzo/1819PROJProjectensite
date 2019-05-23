@@ -58,7 +58,7 @@
               </li>
             </ul>
           </b-col>
-          <b-col id="btns" md="6" align-self="end">
+          <b-col class="btns" md="6" align-self="end">
             <b-button
               v-b-modal.modal-1
               @click="verstuurGroepsverzoek()"
@@ -133,4 +133,8 @@ props: ["project", "teacher", "groupmembers", "smartcriteria"],
 </script>
 
 <style>
+#status {
+  line-height: 38px;
+  text-align: end;
+}
 </style>
