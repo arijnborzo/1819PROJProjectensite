@@ -1,8 +1,8 @@
 <template>
-  <b-card v-bind:title="titel" tag="article" class="mt-3 mb-3 project">
+  <b-card v-bind:title="titel" tag="article" class="mt-3 project">
     <b-card-text class="beschrijving">
       <h6>Beschrijving</h6>
-      {{beschrijving}}
+      <span>{{beschrijving}}</span>
     </b-card-text>
 
     <b-card-text class="groepsleden">
@@ -15,7 +15,7 @@
     </b-card-text>
     <p style="float:left">
       Status:
-      <span>{{status}}</span>
+      <span>{{statusResult(status)}}</span>
     </p>
 
     <b-button :href="'/project/' + proj_id" size="sm" class="bekijkbtn">Bekijk</b-button>
@@ -24,7 +24,14 @@
 
 <script>
 export default {
-  props: ["titel", "beschrijving", "groepsleden", "status", "proj_id"]
+  props: ["titel", "beschrijving", "groepsleden", "status", "proj_id"],
+  methods: {
+    statusResult(status) {
+      if (status === "Accepted") return `✔`;
+      if (status === "Declined") return "✖";
+      else return "❔";
+    }
+  }
 };
 </script>
 
@@ -34,19 +41,22 @@ export default {
   background-color: #093667;
   list-style-type: none;
 }
+
 .project {
-  width: 20rem;
+  /*  width: 20rem;
   height: 28rem;
   border: 1px;
   float: left;
+*/
 }
 .beschrijving {
-  height: 10.75rem;
+  height: 7.75rem;
   overflow: overlay;
   padding-right: 1.25rem;
 }
+
 .groepsleden {
-  height: 7.75rem;
+  /*  height: 7.75rem;*/
 }
 .project a {
   color: white;
@@ -55,11 +65,11 @@ export default {
 * {
   box-sizing: border-box;
 }
+
 .project {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
   overflow: hidden;
+  float: left;
+  width: 32%;
 }
 .project:before,
 .project:after {

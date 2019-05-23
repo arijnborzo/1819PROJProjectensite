@@ -28,6 +28,7 @@ export default {
   },
   data() {
     return {
+      categorie: null,
       geselecteerdeJaartallen: [],
       show: true
     };

@@ -1,16 +1,16 @@
 <template>
   <b-container id="overzicht" fluid>
     <b-row>
-      <b-col cols="12">
+      <b-col cols="12" offset-md="2">
         <!--titel-->
         <h3 id="alleprojecten">Alle projecten</h3>
       </b-col>
     </b-row>
     <b-row class="justify-content-center">
-      <b-col md="5" lg="4" xl="3" class="filter">
+      <b-col md="4" lg="3" class="filter">
         <app-filter @filtersAangepast="filterForm = $event"></app-filter>
       </b-col>
-      <b-col md="7" lg="8" xl="9">
+      <b-col md="8" lg="9">
         <!--sorteren-->
         <b-row>
           <b-col>
@@ -28,21 +28,20 @@
         </b-row>
 
         <!--gridlist-->
-        <b-row id="gridlist" class="gridul">
-          <div v-for="project in projecten" v-bind:key="project.titel">
+        <div id="listgrid">
+          <div id="gridlist" v-for="project in projecten" v-bind:key="project.titel">
             <transition name="fade">
-              <b-col v-show="filtered(project)">
-                <app-project
-                  :titel="project.titel"
-                  :beschrijving="project.beschrijving"
-                  :groepsleden="project.groepsleden"
-                  :status="project.status"
-                  :proj_id="project.id"
-                ></app-project>
-              </b-col>
+              <app-project
+                v-if="filtered(project)"
+                :titel="project.titel"
+                :beschrijving="project.beschrijving"
+                :groepsleden="project.groepsleden"
+                :status="project.status"
+                :proj_id="project.id"
+              ></app-project>
             </transition>
           </div>
-        </b-row>
+        </div>
       </b-col>
     </b-row>
   </b-container>
@@ -68,6 +67,73 @@ export default {
       projects: [
         {
           title: "Projectensite",
+          short_description:
+            "Voor dit vak de projectenwebsite opnieuw makenoor dit vak de projectenwebsite opnieuw makenoor dit vak de projectenwebsite opnieuw makenoor dit vak de projectenwebsite opnieuw maken",
+          groepsleden: ["Pieterjan Van Beneden", "Arno Stas", "Arno Stas"],
+          id: 1,
+          status: "Accepted"
+        },
+        {
+          title: "Projectensite",
+          short_description: "Voor dit vak de projectenwebsit",
+          groepsleden: ["Pieterjan Van Beneden", "Arno Stas"],
+          id: 1,
+          status: "Accepted"
+        },
+        {
+          title: "Projectensite",
+          short_description:
+            "Voor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw maken",
+          groepsleden: [
+            "Pieterjan Van Beneden",
+            "Arno Stas",
+            "Arno Stas",
+            "Arno Stas"
+          ],
+          id: 1,
+          status: "Accepted"
+        },
+        {
+          title: "Projectensite",
+          short_description:
+            "Voor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw maken",
+          groepsleden: [
+            "Pieterjan Van Beneden",
+            "Arno Stas",
+            "Arno Stas",
+            "Arno Stas"
+          ],
+          id: 1,
+          status: "Accepted"
+        },
+        {
+          title: "Projectensite",
+          short_description:
+            "Voor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw maken",
+          groepsleden: [
+            "Pieterjan Van Beneden",
+            "Arno Stas",
+            "Arno Stas",
+            "Arno Stas"
+          ],
+          id: 1,
+          status: "Accepted"
+        },
+        {
+          title: "Projectensite",
+          short_description:
+            "Voor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw maken",
+          groepsleden: [
+            "Pieterjan Van Beneden",
+            "Arno Stas",
+            "Arno Stas",
+            "Arno Stas"
+          ],
+          id: 1,
+          status: "Accepted"
+        },
+        {
+          title: "Projectensite",
           short_description: "Voor dit vak de projectenwebsite opnieuw maken",
           groepsleden: [
             "Pieterjan Van Beneden",
@@ -76,7 +142,7 @@ export default {
             "Arno Stas"
           ],
           id: 1,
-          status: "Goedgekeurd"
+          status: "Accepted"
         }
       ],
       filterForm: {},
@@ -179,7 +245,7 @@ export default {
         proj.classList.remove("listli");
         proj.classList.add("gridli");
       });
-      this.gridListTekstStyling("7.75rem", "10.75rem");
+      this.gridListTekstStyling("8rem");
     },
     listView: function() {
       var ul = document.getElementById("gridlist");
@@ -190,17 +256,12 @@ export default {
         proj.classList.remove("gridli");
         proj.classList.add("listli");
       });
-      this.gridListTekstStyling("auto", "auto");
+      this.gridListTekstStyling("auto");
     },
-    gridListTekstStyling(grheight, beschrheight) {
+    gridListTekstStyling(beschrheight) {
       var beschrijvingtekst = document.getElementsByClassName("beschrijving");
       Array.prototype.filter.call(beschrijvingtekst, function(beschr) {
         beschr.style.height = beschrheight;
-      });
-
-      var groepsledentekst = document.getElementsByClassName("groepsleden");
-      Array.prototype.filter.call(groepsledentekst, function(groepslid) {
-        groepslid.style.height = grheight;
       });
     },
     filterOpNaam(waardeZoeken, projectenNaam) {
@@ -291,19 +352,21 @@ body {
   text-align: center;
   margin: 2rem 0;
 }
-.gridlist {
-  margin: 0;
+#listgrid div:nth-child(3n + 2) > .project {
+  margin: 0 2%;
 }
-
 .listul {
   width: auto;
 }
 .gridli {
-  width: 20rem;
+  overflow: hidden;
+  float: left;
+  width: 32%;
 }
 .listli {
   width: 100%;
   height: auto;
+  margin-left: auto !important;
 }
 .proj {
   width: auto;
@@ -316,17 +379,16 @@ ul {
 /* SORTEREN */
 #sorteren {
   width: 80%;
-  margin-top: 1rem;
 }
 
 /* BTNS */
 .gridlistbtn {
-  margin: 0 0.3rem;
+  margin-left: 0.3rem;
   float: right;
 }
 
 /* MEDIA QUERYS */
-@media (max-width: 1070px) {
+@media (max-width: 1200px) {
   .projecten {
     -ms-flex-align: center !important;
     align-items: center !important;
@@ -349,6 +411,9 @@ ul {
   }
   .groepsleden {
     height: auto;
+  }
+  #listgrid div:nth-child(3n + 2) > .project {
+    margin: auto;
   }
 }
 @media (max-width: 767px) {
