@@ -46,14 +46,14 @@
                 studenten: [],
                 groepen: [],
                 photo: {
-                    coordinator: "../../img/co-ordinator.png",
-                    completor: "../../img/completor.png",
-                    implementor: "../../img/implementor.png",
-                    investigator: "../../img/investigator.png",
-                    monitor: "../../img/monitor-evaluator.png",
-                    shaper: "../../img/shaper.png",
-                    plant: "../../img/plant.png",
-                    teamworker: "../../img/teamworker.png"
+                    Voorzitter: "../../img/voorzitter.png",
+                    Zorgdrager: "../../img/zorgdrager.png",
+                    Bedrijfsman: "../../img/bedrijfsman.png",
+                    Brononderzoeker: "../../img/brononderzoeker.png",
+                    Monitor: "../../img/monitor.png",
+                    Vormer: "../../img/vormer.png",
+                    Plant: "../../img/plant.png",
+                    Groepswerker: "../../img/groepswerker.png"
                 }
             };
         },
@@ -104,38 +104,38 @@
                 if (!item) return;
             },
             belbinResult(value) {
-                if (value === "Coordinator")
+                if (value === "Voorzitter")
                     return `<img class="belbinimg" src=${
-                        this.photo.coordinator
+                        this.photo.Voorzitter
                         } alt="CO-ORDINATOR" v-b-tooltip.click title="Co-ordinator">`;
-                if (value === "Completor")
+                if (value === "Zorgdrager")
                     return `<img class="belbinimg" src=${
-                        this.photo.completor
-                        } alt="COMPLETOR" v-b-tooltip.click title="Completor">`;
-                if (value === "Implementor")
+                        this.photo.Zorgdrager
+                        } alt="Zorgdrager" v-b-tooltip.click title="Zorgdrager">`;
+                if (value === "Bedrijfsman")
                     return `<img class="belbinimg" src=${
-                        this.photo.implementor
-                        } alt="IMPLEMENTOR" v-b-tooltip.click title="Implementor">`;
-                if (value === "Investigator")
+                        this.photo.bedrijfsman
+                        } alt="Bedrijfsman" v-b-tooltip.click title="Bedrijfsman">`;
+                if (value === "Brononderzoeker")
                     return `<img class="belbinimg" src=${
-                        this.photo.investigator
-                        } alt="INVESTIGATOR" v-b-tooltip.click title="Investigator">`;
+                        this.photo.Brononderzoeker
+                        } alt="Brononderzoeker" v-b-tooltip.click title="Brononderzoeker">`;
                 if (value === "Monitor")
                     return `<img class="belbinimg" src=${
-                        this.photo.monitor
-                        } alt="MONITOR" v-b-tooltip.click title="Monitor">`;
-                if (value === "Shaper")
+                        this.photo.Monitor
+                        } alt="Monitor" v-b-tooltip.click title="Monitor">`;
+                if (value === "Vormer")
                     return `<img class="belbinimg" src=${
-                        this.photo.shaper
-                        } alt="SHAPER" v-b-tooltip.click title="Shaper">`;
+                        this.photo.Vormer
+                        } alt="Vormer" v-b-tooltip.click title="Vormer">`;
                 if (value === "Plant")
                     return `<img class="belbinimg" src=${
-                        this.photo.plant
-                        } alt="PLANT" v-b-tooltip.click title="Plant">`;
-                if (value === "Teamworker")
+                        this.photo.Plant
+                        } alt="Plant" v-b-tooltip.click title="Plant">`;
+                if (value === "Groepswerker")
                     return `<img class="belbinimg" src=${
-                        this.photo.teamworker
-                        } alt="TEAMWORKER">`;
+                        this.photo.Groepswerker
+                        } alt="Groepswerker">`;
             },
             groepResult(value) {
                 console.log(value);

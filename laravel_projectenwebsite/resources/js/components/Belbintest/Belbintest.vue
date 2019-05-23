@@ -23,7 +23,7 @@
                 <b-form-select id="belbinrol" v-model="belbin" required :options="belbinrollen"></b-form-select>
               </b-form-group>
               <p>Je kan niet bij een groep horen of er kan geen voorstel ingediend worden zonder dat je een Belbinrol hebt.</p>
-              <b-button type="submit" class="btns">Verzenden</b-button>
+              <b-button :href="'/belbintest/' + belbin" type="submit" class="btns">Verzenden</b-button>
             </b-form>
           </b-card>
         </b-col>
@@ -39,21 +39,20 @@
         belbin: null,
         belbinrollen: [
           { value: null, text: "Selecteer" },
-          { value: "bedrijfsman", text: "Bedrijfsman" },
-          { value: "groepswerker", text: "Groepswerker" },
-          { value: "onderzoeker", text: "Onderzoeker" },
-          { value: "plant", text: "Plant" },
-          { value: "voorzitter", text: "Voorzitter" },
-          { value: "vormer", text: "Vormer" },
-          { value: "waarschuwer", text: "Waarschuwer" },
-          { value: "zorgdrager", text: "Zorgdrager" }
+          { value: "Bedrijfsman", text: "Bedrijfsman" },
+          { value: "Groepswerker", text: "Groepswerker" },
+          { value: "Brononderzoeker", text: "Brononderzoeker" },
+          { value: "Plant", text: "Plant" },
+          { value: "Voorzitter", text: "Voorzitter" },
+          { value: "Vormer", text: "Vormer" },
+          { value: "Monitor", text: "Monitor" },
+          { value: "Zorgdrager", text: "Zorgdrager" }
         ]
       };
     },
     methods: {
       onSubmit(evt) {
         evt.preventDefault();
-        alert(JSON.stringify(this.belbin));
       }
     }
   };

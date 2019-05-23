@@ -32,10 +32,10 @@ class BelbintestController extends Controller
         'user' => $user
       ]);
     }
-    public function addBelbintype(Request $request){
-      $id = $request['id'];
-      $type = $request['type'];
-      Student::where('id', $id)->update(['belbinbtype' => $type]);
+    public function addBelbintype($type){
+        $user = Auth::user();
+        $student = Student::where('id', $user->id)->first();
+        Student::where('id', $student->id)->update(['belbintype' => $type]);
       return redirect('/');
     }
 }

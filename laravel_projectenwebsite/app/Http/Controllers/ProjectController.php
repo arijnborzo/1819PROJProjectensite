@@ -154,6 +154,7 @@ class ProjectController extends Controller
         {
             $belongstoproject = TRUE;
         }
+
         return view('detail',
             [
             'project' => $detailProject,

@@ -47,6 +47,7 @@ class OverviewController extends Controller
             }
             array_push($groupmembers, $members);
         }
+
         return view('overzicht',
             [
                 'projects' => $AllProjects,
