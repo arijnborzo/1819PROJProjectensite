@@ -134,9 +134,6 @@ class ProjectController extends Controller
           Student::find($request->selected_userid)->update(['group_id'=> NULL]);
         }
       }
-
-
-
     }
     public function detail($id)
     {
@@ -149,7 +146,7 @@ class ProjectController extends Controller
         $students = Student::where('group_id', $group->id)->get();
         $groupmembers=[];
         foreach ($students as $student) {
-            array_push($groupmembers, $student->user->surname . " " . $student->user->name);
+            array_push($groupmembers, $student->user->surname . " " . $student->user->name . " " . $student->belbintype);
         }
         var_dump($groupmembers);
         $belongstoproject = FALSE;
@@ -170,33 +167,26 @@ class ProjectController extends Controller
     public function myProject()
     {
         $user = Auth::user();
-        echo $user;
-        $projectgroup = Project::find($user->student->group->project->id)->first();
-        echo $projectgroup;
-//        $students = Group::find($projectgroup['id'])->students;
-//        $groupmembers=[];
-//        $groupmembers = Student::join('users', 'students.id', '=', 'users.id')->where('group_id', '=', $projectgroup['id'])->get();
-//        /*foreach ($students as $student) {
-//          array_push($groupmembers, Student::find($student['id'])->user);
-//        }*/
-//        if (Student::find((int)$user['id'])->value('group_id') == $projectgroup['id']){
-//            $belongstoproject = TRUE;
-//        } else{
-//            $belongstoproject = FALSE;
-//        }
-//        $projectsmartcriteria = Project::find($id)->smartcriterium->select('specific', 'measurable', 'acceptable', 'realistic', 'tolerant')->get();
-//        $project = Project::where('id', $id)->get();
-//        $teacher =Project::find($id)->teacher->user;
-//        $creator = Project::find($id)->user;
-//        return view('detail',[
-//            'groupmembers' => $groupmembers,
-//            'project' => $project,
-//            'teacher' => $teacher,
-//            'creator' => $creator,
-//            'user' => $user,
-//            'belongstoproject' => $belongstoproject,
-//            'projectsmartcriteria' => $projectsmartcriteria
-//        ]);
+        $myProject = Project::where('id' , $user->student->group->project->id)->first();
+        $smart = Smartcriterium::where('project_id', $myProject->id)->get();
+        $teacher =Project::find($myProject->id)->teacher->user;
+        $group = Group::where('project_id', $myProject->id)->first();
+        $students = Student::where('group_id', $group->id)->get();
+        $groupmembers=[];
+        foreach ($students as $student) {
+            array_push($groupmembers, $student->user->surname . " " . $student->user->name . " " . $student->belbintype);
+        }
+        var_dump($groupmembers);
+        $belongstoproject = TRUE;
+        return view('detail',
+            [
+                'project' => $myProject,
+                'smart' => $smart,
+                'groupmembers' => $groupmembers,
+                'teacher' => $teacher,
+                'user' => $user,
+                'belongstoproject' => $belongstoproject,
+            ]);
     }
 
 }

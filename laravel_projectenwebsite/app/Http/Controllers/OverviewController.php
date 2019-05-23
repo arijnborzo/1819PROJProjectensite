@@ -33,72 +33,55 @@ class OverviewController extends Controller
      */
     public function index()
     {
-      $user = Auth::user();
-      $year = date("Y"); //-1
-      $archief = false;
-      $projects = Project::join('groups', 'projects.id', '=', 'groups.project_id')
-          ->join('students', 'students.group_id','=', 'groups.id')
-          ->join('users', 'users.id', '=', 'students.id' )
-          ->select('projects.*','users.name', 'users.surname', 'students.group_id')
-          ->whereYear('projects.created_at', $year)
-          ->orderBy('group_id', 'ASC')
-          ->get();
-//      echo $projects;
-      return view('overzicht', [
-        'projects' => $projects,
-        'user' => $user,
-          'archief' => $archief
-
-      ]);
+        $user = Auth::user();
+        $year = date("Y"); //-1
+        $archief = false;
+        $AllProjects=Project::all();
+        $groupmembers=[];
+        foreach ($AllProjects as $project) {
+            $group = Group::where('project_id', $project->id)->first();
+            $students = Student::where('group_id', $group->id)->get();
+            $members=[];
+            foreach ($students as $student) {
+                array_push($members, $student->user->surname . " " . $student->user->name);
+            }
+            array_push($groupmembers, $members);
+        }
+        return view('overzicht',
+            [
+                'projects' => $AllProjects,
+                'groupmembers' => $groupmembers,
+                'user' => $user,
+                'archief' => $archief,
+                'year' => $year
+            ]);
 
     }
     public function archive()
     {
-      $user = Auth::user();
-      $year = date("Y")-1;
-      $archief = true;
-      $projects = Project::join('groups', 'projects.id', '=', 'groups.project_id')
-          ->join('students', 'students.group_id','=', 'groups.id')
-          ->join('users', 'users.id', '=', 'students.id' )
-          ->select('projects.*','users.name', 'users.surname', 'students.group_id')
-          ->whereYear('projects.created_at', '!=', $year)
-          ->orderBy('group_id', 'ASC')
-          ->get();
-      //echo $projects;
-      return view('overzicht', [
-        'projects' => $projects,
-        'archief' => $archief,
-        'user' => $user
-      ]);
-    }
-    public function detail($id)
-    {
-      $user = Auth::user();
-      $projectgroup = Project::find($id)->group;
-      $students = Group::find($projectgroup['id'])->students;
-      $groupmembers=[];
-      $groupmembers = Student::join('users', 'students.id', '=', 'users.id')->where('group_id', '=', $projectgroup['id'])->get();
-      /*foreach ($students as $student) {
-        array_push($groupmembers, Student::find($student['id'])->user);
-      }*/
-      if (Student::find((int)$user['id'])->value('group_id') == $projectgroup['id']){
-        $belongstoproject = TRUE;
-      } else{
-        $belongstoproject = FALSE;
-      }
-      $projectsmartcriteria = Project::find($id)->smartcriterium->select('specific', 'measurable', 'acceptable', 'realistic', 'tolerant')->get();
-      $project = Project::where('id', $id)->get();
-      $teacher =Project::find($id)->teacher->user;
-      $creator = Project::find($id)->user;
-      return view('detail',[
-        'groupmembers' => $groupmembers,
-        'project' => $project,
-        'teacher' => $teacher,
-        'creator' => $creator,
-        'user' => $user,
-        'belongstoproject' => $belongstoproject,
-        'projectsmartcriteria' => $projectsmartcriteria
-      ]);
+        $user = Auth::user();
+        $year = date("Y"); //-1
+        $archief = true;
+        $AllProjects=Project::all();
+        $groupmembers=[];
+        foreach ($AllProjects as $project) {
+            $group = Group::where('project_id', $project->id)->first();
+            $students = Student::where('group_id', $group->id)->get();
+            $members=[];
+            foreach ($students as $student) {
+                array_push($members, $student->user->surname . " " . $student->user->name);
+            }
+            array_push($groupmembers, $members);
+        }
+        return view('overzicht',
+            [
+                'projects' => $AllProjects,
+                'groupmembers' => $groupmembers,
+                'user' => $user,
+                'archief' => $archief,
+                'year' => $year
+            ]);
+
     }
 
     public function students()

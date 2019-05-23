@@ -49,4 +49,4 @@ Route::get('/belbintest' , 'BelbintestController@showBelbintest')->name('belbint
 Route::post('/belbintest', 'BelbintestController@addBelbintype');
 Route::get('/students', 'OverviewController@students')->name('studenten');
 Route::get('/project/{id}', 'ProjectController@detail')->name('detail');
-Route::get('/myProject', 'ProjectController@myProject')->name('detail');
+Route::get('/myProject', 'ProjectController@myProject')->name('myProject');

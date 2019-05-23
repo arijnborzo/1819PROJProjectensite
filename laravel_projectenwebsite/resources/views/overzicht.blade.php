@@ -4,8 +4,8 @@
 @section('name', 'Overzicht')
 @section('content')
 	@if(!$archief)
-		<overzicht_vue :projects="{{ $projects }}"></overzicht_vue>
+		<overzicht_vue :groupmembers="{{ json_encode($groupmembers) }}" :projects="{{ $projects }}"></overzicht_vue>
 	@else
-		<archief_vue :projects="{{ $projects }}"></archief_vue>
+		<archief_vue :groupmembers="{{ json_encode($groupmembers) }}" :projects="{{ $projects }}"></archief_vue>
 	@endif
 @endsection
