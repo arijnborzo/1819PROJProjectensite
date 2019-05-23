@@ -1,24 +1,21 @@
 <template>
   <b-container id="overzicht" fluid>
-    <!--titel-->
     <b-row>
-      <b-col>
+      <b-col cols="12" offset-md="2">
+        <!--titel-->
         <h3 id="alleprojecten">Bekijk hier alle projecten van vorige jaren</h3>
       </b-col>
     </b-row>
-    <!-- Filter en projecten -->
     <b-row class="justify-content-center">
-      <!-- Filter -->
-      <b-col md="4" lg="3" xl="2" class="filter">
+      <b-col md="4" lg="3" class="filter">
         <app-archief-filter
           :jaartallen="this.jaartallen"
           @filtersAangepast="geselecteerdeJaartallen = $event"
         ></app-archief-filter>
       </b-col>
-      <!-- Projecten -->
-      <b-col md="8" lg="9" xl="10">
+      <b-col md="8" lg="9">
+        <!--sorteren-->
         <b-row>
-          <!--sorteren-->
           <b-col>
             <b-form-select id="sorteren" v-model="selected" required :options="sorteeropties"></b-form-select>
           </b-col>
@@ -34,20 +31,17 @@
         </b-row>
 
         <!--gridlist-->
-        <b-row id="gridlist" class="gridul">
-          <div v-for="project in projecten" v-bind:key="project.titel">
-            <transition name="fade">
-              <b-col v-show="filteredOpJaar(project.created_at)">
-                <app-project
-                  :titel="project.titel"
-                  :beschrijving="project.beschrijving"
-                  :groepsleden="project.groepsleden"
-                  :status="project.status"
-                ></app-project>
-              </b-col>
-            </transition>
-          </div>
-        </b-row>
+        <div id="gridlist" v-for="project in projecten" v-bind:key="project.titel">
+          <transition name="fade">
+            <app-project
+              v-show="filteredOpJaar(project.created_at)"
+              :titel="project.titel"
+              :beschrijving="project.beschrijving"
+              :groepsleden="project.groepsleden"
+              :status="project.status"
+            ></app-project>
+          </transition>
+        </div>
       </b-col>
     </b-row>
   </b-container>
@@ -221,3 +215,8 @@ export default {
   }
 };
 </script>
+<style>
+#overzicht {
+  padding-bottom: 2rem;
+}
+</style>

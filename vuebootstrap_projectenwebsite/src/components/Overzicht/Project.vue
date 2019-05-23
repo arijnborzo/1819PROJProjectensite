@@ -41,14 +41,6 @@ export default {
   background-color: #093667;
   list-style-type: none;
 }
-
-.project {
-  /*  width: 20rem;
-  height: 28rem;
-  border: 1px;
-  float: left;
-*/
-}
 .beschrijving {
   height: 7.75rem;
   overflow: overlay;
@@ -56,7 +48,7 @@ export default {
 }
 
 .groepsleden {
-  /*  height: 7.75rem;*/
+  height: 7.75rem;
 }
 .project a {
   color: white;

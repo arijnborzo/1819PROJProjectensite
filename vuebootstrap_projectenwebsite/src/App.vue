@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <app-header></app-header>
-    <router-view></router-view>
+    <div id="content">
+      <router-view></router-view>
+    </div>
     <app-footer></app-footer>
   </div>
 </template>
@@ -26,14 +28,14 @@ export default {
 body {
   background: #eef1f4;
   font-family: Roboto, Helvetica, "sans-serif";
-  max-width: 100%;
+  height: 100%;
   overflow-x: hidden;
 }
 #app {
   position: relative;
   min-height: 100%;
 }
-#wrapper {
+#content {
   padding-bottom: 4rem;
 }
 h3 {

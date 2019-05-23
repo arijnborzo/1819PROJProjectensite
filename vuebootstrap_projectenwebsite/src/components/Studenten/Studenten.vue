@@ -164,4 +164,7 @@ export default {
   width: 29px;
   height: auto;
 }
+#studenten {
+  padding-bottom: 2rem;
+}
 </style>
