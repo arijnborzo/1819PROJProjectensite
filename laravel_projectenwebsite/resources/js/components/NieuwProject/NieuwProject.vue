@@ -56,9 +56,7 @@
                         </b-form-group>
 
                         <b-form-group id="input-group-8" label="SMART-criteria">
-                            <b-card
-                                    v-bind:border-variant="form.smart.border"
-                            >
+                            <b-card v-bind:border-variant="form.smart.border">
                                 <span><i>Specifiek:</i></span>
                                 <b-form-input
                                         id="Specifiek"
@@ -138,6 +136,7 @@
 
 <script>
     export default {
+      props: [ 'project', 'smartcriteria'],
         data() {
             return {
                 form: {
@@ -146,7 +145,6 @@
                     langebeschrijving: "",
                     hoofdvraag: "",
                     nevenvragen: "",
-                    categorie: "",
                     docent: "",
                     bestand: "",
                     smart: {
@@ -213,6 +211,14 @@
                 if (newValue === "Ja") this.showDocenten = true;
                 if (newValue === "Neen") this.showDocenten = false;
             }
+        },
+        mounted() {
+          this.form.titel = this.project.title;
+          this.form.kortebeschrijving = this.project.short_description;
+          this.form.langebeschrijving = this.project.full_description;
+          this.form.hoofdvraag = this.project.main_question;
+          this.form.nevenvragen = this.project.side_questions;
+          this.form.smart.specifiek = this.smartcriteria.specific;
         }
     };
 </script>
