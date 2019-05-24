@@ -13,5 +13,5 @@ class Student extends Model
     public function group(){
       return $this->belongsTo('App\Group', 'group_id', 'id');
     }
-    public $timestamps = true;
+    public $timestamps = false;
 }

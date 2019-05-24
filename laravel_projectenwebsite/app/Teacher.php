@@ -13,4 +13,5 @@ class Teacher extends Model
     public function project() {
         return $this->hasMany('App\Project');
     }
+    public $timestamps = false;
 }

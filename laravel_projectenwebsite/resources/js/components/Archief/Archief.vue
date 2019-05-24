@@ -41,8 +41,9 @@
                       v-show="filteredOpJaar(project.created_at)"
                       :titel="project.titel"
                       :beschrijving="project.beschrijving"
-                      :groepsleden="project.groepsleden"
-                      :status="project.status"
+                      :groepsleden="groupmembers[project.id]"
+                      :status="statusProject(project.status)"
+                      :proj_id="project.id"
               ></app-project>
             </transition>
           </div>
@@ -57,9 +58,7 @@ import ArchiefFilter from "./ArchiefFilter";
 import Project from "../Overzicht/Project";
 
 export default {
-  props: {
-    projects: Object
-  },
+  props: ['projects','groupmembers'],
   data() {
     return {
       selected: null,
@@ -139,6 +138,11 @@ export default {
     }
   },
   methods: {
+    statusProject(value) {
+      if (value === "Accepted") return `✔`;
+      if (value === "Pending") return "❔";
+      if (value === "Declined") return "✖";
+    },
     handleResize() {
       this.width = window.innerWidth;
       if (this.width < 1200) {

@@ -144,11 +144,14 @@ class ProjectController extends Controller
         $teacher =Project::find($id)->teacher->user;
         $group = Group::where('project_id', $detailProject->id)->first();
         $students = Student::where('group_id', $group->id)->get();
+
         $groupmembers=[];
         foreach ($students as $student) {
-            array_push($groupmembers, $student->user->surname . " " . $student->user->name . " " . $student->belbintype);
+            $s = [];
+            array_push($s, $student->belbintype, $student->user);
+            //echo $student;
+            array_push($groupmembers, $s);
         }
-        var_dump($groupmembers);
         $belongstoproject = FALSE;
         if ($myProject === $detailProject)
         {
@@ -167,27 +170,9 @@ class ProjectController extends Controller
     }
     public function myProject()
     {
-        $user = Auth::user();
-        $myProject = Project::where('id' , $user->student->group->project->id)->first();
-        $smart = Smartcriterium::where('project_id', $myProject->id)->get();
-        $teacher =Project::find($myProject->id)->teacher->user;
-        $group = Group::where('project_id', $myProject->id)->first();
-        $students = Student::where('group_id', $group->id)->get();
-        $groupmembers=[];
-        foreach ($students as $student) {
-            array_push($groupmembers, $student->user->surname . " " . $student->user->name . " " . $student->belbintype);
-        }
-        var_dump($groupmembers);
-        $belongstoproject = TRUE;
-        return view('detail',
-            [
-                'project' => $myProject,
-                'smart' => $smart,
-                'groupmembers' => $groupmembers,
-                'teacher' => $teacher,
-                'user' => $user,
-                'belongstoproject' => $belongstoproject,
-            ]);
+        $user = Auth::user();        
+        $newpath = substr_replace("/project/", $user->student->group->project->id,9);
+        return redirect($newpath);
     }
 
 }

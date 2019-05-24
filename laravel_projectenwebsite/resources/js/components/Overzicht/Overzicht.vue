@@ -25,14 +25,14 @@
 
                 <!--gridlist-->
                 <div id="listgrid">
-                    <div id="gridlist" v-for="project in projecten" v-bind:key="project.titel">
+                    <div id="gridlist" v-for="(project, index) in projecten" v-bind:key="project.titel">
                         <transition name="fade">
                             <app-project
                                     v-if="filtered(project)"
                                     :titel="project.titel"
                                     :beschrijving="project.beschrijving"
-                                    :groepsleden="project.groepsleden"
-                                    :status="project.status"
+                                    :groepsleden="groupmembers[project.id]"
+                                    :status="statusProject(project.status)"
                                     :proj_id="project.id"
                             ></app-project>
                         </transition>
@@ -48,9 +48,7 @@
     import Project from "./Project";
 
     export default {
-        props: {
-            projects: Array
-        },
+        props: ['projects','groupmembers'],
         data() {
             return {
                 selected: null,
@@ -116,6 +114,11 @@
             }
         },
         methods: {
+            statusProject(value) {
+              if (value === "Accepted") return `✔`;
+              if (value === "Pending") return "❔";
+              if (value === "Declined") return "✖";
+            },
             handleResize() {
                 this.width = window.innerWidth;
                 if (this.width < 1200) {

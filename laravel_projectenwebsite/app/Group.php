@@ -13,4 +13,5 @@ class Group extends Model
   public function project(){
     return $this->hasOne('App\Project', 'id', 'project_id');
   }
+  public $timestamps = false;
 }

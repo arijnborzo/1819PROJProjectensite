@@ -11,4 +11,5 @@ class Smartcriterium extends Model
   public function group(){
       return $this->hasOne('App\Group', 'Id', 'Group_Id');
   }
+  public $timestamps = false;
 }

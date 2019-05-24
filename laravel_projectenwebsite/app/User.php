@@ -33,5 +33,5 @@ class User extends Authenticatable
   public function projects(){
     return $this->hasMany('App\Project', 'creator_Id');
   }
-  public $timestamps = false;
+  public $timestamps = true;
 }

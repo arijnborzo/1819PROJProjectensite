@@ -40,15 +40,15 @@
         </b-row>
         <b-row>
           <b-col md="6">
-            <h4>Groepsledennn</h4>
+            <h4>Groepsleden</h4>
             <ul>
               <li v-for="member in groupmembers" v-bind:key="member">
                 <p>
-                  {{member}}
+                  {{member[1].name}} {{member[1].surname}}
                   <span>
                     <img
                       class="lidbelbin"
-                      :src="belbinResult(member.belbintype)"
+                      :src="belbinResult(member[0])"
                       :alt="member.belbintype"
                       v-b-tooltip.click.hover
                       :title="member.belbintype"

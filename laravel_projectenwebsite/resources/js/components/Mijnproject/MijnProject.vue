@@ -48,7 +48,7 @@
                   :title="belbin"
                 >
                 <p>
-                  {{ member }}
+                  {{ member.naam }}
                 </p>
 
               </li>

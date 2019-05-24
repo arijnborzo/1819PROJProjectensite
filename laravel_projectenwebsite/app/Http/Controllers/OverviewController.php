@@ -37,15 +37,14 @@ class OverviewController extends Controller
         $year = date("Y"); //-1
         $archief = false;
         $AllProjects=Project::all();
-        $groupmembers=[];
-        foreach ($AllProjects as $project) {
+        foreach ($AllProjects as $key=>$project) {
             $group = Group::where('project_id', $project->id)->first();
             $students = Student::where('group_id', $group->id)->get();
             $members=[];
             foreach ($students as $student) {
                 array_push($members, $student->user->surname . " " . $student->user->name);
             }
-            array_push($groupmembers, $members);
+            $groupmembers[$project->id] = $members;
         }
 
         return view('overzicht',
@@ -64,15 +63,14 @@ class OverviewController extends Controller
         $year = date("Y"); //-1
         $archief = true;
         $AllProjects=Project::all();
-        $groupmembers=[];
-        foreach ($AllProjects as $project) {
+        foreach ($AllProjects as $key=>$project) {
             $group = Group::where('project_id', $project->id)->first();
             $students = Student::where('group_id', $group->id)->get();
             $members=[];
             foreach ($students as $student) {
                 array_push($members, $student->user->surname . " " . $student->user->name);
             }
-            array_push($groupmembers, $members);
+            $groupmembers[$project->id] = $members;
         }
         return view('overzicht',
             [
