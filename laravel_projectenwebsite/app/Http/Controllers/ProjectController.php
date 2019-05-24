@@ -7,6 +7,7 @@ use App\Group;
 use App\Project;
 use App\Smartcriterium;
 use App\Student;
+use App\Teacher;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -30,26 +31,24 @@ class ProjectController extends Controller
     */
     public function createProject(){
         $user = Auth::user();
-        $groupid = Student::find((int)$user['id'])->value('group_id');
-        $teachers = User::rightJoin('teachers', 'users.id', '=', 'teachers.id')->get();
-
-        if($groupid != NULL){
+        $teachers = Teacher::get();
+        foreach ($teachers as $key => $teacher) {
+          $teacher_list[$key] = $teacher->user;
+        }
+        if($user->student->group->id != NULL){
           //user already belongs to group
-          $group = User::rightJoin('students', 'users.id', '=', 'students.id')->where('group_id', $groupid)->get();
-          $projectid = Group::where('id', $groupid)->value('project_id');
-          $project = Project::find($projectid);
+          $project = $user->student->group->project;
+          $smartcriteria = $project->smartcriterium;
         }
         else{
           //create new project
           $project = new Project;
-          $group = new Group;
+          $smartcriteria = new Smartcriterium;
         }
-        echo $project;
-        echo $group;
         return view('nieuwproject',[
           'project'  => $project,
-          'group' => $group,
-          'teachers' => $teachers,
+          'smartcriteria' => $smartcriteria,
+          'teachers' => $teacher_list,
           'user' => $user
         ]);
     }
@@ -170,7 +169,7 @@ class ProjectController extends Controller
     }
     public function myProject()
     {
-        $user = Auth::user();        
+        $user = Auth::user();
         $newpath = substr_replace("/project/", $user->student->group->project->id,9);
         return redirect($newpath);
     }

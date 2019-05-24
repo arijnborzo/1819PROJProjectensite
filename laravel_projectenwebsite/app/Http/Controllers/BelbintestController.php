@@ -26,17 +26,20 @@ class BelbintestController extends Controller
     */
     public function showBelbintest(){
       $user = Auth::user();
-      $student = $user->student;
-      echo($student->belbintype);
-      return view('belbin', [
-        'user' => $user
-      ]);
+      if ($user->student->belbintype != null){
+        echo($user->student->belbintype);
+        return redirect("/");
+      }
+      else{
+        return view('belbin', [
+          'user' => $user
+        ]);
+      }
+
+
     }
     public function addBelbintype($type){
         $user = Auth::user();
-        $student = Student::where('id', $user->id)->first();
-        echo ($user->id);
-        echo ($type);
         Student::where('id', $user->id)->update(['belbintype' => $type]);
       //return redirect('/');
     }

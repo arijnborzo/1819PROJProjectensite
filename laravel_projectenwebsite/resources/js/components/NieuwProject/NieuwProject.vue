@@ -111,7 +111,10 @@
                         </b-form-group>
 
                         <b-form-group id="input-group-7" label="Kies de docent" v-if="showDocenten">
-                            <b-form-select v-model="form.docent" :options="docenten"></b-form-select>
+                            <b-form-select>
+                                <option v-model="form.docent" v-for="teacher in teachers" v-bind:key="teacher" v-bind:value="teacher.id">{{ teacher.surname }} {{ teacher.name }}</option>
+                            </b-form-select>
+                            <!--<b-form-select v-model="form.docent" :options="docenten"></b-form-select>-->
                         </b-form-group>
 
                         <b-form-group id="input-group-8" label="Indien u al document(en) wilt voorleggen aan de docent, kan u deze in een ZIP versturen">
@@ -136,7 +139,7 @@
 
 <script>
     export default {
-      props: [ 'project', 'smartcriteria'],
+      props: [ 'project', 'smartcriteria', 'teachers'],
         data() {
             return {
                 form: {
@@ -219,6 +222,10 @@
           this.form.hoofdvraag = this.project.main_question;
           this.form.nevenvragen = this.project.side_questions;
           this.form.smart.specifiek = this.smartcriteria.specific;
+          this.form.smart.meetbaar = this.smartcriteria.measurable;
+          this.form.smart.acceptabel = this.smartcriteria.acceptable;
+          this.form.smart.realiseerbaar = this.smartcriteria.realistic;
+          this.form.smart.tijdsgebonden = this.smartcriteria.tolerant;
         }
     };
 </script>
