@@ -45,7 +45,8 @@ class ProjectController extends Controller
           $project = new Project;
           $smartcriteria = new Smartcriterium;
         }
-        return view('nieuwproject',[
+        return view('nieuwproject',
+            [
           'project'  => $project,
           'smartcriteria' => $smartcriteria,
           'teachers' => $teacher_list,
@@ -119,8 +120,9 @@ class ProjectController extends Controller
         'confirmed'=> FALSE
       ];
       $student->update($updateStudent);
-      return redirect('/');
+      return redirect()->route('home');
     }
+
     public function addMember(Request $request){
       $user = Auth::user();
       $newMember = Student::first($request->selected_userid);

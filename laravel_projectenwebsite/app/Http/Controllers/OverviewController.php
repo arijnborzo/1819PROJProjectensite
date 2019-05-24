@@ -23,7 +23,7 @@ class OverviewController extends Controller
     public function __construct()
      {
          $this->middleware('auth');
-         //$this->middleware('belbin');
+         $this->middleware('belbin');
      }
 
     /**
@@ -86,15 +86,25 @@ class OverviewController extends Controller
     public function students()
     {
       $user = Auth::user();
-      $students = User::rightJoin('students', 'users.id', '=', 'students.id')
-            ->rightJoin('projects', 'students.group_id', '=', 'projects.id')
-            ->select('students.group_id','users.name', 'users.surname', 'projects.title as projectvoorstel', 'students.belbintype as belbin')
-            ->get();
-      //echo $students;
-      return view('students', [
-          'students' => $students,
-             'user' => $user
-            ]
+      $students = Student::pluck('id');;
+      $all=[];
+      foreach ($students as $id) {
+            $members=[];
+            $used = User::where('id', $id)->first();
+            $student = Student::where('id', $id)->first();
+            $project = Project::where('id', $student->group_id)->first();
+            $stu = $used->surname . " " . $used->name;
+            $belbin = $used->student->belbintype;
+            $projects = $project->title;
+            array_push($members, $stu, $belbin, $projects);
+            array_push($all, $members);
+      }
+
+      return view('students',
+          [
+              'students' => $all,
+              'user' => $user
+          ]
         );
     }
 }

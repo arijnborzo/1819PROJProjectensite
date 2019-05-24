@@ -28,7 +28,7 @@ class BelbintestController extends Controller
       $user = Auth::user();
       if ($user->student->belbintype != null){
         echo($user->student->belbintype);
-        return redirect("/");
+        return redirect()->route('home');
       }
       else{
         return view('belbin', [
@@ -41,6 +41,6 @@ class BelbintestController extends Controller
     public function addBelbintype($type){
         $user = Auth::user();
         Student::where('id', $user->id)->update(['belbintype' => $type]);
-      //return redirect('/');
+        return redirect('/students');
     }
 }

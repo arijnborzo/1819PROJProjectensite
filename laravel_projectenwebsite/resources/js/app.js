@@ -67,9 +67,9 @@ Vue.component('project_vue', require('./components/Overzicht/Project.vue'));
 //used
 Vue.component('nieuwProject_vue', require('./components/NieuwProject/NieuwProject.vue'));
 Vue.component('login_vue', require('./components/Login/Login.vue'));
-//Notused
+//used
 Vue.component('loginForm_vue', require('./components/Login/LoginForm.vue'));
-//Notused
+//used
 Vue.component('footer_vue', require('./components/HeaderFooter/Footer.vue'));
 //used
 Vue.component('header_vue', require('./components/HeaderFooter/Header.vue'));
@@ -81,6 +81,7 @@ Vue.component('archief_vue', require('./components/Archief/Archief.vue'));
 Vue.component('newproject_vue', require('./components/NieuwProject/NieuwProject.vue'));
 //used
 Vue.component('details_vue', require('./components/MijnProject/DetailProject'));
+//used
 Vue.component('mijnproject_vue', require('./components/MijnProject/MijnProject'));
 
 
@@ -95,9 +96,9 @@ import footer_vue from './components/HeaderFooter/Footer'
 import header_vue from './components/HeaderFooter/Header'
 import overzicht_vue from './components/Overzicht/Overzicht'
 import project_vue from './components/Overzicht/Project'
-import login_vue from './components/Overzicht/Filter'
+import filter_vue from './components/Overzicht/Filter'
 import loginForm_vue from './components/Login/LoginForm'
-import filter_vue from './components/Login/Login'
+import login_vue from './components/Login/Login'
 import newproject_vue from './components/NieuwProject/NieuwProject'
 import belbin_vue from './components/Belbintest/Belbintest'
 import archief_vue from './components/Archief/Archief'

@@ -4,5 +4,5 @@
 @section('name', 'Student')
 @section('content')
 {{-- <studenten_vue :studenten="'{!! json_encode($students) !!}'"></studenten_vue>--}}
-    <studenten_vue :students="{{ $students }}"></studenten_vue>
+    <studenten_vue :students="{{ json_encode($students) }}"></studenten_vue>
 @endsection

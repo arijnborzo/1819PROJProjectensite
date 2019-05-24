@@ -107,7 +107,7 @@
                 if (value === "Voorzitter")
                     return `<img class="belbinimg" src=${
                         this.photo.Voorzitter
-                        } alt="CO-ORDINATOR" v-b-tooltip.click title="Co-ordinator">`;
+                        } alt="Voorzitter" v-b-tooltip.click title="Voorzitter">`;
                 if (value === "Zorgdrager")
                     return `<img class="belbinimg" src=${
                         this.photo.Zorgdrager

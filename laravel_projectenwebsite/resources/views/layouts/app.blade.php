@@ -33,7 +33,6 @@
             <header_vue :user="{{ $user }}"></header_vue>
         @else
         @endif
-
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>

@@ -83,14 +83,14 @@ props: ["project", "teacher", "groupmembers", "smartcriteria"],
     return {
       showBtn: true,
       photo: {
-        coordinator: "../../img/co-ordinator.png",
-        completor: "../../img/completor.png",
-        implementor: "../../img/implementor.png",
-        investigator: "../../img/investigator.png",
-        monitor: "../../img//monitor-evaluator.png",
-        shaper: "../../img/shaper.png",
-        plant: "../../img/plant.png",
-        teamworker: "../../img/teamworker.png"
+        Voorzitter: "../../img/voorzitter.png",
+        Zorgdrager: "../../img/zorgdrager.png",
+        Bedrijfsman: "../../img/bedrijfsman.png",
+        Brononderzoeker: "../../img/brononderzoeker.png",
+        Monitor: "../../img/monitor.png",
+        Vormer: "../../img/vormer.png",
+        Plant: "../../img/plant.png",
+        Groepswerker: "../../img/groepswerker.png"
       }
     };
   },
@@ -107,14 +107,14 @@ props: ["project", "teacher", "groupmembers", "smartcriteria"],
       if (value === "Declined") return "✖";
     },
     belbinResult(value) {
-      if (value === "Voorzitter") return this.photo.coordinator;
-      if (value === "Zorgdrager") return this.photo.completor;
-      if (value === "Specialist") return this.photo.implementor;
-      if (value === "Brononderzoeker") return this.photo.investigator;
-      if (value === "Monitor") return this.photo.monitor;
-      if (value === "Vormer") return this.photo.shaper;
-      if (value === "Plant") return this.photo.plant;
-      if (value === "Groepsdrager") return this.photo.teamworker;
+      if (value === "Voorzitter") return this.photo.Voorzitter;
+      if (value === "Zorgdrager") return this.photo.Zorgdrager;
+      if (value === "Bedrijfsman") return this.photo.Bedrijfsman;
+      if (value === "Brononderzoeker") return this.photo.Brononderzoeker;
+      if (value === "Monitor") return this.photo.Monitor;
+      if (value === "Vormer") return this.photo.Vormer;
+      if (value === "Plant") return this.photo.Plant;
+      if (value === "Groepswerker") return this.photo.Groepswerker;
     },
     verstuurGroepsverzoek() {
       this.showBtn = false;
