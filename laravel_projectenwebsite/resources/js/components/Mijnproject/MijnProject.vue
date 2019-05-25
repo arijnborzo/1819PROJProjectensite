@@ -4,7 +4,7 @@
       <b-card class="mb-5 mt-5">
         <b-row>
           <b-col>
-            <h2 id="titel">{{project.title}}Van Mij!</h2>
+            <h2 id="titel">{{project.title}}</h2>
           </b-col>
           <b-col>
             <h6 style="line-height:38px; text-align:center">Status: {{statusProject(project.status)}}</h6>

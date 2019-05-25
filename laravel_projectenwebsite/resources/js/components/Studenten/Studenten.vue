@@ -58,46 +58,45 @@
             };
         },
         mounted() {
-            var currentGroup = 0;
+            var currentProject = null;
             for (var stud in this.students) {
                 var student = this.students[stud];
-                // Check of we aan een nieuwe groepsvoorstel begonnen zijn
-                if (student.group_id != currentGroup) {
-                    this.groepen[currentGroup] = 1;
-                    currentGroup++;
+                if (student[2] != currentProject) {
+                    this.projecten[student[2]] = 1;
+                    currentProject = student[2];
                 } else {
-                    this.groepen[currentGroup - 1]++;
+                    this.projecten[student[2]]++;
                 }
             }
-            var currentStudentGroup = 0;
+            var currentStudentProject = null;
             for (var stud in this.students) {
                 // Neem student
                 var student = this.students[stud];
                 // Check of we aan een nieuwe groepsvoorstel begonnen zijn
-                if (student.group_id != currentStudentGroup) {
-                    currentStudentGroup++;
+                if (student[2] != currentStudentProject) {
+                    currentStudentProject = student[2];
                     // Groep vinden
-                    var groep = this.groepen[currentStudentGroup - 1];
+                    var groep = this.projecten[currentStudentProject];
                     // Eerste lid toevoegen
-                    var naam = `${student.surname} ${student.name}`;
-                    // Project voorstel
-                    var projectvoorstel = student.projectvoorstel;
+                    var naam = student[0];
+                    // Voorstel toevoegen
+                    var projectvoorstel = student[2];
                     // Belbin
-                    var belbin = student.belbin;
+                    var belbin = student[1];
                     // object nieuwe vueproject aanmaken
                     var vuestudent = { groep, naam, projectvoorstel, belbin };
                     // toevoegen aan vue component array genaamd projecten
                     this.studenten.push(vuestudent);
                 } else {
-                    var groep = this.groepen[currentStudentGroup - 1];
-                    var naam = `${student.surname} ${student.name}`;
-                    var projectvoorstel = student.projectvoorstel;
-                    var belbin = student.belbin;
+                    var groep = this.projecten[currentStudentProject];
+                    var naam = student[0];
+                    var projectvoorstel = student[2];
+                    var belbin = student[1];
                     var vuestudent = { groep, naam, projectvoorstel, belbin };
                     this.studenten.push(vuestudent);
                 }
+                console.log(this.studenten);
             }
-            console.log(this.studenten);
         },
         methods: {
             rowClass(item) {

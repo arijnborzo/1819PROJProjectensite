@@ -83,6 +83,9 @@ class OverviewController extends Controller
 
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function students()
     {
       $user = Auth::user();
@@ -96,10 +99,12 @@ class OverviewController extends Controller
             $stu = $used->surname . " " . $used->name;
             $belbin = $used->student->belbintype;
             $projects = $project->title;
-            array_push($members, $stu, $belbin, $projects);
+            $group = Group::where('project_id', $student->group_id)->first();
+            $group_id = $group->id;
+
+            array_push($members, $stu, $belbin, $projects, $group_id);
             array_push($all, $members);
       }
-
       return view('students',
           [
               'students' => $all,

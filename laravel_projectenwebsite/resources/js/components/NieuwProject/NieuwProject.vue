@@ -99,7 +99,6 @@
                                 ></b-form-input>
                             </b-card>
                         </b-form-group>
-
                         <!--
                                       <b-form-group id="input-group-5" label="Kies een categorie" label-for="categorie">
                                         <b-form-select id="categorie" v-model="selected" required :options="categorien"></b-form-select>
@@ -130,7 +129,6 @@
                         <b-button type="submit" class="btns">Verzend</b-button>
                         <b-button type="reset" variant="danger" style="float: right">Reset</b-button>
                     </b-form>
-
                 </b-card>
             </b-col>
         </b-row>

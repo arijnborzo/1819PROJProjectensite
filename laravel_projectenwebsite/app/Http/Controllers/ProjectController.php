@@ -154,11 +154,10 @@ class ProjectController extends Controller
             array_push($groupmembers, $s);
         }
         $belongstoproject = FALSE;
-        if ($myProject === $detailProject)
+        if ($myProject->id === $detailProject->id)
         {
             $belongstoproject = TRUE;
         }
-
         return view('detail',
             [
             'project' => $detailProject,
