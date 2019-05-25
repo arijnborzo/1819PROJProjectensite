@@ -20,145 +20,99 @@ export const routes = [
     path: "/studenten",
     component: Studenten,
     props: {
-      students: {
-        stud1: {
-          name: "Arno",
-          surname: "Stas",
-          group_id: 1,
-          projectvoorstel: "Projectenwebsite",
-          belbin: "Plant"
-        },
-        stud2: {
-          name: "Lukas",
-          surname: "Petit",
-          group_id: 1,
-          projectvoorstel: "Projectenwebsite",
-          belbin: "Completor"
-        },
-        stud3: {
-          name: "Andreas",
-          surname: "Lauwers",
-          group_id: 1,
-          projectvoorstel: "Projectenwebsite",
-          belbin: "Groepswerker"
-        },
-        stud4: {
-          name: "Arijn",
-          surname: "Borzo",
-          group_id: 1,
-          projectvoorstel: "Projectenwebsite",
-          belbin: "Coordinator"
-        },
-        stud5: {
-          name: "Jonas",
-          surname: "Petit",
-          group_id: 2,
-          projectvoorstel: "Macro Keyboard",
-          belbin: "Implementor"
-        },
-        stud6: {
-          name: "Elias",
-          surname: "Petit",
-          group_id: 2,
-          projectvoorstel: "Macro Keyboard",
-          belbin: "Vormer"
-        },
-        stud7: {
-          name: "Tom",
-          surname: "Petit",
-          group_id: 3,
-          projectvoorstel: "",
-          belbin: "Completor"
-        }
-      }
+      students: [
+        ["Andreas Lauwers", "Plant", "Projectenwebsite", 1],
+        ["Arno Lauwers", "Voorzitter", "Projectenwebsite", 1],
+        ["Arijn Lauwers", null, "Projectenwebsite", 1],
+        ["Lukas Lauwers", "Vormer", "Projectenwebsite", 1],
+        ["Andreas Petit", "Groepswerker", "Macrokeyboard", 2],
+        ["Lukas Petit", "Monitor", "Macrokeyboard", 2],
+        ["Loser tje", "Monitor", null, null]
+      ]
     }
   },
   {
     path: "/archief",
     component: Archief,
     props: {
-      projects: {
-        project1: {
-          title: "Projectensite",
-          short_description:
-            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
-          name: "Andreas",
-          surname: "Lauwers",
-          status: "Accepted",
-          group_id: 1,
-          created_at: "2019-05-10"
-        },
-        project2: {
-          title: "Projectensite",
-          short_description:
-            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
-          name: "Lukas",
-          surname: "Petit",
-          status: "Accepted",
-          group_id: 1,
-          created_at: "2019-05-10"
-        },
-        project3: {
-          title: "MacroKeyboard",
-          short_description:
-            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
-          name: "Arno",
-          surname: "Stas",
-          status: "Declined",
-          group_id: 2,
-          created_at: "2018-05-10"
-        },
-        project4: {
-          title: "MacroKeyboard",
-          short_description:
-            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
-          name: "Pol",
-          surname: "Lol",
-          status: "Declined",
-          group_id: 2,
-          created_at: "2018-05-10"
-        },
-        project5: {
-          title: "MacroKeyboard",
-          short_description:
-            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
-          name: "Pol",
-          surname: "Lol",
-          status: "Declined",
-          group_id: 2,
-          created_at: "2018-05-10"
-        },
-        project6: {
-          title: "Goeiendag zeggen",
-          short_description:
-            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
-          name: "Pol",
-          surname: "Lol",
-          status: "Declined",
-          group_id: 3,
-          created_at: "2018-05-10"
-        },
-        project7: {
-          title: "Goeiendag zeggen",
-          short_description:
-            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
-          name: "Pol",
-          surname: "Lol",
-          status: "Declined",
-          group_id: 3,
-          created_at: "2018-05-10"
-        },
-        project8: {
-          title: "Goeiendag zeggen",
-          short_description:
-            "Hey baby girl what you doin tonight I wanna see what you got in store Ha hey baby, givin' it you all when you're dancin' on me",
-          name: "Pol",
-          surname: "Looooooooooooooool",
-          status: "Declined",
-          group_id: 3,
-          created_at: "2018-05-10"
-        }
-      }
+      projects: [
+        [
+          ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
+          [
+            {
+              id: 1,
+              title: "Projectensite",
+              status: "Accepted",
+              short_description: "dit is de korte bschrrrrrrrrrrrr",
+              full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
+              teacher_id: 6,
+              creator_id: 1,
+              main_question: "Dit is de hoofdvraag",
+              side_questions:
+                "het maken van ee degelijke site? Of wat moet je anderss doen?",
+              created_at: "2019-05-24 07:52:45",
+              updated_at: "2019-05-24 07:52:45"
+            }
+          ]
+        ],
+        [
+          ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
+          [
+            {
+              id: 2,
+              title: "MAcro",
+              status: "Accepted",
+              short_description: "dit is de korte bschrrrrrrrrrrrr",
+              full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
+              teacher_id: 5,
+              creator_id: 2,
+              main_question: "Dit is de hoofdvraag",
+              side_questions:
+                "het maken van ee degelijke site? Of wat moet je anderss doen?",
+              created_at: "2018-05-24 07:52:45",
+              updated_at: "2019-05-24 07:52:45"
+            }
+          ]
+        ],
+        [
+          ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
+          [
+            {
+              id: 3,
+              title: "Eliboy",
+              status: "Declined",
+              short_description: "dit is de korte bschrrrrrrrrrrrr",
+              full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
+              teacher_id: 6,
+              creator_id: 2,
+              main_question: "Dit is de hoofdvraag",
+              side_questions:
+                "het maken van ee degelijke site? Of wat moet je anderss doen?",
+              created_at: "2017-05-24 07:52:45",
+              updated_at: "2018-05-24 07:52:45"
+            }
+          ]
+        ],
+        [
+          ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
+          [
+            {
+              id: 4,
+              title: "NBAAA",
+              status: "In beraad",
+              short_description: "dit is de korte bschrrrrrrrrrrrr",
+              full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
+              teacher_id: 3,
+              creator_id: 2,
+              main_question: "Dit is de hoofdvraag",
+              side_questions:
+                "het maken van ee degelijke site? Of wat moet je anderss doen?",
+              created_at: "2016-05-24 07:52:45",
+              updated_at: "2019-05-24 07:52:45"
+            }
+          ]
+        ]
+      ]
     }
   },
   { path: "/belbintest", component: Belbintest },

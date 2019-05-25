@@ -2,7 +2,8 @@
   <b-card v-bind:title="titel" tag="article" class="mt-3 project">
     <b-card-text class="beschrijving">
       <h6>Beschrijving</h6>
-      <span>{{beschrijving}}</span>
+      <span v-if="kort">{{kortebeschrijving}}</span>
+      <span v-if="lang">{{langebeschrijving}}</span>
     </b-card-text>
 
     <b-card-text class="groepsleden">
@@ -24,12 +25,37 @@
 
 <script>
 export default {
-  props: ["titel", "beschrijving", "groepsleden", "status", "proj_id"],
+  props: [
+    "titel",
+    "kortebeschrijving",
+    "langebeschrijving",
+    "groepsleden",
+    "status",
+    "proj_id",
+    "gridlist"
+  ],
+  data() {
+    return {
+      kort: true,
+      lang: false
+    };
+  },
   methods: {
     statusResult(status) {
       if (status === "Accepted") return `✔`;
       if (status === "Declined") return "✖";
       else return "❔";
+    }
+  },
+  watch: {
+    gridlist: function(nieuw, oud) {
+      if (nieuw === "grid") {
+        this.kort = true;
+        this.lang = false;
+      } else if (nieuw === "list") {
+        this.kort = false;
+        this.lang = true;
+      }
     }
   }
 };

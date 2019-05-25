@@ -39,18 +39,9 @@ export default {
     return {
       form: {
         naam: "",
-        //categorie: null,
         groepsleden: [],
         status: []
       },
-      /*
-                categorien: [
-                  { text: "Geen voorkeur", value: null },
-                  "Elektronica",
-                  "Webdevelopment",
-                  "Robotica",
-                  "Netwerkinfrastructuur"
-                ],*/
       show: true
     };
   },
@@ -58,13 +49,11 @@ export default {
     onSubmit(evt) {
       evt.preventDefault();
       this.$emit("filtersAangepast", this.form);
-      //alert(JSON.stringify(this.form));
     },
     onReset(evt) {
       evt.preventDefault();
       // Reset our form values
       this.form.naam = "";
-      //this.form.categorie = null;
       this.form.groepsleden = [];
       this.form.status = [];
       // Trick to reset/clear native browser form validation state

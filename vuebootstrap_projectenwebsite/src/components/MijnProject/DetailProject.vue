@@ -114,7 +114,7 @@
               </li>
             </ul>
           </b-col>
-          <b-col class="btns" md="6" align-self="end">
+          <b-col md="6" align-self="end">
             <b-button
               v-b-modal.modal-1
               @click="verstuurGroepsverzoek()"

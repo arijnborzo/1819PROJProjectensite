@@ -34,10 +34,12 @@
               <app-project
                 v-if="filtered(project)"
                 :titel="project.titel"
-                :beschrijving="project.beschrijving"
+                :kortebeschrijving="project.korte_beschrijving"
+                :langebeschrijving="project.lange_beschrijving"
                 :groepsleden="project.groepsleden"
                 :status="project.status"
                 :proj_id="project.id"
+                :gridlist="gridlist"
               ></app-project>
             </transition>
           </div>
@@ -65,89 +67,87 @@ export default {
       ],
       projecten: [],
       projects: [
-        {
-          title: "Projectensite",
-          short_description:
-            "Voor dit vak de projectenwebsite opnieuw makenoor dit vak de projectenwebsite opnieuw makenoor dit vak de projectenwebsite opnieuw makenoor dit vak de projectenwebsite opnieuw maken",
-          groepsleden: ["Pieterjan Van Beneden", "Arno Stas", "Arno Stas"],
-          id: 1,
-          status: "Accepted"
-        },
-        {
-          title: "Projectensite",
-          short_description: "Voor dit vak de projectenwebsit",
-          groepsleden: ["Pieterjan Van Beneden", "Arno Stas"],
-          id: 1,
-          status: "Accepted"
-        },
-        {
-          title: "Projectensite",
-          short_description:
-            "Voor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw maken",
-          groepsleden: [
-            "Pieterjan Van Beneden",
-            "Arno Stas",
-            "Arno Stas",
-            "Arno Stas"
-          ],
-          id: 1,
-          status: "Accepted"
-        },
-        {
-          title: "Projectensite",
-          short_description:
-            "Voor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw maken",
-          groepsleden: [
-            "Pieterjan Van Beneden",
-            "Arno Stas",
-            "Arno Stas",
-            "Arno Stas"
-          ],
-          id: 1,
-          status: "Accepted"
-        },
-        {
-          title: "Projectensite",
-          short_description:
-            "Voor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw maken",
-          groepsleden: [
-            "Pieterjan Van Beneden",
-            "Arno Stas",
-            "Arno Stas",
-            "Arno Stas"
-          ],
-          id: 1,
-          status: "Accepted"
-        },
-        {
-          title: "Projectensite",
-          short_description:
-            "Voor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw makeVoor dit vak de projectenwebsite opnieuw maken",
-          groepsleden: [
-            "Pieterjan Van Beneden",
-            "Arno Stas",
-            "Arno Stas",
-            "Arno Stas"
-          ],
-          id: 1,
-          status: "Accepted"
-        },
-        {
-          title: "Projectensite",
-          short_description: "Voor dit vak de projectenwebsite opnieuw maken",
-          groepsleden: [
-            "Pieterjan Van Beneden",
-            "Arno Stas",
-            "Arno Stas",
-            "Arno Stas"
-          ],
-          id: 1,
-          status: "Accepted"
-        }
+        [
+          ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
+          [
+            {
+              id: 1,
+              title: "Projectensite",
+              status: "Accepted",
+              short_description: "dit is de korte bschrrrrrrrrrrrr",
+              full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
+              teacher_id: 6,
+              creator_id: 1,
+              main_question: "Dit is de hoofdvraag",
+              side_questions:
+                "het maken van ee degelijke site? Of wat moet je anderss doen?",
+              created_at: "2019-05-24 07:52:45",
+              updated_at: "2019-05-24 07:52:45"
+            }
+          ]
+        ],
+        [
+          ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
+          [
+            {
+              id: 2,
+              title: "MAcro",
+              status: "Accepted",
+              short_description: "dit is de korte bschrrrrrrrrrrrr",
+              full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
+              teacher_id: 5,
+              creator_id: 2,
+              main_question: "Dit is de hoofdvraag",
+              side_questions:
+                "het maken van ee degelijke site? Of wat moet je anderss doen?",
+              created_at: "2018-05-24 07:52:45",
+              updated_at: "2019-05-24 07:52:45"
+            }
+          ]
+        ],
+        [
+          ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
+          [
+            {
+              id: 3,
+              title: "Eliboy",
+              status: "Declined",
+              short_description: "dit is de korte bschrrrrrrrrrrrr",
+              full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
+              teacher_id: 6,
+              creator_id: 2,
+              main_question: "Dit is de hoofdvraag",
+              side_questions:
+                "het maken van ee degelijke site? Of wat moet je anderss doen?",
+              created_at: "2017-05-24 07:52:45",
+              updated_at: "2018-05-24 07:52:45"
+            }
+          ]
+        ],
+        [
+          ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
+          [
+            {
+              id: 4,
+              title: "NBAAA",
+              status: "In beraad",
+              short_description: "dit is de korte bschrrrrrrrrrrrr",
+              full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
+              teacher_id: 3,
+              creator_id: 2,
+              main_question: "Dit is de hoofdvraag",
+              side_questions:
+                "het maken van ee degelijke site? Of wat moet je anderss doen?",
+              created_at: "2016-05-24 07:52:45",
+              updated_at: "2019-05-24 07:52:45"
+            }
+          ]
+        ]
       ],
       filterForm: {},
       show: true,
       showicons: true,
+      gridlist: "grid",
       width: 0
     };
   },
@@ -156,32 +156,44 @@ export default {
     appProject: Project
   },
   mounted() {
-    var currentGroup = 0;
-
     for (var proj in this.projects) {
       // Neem project
       var project = this.projects[proj];
-      // Check of we aan een nieuw voorstel begonnen zijn
-      if (project.group_id != currentGroup) {
-        currentGroup++;
-        // Groepsleden aanmaken
-        var groepsleden = [];
-        // Eerste lid toevoegen
-        var ifnaam = `${project.name} ${project.surname}`;
-        groepsleden.push(ifnaam);
-        var titel = project.title;
-        // beschrijving toevoegen
-        var beschrijving = project.short_description;
-        var status = project.status;
-        var id = project.id;
-        // object nieuwe vueproject aanmaken
-        var vueproject = { titel, beschrijving, groepsleden, status, id };
-        // toevoegen aan vue component array genaamd projecten
-        this.projecten.push(vueproject);
-      } else {
-        var elsenaam = `${project.name} ${project.surname}`;
-        this.projecten[currentGroup - 1].groepsleden.push(elsenaam);
-      }
+      var groepsleden = project[0];
+      var projectdetails = project[1][0];
+      // Projecten toevoegen
+      // Id
+      var id = projectdetails.id;
+      // Naam
+      var titel = projectdetails.title;
+      // beschrijvingen toevoegen
+      var korte_beschrijving = projectdetails.short_description;
+      var lange_beschrijving = projectdetails.full_description;
+      // Status
+      var status = projectdetails.status;
+      // Aanmaakdatum
+      var aanmaakdatum = projectdetails.created_at;
+      // Teacher
+      var docent_id = projectdetails.teacher_id;
+      // Project aanmaker
+      var creator_id = projectdetails.creator_id;
+      // Hoofdvraag
+      var hoofdvraag = projectdetails.hoofdvraag;
+      // object nieuwe vueproject aanmaken
+      var vueproject = {
+        id,
+        titel,
+        korte_beschrijving,
+        lange_beschrijving,
+        groepsleden,
+        status,
+        aanmaakdatum,
+        docent_id,
+        creator_id,
+        hoofdvraag
+      };
+      // toevoegen aan vue component array genaamd projecten
+      this.projecten.push(vueproject);
     }
   },
   created() {
@@ -205,6 +217,7 @@ export default {
       this.width = window.innerWidth;
       if (this.width < 1070) {
         this.showicons = false;
+        this.gridlist = "grid";
       } else {
         this.showicons = true;
       }
@@ -246,6 +259,7 @@ export default {
         proj.classList.add("gridli");
       });
       this.gridListTekstStyling("7.75rem", "8rem");
+      this.gridlist = "grid";
     },
     listView: function() {
       var ul = document.getElementById("gridlist");
@@ -257,6 +271,7 @@ export default {
         proj.classList.add("listli");
       });
       this.gridListTekstStyling("auto", "auto");
+      this.gridlist = "list";
     },
     gridListTekstStyling(grheight, beschrheight) {
       var beschrijvingtekst = document.getElementsByClassName("beschrijving");
@@ -392,7 +407,7 @@ ul {
 }
 
 /* MEDIA QUERYS */
-@media (max-width: 1200px) {
+@media (max-width: 1000px) {
   .projecten {
     -ms-flex-align: center !important;
     align-items: center !important;
