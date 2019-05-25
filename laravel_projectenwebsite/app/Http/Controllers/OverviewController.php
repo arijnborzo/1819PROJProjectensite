@@ -36,51 +36,45 @@ class OverviewController extends Controller
         $user = Auth::user();
         $year = date("Y"); //-1
         $archief = false;
-        $AllProjects=Project::all();
-        foreach ($AllProjects as $key=>$project) {
-            $group = Group::where('project_id', $project->id)->first();
-            $students = Student::where('group_id', $group->id)->get();
-            $members=[];
-            foreach ($students as $student) {
-                array_push($members, $student->user->surname . " " . $student->user->name);
-            }
-            $groupmembers[$project->id] = $members;
-        }
-
+        $all = $this->getAlInfo();
         return view('overzicht',
             [
-                'projects' => $AllProjects,
-                'groupmembers' => $groupmembers,
+                'groupmembers' => $all,
                 'user' => $user,
                 'archief' => $archief,
                 'year' => $year
             ]);
 
     }
+    private function getAlInfo(){
+        $AllProjects=Project::all();
+        $all=[];
+        foreach ($AllProjects as $key=>$project) {
+            $group = Group::where('project_id', $project->id)->first();
+            $students = Student::where('group_id', $group->id)->get();
+            $members=[];
+            $info=[];
+            foreach ($students as $student) {
+                array_push($members, $student->user->surname . " " . $student->user->name);
+            }
+            array_push($info, $members, $project);
+            array_push($all, $info);
+        }
+        return $all;
+    }
     public function archive()
     {
         $user = Auth::user();
         $year = date("Y"); //-1
         $archief = true;
-        $AllProjects=Project::all();
-        foreach ($AllProjects as $key=>$project) {
-            $group = Group::where('project_id', $project->id)->first();
-            $students = Student::where('group_id', $group->id)->get();
-            $members=[];
-            foreach ($students as $student) {
-                array_push($members, $student->user->surname . " " . $student->user->name);
-            }
-            $groupmembers[$project->id] = $members;
-        }
+        $all = $this->getAlInfo();
         return view('overzicht',
             [
-                'projects' => $AllProjects,
-                'groupmembers' => $groupmembers,
+                'groupmembers' => $all,
                 'user' => $user,
                 'archief' => $archief,
                 'year' => $year
             ]);
-
     }
 
     /**

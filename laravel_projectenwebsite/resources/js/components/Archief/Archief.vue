@@ -38,12 +38,12 @@
           <div id="gridlist" v-for="project in projecten" v-bind:key="project.titel">
             <transition name="fade">
               <app-project
-                      v-show="filteredOpJaar(project.created_at)"
+                      v-if="filteredOpJaar(project.aanmaakdatum)"
                       :titel="project.titel"
-                      :beschrijving="project.beschrijving"
-                      :groepsleden="groupmembers[project.id]"
-                      :status="statusProject(project.status)"
-                      :proj_id="project.id"
+                      :kortebeschrijving="project.korte_beschrijving"
+                      :langebeschrijving="project.lange_beschrijving"
+                      :groepsleden="project.groepsleden"
+                      :status="project.status"
               ></app-project>
             </transition>
           </div>
@@ -58,7 +58,7 @@ import ArchiefFilter from "./ArchiefFilter";
 import Project from "../Overzicht/Project";
 
 export default {
-  props: ['projects','groupmembers'],
+  props: ['groupmembers'],
   data() {
     return {
       selected: null,
@@ -82,43 +82,47 @@ export default {
   },
   mounted() {
     var currentGroup = 0;
-    var jaarInArrayBoolean = true;
-    for (var projjj in this.projects) {
-      var jaar = this.projects[projjj].created_at.slice(0, 4);
-      jaarInArrayBoolean = this.jaartallen.includes(jaar);
-      if (!jaarInArrayBoolean) {
-        this.jaartallen.push(jaar);
-      }
-    }
-
-    jaarInArrayBoolean = this.jaartallen.includes(jaar);
-    if (!jaarInArrayBoolean) {
-      this.jaartallen.push(jaar);
-    }
-
-    for (var proj in this.projects) {
+    for (var proj in this.groupmembers) {
       // Neem project
-      var project = this.projects[proj];
-      // Check of we aan een nieuw voorstel begonnen zijn
-      if (project.group_id != currentGroup) {
-        currentGroup++;
-        // Groepsleden aanmaken
-        var groepsleden = [];
-        // Eerste lid toevoegen
-        var naam = `${project.name} ${project.surname}`;
-        groepsleden.push(naam);
-        var titel = project.title;
-        // beschrijving toevoegen
-        var beschrijving = project.short_description;
-        var status = project.status;
-        // object nieuwe vueproject aanmaken
-        var vueproject = { titel, beschrijving, groepsleden, status };
-        // toevoegen aan vue component array genaamd projecten
-        this.projecten.push(vueproject);
-      } else {
-        var elsenaam = `${project.name} ${project.surname}`;
-        this.projecten[currentGroup - 1].groepsleden.push(elsenaam);
-      }
+      var project = this.groupmembers[proj];
+      var groepsleden = project[0];
+      var projectdetails = project[1];
+      // Projecten toevoegen
+      // Id
+      var id = projectdetails.id;
+      // Naam
+      var titel = projectdetails.title;
+      // beschrijvingen toevoegen
+      var korte_beschrijving = projectdetails.short_description;
+      var lange_beschrijving = projectdetails.full_description;
+      // Status
+      var status = projectdetails.status;
+      // Aanmaakdatum
+      var aanmaakdatum = projectdetails.created_at;
+      var jaar = aanmaakdatum.slice(0, 4);
+      // Add gebruikte jaren to list, voor filter
+      this.addJaarToList(jaar);
+      // Teacher
+      var docent_id = projectdetails.teacher_id;
+      // Project aanmaker
+      var creator_id = projectdetails.creator_id;
+      // Hoofdvraag
+      var hoofdvraag = projectdetails.hoofdvraag;
+      // object nieuwe vueproject aanmaken
+      var vueproject = {
+        id,
+        titel,
+        korte_beschrijving,
+        lange_beschrijving,
+        groepsleden,
+        status,
+        aanmaakdatum,
+        docent_id,
+        creator_id,
+        hoofdvraag
+      };
+      // toevoegen aan vue component array genaamd projecten
+      this.projecten.push(vueproject);
     }
   },
   created() {
@@ -219,6 +223,11 @@ export default {
             return false;
           }
         }
+      }
+    },
+    addJaarToList(jaar) {
+      if (!this.jaartallen.includes(jaar)) {
+        this.jaartallen.push(jaar);
       }
     }
   }

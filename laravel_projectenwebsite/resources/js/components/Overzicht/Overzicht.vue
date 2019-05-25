@@ -3,7 +3,7 @@
         <b-row>
             <b-col cols="12">
                 <!--titel-->
-                <h3 id="alleprojecten">Alle projecten</h3>
+                <h3 id="alleprojecten">Alle projectenn</h3>
             </b-col>
         </b-row>
         <b-row class="justify-content-center">
@@ -30,10 +30,12 @@
                             <app-project
                                     v-if="filtered(project)"
                                     :titel="project.titel"
-                                    :beschrijving="project.beschrijving"
-                                    :groepsleden="groupmembers[project.id]"
-                                    :status="statusProject(project.status)"
+                                    :kortebeschrijving="project.korte_beschrijving"
+                                    :langebeschrijving="project.lange_beschrijving"
+                                    :groepsleden="project.groepsleden"
+                                    :status="project.status"
                                     :proj_id="project.id"
+                                    :gridlist="gridlist"
                             ></app-project>
                         </transition>
                     </div>
@@ -48,7 +50,7 @@
     import Project from "./Project";
 
     export default {
-        props: ['projects','groupmembers'],
+        props: ['groupmembers'],
         data() {
             return {
                 selected: null,
@@ -61,7 +63,8 @@
                 filterForm: {},
                 show: true,
                 showicons: true,
-                width: 0
+                width: 0,
+                gridlist: "grid"
             };
         },
         components: {
@@ -69,32 +72,44 @@
             appProject: Project
         },
         mounted() {
-            var currentGroup = 0;
-
-            for (var proj in this.projects) {
+            for (var proj in this.groupmembers) {
                 // Neem project
-                var project = this.projects[proj];
-                // Check of we aan een nieuw voorstel begonnen zijn
-                if (project.group_id != currentGroup) {
-                    currentGroup++;
-                    // Groepsleden aanmaken
-                    var groepsleden = [];
-                    // Eerste lid toevoegen
-                    var ifnaam = `${project.name} ${project.surname}`;
-                    groepsleden.push(ifnaam);
-                    var titel = project.title;
-                    // beschrijving toevoegen
-                    var beschrijving = project.short_description;
-                    var status = project.status;
-                    var id = project.id;
-                    // object nieuwe vueproject aanmaken
-                    var vueproject = { titel, beschrijving, groepsleden, status, id };
-                    // toevoegen aan vue component array genaamd projecten
-                    this.projecten.push(vueproject);
-                } else {
-                    var elsenaam = `${project.name} ${project.surname}`;
-                    this.projecten[currentGroup - 1].groepsleden.push(elsenaam);
-                }
+                var project = this.groupmembers[proj];
+                var groepsleden = project[0];
+                var projectdetails = project[1];
+                // Projecten toevoegen
+                // Id
+                var id = projectdetails.id;
+                // Naam
+                var titel = projectdetails.title;
+                // beschrijvingen toevoegen
+                var korte_beschrijving = projectdetails.short_description;
+                var lange_beschrijving = projectdetails.full_description;
+                // Status
+                var status = projectdetails.status;
+                // Aanmaakdatum
+                var aanmaakdatum = projectdetails.created_at;
+                // Teacher
+                var docent_id = projectdetails.teacher_id;
+                // Project aanmaker
+                var creator_id = projectdetails.creator_id;
+                // Hoofdvraag
+                var hoofdvraag = projectdetails.hoofdvraag;
+                // object nieuwe vueproject aanmaken
+                var vueproject = {
+                    id,
+                    titel,
+                    korte_beschrijving,
+                    lange_beschrijving,
+                    groepsleden,
+                    status,
+                    aanmaakdatum,
+                    docent_id,
+                    creator_id,
+                    hoofdvraag
+                };
+                // toevoegen aan vue component array genaamd projecten
+                this.projecten.push(vueproject);
             }
         },
         created() {
@@ -275,7 +290,10 @@
         text-align: center;
         margin: 2rem 0;
     }
-    #listgrid div:nth-child(3n + 2) > .project {
+    #list
+
+
+    div:nth-child(3n + 2) > .project {
         margin: 0 2%;
     }
     .listul {

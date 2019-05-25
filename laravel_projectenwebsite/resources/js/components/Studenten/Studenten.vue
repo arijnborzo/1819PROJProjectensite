@@ -58,25 +58,26 @@
             };
         },
         mounted() {
-            var currentProject = null;
+            var currentGroup = 0;
             for (var stud in this.students) {
                 var student = this.students[stud];
-                if (student[2] != currentProject) {
-                    this.projecten[student[2]] = 1;
-                    currentProject = student[2];
+                // Check of we aan een nieuwe groepsvoorstel begonnen zijn
+                if (student[3] != currentGroup) {
+                    this.groepen[currentGroup] = 1;
+                    currentGroup++;
                 } else {
-                    this.projecten[student[2]]++;
+                    this.groepen[currentGroup - 1]++;
                 }
             }
-            var currentStudentProject = null;
+            var currentStudentGroup = 0;
             for (var stud in this.students) {
                 // Neem student
                 var student = this.students[stud];
                 // Check of we aan een nieuwe groepsvoorstel begonnen zijn
-                if (student[2] != currentStudentProject) {
-                    currentStudentProject = student[2];
+                if (student[3] != currentStudentGroup) {
+                    currentStudentGroup++;
                     // Groep vinden
-                    var groep = this.projecten[currentStudentProject];
+                    var groep = this.groepen[currentStudentGroup - 1];
                     // Eerste lid toevoegen
                     var naam = student[0];
                     // Voorstel toevoegen
@@ -88,14 +89,13 @@
                     // toevoegen aan vue component array genaamd projecten
                     this.studenten.push(vuestudent);
                 } else {
-                    var groep = this.projecten[currentStudentProject];
+                    var groep = this.groepen[currentStudentGroup - 1];
                     var naam = student[0];
                     var projectvoorstel = student[2];
                     var belbin = student[1];
                     var vuestudent = { groep, naam, projectvoorstel, belbin };
                     this.studenten.push(vuestudent);
                 }
-                console.log(this.studenten);
             }
         },
         methods: {
