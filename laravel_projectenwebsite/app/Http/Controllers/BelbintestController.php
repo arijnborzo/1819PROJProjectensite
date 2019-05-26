@@ -23,24 +23,11 @@ class BelbintestController extends Controller
     * Show the application dashboard.
     *
     * @return \Illuminate\Contracts\Support\Renderable
-    */
-    public function showBelbintest(){
-      $user = Auth::user();
-      if ($user->student->belbintype != null){
-        echo($user->student->belbintype);
-        return redirect()->route('home');
-      }
-      else{
-        return view('belbin', [
-          'user' => $user
-        ]);
-      }
+    */  
 
-
-    }
     public function addBelbintype($type){
         $user = Auth::user();
         Student::where('id', $user->id)->update(['belbintype' => $type]);
-        return redirect('/students');
+        return redirect('/');
     }
 }

@@ -53,7 +53,7 @@ export const routes = [
     component: DetailProject,
     props: true
   },
-  { path: "/registreer", component: Registreer },
+  { path: "/register", component: Registreer },
   { path: "/paswoordvergeten", component: PaswoordVergeten },
   { path: "/redirect", redirect: { name: "LoginForm" } },
   { path: "*", redirect: { path: "/" } }

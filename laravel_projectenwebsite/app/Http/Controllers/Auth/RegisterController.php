@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Student;
+use App\Teacher;
+use App\Extern;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -65,11 +69,33 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 //        dd($data);
-        return User::create([
+        $email = explode("@", $data['email']);
+        User::create([
             'surname' => $data['surname'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'created_at' => date("Y-m-d H:i:s"),
         ]);
+        $userid = User::where('email', $data['email'])->value('id');
+        if ($email[1] == "student.odisee.be"){
+            echo ("Ik ben student");
+            return Student::create([
+                'id' => $userid,
+                'created_at' => date("Y-m-d H:i:s")
+
+            ]);
+        } elseif ($email[1 == "odisee.be"]) {
+            echo ("ik ben docent");
+            return Teacher::create([
+                'id' => $userid
+
+            ]);
+        } 
+        else {
+            return Extern::create([
+                'id' => $userid,
+            ]);
+        }
     }
 }

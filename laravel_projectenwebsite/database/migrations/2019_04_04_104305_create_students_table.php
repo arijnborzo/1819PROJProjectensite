@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->enum('belbintype', ['Bedrijfsman', 'Brononderzoeker', 'Plant', 'Monitor', 'Vormer', 'Voorzitter', 'Zorgdrager', 'Groepswerker'])->nullable();
             $table->integer('group_id')->nullable()->unsigned();
             $table->boolean('confirmed')->nullable ();
-            $table->timestamp('updated_at')->nullable();
+            $table->timestamps();
         });
         Schema::table('students', function (Blueprint $table) {
             $table->foreign('id')->references('id')->on('users');

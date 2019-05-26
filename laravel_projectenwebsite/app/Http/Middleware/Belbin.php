@@ -21,7 +21,7 @@ class Belbin
     {
         $user = Auth::user();
         $student = $user->student;
-        if (is_null($student->belbintype)){
+        if (isset($user->student) && is_null($user->student->belbintype)){
           return redirect('/belbintest');
         }
         else {
