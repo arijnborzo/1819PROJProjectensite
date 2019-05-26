@@ -55,7 +55,7 @@
             </ul>
           </b-col>
           <b-col id="btns" md="6" align-self="end">
-            <b-button style="float:right" variant="primary">Voeg groepslid toe</b-button>
+            <b-button href="/mijnproject" style="float:right" variant="primary">Voeg groepslid toe</b-button>
             <b-button variant="primary">Pas voorstel aan</b-button>
           </b-col>
         </b-row>

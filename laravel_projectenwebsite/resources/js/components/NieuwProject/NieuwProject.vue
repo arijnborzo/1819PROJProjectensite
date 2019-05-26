@@ -4,7 +4,7 @@
             <b-col cols="10" id="nieuwproj">
                 <b-card class="p-3">
                     <h3>Nieuw project</h3>
-                    <b-form @submit="onSubmit" @reset="onReset" v-if="show" id="save" action="/maakproject" method="POST">
+                    <b-form @reset="onReset" v-if="show" action="/maakproject" method="POST">
                         <b-form-group
                                 id="input-group-1"
                                 label="Titel"
@@ -105,8 +105,8 @@
                                       </b-form-group>
                         -->
                         <b-form-group id="input-group-6" label="Reeds besproken met een docent?">
-                            <b-form-radio v-model="docentBoolean" button button-variant="success" value="Ja" style="margin-right:2rem">Ja</b-form-radio>
-                            <b-form-radio v-model="docentBoolean" button button-variant="danger" value="Neen">Neen</b-form-radio>
+                            <b-form-radio v-model="docentBoolean" button button-variant="success" :value="Ja" style="margin-right:2rem">Ja</b-form-radio>
+                            <b-form-radio v-model="docentBoolean" button button-variant="danger" :value="Neen">Neen</b-form-radio>
                         </b-form-group>
 
                         <b-form-group id="input-group-7" label="Kies de docent" v-if="showDocenten">
@@ -178,10 +178,6 @@
             };
         },
         methods: {
-            onSubmit(evt) {
-                evt.preventDefault();
-                document.getElementById('save').submit();
-            },
             onReset(evt) {
                 evt.preventDefault();
                 // Reset our form values
