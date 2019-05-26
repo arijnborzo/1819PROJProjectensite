@@ -63,7 +63,7 @@
                 <b-form-input
                   id="Specifiek"
                   v-model="form.smart.specifiek"
-                  placeholder="Geen algemeen maar een specifiek doel"
+                  placeholder="Is de doelstelling eenduidig?"
                   v-on:keyup="smartMonitor"
                   required
                 ></b-form-input>
@@ -73,7 +73,7 @@
                 <b-form-input
                   id="Meetbaar"
                   v-model="form.smart.meetbaar"
-                  placeholder="Het proces moet deel per deel gemeten kunnen worden zodat men een goed beeld kan scheppen of het project een slaagkans heeft."
+                  placeholder="Onder welke (meetbare/observeerbare) voorwaarden of vorm is het doel bereikt?"
                   v-on:keyup="smartMonitor"
                   required
                 ></b-form-input>
@@ -83,7 +83,7 @@
                 <b-form-input
                   id="Acceptabel"
                   v-model="form.smart.acceptabel"
-                  placeholder="Het moet een project zijn dat met 3 medestudenten werkelijkheid kan worden."
+                  placeholder="Zijn deze doelen acceptabel voor de doelgroep en/of het management?"
                   v-on:keyup="smartMonitor"
                   required
                 ></b-form-input>
@@ -93,7 +93,7 @@
                 <b-form-input
                   id="Realiseerbaar"
                   v-model="form.smart.realiseerbaar"
-                  placeholder="Het moet realiseerbaar zijn in alle aspecten, voor de groep."
+                  placeholder="Is het doel haalbaar?"
                   v-on:keyup="smartMonitor"
                   required
                 ></b-form-input>
@@ -103,7 +103,7 @@
                 <b-form-input
                   id="Tijdsgebonden"
                   v-model="form.smart.tijdsgebonden"
-                  placeholder="Het moet binnen de tijd verworven kunnen worden."
+                  placeholder="Het doel moet binnen een semester bereikt kunnen worden."
                   v-on:keyup="smartMonitor"
                   required
                 ></b-form-input>

@@ -21,13 +21,13 @@ export const routes = [
     component: Studenten,
     props: {
       students: [
-        ["Andreas Lauwers", "Plant", "Projectenwebsite", 1],
-        ["Arno Lauwers", "Voorzitter", "Projectenwebsite", 1],
+        ["Andreas Lauwers", "Plant geel", "Projectenwebsite", 1],
+        ["Arno Lauwers", "Voorzitter blauw groen", "Projectenwebsite", 1],
         ["Arijn Lauwers", null, "Projectenwebsite", 1],
-        ["Lukas Lauwers", "Vormer", "Projectenwebsite", 1],
-        ["Andreas Petit", "Groepswerker", "Macrokeyboard", 2],
-        ["Lukas Petit", "Monitor", "Macrokeyboard", 2],
-        ["Loser tje", "Monitor", null, null]
+        ["Lukas Lauwers", "Vormer rood", "Projectenwebsite", 1],
+        ["Andreas Petit", "Groepswerker groen", "Macrokeyboard", 2],
+        ["Lukas Petit", "Monitor geel rood", "Macrokeyboard", 2],
+        ["Loser tje", "Monitor geel rood", null, null]
       ]
     }
   },
@@ -115,7 +115,59 @@ export const routes = [
       ]
     }
   },
-  { path: "/belbintest", component: Belbintest },
+  {
+    path: "/belbintest",
+    component: Belbintest,
+    props: {
+      projects: [
+        [
+          [
+            { naam: "Arno Stas", belbin: "Bedrijfsman rood blauw" },
+            { naam: "B Stas", belbin: "Vormer rood" },
+            { naam: "C Stas", belbin: "Groepswerker groen" }
+          ],
+          [
+            {
+              id: 1,
+              title: "Projectensite",
+              status: "Accepted",
+              short_description: "dit is de korte bschrrrrrrrrrrrr",
+              full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
+              teacher_id: 6,
+              creator_id: 1,
+              main_question: "Dit is de hoofdvraag",
+              side_questions:
+                "het maken van ee degelijke site? Of wat moet je anderss doen?",
+              created_at: "2019-05-24 07:52:45",
+              updated_at: "2019-05-24 07:52:45"
+            }
+          ]
+        ],
+        [
+          [
+            { naam: "Arno Stas", belbin: "Vormer rood" },
+            { naam: "C Stas", belbin: "Groepswerker groen" }
+          ],
+          [
+            {
+              id: 1,
+              title: "Macro",
+              status: "Accepted",
+              short_description: "dit is de korte bschrrrrrrrrrrrr",
+              full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
+              teacher_id: 6,
+              creator_id: 1,
+              main_question: "Dit is de hoofdvraag",
+              side_questions:
+                "het maken van ee degelijke site? Of wat moet je anderss doen?",
+              created_at: "2019-05-24 07:52:45",
+              updated_at: "2019-05-24 07:52:45"
+            }
+          ]
+        ]
+      ]
+    }
+  },
   { path: "/nieuwproject", component: NieuwProject },
   {
     path: "/mijnproject",

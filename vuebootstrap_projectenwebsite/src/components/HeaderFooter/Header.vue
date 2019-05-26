@@ -7,10 +7,10 @@
     <b-collapse id="nav-collapse" class="fill stroke" is-nav>
       <ul id="navbarmenu">
         <li class="nav-link">
-          <a href="/">Overzicht</a>
+          <a href="/home">Overzicht</a>
         </li>
         <li class="nav-link">
-          <a href="/students">Studenten</a>
+          <a href="/studenten">Studenten</a>
         </li>
         <li class="nav-link">
           <a href="/archief">Archief</a>

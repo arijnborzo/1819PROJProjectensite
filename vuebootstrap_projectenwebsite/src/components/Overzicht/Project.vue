@@ -19,7 +19,7 @@
       <span>{{statusResult(status)}}</span>
     </p>
 
-    <b-button :href="'/project/' + proj_id" size="sm" class="bekijkbtn">Bekijk</b-button>
+    <b-button>Bekijk</b-button>
   </b-card>
 </template>
 

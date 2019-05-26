@@ -114,35 +114,40 @@ export default {
       if (!item) return;
     },
     belbinResult(value) {
-      if (value === "Voorzitter")
+      if (value === null) {
+        return "x";
+      }
+      var woorden = value.split(" ");
+      var belbinrol = woorden[0];
+      if (belbinrol === "Voorzitter")
         return `<img class="belbinimg" src=${
           this.photo.Voorzitter
         } alt="Voorzitter" v-b-tooltip.click title="Voorzitter">`;
-      if (value === "Zorgdrager")
+      if (belbinrol === "Zorgdrager")
         return `<img class="belbinimg" src=${
           this.photo.Zorgdrager
         } alt="Zorgdrager" v-b-tooltip.click title="Zorgdrager">`;
-      if (value === "Bedrijfsman")
+      if (belbinrol === "Bedrijfsman")
         return `<img class="belbinimg" src=${
           this.photo.bedrijfsman
         } alt="Bedrijfsman" v-b-tooltip.click title="Bedrijfsman">`;
-      if (value === "Brononderzoeker")
+      if (belbinrol === "Brononderzoeker")
         return `<img class="belbinimg" src=${
           this.photo.Brononderzoeker
         } alt="Brononderzoeker" v-b-tooltip.click title="Brononderzoeker">`;
-      if (value === "Monitor")
+      if (belbinrol === "Monitor")
         return `<img class="belbinimg" src=${
           this.photo.Monitor
         } alt="Monitor" v-b-tooltip.click title="Monitor">`;
-      if (value === "Vormer")
+      if (belbinrol === "Vormer")
         return `<img class="belbinimg" src=${
           this.photo.Vormer
         } alt="Vormer" v-b-tooltip.click title="Vormer">`;
-      if (value === "Plant")
+      if (belbinrol === "Plant")
         return `<img class="belbinimg" src=${
           this.photo.Plant
         } alt="Plant" v-b-tooltip.click title="Plant">`;
-      if (value === "Groepswerker")
+      if (belbinrol === "Groepswerker")
         return `<img class="belbinimg" src=${
           this.photo.Groepswerker
         } alt="Groepswerker">`;

@@ -400,6 +400,15 @@ ul {
   width: 80%;
 }
 
+/* TRANSITION */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 /* BTNS */
 .gridlistbtn {
   margin-left: 0.3rem;
