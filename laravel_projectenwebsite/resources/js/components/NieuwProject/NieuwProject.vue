@@ -178,6 +178,7 @@
             };
         },
         methods: {
+            
             onReset(evt) {
                 evt.preventDefault();
                 // Reset our form values
