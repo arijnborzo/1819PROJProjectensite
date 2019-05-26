@@ -20,9 +20,6 @@
 
 use App\User;
 
-Route::get('/nieuwproject', function(){
-    return view('nieuwproject');
-});
 Route::get('/students', function(){
     $students = DB::table('students')->get();
     return view('students', [
@@ -44,7 +41,8 @@ Route::get('/students', function(){
 Auth::routes();
 Route::get('/', 'OverviewController@index')->name('home');
 Route::get('/archief', 'OverviewController@archive')->name('archief');
-Route::get('/nieuwproject', 'ProjectController@createProject')->name('maakproject');
+Route::get('/nieuwproject', 'ProjectController@newProject')->name('nieuwproject');
+Route::post('/maakproject', 'ProjectController@saveProject')->name('maakproject');
 Route::get('/belbintest' , 'BelbintestController@showBelbintest')->name('belbintest');
 Route::get('/belbintest/{type}', 'BelbintestController@addBelbintype')->name('updateBelbintest');
 Route::get('/students', 'OverviewController@students')->name('studenten');

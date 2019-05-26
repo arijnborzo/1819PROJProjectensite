@@ -29,7 +29,7 @@ class ProjectController extends Controller
     *
     * @return \Illuminate\Contracts\Support\Renderable
     */
-    public function createProject(){
+    public function newProject(){
         $user = Auth::user();
         $teachers = Teacher::get();
         foreach ($teachers as $key => $teacher) {
@@ -56,8 +56,8 @@ class ProjectController extends Controller
     public function saveProject(Request $request){
       $user = Auth::user();
       $groupid = Student::find((int)$user['id'])->value('group_id');
-
-      if($groupid!=NULL){
+      var_dump($request->all());
+      /*if($groupid!=NULL){
         //update project
         $projectid = Group::where('id', $groupid)->value('project_id');
         $updateProject = [
@@ -76,7 +76,7 @@ class ProjectController extends Controller
           'tolerant' => $request->tolerant
         ];
         Smartcriterium::find($projectid)->update($updateSmartCriteria);
-
+        
       }
       else{
         //create project and create group
@@ -110,7 +110,8 @@ class ProjectController extends Controller
           'project_id' => $projectid
         ];
         $group->save();
-      }
+      }*/
+      //return redirect('/');
     }
     public function sendMemberRequest(Request $request){
       $user = Auth::user();

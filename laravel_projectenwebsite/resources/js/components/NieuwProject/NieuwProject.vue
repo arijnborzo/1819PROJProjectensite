@@ -4,7 +4,7 @@
             <b-col cols="10" id="nieuwproj">
                 <b-card class="p-3">
                     <h3>Nieuw project</h3>
-                    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+                    <b-form @submit="onSubmit" @reset="onReset" v-if="show" id="save" action="/maakproject" method="POST">
                         <b-form-group
                                 id="input-group-1"
                                 label="Titel"
@@ -116,18 +116,19 @@
                             <!--<b-form-select v-model="form.docent" :options="docenten"></b-form-select>-->
                         </b-form-group>
 
-                        <b-form-group id="input-group-8" label="Indien u al document(en) wilt voorleggen aan de docent, kan u deze in een ZIP versturen">
+                        <!--<b-form-group id="input-group-8" label="Indien u al document(en) wilt voorleggen aan de docent, kan u deze in een ZIP versturen">
                             <b-form-file
                                     v-model="form.bestand"
                                     :state="Boolean(form.bestand)"
                                     placeholder="Kies een bestand..."
                                     drop-placeholder="Sleep bestand hier..."
                             ></b-form-file>
-                        </b-form-group>
+                        </b-form-group>-->
 
                         <hr />
                         <b-button type="submit" class="btns">Verzend</b-button>
                         <b-button type="reset" variant="danger" style="float: right">Reset</b-button>
+                        <input type="hidden" name="_token" :value="csrf">
                     </b-form>
                 </b-card>
             </b-col>
@@ -137,9 +138,10 @@
 
 <script>
     export default {
-      props: [ 'project', 'smartcriteria', 'teachers'],
+      props: [ 'project', 'smartcriteria', 'teachers', 'csrf-token'],
         data() {
             return {
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 form: {
                     titel: "",
                     kortebeschrijving: "",
@@ -178,7 +180,7 @@
         methods: {
             onSubmit(evt) {
                 evt.preventDefault();
-                alert(JSON.stringify(this.form));
+                document.getElementById('save').submit();
             },
             onReset(evt) {
                 evt.preventDefault();
@@ -188,9 +190,12 @@
                 this.form.langebeschrijving = "";
                 this.form.hoofdvraag = "";
                 this.form.nevenvragen = "";
-                this.form.categorie = "";
-                this.form.bestand = "";
-                this.form.docent = "";
+                this.form.docent = "";                
+                this.form.smart.specifiek = "";
+                this.form.smart.meetbaar = "";
+                this.form.smart.acceptabel = "";
+                this.form.smart.realiseerbaar = "";
+                this.form.smart.tijdsgebonden = "";
                 this.$nextTick(() => {
                     this.show = true;
                 });
