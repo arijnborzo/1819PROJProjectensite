@@ -14,10 +14,10 @@ use Illuminate\Http\Request;
 class ProjectController extends Controller
 {
     /**
-    * Create a new controller instance.
-    *
-    * @return void
-    */
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -25,117 +25,135 @@ class ProjectController extends Controller
     }
 
     /**
-    * Show the application dashboard.
-    *
-    * @return \Illuminate\Contracts\Support\Renderable
-    */
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function newProject(){
         $user = Auth::user();
         $teachers = Teacher::get();
+//        dd($teachers);
         foreach ($teachers as $key => $teacher) {
-          $teacher_list[$key] = $teacher->user;
+            $teacher_list[$key] = $teacher->user;
         }
-        if($user->student->group->id != NULL){
-          //user already belongs to group
-          $project = $user->student->group->project;
-          $smartcriteria = $project->smartcriterium;
+        if(isset($user->student->group)){
+            //user already belongs to group
+            $project = $user->student->group->project;
+            $smartcriteria = $project->smartcriterium;
         }
         else{
-          //create new project
-          $project = new Project;
-          $smartcriteria = new Smartcriterium;
+            //create new project
+            $project = new Project;
+            $smartcriteria = new Smartcriterium;
         }
-        return view('nieuwproject',
-            [
-          'project'  => $project,
-          'smartcriteria' => $smartcriteria,
-          'teachers' => $teacher_list,
-          'user' => $user
-        ]);
+        if ($project->status == "Accepted"){
+            return redirect('/');
+        } else{
+            return view('nieuwproject',
+                [
+                    'project'  => $project,
+                    'smartcriteria' => $smartcriteria,
+                    'teachers' => $teacher_list,
+                    'user' => $user
+                ]);
+        }
+
     }
     public function saveProject(Request $request){
-      $user = Auth::user();
-      $groupid = Student::find((int)$user['id'])->value('group_id');
-      var_dump($request->all());
-      /*if($groupid!=NULL){
-        //update project
-        $projectid = Group::where('id', $groupid)->value('project_id');
-        $updateProject = [
-          'title' => $request->title,
-          'short_description' => $request->short_description,
-          'full_description' => $request->full_description,
-          'teacher_id' => $request->teacher_id
+        $user = Auth::user();
+        if(isset($user->student->group)){
+            $group=$user->student->group;
+            //update project
+            $projectid = $group->project->id;
+            $updateProject = [
+                'title' => $request->titel,
+                'short_description' => $request->kortebeschrijving,
+                'full_description' => $request->langebeschrijving,
+                'main_question' => $request->hoofdvraag,
+                'side_questions' => $request->nevenvragen,
+                'teacher_id' => $request->docent,
+                'status' => "Pending"
 
-        ];
-        Project::find($projectid)->update($updateProject);
-        $updateSmartCriteria = [
-          'specific' => $request->specific,
-          'measurable' => $request->measurable,
-          'acceptable' => $request->acceptable,
-          'realistic' => $request->realistic,
-          'tolerant' => $request->tolerant
-        ];
-        Smartcriterium::find($projectid)->update($updateSmartCriteria);
-        
-      }
-      else{
-        //create project and create group
-        $project = new Project;
-        //['id', 'title', 'status', 'short_description', 'full_description', 'teacher_id', 'creator_id',];
-        $project->title = $request->title;
-        $project->short_description = $request->short_description;
-        $project->full_description = $request->full_description;
-        $project->teacher_id = $request->teacher_id;
-        $project->creator_id = $user['id'];
+            ];
+            Project::find($projectid)->update($updateProject);
+            $updateSmartCriteria = [
+                'specific' => $request->specifiek,
+                'measurable' => $request->meetbaar,
+                'acceptable' => $request->acceptabel,
+                'realistic' => $request->realiseerbaar,
+                'tolerant' => $request->tijdsgebonden
+            ];
+            Smartcriterium::where('project_id',$projectid)->update($updateSmartCriteria);
 
-
-        if($request->title != NULL && $request->short_description != NULL && $request->full_description != NULL && $request->specific != NULL && $request->measurable != NULL && $request->acceptable != NULL && $request->realistic != NULL && $request->tolerant != NULL){
-          //everything filled in
-          $project->status = 'Pending';
         }
-        else {
-          $project->status = NULL;
+        else{
+            //create project and create group
+            $project = new Project;
+            //['id', 'title', 'status', 'short_description', 'full_description', 'teacher_id', 'creator_id',];
+            $project->title = $request->titel;
+            $project->short_description = $request->kortebeschrijving;
+            $project->full_description = $request->langebeschrijving;
+            $project->main_question = $request->hoofdvraag;
+            $project->side_questions = $request->nevenvragen;
+            $project->status = "Pending";
+            $project->teacher_id = $request->docent;
+            $project->creator_id = $user['id'];
+            if($request->titel != NULL && $request->korte_beschrijving != NULL && $request->lange_beschrijving != NULL && $request->specifiek != NULL && $request->meetbaar != NULL && $request->acceptabel != NULL && $request->realiseerbaar != NULL && $request->tijdsgebonden != NULL){
+                //everything filled in
+                $project->status = 'Pending';
+            }
+            else {
+                $project->status = NULL;
+            }
+            $project->save();
+            $projectid = Project::where('creator_id', $user['id'])->value('id');
+            echo($projectid);
+            $newsmartcriterium = [
+                'project_id' => (int)$projectid,
+                'specific' => $request->specifiek,
+                'measurable' => $request->meetbaar,
+                'acceptable' => $request->acceptabel,
+                'realistic' => $request->realiseerbaar,
+                'tolerant' => $request->tijdsgebonden
+            ];
+            $smartcriterium = new Smartcriterium($newsmartcriterium);
+            $smartcriterium->save();
+            if (isset($user->student)){
+                $group = new Group(['project_id' => $projectid]);
+                $group->save();
+                echo(Group::where('project_id',$projectid)->value('id'));
+                $creator = [
+                    'group_id' => Group::where('project_id',$projectid)->value('id'),
+                    'confirmed' => TRUE,
+                ];
+                Student::find($user->id)->update($creator);
+            }
         }
-        $project->save();
-        $smartcriterium = new Smartcriterium;
-        //['group_id', 'specific', 'measurable', 'acceptable', 'realistic', 'tolerant',];
-        $smartcriterium->specific = $request->specific;
-        $smartcriterium->measurable = $request->measurable;
-        $smartcriterium->acceptable = $request->acceptable;
-        $smartcriterium->realistic = $request->realistic;
-        $smartcriterium->tolerant = $request->tolerant;
-        $projectid = Project::where('creator_id', $user['id'])->value('id');
-        $group = new Groups;
-        $group = [
-          'project_id' => $projectid
-        ];
-        $group->save();
-      }*/
-      //return redirect('/');
+        return redirect('/');
     }
     public function sendMemberRequest(Request $request){
-      $user = Auth::user();
-      $student=Student::find($user['id']);
-      $updateStudent = [
-        'group_id' => $request->group_id,
-        'confirmed'=> FALSE
-      ];
-      $student->update($updateStudent);
-      return redirect()->route('home');
+        $user = Auth::user();
+        $student=Student::find($user['id']);
+        $updateStudent = [
+            'group_id' => $request->group_id,
+            'confirmed'=> FALSE
+        ];
+        $student->update($updateStudent);
+        return redirect()->route('home');
     }
 
     public function addMember(Request $request){
-      $user = Auth::user();
-      $newMember = Student::first($request->selected_userid);
-      if (Student::first($user['id'])->value('group_id') == $newMember['group_id']) {
-        //securitycheck to see if authenticated user can only accept or deny members that want to join te same group.
-        if ($request->answer == 'accept') {
-          Student::find($request->selected_userid)->update(['confirmed'=> TRUE]);
+        $user = Auth::user();
+        $newMember = Student::first($request->selected_userid);
+        if (Student::first($user['id'])->value('group_id') == $newMember['group_id']) {
+            //securitycheck to see if authenticated user can only accept or deny members that want to join te same group.
+            if ($request->answer == 'accept') {
+                Student::find($request->selected_userid)->update(['confirmed'=> TRUE]);
+            }
+            else {
+                Student::find($request->selected_userid)->update(['group_id'=> NULL]);
+            }
         }
-        else {
-          Student::find($request->selected_userid)->update(['group_id'=> NULL]);
-        }
-      }
     }
     public function detail($id)
     {
@@ -150,7 +168,12 @@ class ProjectController extends Controller
             }
         }
         $smart = Smartcriterium::where('project_id', $id)->get();
-        $teacher =Project::find($id)->teacher->user;
+        if (isset(Project::find($id)->teacher)){
+            $teacher =Project::find($id)->teacher->user;
+        } else {
+            $teacher = new Teacher();
+        }
+
         $group = Group::where('project_id', $detailProject->id)->first();
         $students = Student::where('group_id', $group->id)->get();
 
@@ -163,13 +186,13 @@ class ProjectController extends Controller
         }
         return view('detail',
             [
-            'project' => $detailProject,
-            'smart' => $smart,
-            'groupmembers' => $groupmembers,
-            'teacher' => $teacher,
-            'user' => $user,
-            'belongstoproject' => $belongstoproject,
-        ]);
+                'project' => $detailProject,
+                'smart' => $smart,
+                'groupmembers' => $groupmembers,
+                'teacher' => $teacher,
+                'user' => $user,
+                'belongstoproject' => $belongstoproject,
+            ]);
     }
     public function myProject()
     {

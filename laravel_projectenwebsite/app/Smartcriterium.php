@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Smartcriterium extends Model
 {
-  protected $fillable = ['group_id', 'specific', 'measurable', 'acceptable', 'realistic', 'tolerant',];
+    protected $fillable = ['project_id', 'specific', 'measurable', 'acceptable', 'realistic', 'tolerant',];
 
-  public function group(){
-      return $this->hasOne('App\Group', 'Id', 'Group_Id');
-  }
-  public $timestamps = false;
+    public function project(){
+        return $this->hasOne('App\Project', 'project_id', 'id');
+    }
+    public $timestamps = false;
 }

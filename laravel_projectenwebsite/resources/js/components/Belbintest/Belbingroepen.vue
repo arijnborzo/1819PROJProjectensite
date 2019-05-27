@@ -224,4 +224,3 @@
   td {
     padding-left: 0 !important;
   }
-</style>

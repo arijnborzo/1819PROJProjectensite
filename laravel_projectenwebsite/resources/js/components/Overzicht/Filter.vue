@@ -102,5 +102,9 @@
 <style>
     .btns {
         background-color: #093667;
+        font-weight: 400;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        border-radius: 0.25rem;
     }
 </style>

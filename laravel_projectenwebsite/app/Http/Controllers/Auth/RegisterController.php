@@ -70,7 +70,7 @@ class RegisterController extends Controller
     {
 //        dd($data);
         $email = explode("@", $data['email']);
-        $user = User::create([
+        User::create([
             'surname' => $data['surname'],
             'name' => $data['name'],
             'email' => $data['email'],
@@ -80,23 +80,23 @@ class RegisterController extends Controller
         $userid = User::where('email', $data['email'])->value('id');
         if ($email[1] == "student.odisee.be"){
             echo ("Ik ben student");
+            $date = date("Y-m-d H:i:s");
             return Student::create([
                 'id' => $userid,
-                'created_at' => date("Y-m-d H:i:s")
+                'created_at' => $date,
 
             ]);
-        } elseif ($email[1 == "odisee.be"]) {
+        } elseif ($email[1] == "odisee.be") {
             echo ("ik ben docent");
             return Teacher::create([
                 'id' => $userid
 
             ]);
-        } 
+        }
         else {
             return Extern::create([
                 'id' => $userid,
             ]);
         }
-        return redirect('belbin');
     }
 }
