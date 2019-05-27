@@ -140,8 +140,15 @@ class ProjectController extends Controller
     public function detail($id)
     {
         $user = Auth::user();
-        $myProject = Project::where('id' , $user->student->group->project->id)->first();
         $detailProject = Project::where('id', $id)->first();
+        $belongstoproject = FALSE;
+        if(isset($user->student->group->id)){
+            $myProject = Project::where('id' ,$user->student->group->project->id)->first();
+            if ($myProject->id === $detailProject->id)
+            {
+                $belongstoproject = TRUE;
+            }
+        }
         $smart = Smartcriterium::where('project_id', $id)->get();
         $teacher =Project::find($id)->teacher->user;
         $group = Group::where('project_id', $detailProject->id)->first();
@@ -153,11 +160,6 @@ class ProjectController extends Controller
             array_push($s, $student->belbintype, $student->user);
             //echo $student;
             array_push($groupmembers, $s);
-        }
-        $belongstoproject = FALSE;
-        if ($myProject->id === $detailProject->id)
-        {
-            $belongstoproject = TRUE;
         }
         return view('detail',
             [

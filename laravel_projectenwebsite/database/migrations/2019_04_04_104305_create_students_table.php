@@ -15,7 +15,7 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->integer('id')->unsigned();
-            $table->enum('belbintype', ['Bedrijfsman', 'Brononderzoeker', 'Plant', 'Monitor', 'Vormer', 'Voorzitter', 'Zorgdrager', 'Groepswerker'])->nullable();
+            $table->enum('belbintype', ['Bedrijfsman rood blauw', 'Brononderzoeker groen geel', 'Plant geel', 'Monitor geel rood', 'Vormer rood', 'Voorzitter blauw groen', 'Zorgdrager blauw', 'Groepswerker groen'])->nullable();
             $table->integer('group_id')->nullable()->unsigned();
             $table->boolean('confirmed')->nullable ();
             $table->timestamps();

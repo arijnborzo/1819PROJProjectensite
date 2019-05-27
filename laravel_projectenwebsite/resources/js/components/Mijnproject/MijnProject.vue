@@ -4,7 +4,7 @@
       <b-card class="mb-5 mt-5">
         <b-row>
           <b-col>
-            <h2 id="titel">{{project.title}}</h2>
+            <h2 id="titel">Mijn{{project.title}}</h2>
           </b-col>
           <b-col>
             <h6 style="line-height:38px; text-align:center">Status: {{statusProject(project.status)}}</h6>
@@ -56,7 +56,7 @@
           </b-col>
           <b-col id="btns" md="6" align-self="end">
             <b-button href="/mijnproject" style="float:right" variant="primary">Voeg groepslid toe</b-button>
-            <b-button variant="primary">Pas voorstel aan</b-button>
+            <b-button href="/nieuwproject" variant="primary">Pas voorstel aan</b-button>
           </b-col>
         </b-row>
       </b-card>
@@ -70,14 +70,14 @@ export default {
   data() {
     return {
       photo: {
-        coordinator: "../../img/co-ordinator.png",
-        completor: "../../img/completor.png",
-        implementor: "../../img/implementor.png",
-        investigator: "../../img/investigator.png",
-        monitor: "../../img/monitor-evaluator.png",
-        shaper: "../../img/shaper.png",
-        plant: "../../img/plant.png",
-        teamworker: "../../img/teamworker.png"
+        Voorzitter: "../../img/voorzitter.png",
+        Zorgdrager: "../../img/zorgdrager.png",
+        Bedrijfsman: "../../img/bedrijfsman.png",
+        Brononderzoeker: "../../img/brononderzoeker.png",
+        Monitor: "../../img/monitor.png",
+        Vormer: "../../img/vormer.png",
+        Plant: "../../img/plant.png",
+        Groepswerker: "../../img/groepswerker.png"
       }
     };
   },

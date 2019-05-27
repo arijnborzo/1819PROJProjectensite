@@ -4,7 +4,7 @@
       <b-card class="mb-5 mt-5">
         <b-row>
           <b-col>
-            <h2 id="titel">{{project.title}}</h2>
+            <h2 id="titel">Detail van: {{project.title}}</h2>
           </b-col>
           <b-col>
             <h5 id="status">Status: {{statusProject(project.status)}}</h5>
@@ -25,15 +25,15 @@
             <h4>Nevenvragen</h4>
             <ul>
               <p>{{project.side_questions}}</p>
-              <li v-for="vraag in project.side_questions" v-bind:key="vraag"></li>
+              <li v-for="vraag in project.side_questions"></li>
             </ul>
           </b-col>
           <b-col md="6">
             <h4>SMART-criteria</h4>
             <ul>
-              <li v-for="(value, criteria) in smartcriteria[0]" v-bind:key="criteria">
-                <h6>{{criteria}}</h6>
-                <p>{{value}}</p>
+              <li v-for="(value, criteria) in smartcriteria[0]">
+                <h6 v-if=checkId()>{{criteria | capitalized }}</h6>
+                <p v-if=checkId()>{{value}}</p>
               </li>
             </ul>
           </b-col>
@@ -41,8 +41,13 @@
         <b-row>
           <b-col md="6">
             <h4>Groepsleden</h4>
+            <p>
+              <span style="font-weight: bold">Verantwoordelijke docent</span>
+              :
+              <span>{{teacher.surname}} {{teacher.name}}</span>
+            </p>
             <ul>
-              <li v-for="member in groupmembers" v-bind:key="member">
+              <li v-for="member in groupmembers">
                 <p>
                   {{member[1].name}} {{member[1].surname}}
                   <span>
@@ -101,6 +106,9 @@ props: ["project", "teacher", "groupmembers", "smartcriteria"],
     console.log("y");
   },
   methods: {
+    checkId(value){
+      if (value == "project_id") {return false} else {return true}
+    },
     statusProject(value) {
       if (value === "Accepted") return `✔`;
       if (value === "Pending") return "❔";
@@ -127,6 +135,13 @@ props: ["project", "teacher", "groupmembers", "smartcriteria"],
       } else {
         return true;
       }
+    }
+  },
+  filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
     }
   }
 };
