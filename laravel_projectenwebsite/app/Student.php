@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Student extends Authenticatable
 {
-    protected $fillable = ['id', 'belbintype', 'group_id',];
+    protected $fillable = ['id', 'belbintype', 'group_id', 'confirmed', 'created_at'];
     public function user(){
       return $this->hasOne('App\User', 'id', 'id');
     }

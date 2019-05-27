@@ -169,6 +169,7 @@ class ProjectController extends Controller
                 'teacher' => $teacher,
                 'user' => $user,
                 'belongstoproject' => $belongstoproject,
+                'confirmed' => $user->student->confirmed
             ]);
     }
     public function myProject()

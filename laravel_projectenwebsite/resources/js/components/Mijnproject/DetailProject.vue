@@ -109,6 +109,11 @@ props: ["project", "teacher", "groupmembers", "smartcriteria"],
     checkId(value){
       if (value == "project_id") {return false} else {return true}
     },
+    statusMember(value) {
+      if (value === "Accepted") return `✔`;
+      if (value === "Pending") return "❔";
+      if (value === "Declined") return "✖";
+    },
     statusProject(value) {
       if (value === "Accepted") return `✔`;
       if (value === "Pending") return "❔";

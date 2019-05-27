@@ -16,7 +16,8 @@ class GroupmemberController extends Controller
       echo($group);
       $updateStudent = [
           'group_id' => $group,
-          'confirmed'=> FALSE
+          'confirmed'=> 0,
+          'created_at' => date("Y-m-d H:i:s"),
       ];
       $student->update($updateStudent);
       return redirect('/myproject');
