@@ -131,6 +131,7 @@ props: ["project", "teacher", "groupmembers", "smartcriteria"],
     },
     verstuurGroepsverzoek() {
       this.showBtn = false;
+      location.href= "/sendrequest/" + this.project.id;
     },
     showButton() {
       if (this.showBtn == false) {

@@ -131,30 +131,7 @@ class ProjectController extends Controller
         }
         return redirect('/');
     }
-    public function sendMemberRequest(Request $request){
-        $user = Auth::user();
-        $student=Student::find($user['id']);
-        $updateStudent = [
-            'group_id' => $request->group_id,
-            'confirmed'=> FALSE
-        ];
-        $student->update($updateStudent);
-        return redirect()->route('home');
-    }
 
-    public function addMember(Request $request){
-        $user = Auth::user();
-        $newMember = Student::first($request->selected_userid);
-        if (Student::first($user['id'])->value('group_id') == $newMember['group_id']) {
-            //securitycheck to see if authenticated user can only accept or deny members that want to join te same group.
-            if ($request->answer == 'accept') {
-                Student::find($request->selected_userid)->update(['confirmed'=> TRUE]);
-            }
-            else {
-                Student::find($request->selected_userid)->update(['group_id'=> NULL]);
-            }
-        }
-    }
     public function detail($id)
     {
         $user = Auth::user();
