@@ -19,18 +19,21 @@
           </b-row>
         </div>
         <b-row>
-          <b-col cols="12" md="6">
+          <b-col md="6">
             <h4>Hoofdvraag</h4>
             <p>{{project.main_question}}</p>
             <h4>Nevenvragen</h4>
-            <p>{{project.side_questions}}</p>
+            <ul>
+              <p>{{project.side_questions}}</p>
+              <li v-for="vraag in project.side_questions"></li>
+            </ul>
           </b-col>
-          <b-col id="smart" cols="12" md="6">
+          <b-col md="6">
             <h4>SMART-criteria</h4>
             <ul>
-              <li v-for="(value, criteria) in smartcriteria[0]" v-bind:key="criteria">
-                <h6>{{criteria}}</h6>
-                <p>{{value}}</p>
+              <li v-for="(value, criteria) in smartcriteria[0]">
+                <p style="font-weight: bold" v-if=checkId(criteria)>{{criteria | capitalize }}</p>
+                <p v-if=checkId(criteria)>{{value}}</p>
               </li>
             </ul>
           </b-col>
@@ -38,19 +41,25 @@
         <b-row>
           <b-col md="6">
             <h4>Groepsleden</h4>
+            <p>
+              <span style="font-weight: bold">Verantwoordelijke docent</span>
+              :
+              <span>{{teacher.surname}} {{teacher.name}}</span>
+            </p>
             <ul>
-              <li v-for="member in groupmembers" v-bind:key="member">
-                <img
-                  class="lidbelbin"
-                  :src="belbinResult(member.belbintype)"
-                  :alt="member.belbintype"
-                  v-b-tooltip.click.hover
-                  :title="belbin"
-                >
+              <li v-for="member in groupmembers">
                 <p>
-                  {{ member.naam }}
+                  {{member[1].name}} {{member[1].surname}}
+                  <span>
+                    <img
+                            class="lidbelbin"
+                            :src="belbinResult(member[0])"
+                            :alt="member.belbintype"
+                            v-b-tooltip.click.hover
+                            :title="member.belbintype"
+                    >
+                  </span>
                 </p>
-
               </li>
             </ul>
           </b-col>
@@ -82,20 +91,35 @@ export default {
     };
   },
   methods: {
+    checkId(value){
+      if (value == "project_id") {return false} else {return true}
+    },
     statusProject(value) {
       if (value === "Accepted") return `✔`;
       if (value === "Pending") return "❔";
       if (value === "Declined") return "✖";
     },
     belbinResult(value) {
-      if (value === "Voorzitter") return this.photo.coordinator;
-      if (value === "Zorgdrager") return this.photo.completor;
-      if (value === "Specialist") return this.photo.implementor;
-      if (value === "Brononderzoeker") return this.photo.investigator;
-      if (value === "Monitor") return this.photo.monitor;
-      if (value === "Vormer") return this.photo.shaper;
-      if (value === "Plant") return this.photo.plant;
-      if (value === "Groepsdrager") return this.photo.teamworker;
+      if (value === null) {
+        return "x";
+      }
+      var woorden = value.split(" ");
+      var belbinrol = woorden[0];
+      if (belbinrol === "Voorzitter") return this.photo.Voorzitter;
+      if (belbinrol === "Zorgdrager") return this.photo.Zorgdrager;
+      if (belbinrol === "Bedrijfsman") return this.photo.Bedrijfsman;
+      if (belbinrol === "Brononderzoeker") return this.photo.Brononderzoeker;
+      if (belbinrol === "Monitor") return this.photo.Monitor;
+      if (belbinrol === "Vormer") return this.photo.Vormer;
+      if (belbinrol === "Plant") return this.photo.Plant;
+      if (belbinrol === "Groepswerker") return this.photo.Groepswerker;
+    }
+  },
+  filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
     }
   }
 };

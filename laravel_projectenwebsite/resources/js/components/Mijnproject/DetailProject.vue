@@ -32,8 +32,8 @@
             <h4>SMART-criteria</h4>
             <ul>
               <li v-for="(value, criteria) in smartcriteria[0]">
-                <h6 v-if=checkId()>{{criteria | capitalized }}</h6>
-                <p v-if=checkId()>{{value}}</p>
+                <p style="font-weight: bold" v-if=checkId(criteria)>{{criteria | capitalize }}</p>
+                <p v-if=checkId(criteria)>{{value}}</p>
               </li>
             </ul>
           </b-col>
@@ -115,14 +115,19 @@ props: ["project", "teacher", "groupmembers", "smartcriteria"],
       if (value === "Declined") return "✖";
     },
     belbinResult(value) {
-      if (value === "Voorzitter") return this.photo.Voorzitter;
-      if (value === "Zorgdrager") return this.photo.Zorgdrager;
-      if (value === "Bedrijfsman") return this.photo.Bedrijfsman;
-      if (value === "Brononderzoeker") return this.photo.Brononderzoeker;
-      if (value === "Monitor") return this.photo.Monitor;
-      if (value === "Vormer") return this.photo.Vormer;
-      if (value === "Plant") return this.photo.Plant;
-      if (value === "Groepswerker") return this.photo.Groepswerker;
+      if (value === null) {
+        return "x";
+      }
+      var woorden = value.split(" ");
+      var belbinrol = woorden[0];
+      if (belbinrol === "Voorzitter") return this.photo.Voorzitter;
+      if (belbinrol === "Zorgdrager") return this.photo.Zorgdrager;
+      if (belbinrol === "Bedrijfsman") return this.photo.Bedrijfsman;
+      if (belbinrol === "Brononderzoeker") return this.photo.Brononderzoeker;
+      if (belbinrol === "Monitor") return this.photo.Monitor;
+      if (belbinrol === "Vormer") return this.photo.Vormer;
+      if (belbinrol === "Plant") return this.photo.Plant;
+      if (belbinrol === "Groepswerker") return this.photo.Groepswerker;
     },
     verstuurGroepsverzoek() {
       this.showBtn = false;

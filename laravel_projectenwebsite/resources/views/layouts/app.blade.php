@@ -23,6 +23,7 @@
 {{--    <link rel="stylesheet" href={{ asset('css/formstyle.css') }}>--}}
 
     <!-- Scripts -->
+    <link href="{{ asset('css/project.css') }}" rel="stylesheet">
     <script src="{{ asset('js/modernizr.js') }}"></script> <!-- Modernizr -->
     <script src="{{ asset('js/app.js') }}"></script>
     <title>{{ config('app.name', 'Projectenwebsite ICTEO14') }}</title>
@@ -36,7 +37,9 @@
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>
-        @yield('content')
+            <div id="content">
+                @yield('content')
+            </div>
         <footer_vue></footer_vue>
     </main>
     <script src={{ asset('js/jquery-2.1.1.js') }}></script>

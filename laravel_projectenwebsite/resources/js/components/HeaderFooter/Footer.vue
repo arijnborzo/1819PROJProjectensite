@@ -16,7 +16,7 @@
         text-align: center;
         background-color: #ced9e6;
         line-height: 2rem;
-        /*position: absolute;*/
+        position: absolute;
         color: #093667;
         bottom: 0;
         width: 100%;

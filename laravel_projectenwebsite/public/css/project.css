@@ -1,0 +1,17 @@
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+td,
+th {
+    font-weight: 300;
+}
+#app {
+    position: relative;
+    min-height: 100%;
+}
+#content {
+    padding-bottom: 4rem;
+}
