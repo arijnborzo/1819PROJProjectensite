@@ -10,7 +10,7 @@
     </b-row>
     <b-row>
       <b-col cols="12">
-        <b-card class="p-2">
+        <b-card>
           <b-card-text>
             <h3>
               <a

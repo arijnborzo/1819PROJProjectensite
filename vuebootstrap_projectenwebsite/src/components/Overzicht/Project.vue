@@ -19,7 +19,7 @@
       <span>{{statusResult(status)}}</span>
     </p>
 
-    <b-button>Bekijk</b-button>
+    <b-button class="btns" style="float:right">Bekijk</b-button>
   </b-card>
 </template>
 
@@ -39,6 +39,15 @@ export default {
       kort: true,
       lang: false
     };
+  },
+  mounted() {
+    if (this.gridlist === "list") {
+      var articles = document.getElementsByTagName("ARTICLE");
+      Array.prototype.filter.call(articles, function(proj) {
+        proj.classList.remove("gridli");
+        proj.classList.add("listli");
+      });
+    }
   },
   methods: {
     statusResult(status) {
@@ -87,7 +96,7 @@ export default {
 .project {
   overflow: hidden;
   float: left;
-  width: 32%;
+  width: 31%;
 }
 .project:before,
 .project:after {

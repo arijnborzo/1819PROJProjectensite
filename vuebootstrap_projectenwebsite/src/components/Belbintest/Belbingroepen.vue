@@ -1,29 +1,37 @@
 <template>
-  <b-container>
+  <div>
     <b-row class="mt-5">
-      <b-col cols="12"></b-col>
-    </b-row>
-    <b-row>
       <b-col cols="12">
         <b-card class="p-2">
           <b-card-text>
-            <h3 class="text-center">Jouw Belbinrol: {{belbin}}</h3>
+            <h3>Jouw Belbinrol: {{belbin}}</h3>
+            <p>
+              Hieronder zie je de projecten waarin je past afhankelijk van jouw Belbinrol.
+              <br>Indien jouw rol al in een groep voorkomt, zal deze groep niet tevoorschijn komen aangezien dit afgeraden is.
+              <br>
+              <br>De match geeft aan hoe goed je zou passen in de groep rekeninghoudend met het aantal groepsleden en de Belbinrollen in de groep.
+              <br>
+            </p>
           </b-card-text>
-          <div v-for="project in geselecteerdeProjecten" :key="project.id">
-            <app-belbingroep
-              :projectdetails="project.projectdetails"
-              :groepsleden="project.groepsleden"
-              :match="project.match"
-            ></app-belbingroep>
-          </div>
+          <b-table
+            responsive
+            borderless
+            hover
+            table-variant="dark"
+            :items="geselecteerdeProjecten"
+            :fields="fields"
+          >
+            <template slot="match" slot-scope="data">
+              <span :class="`${geefMatchKlasse(data.value)}`">{{data.value}}</span>
+            </template>
+          </b-table>
         </b-card>
       </b-col>
     </b-row>
-  </b-container>
+  </div>
 </template>
 
 <script>
-import Belbingroep from "./Belbingroep.vue";
 export default {
   props: ["projects", "belbin", "kleuren"],
   data() {
@@ -31,7 +39,24 @@ export default {
       alleKleuren: [],
       isVoorzitter: false,
       match: "",
-      geselecteerdeProjecten: []
+      geselecteerdeProjecten: [],
+      matchKlasse: "",
+      fields: [
+        {
+          key: "projectdetails",
+          label: "Titel",
+          formatter: "titelWeergeven"
+        },
+        {
+          key: "groepsleden",
+          label: "Aantal groepsleden",
+          formatter: "groepsledenWeergeven"
+        },
+        {
+          key: "match",
+          formatter: "matchWeergeven"
+        }
+      ]
     };
   },
   mounted() {
@@ -180,13 +205,36 @@ export default {
         alleUniekeKleuren.push(persoonUniekeKleuren[index]);
       }
       return this.maakUniekeKleuren(alleUniekeKleuren).length;
+    },
+    titelWeergeven: function(value) {
+      return value.title;
+    },
+    groepsledenWeergeven: function(value) {
+      return value.length;
+    },
+    geefMatchKlasse: function(value) {
+      if (value === "Perfect") {
+        return "text-success font-weight-bold";
+      }
+      if (value === "Zeer goed") {
+        return "text-success";
+      }
+      if (value === "Goed") {
+        return "text-success";
+      }
+      if (value === "Matig") {
+        return "text-warning";
+      }
+      if (value === "Slecht") {
+        return "text-danger";
+      }
     }
-  },
-  components: {
-    appBelbingroep: Belbingroep
   }
 };
 </script>
-
 <style>
+th,
+td {
+  padding-left: 0 !important;
+}
 </style>

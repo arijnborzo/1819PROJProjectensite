@@ -5,8 +5,9 @@
       <b-col cols="10">
         <b-table
           responsive
-          striped
+          bordered
           borderless
+          hover
           :items="studenten"
           :fields="fields"
           head-variant="dark"
@@ -48,7 +49,7 @@ export default {
         },
         {
           key: "belbin",
-          label: "Belbin",
+          label: "Belbinrol",
           sortable: false,
           formatter: "belbinResult",
           html: true
@@ -57,14 +58,14 @@ export default {
       studenten: [],
       groepen: [],
       photo: {
-        Voorzitter: "../../img/voorzitter.png",
-        Zorgdrager: "../../img/zorgdrager.png",
-        Bedrijfsman: "../../img/bedrijfsman.png",
-        Brononderzoeker: "../../img/brononderzoeker.png",
-        Monitor: "../../img/monitor.png",
-        Vormer: "../../img/vormer.png",
-        Plant: "../../img/plant.png",
-        Groepswerker: "../../img/groepswerker.png"
+        Voorzitter: "../../assets/completor.png",
+        Zorgdrager: "../../assets/completor.png",
+        Bedrijfsman: "../../assets/completor.png",
+        Brononderzoeker: "../../assets/completor.png",
+        Monitor: "../../assets/completor.png",
+        Vormer: "../../assets/vormer.png",
+        Plant: "../../assets/plant.png",
+        Groepswerker: "../../assets/groepswerker.png"
       }
     };
   },
@@ -165,5 +166,8 @@ export default {
 .belbinimg {
   width: 29px;
   height: auto;
+}
+td {
+  font-weight: 300;
 }
 </style>

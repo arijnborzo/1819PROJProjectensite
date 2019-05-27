@@ -1,7 +1,7 @@
 <template>
   <b-container id="overzicht" fluid>
     <b-row>
-      <b-col cols="12" offset-md="2">
+      <b-col cols="12" offset-md="2" style="padding-right:8%">
         <!--titel-->
         <h3 id="alleprojecten">Alle projecten</h3>
       </b-col>
@@ -87,11 +87,11 @@ export default {
           ]
         ],
         [
-          ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
+          ["Arno Stas", "Arno Stas", "Arno Stas"],
           [
             {
               id: 2,
-              title: "MAcro",
+              title: "Macro",
               status: "Accepted",
               short_description: "dit is de korte bschrrrrrrrrrrrr",
               full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
@@ -106,7 +106,7 @@ export default {
           ]
         ],
         [
-          ["Arno Stas", "Arno Stas", "Arno Stas", "Arno Stas"],
+          ["Arno Stas", "Arno Stas"],
           [
             {
               id: 3,
@@ -129,7 +129,7 @@ export default {
           [
             {
               id: 4,
-              title: "NBAAA",
+              title: "NBA",
               status: "In beraad",
               short_description: "dit is de korte bschrrrrrrrrrrrr",
               full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
@@ -365,14 +365,11 @@ body {
 /* GRIDLIST */
 #alleprojecten {
   text-align: center;
-  margin-bottom: 2rem;
-}
-#alleprojecten {
-  text-align: center;
   margin: 2rem 0;
 }
-#listgrid div:nth-child(3n + 2) > .project {
-  margin: 0 2%;
+/*:nth-child(3n + 2)*/
+#listgrid div > .project {
+  margin: 0 1.5% 0 0;
 }
 .listul {
   width: auto;
@@ -380,10 +377,10 @@ body {
 .gridli {
   overflow: hidden;
   float: left;
-  width: 32%;
+  width: 31%;
 }
 .listli {
-  width: 100%;
+  width: 96%;
   height: auto;
   margin-left: auto !important;
 }
@@ -414,9 +411,12 @@ ul {
   margin-left: 0.3rem;
   float: right;
 }
+.gridlistbtn:first-child {
+  margin-right: 8%;
+}
 
 /* MEDIA QUERYS */
-@media (max-width: 1000px) {
+@media (max-width: 1070px) {
   .projecten {
     -ms-flex-align: center !important;
     align-items: center !important;
@@ -440,7 +440,7 @@ ul {
   .groepsleden {
     height: auto !important;
   }
-  #listgrid div:nth-child(3n + 2) > .project {
+  #listgriddiv: > .project {
     margin: auto;
   }
 }

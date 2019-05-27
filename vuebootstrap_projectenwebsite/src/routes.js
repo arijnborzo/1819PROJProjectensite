@@ -23,7 +23,7 @@ export const routes = [
       students: [
         ["Andreas Lauwers", "Plant geel", "Projectenwebsite", 1],
         ["Arno Lauwers", "Voorzitter blauw groen", "Projectenwebsite", 1],
-        ["Arijn Lauwers", null, "Projectenwebsite", 1],
+        ["Arijn Lauwers", "Brononderzoeker rood groen", "Projectenwebsite", 1],
         ["Lukas Lauwers", "Vormer rood", "Projectenwebsite", 1],
         ["Andreas Petit", "Groepswerker groen", "Macrokeyboard", 2],
         ["Lukas Petit", "Monitor geel rood", "Macrokeyboard", 2],
@@ -123,7 +123,7 @@ export const routes = [
         [
           [
             { naam: "Arno Stas", belbin: "Bedrijfsman rood blauw" },
-            { naam: "B Stas", belbin: "Vormer rood" },
+            { naam: "B Stas", belbin: "Brononderzoeker groen geel" },
             { naam: "C Stas", belbin: "Groepswerker groen" }
           ],
           [
@@ -146,12 +146,57 @@ export const routes = [
         [
           [
             { naam: "Arno Stas", belbin: "Vormer rood" },
-            { naam: "C Stas", belbin: "Groepswerker groen" }
+            { naam: "C Stas", belbin: "Plant geel" }
           ],
           [
             {
-              id: 1,
+              id: 2,
               title: "Macro",
+              status: "Accepted",
+              short_description: "dit is de korte bschrrrrrrrrrrrr",
+              full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
+              teacher_id: 6,
+              creator_id: 1,
+              main_question: "Dit is de hoofdvraag",
+              side_questions:
+                "het maken van ee degelijke site? Of wat moet je anderss doen?",
+              created_at: "2019-05-24 07:52:45",
+              updated_at: "2019-05-24 07:52:45"
+            }
+          ]
+        ],
+        [
+          [
+            { naam: "Arno Stas", belbin: "Zorgdrager blauw" },
+            { naam: "C Stas", belbin: "Groepswerker groen" },
+            { naam: "C Stas", belbin: "Plant geel" }
+          ],
+          [
+            {
+              id: 3,
+              title: "Nummer drie",
+              status: "Accepted",
+              short_description: "dit is de korte bschrrrrrrrrrrrr",
+              full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
+              teacher_id: 6,
+              creator_id: 1,
+              main_question: "Dit is de hoofdvraag",
+              side_questions:
+                "het maken van ee degelijke site? Of wat moet je anderss doen?",
+              created_at: "2019-05-24 07:52:45",
+              updated_at: "2019-05-24 07:52:45"
+            }
+          ]
+        ],
+        [
+          [
+            { naam: "Arno Stas", belbin: "Voorzitter blauw groen" },
+            { naam: "C Stas", belbin: "Vormer rood" }
+          ],
+          [
+            {
+              id: 4,
+              title: "Vierrrr",
               status: "Accepted",
               short_description: "dit is de korte bschrrrrrrrrrrrr",
               full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",

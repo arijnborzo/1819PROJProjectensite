@@ -75,7 +75,13 @@ export default {
   background-color: #ced9e6;
   box-shadow: 0px -5px 20px #093667;
 }
-
+/* uitlogbox */
+.dropdown-menu {
+  background: linear-gradient(135deg, #eaeff2 0%, #d9dee5 100%);
+}
+.dropdown-item {
+  color: #093667 !important;
+}
 /* User box */
 .ml-auto a {
 }
@@ -98,14 +104,12 @@ export default {
 nav ul li a:hover {
   text-decoration: none;
 }
-.nav-li a,
-.nav-li a:after,
-.nav-li a:before {
+.dropdown-item,
+.dropdown-item:after,
+.dropdown-item:before {
   transition: all 0.5s;
 }
-.nav-li a:hover {
-  color: #fff;
-}
+
 /* stroke */
 .stroke ul li a,
 .fill ul li a {
