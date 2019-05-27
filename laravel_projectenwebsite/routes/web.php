@@ -50,3 +50,5 @@ Route::get('/project/{id}', 'ProjectController@detail')->name('detail');
 Route::get('/myproject', 'ProjectController@myProject')->name('myProject');
 Route::post('/myproject', 'GroupmemberController@addRemoveMember')->name('addRemoveMember');
 Route::get('/sendrequest/{id}', 'GroupmemberController@sendMemberRequest')->name('sendMemberRequest');
+Route::get('/addMember/{id}', 'OverviewController@addMember')->name('addMember');
+

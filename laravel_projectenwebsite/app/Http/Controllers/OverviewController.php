@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AddMember;
 use Auth;
 use App\Group;
 use App\Project;
@@ -9,6 +10,7 @@ use App\Student;
 use App\Teacher;
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Mail\addMembers;
 
 use Illuminate\Http\Request;
 
@@ -108,5 +110,11 @@ class OverviewController extends Controller
               'user' => $user
           ]
         );
+    }
+    public function addMember($id)
+    {
+        AddMember::mail($id);
+        return redirect('/');
+
     }
 }

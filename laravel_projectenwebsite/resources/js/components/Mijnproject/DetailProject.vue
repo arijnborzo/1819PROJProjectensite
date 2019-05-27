@@ -64,7 +64,7 @@
             </ul>
           </b-col>
           <b-col md="6" align-self="end">
-            <b-button
+            <b-button :href="'/addMember/' + project.id"
               v-b-modal.modal-1
               @click="verstuurGroepsverzoek()"
               class="btns"

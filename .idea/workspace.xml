@@ -4,7 +4,8 @@
     <list default="true" id="e2cdd7ec-b239-4ced-822c-73a56ac39047" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/nginx/logrotate/nginx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/php-fpm/xhprof.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/OverviewController.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/OverviewController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/app/Mail/AddMember.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/app/Mail/AddMember.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/laradock" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/DOCUMENTATION/content/documentation/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/DOCUMENTATION/content/documentation/index.md" afterDir="false" />
@@ -13,6 +14,9 @@
       <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/nginx/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/nginx/startup.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/php-fpm/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/php-fpm/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/workspace/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/workspace/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/DetailProject.vue" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/DetailProject.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,48 +35,67 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/ProjectController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1395">
+            <state relative-caret-position="251">
               <caret line="100" column="273" selection-start-line="100" selection-start-column="273" selection-end-line="100" selection-end-column="273" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Belbintest/Belbingroepen.vue">
+        <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/OverviewController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/NieuwProject/NieuwProject.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3540">
-              <caret line="236" column="8" selection-start-line="236" selection-start-column="8" selection-end-line="236" selection-end-column="8" />
+            <state relative-caret-position="317">
+              <caret line="115" column="27" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="27" />
               <folding>
-                <element signature="n#style#0;n#b-form-radio#0;n#b-form-group#6;n#b-form#0;n#b-card#0;n#b-col#0;n#b-row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b-button#1;n#b-form#0;n#b-card#0;n#b-col#0;n#b-row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#40#63#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/views/auth/register.blade.php">
+        <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1095">
-              <caret line="73" column="19" selection-start-line="73" selection-start-column="19" selection-end-line="73" selection-end-column="19" />
+            <state relative-caret-position="-11">
+              <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/Auth/RegisterController.php">
+        <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/DetailProject.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="47" column="35" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="35" />
+            <state relative-caret-position="196">
+              <caret line="66" column="55" selection-start-line="66" selection-start-column="55" selection-end-line="66" selection-end-column="55" />
+              <folding>
+                <element signature="n#style#0;n#p#0;n#li#0;n#ul#0;n#b-col#1;n#b-row#1;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#p#0;n#b-col#0;n#b-row#2;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/MijnProject.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="798">
+              <caret line="95" column="6" selection-start-line="95" selection-start-column="6" selection-end-line="95" selection-end-column="6" />
+              <folding>
+                <element signature="n#style#0;n#p#0;n#li#0;n#ul#0;n#b-col#1;n#b-row#1;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#p#0;n#b-col#0;n#b-row#2;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Overzicht/Project.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="43" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="43" />
+              <folding>
+                <element signature="n#style#0;n#p#0;n#b-card#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,20 +112,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/app/Mail/AddMember.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+            <state relative-caret-position="229">
+              <caret line="55" column="56" selection-start-line="55" selection-start-column="56" selection-end-line="55" selection-end-column="56" />
               <folding>
                 <element signature="e#28#57#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/app/Extern.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -129,9 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>filter</find>
-      <find>login</find>
-      <find>geen</find>
       <find>dd</find>
       <find>belongs</find>
       <find>pas voorstel aan</find>
@@ -159,6 +170,9 @@
       <find>bronnn</find>
       <find>compan</find>
       <find>companie</find>
+      <find>l</find>
+      <find>mail</find>
+      <find>detai</find>
     </findStrings>
     <replaceStrings>
       <replace>belbinrol</replace>
@@ -186,14 +200,12 @@
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/resources/views/students.blade.php" />
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/resources/js/app.js" />
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/database/seeds/create_projects_seeder.php" />
-        <option value="$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/OverviewController.php" />
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/resources/views/belbin.blade.php" />
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/BelbintestController.php" />
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/database/migrations/2019_04_04_104305_create_students_table.php" />
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/database/seeds/create_students_seeder.php" />
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/database/seeds/create_users_seeder.php" />
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Studenten/Studenten.vue" />
-        <option value="$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/DetailProject.vue" />
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/MijnProject.vue" />
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/public/css/project.css" />
@@ -207,6 +219,9 @@
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Overzicht/Filter.vue" />
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/resources/views/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/resources/views/auth/login.blade.php" />
+        <option value="$PROJECT_DIR$/laravel_projectenwebsite/routes/web.php" />
+        <option value="$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/DetailProject.vue" />
+        <option value="$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/OverviewController.php" />
         <option value="$PROJECT_DIR$/laravel_projectenwebsite/app/Mail/AddMember.php" />
       </list>
     </option>
@@ -326,6 +341,21 @@
               <item name="1819PROJProjectensite" type="462c0819:PsiDirectoryNode" />
               <item name="laravel_projectenwebsite" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="1819PROJProjectensite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1819PROJProjectensite" type="462c0819:PsiDirectoryNode" />
+              <item name="laravel_projectenwebsite" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="1819PROJProjectensite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1819PROJProjectensite" type="462c0819:PsiDirectoryNode" />
+              <item name="laravel_projectenwebsite" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Mail" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -432,6 +462,15 @@
               <item name="1819PROJProjectensite" type="462c0819:PsiDirectoryNode" />
               <item name="laravel_projectenwebsite" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="PaswoordVergeten" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="1819PROJProjectensite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1819PROJProjectensite" type="462c0819:PsiDirectoryNode" />
+              <item name="laravel_projectenwebsite" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -518,10 +557,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31103000" />
+    <option name="totallyTimeSpent" value="32514000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21959943" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -548,13 +588,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vuebootstrap_projectenwebsite/src/components/HeaderFooter/Header.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="9" selection-end-line="164" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -653,13 +686,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="43" column="25" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/views/nieuwproject.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -746,17 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/MijnProject.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="95" column="6" selection-start-line="95" selection-start-column="6" selection-end-line="95" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#li#0;n#ul#0;n#b-col#1;n#b-row#1;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#0;n#b-col#0;n#b-row#2;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/App.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -784,38 +799,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/OverviewController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1427">
-          <caret line="105" column="11" selection-start-line="105" selection-start-column="11" selection-end-line="105" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Overzicht/Overzicht.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
           <caret line="33" column="44" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/DetailProject.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="108" column="4" selection-start-line="108" selection-start-column="4" selection-end-line="110" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#li#0;n#ul#0;n#b-col#1;n#b-row#1;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#0;n#b-col#0;n#b-row#2;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Overzicht/Project.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="71" selection-start-line="1" selection-start-column="71" selection-end-line="1" selection-end-column="71" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#b-card#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -830,13 +817,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="885">
           <caret line="59" column="54" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/ProjectController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="100" column="273" selection-start-line="100" selection-start-column="273" selection-end-line="100" selection-end-column="273" />
         </state>
       </provider>
     </entry>
@@ -893,6 +873,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Overzicht/Project.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="43" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="43" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#b-card#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/MijnProject.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="95" column="6" selection-start-line="95" selection-start-column="6" selection-end-line="95" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#li#0;n#ul#0;n#b-col#1;n#b-row#1;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#0;n#b-col#0;n#b-row#2;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11">
+          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/OverviewController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="115" column="27" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="27" />
+          <folding>
+            <element signature="e#40#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/ProjectController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="100" column="273" selection-start-line="100" selection-start-column="273" selection-end-line="100" selection-end-column="273" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/DetailProject.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="66" column="55" selection-start-line="66" selection-start-column="55" selection-end-line="66" selection-end-column="55" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#li#0;n#ul#0;n#b-col#1;n#b-row#1;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#0;n#b-col#0;n#b-row#2;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/views/auth/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1095">
@@ -902,8 +945,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/app/Mail/AddMember.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        <state relative-caret-position="229">
+          <caret line="55" column="56" selection-start-line="55" selection-start-column="56" selection-end-line="55" selection-end-column="56" />
           <folding>
             <element signature="e#28#57#0#PHP" expanded="true" />
           </folding>
