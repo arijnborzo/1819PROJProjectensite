@@ -157,7 +157,7 @@ class ProjectController extends Controller
         $groupmembers=[];
         foreach ($students as $student) {
             $s = [];
-            array_push($s, $student->belbintype, $student->user);
+            array_push($s, $student->belbintype, $student->user, $student->confirmed);
             //echo $student;
             array_push($groupmembers, $s);
         }

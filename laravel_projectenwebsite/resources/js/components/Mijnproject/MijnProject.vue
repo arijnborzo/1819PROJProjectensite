@@ -49,6 +49,7 @@
             <ul>
               <li v-for="member in groupmembers">
                 <p>
+                  {{statusMember(member[2])}}
                   {{member[1].name}} {{member[1].surname}}
                   <span>
                     <img
@@ -60,6 +61,16 @@
                     >
                   </span>
                 </p>
+                <b-form @click="onClick" action="/test" method="POST" id="accept">
+                    <b-button v-bind:value="member[1].id" class="btns">Accepteer</b-button>
+                    <input type="hidden" name="member" value={{member[0].id}};
+                    <input type="hidden" name="_token" :value="csrf">
+                </b-form>
+                <b-form @click="onClick" action="/test" method="POST" id="deny">
+                    <b-button value="deny" variant="danger" style="float: right">Verwijder</b-button>
+                    <input type="hidden" name="member" value={{member[0].id}};
+                    <input type="hidden" name="_token" :value="csrf">
+                </b-form>
               </li>
             </ul>
           </b-col>
@@ -94,10 +105,19 @@ export default {
     checkId(value){
       if (value == "project_id") {return false} else {return true}
     },
+    statusMember(value) {
+      console.log(value);
+      if (value == 1) return `✔`;
+      if (value == 0) return "❔";
+    },
     statusProject(value) {
       if (value === "Accepted") return `✔`;
       if (value === "Pending") return "❔";
       if (value === "Declined") return "✖";
+    },
+    onClick(){
+      console.log("clicked");
+      console.log(document)
     },
     belbinResult(value) {
       if (value === null) {
