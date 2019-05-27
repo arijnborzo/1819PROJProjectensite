@@ -48,6 +48,12 @@
 </script>
 
 <style>
+    .dropdown-menu {
+        background: linear-gradient(135deg, #eaeff2 0%, #d9dee5 100%);
+    }
+    .dropdown-item {
+        color: #093667 !important;
+    }
     .logo {
         width: 12rem;
         height: auto;
@@ -75,9 +81,9 @@
     nav ul li a:hover {
         text-decoration: none;
     }
-    .nav-li a,
-    .nav-li a:after,
-    .nav-li a:before {
+    .dropdown-item,
+    .dropdown-item:after
+    .dropdown-item:before{
         transition: all 0.5s;
     }
     .nav-li a:hover {

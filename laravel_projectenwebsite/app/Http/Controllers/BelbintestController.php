@@ -30,4 +30,9 @@ class BelbintestController extends Controller
         Student::where('id', $user->id)->update(['belbintype' => $type]);
         return redirect('/');
     }
+    public function showBelbintest(){
+//        $user = Auth::user();
+//        Student::where('id', $user->id)->update(['belbintype' => $type]);
+        return view('belbin');
+    }
 }

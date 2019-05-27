@@ -44,6 +44,8 @@
                       :langebeschrijving="project.lange_beschrijving"
                       :groepsleden="project.groepsleden"
                       :status="project.status"
+                      :proj_id="project.id"
+                      :gridlist="gridlist"
               ></app-project>
             </transition>
           </div>
@@ -73,7 +75,7 @@ export default {
       show: true,
       showicons: true,
       width: 0,
-      height: 0
+      gridlist: "grid"
     };
   },
   components: {

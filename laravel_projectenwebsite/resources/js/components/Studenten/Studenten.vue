@@ -3,7 +3,7 @@
         <h3 id="alleprojecten">Alle studenten die ingeschreven zijn</h3>
         <b-row align-h="center">
             <b-col cols="10">
-                <b-table responsive striped borderless :items="studenten" :fields="fields" head-variant="dark" caption-top :tbody-tr-class="rowClass">
+                <b-table responsive bordered hover borderless :items="studenten" :fields="fields" head-variant="dark" caption-top :tbody-tr-class="rowClass">
                     <template slot="table-caption">✔: zit in een volle groep | ✖: heeft nog geen groep | ❔: zit in groep maar is nog niet vol</template>
                     <span slot="belbin" slot-scope="data" v-html="data.value"></span>
                     <span slot="groep" slot-scope="data" v-html="data.value"></span>
@@ -37,7 +37,7 @@
                     },
                     {
                         key: "belbin",
-                        label: "Belbin",
+                        label: "Belbinrol",
                         sortable: false,
                         formatter: "belbinResult",
                         html: true
@@ -63,7 +63,11 @@
                 var student = this.students[stud];
                 // Check of we aan een nieuwe groepsvoorstel begonnen zijn
                 if (student[3] != currentGroup) {
-                    this.groepen[currentGroup] = 1;
+                    if (student[2] === null) {
+                        this.groepen[currentGroup] = null;
+                    } else {
+                        this.groepen[currentGroup] = 1;
+                    }
                     currentGroup++;
                 } else {
                     this.groepen[currentGroup - 1]++;
@@ -81,7 +85,13 @@
                     // Eerste lid toevoegen
                     var naam = student[0];
                     // Voorstel toevoegen
-                    var projectvoorstel = student[2];
+                    if(student[2] === null){
+                        var projectvoorstel = "/";
+
+                    }
+                    else{
+                        var projectvoorstel = student[2];
+                    }
                     // Belbin
                     var belbin = student[1];
                     // object nieuwe vueproject aanmaken
@@ -116,7 +126,7 @@
                         this.photo.bedrijfsman
                         } alt="Bedrijfsman" v-b-tooltip.click title="Bedrijfsman">`;
                 if (value === "Brononderzoeker")
-                    return `<img class="belbinimg" src=${
+                    return `<img class="belbini mg" src=${
                         this.photo.Brononderzoeker
                         } alt="Brononderzoeker" v-b-tooltip.click title="Brononderzoeker">`;
                 if (value === "Monitor")
@@ -139,7 +149,7 @@
             groepResult(value) {
                 console.log(value);
                 if (value === 4) return `✔`;
-                if (value === 1) return "✖";
+                if (value === null) return "✖";
                 else return "❔";
             }
         }

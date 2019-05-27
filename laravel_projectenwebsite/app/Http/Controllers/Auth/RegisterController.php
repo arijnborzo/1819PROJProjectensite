@@ -70,7 +70,7 @@ class RegisterController extends Controller
     {
 //        dd($data);
         $email = explode("@", $data['email']);
-        User::create([
+        $user = User::create([
             'surname' => $data['surname'],
             'name' => $data['name'],
             'email' => $data['email'],
@@ -97,5 +97,6 @@ class RegisterController extends Controller
                 'id' => $userid,
             ]);
         }
+        return redirect('belbin');
     }
 }

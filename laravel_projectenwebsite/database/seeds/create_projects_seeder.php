@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class create_projects_seeder extends Seeder
@@ -42,7 +43,7 @@ class create_projects_seeder extends Seeder
             'full_description' => 'Dit is de veel veel veel langere beschrijving',
             'teacher_id' => 7,
             'creator_id' => 9,
-            'created_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::parse('2019-06-20'),
             'main_question' => 'Laten we het gras groeien of rijden we het af?'
         ]);
         DB::table('projects')->insert([
@@ -53,7 +54,7 @@ class create_projects_seeder extends Seeder
             'full_description' => 'Dit is de veel veel veel langere beschrijving',
             'teacher_id' => 5,
             'creator_id' => 10,
-            'created_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::parse('2018-06-20'),
             'main_question' => 'Smaakt het?'
         ]);
         DB::table('projects')->insert([

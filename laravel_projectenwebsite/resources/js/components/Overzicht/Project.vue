@@ -17,7 +17,7 @@
       Status:
       <span>{{status}}</span>
     </p>
-
+{{proj_id}}
     <b-button :href="'/project/' + proj_id" size="sm" class="bekijkbtn">Bekijk</b-button>
   </b-card>
 </template>
@@ -32,7 +32,17 @@ export default {
     "status",
     "proj_id",
     "gridlist"
-  ]};
+  ],
+  mounted() {
+    if (this.gridlist === "list") {
+      var articles = document.getElementsByTagName("ARTICLE");
+      Array.prototype.filter.call(articles, function(proj) {
+        proj.classList.remove("gridli");
+        proj.classList.add("listli");
+      });
+    }
+  },
+};
 </script>
 
 <style>
@@ -59,7 +69,7 @@ export default {
 .project {
   overflow: hidden;
   float: left;
-  width: 32%;
+  width: 31%;
 }
 .project:before,
 .project:after {

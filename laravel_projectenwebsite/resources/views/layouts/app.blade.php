@@ -37,7 +37,6 @@
             {{ csrf_field() }}
         </form>
         @yield('content')
-
         <footer_vue></footer_vue>
     </main>
     <script src={{ asset('js/jquery-2.1.1.js') }}></script>

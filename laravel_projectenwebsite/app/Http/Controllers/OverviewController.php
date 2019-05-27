@@ -83,7 +83,7 @@ class OverviewController extends Controller
     public function students()
     {
       $user = Auth::user();
-      $students = Student::pluck('id');;
+      $students = Student::pluck('id');
       $all=[];
       foreach ($students as $id) {
             $members=[];
@@ -92,14 +92,17 @@ class OverviewController extends Controller
             $project = Project::where('id', $student->group_id)->first();
             $stu = $used->surname . " " . $used->name;
             $belbin = $used->student->belbintype;
-            $projects = $project->title;
-            $group = Group::where('project_id', $student->group_id)->first();
-            $group_id = $group->id;
-
-            array_push($members, $stu, $belbin, $projects, $group_id);
+            $projTitle = null;
+            $group_id = null;
+            if(isset($project->title)){
+                $projTitle = ($project->title);
+                $group = Group::where('project_id', $student->group_id)->first();
+                $group_id = $group->id;
+            }
+            array_push($members, $stu, $belbin, $projTitle, $group_id);
             array_push($all, $members);
       }
-      return view('students',
+        return view('students',
           [
               'students' => $all,
               'user' => $user
