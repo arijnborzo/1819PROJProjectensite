@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Extern extends Authenticatable
 {
-    protected $fillable = ['id', 'companie', ];
+    protected $fillable = ['id'];
     public function user(){
       return $this->hasOne('App\User');
     }
