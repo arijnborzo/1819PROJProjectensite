@@ -11,6 +11,10 @@
               <br>
               <br>De match geeft aan hoe goed je zou passen in de groep rekeninghoudend met het aantal groepsleden en de Belbinrollen in de groep.
               <br>
+              <br>Let op! De groepen waarin al een persoon zit met dezelfde rol, maar wel een goede groep is, worden aangeduid met
+              <span
+                class="text-danger"
+              >!Goed!</span>.
             </p>
           </b-card-text>
           <b-table
@@ -43,14 +47,12 @@ export default {
       matchKlasse: "",
       fields: [
         {
-          key: "projectdetails",
-          label: "Titel",
-          formatter: "titelWeergeven"
+          key: "projecttitel",
+          label: "Titel"
         },
         {
-          key: "groepsleden",
-          label: "Aantal groepsleden",
-          formatter: "groepsledenWeergeven"
+          key: "groepsleden.length",
+          label: "Aantal groepsleden"
         },
         {
           key: "match",
@@ -66,21 +68,22 @@ export default {
 
       // Neem project
       var project = this.projects[proj];
+      var projecttitel = project[1][0].title;
       var groepsleden = project[0];
       var aantalGroepsleden = groepsleden.length;
-      var projectdetails = project[1][0];
+      console.log(aantalGroepsleden);
       // Alle kleuren en belbinrol  van het project toevoegen aan arrays
       for (var groepslid in groepsleden) {
-        var groepslidKleuren = groepsleden[groepslid].belbin;
-        var woorden = groepslidKleuren.split(" ");
+        var groepslidBelbinKleuren = groepsleden[groepslid].belbin;
+        if (groepslidBelbinKleuren === null) {
+          groepslidBelbinKleuren = "";
+        }
+        var woorden = groepslidBelbinKleuren.split(" ");
         var belbinRol = woorden[0];
 
         // Liever geen twee zelfde belbinrollen, indien al een zelfde belbin rol bevat dan gaat men naar het volgende project
         if (this.checkZelfdeBelbin(belbinRol)) {
           zelfdeBelbin = true;
-        }
-        if (zelfdeBelbin) {
-          continue;
         }
 
         // De kleuren van de persoon
@@ -90,19 +93,29 @@ export default {
           this.alleKleuren.push(woorden[index]);
         }
       }
-      if (zelfdeBelbin) {
-        continue;
-      }
 
       // Belbin implementatie
       // Unieke kleuren van huidig project
       var uniekeKleuren = this.maakUniekeKleuren(this.alleKleuren);
       var aantalUniekeKleuren = uniekeKleuren.length;
+      console.log("Unieke kleuren voor: " + aantalUniekeKleuren);
       // Aantal unieke kleuren na toevoegen
       var aantalUniekeKleurenNa = this.checkAantalUniekeKleurenNaToevoegen(
         uniekeKleuren,
         this.maakUniekeKleuren(this.kleuren)
       );
+      if (
+        aantalUniekeKleurenNa == 4 &&
+        zelfdeBelbin &&
+        this.belbinRol !== "Voorzitter"
+      ) {
+        this.match = "!Goed!";
+        var match = this.match;
+        var projectZonderZelfdeBelbin = { groepsleden, projecttitel, match };
+        this.geselecteerdeProjecten.push(projectZonderZelfdeBelbin);
+        continue;
+      }
+      console.log("Unieke kleuren na: " + aantalUniekeKleurenNa);
       // Aantal kleuren na toevoegen
       var aantalKleurenNa = this.checkAantalKleurenNaToevoegen(
         this.alleKleuren,
@@ -113,13 +126,16 @@ export default {
       if (this.belbin === "Voorzitter") {
         this.isVoorzitter = true;
       }
+      console.log("Kleuren voor: " + this.alleKleuren.length);
+      console.log("Kleuren na: " + aantalKleurenNa);
 
       // Als het een voorzitter is, eerst kijken om bij een groep te horen
       // if (this.isVoorzitter) {
 
-      // Als alle kleuren er zijn maar er nog geen voorzitter is, PERFECT match
       if (aantalUniekeKleuren == 4) {
-        this.match = "Perfect";
+        if (aantalKleurenNa > 6) {
+          this.match = "Perfect";
+        }
         // Aantal huidige unieke kleuren = 3
       } else if (aantalUniekeKleuren == 3) {
         if (aantalUniekeKleurenNa == 4) {
@@ -151,8 +167,10 @@ export default {
               this.match = "Perfect";
             } else if (aantalKleurenNa == 5) {
               this.match = "Zeer goed";
-            } else {
+            } else if (aantalKleurenNa == 4) {
               this.match = "Matig";
+            } else {
+              this.match = "Slecht";
             }
           } else {
             this.match = "Perfect";
@@ -175,7 +193,7 @@ export default {
       // Geen voorzitter
       //
       var match = this.match;
-      var projectZonderZelfdeBelbin = { groepsleden, projectdetails, match };
+      var projectZonderZelfdeBelbin = { groepsleden, projecttitel, match };
       this.geselecteerdeProjecten.push(projectZonderZelfdeBelbin);
     }
   },
@@ -206,26 +224,17 @@ export default {
       }
       return this.maakUniekeKleuren(alleUniekeKleuren).length;
     },
-    titelWeergeven: function(value) {
-      return value.title;
-    },
-    groepsledenWeergeven: function(value) {
-      return value.length;
-    },
     geefMatchKlasse: function(value) {
       if (value === "Perfect") {
         return "text-success font-weight-bold";
       }
-      if (value === "Zeer goed") {
-        return "text-success";
-      }
-      if (value === "Goed") {
+      if (value === "Zeer goed" || value === "Goed") {
         return "text-success";
       }
       if (value === "Matig") {
         return "text-warning";
       }
-      if (value === "Slecht") {
+      if (value === "Slecht" || value === "!Goed!") {
         return "text-danger";
       }
     }

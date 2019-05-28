@@ -42,6 +42,8 @@
                 :groepsleden="project.groepsleden"
                 :status="project.status"
                 :gridlist="gridlist"
+                :ifArchief="true"
+                :datumProject="project.aanmaakdatum"
               ></app-project>
             </transition>
           </div>
@@ -63,7 +65,7 @@ export default {
     return {
       selected: null,
       sorteeropties: [
-        { value: null, text: "Sorteren op:" },
+        { value: null, text: "Sorteer titels op:" },
         { value: "az", text: "Op alfabetische volgorde A-Z" },
         { value: "za", text: "Op alfabetische volgorde Z-A" }
       ],

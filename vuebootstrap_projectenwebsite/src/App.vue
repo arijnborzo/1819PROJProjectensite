@@ -41,4 +41,14 @@ body {
 h3 {
   color: #093667;
 }
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+td,
+th {
+  font-weight: 300;
+}
 </style>

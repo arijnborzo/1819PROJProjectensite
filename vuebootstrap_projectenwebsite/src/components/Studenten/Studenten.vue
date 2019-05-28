@@ -35,6 +35,7 @@ export default {
       fields: [
         {
           key: "groep",
+          label: " Groep",
           sortable: true,
           formatter: "groepResult",
           html: true
@@ -75,12 +76,17 @@ export default {
       var student = this.students[stud];
       // Check of we aan een nieuwe groepsvoorstel begonnen zijn
       if (student[3] != currentGroup) {
-        this.groepen[currentGroup] = 1;
+        if (student[2] === null) {
+          this.groepen[currentGroup] = null;
+        } else {
+          this.groepen[currentGroup] = 1;
+        }
         currentGroup++;
       } else {
         this.groepen[currentGroup - 1]++;
       }
     }
+    console.log(this.groepen);
     var currentStudentGroup = 0;
     for (var stud in this.students) {
       // Neem student
@@ -130,7 +136,7 @@ export default {
         } alt="Zorgdrager" v-b-tooltip.click title="Zorgdrager">`;
       if (belbinrol === "Bedrijfsman")
         return `<img class="belbinimg" src=${
-          this.photo.bedrijfsman
+          this.photo.Bedrijfsman
         } alt="Bedrijfsman" v-b-tooltip.click title="Bedrijfsman">`;
       if (belbinrol === "Brononderzoeker")
         return `<img class="belbinimg" src=${
@@ -155,7 +161,7 @@ export default {
     },
     groepResult(value) {
       if (value === 4) return `✔`;
-      if (value === 1) return "✖";
+      if (value === null) return "✖";
       else return "❔";
     }
   }
@@ -166,8 +172,5 @@ export default {
 .belbinimg {
   width: 29px;
   height: auto;
-}
-td {
-  font-weight: 300;
 }
 </style>

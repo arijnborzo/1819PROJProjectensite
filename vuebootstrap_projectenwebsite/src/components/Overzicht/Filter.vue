@@ -19,9 +19,9 @@
 
           <b-form-group id="input-group-4" label="Status" label-for="input-4">
             <b-form-checkbox-group stacked v-model="form.status">
-              <b-form-checkbox value="Accepted">Accepted</b-form-checkbox>
-              <b-form-checkbox value="In beraad">In beraad</b-form-checkbox>
-              <b-form-checkbox value="Afgekeurd">Afgekeurd</b-form-checkbox>
+              <b-form-checkbox value="Accepted">✔ Goedgekeurd</b-form-checkbox>
+              <b-form-checkbox value="Pending">❔ In beraad</b-form-checkbox>
+              <b-form-checkbox value="Declined">✖ Afgekeurd</b-form-checkbox>
             </b-form-checkbox-group>
           </b-form-group>
 
@@ -69,5 +69,11 @@ export default {
 <style>
 .btns {
   background-color: #093667;
+  color: #fff;
+  border: 1px solid transparent;
+  font-weight: 400;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
 }
 </style>

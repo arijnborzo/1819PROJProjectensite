@@ -17,18 +17,20 @@
 
       <b-button type="submit" class="btns">Log in</b-button>
     </b-form>
-    <div>
-      <h6 style="margin-top:2rem">Paswoord vergeten?</h6>
-      <router-link to="/paswoordvergeten">
-        <b-button class="btns">Reset paswoord</b-button>
-      </router-link>
-    </div>
-    <div>
-      <h6 style="margin-top:2rem">Nog niet geregistreerd?</h6>
-      <router-link to="/registreer">
-        <b-button class="btns">Registreer</b-button>
-      </router-link>
-    </div>
+    <b-row>
+      <b-col>
+        <h6 style="margin-top:2rem">Paswoord vergeten?</h6>
+        <router-link to="/paswoordvergeten">
+          <b-button class="btns">Reset paswoord</b-button>
+        </router-link>
+      </b-col>
+      <b-col>
+        <h6 style="margin-top:2rem">Nog niet geregistreerd?</h6>
+        <router-link to="/registreer">
+          <b-button class="btns">Registreer</b-button>
+        </router-link>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
@@ -58,6 +60,4 @@ export default {
 </script>
 
 <style>
-.btn {
-}
 </style>

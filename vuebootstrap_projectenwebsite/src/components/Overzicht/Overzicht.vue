@@ -40,6 +40,7 @@
                 :status="project.status"
                 :proj_id="project.id"
                 :gridlist="gridlist"
+                :isStudent="isStudent"
               ></app-project>
             </transition>
           </div>
@@ -61,7 +62,7 @@ export default {
     return {
       selected: null,
       sorteeropties: [
-        { value: null, text: "Sorteren op:" },
+        { value: null, text: "Sorteer titels op:" },
         { value: "az", text: "Op alfabetische volgorde A-Z" },
         { value: "za", text: "Op alfabetische volgorde Z-A" }
       ],
@@ -72,7 +73,7 @@ export default {
           [
             {
               id: 1,
-              title: "Projectensite",
+              title: "Macrokeyboard via C implementeren",
               status: "Accepted",
               short_description: "dit is de korte bschrrrrrrrrrrrr",
               full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
@@ -144,6 +145,7 @@ export default {
           ]
         ]
       ],
+      isStudent: false,
       filterForm: {},
       show: true,
       showicons: true,
@@ -258,7 +260,7 @@ export default {
         proj.classList.remove("listli");
         proj.classList.add("gridli");
       });
-      this.gridListTekstStyling("7.75rem", "8rem");
+      this.gridListTekstStyling("7.75rem", "8rem", "3.5rem");
       this.gridlist = "grid";
     },
     listView: function() {
@@ -270,10 +272,10 @@ export default {
         proj.classList.remove("gridli");
         proj.classList.add("listli");
       });
-      this.gridListTekstStyling("auto", "auto");
+      this.gridListTekstStyling("auto", "auto", "auto");
       this.gridlist = "list";
     },
-    gridListTekstStyling(grheight, beschrheight) {
+    gridListTekstStyling(grheight, beschrheight, titelheight) {
       var beschrijvingtekst = document.getElementsByClassName("beschrijving");
       Array.prototype.filter.call(beschrijvingtekst, function(beschr) {
         beschr.style.height = beschrheight;
@@ -281,6 +283,10 @@ export default {
       var groepstekst = document.getElementsByClassName("groepsleden");
       Array.prototype.filter.call(groepstekst, function(groepsleden) {
         groepsleden.style.height = grheight;
+      });
+      var titeltekst = document.getElementsByClassName("card-title");
+      Array.prototype.filter.call(titeltekst, function(titel) {
+        titel.style.height = titelheight;
       });
     },
     filterOpNaam(waardeZoeken, projectenNaam) {
@@ -440,7 +446,10 @@ ul {
   .groepsleden {
     height: auto !important;
   }
-  #listgriddiv: > .project {
+  .card-title {
+    height: auto;
+  }
+  #listgrid div > .project {
     margin: auto;
   }
 }

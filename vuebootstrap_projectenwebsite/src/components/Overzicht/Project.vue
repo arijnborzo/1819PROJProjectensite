@@ -14,9 +14,13 @@
         </li>
       </ul>
     </b-card-text>
-    <p style="float:left">
+    <p class="statusDatum" v-if="!ifArchief">
       Status:
       <span>{{statusResult(status)}}</span>
+    </p>
+    <p class="statusDatum" v-if="ifArchief">
+      Datum:
+      <span>{{datumProject.slice(0,4)}}</span>
     </p>
 
     <b-button class="btns" style="float:right">Bekijk</b-button>
@@ -32,7 +36,10 @@ export default {
     "groepsleden",
     "status",
     "proj_id",
-    "gridlist"
+    "gridlist",
+    "isStudent",
+    "ifArchief",
+    "datumProject"
   ],
   data() {
     return {
@@ -76,6 +83,9 @@ export default {
   background-color: #093667;
   list-style-type: none;
 }
+.card-title {
+  height: 3.5rem;
+}
 .beschrijving {
   height: 7.75rem;
   overflow: overlay;
@@ -87,6 +97,10 @@ export default {
 }
 .project a {
   color: white;
+}
+.statusDatum {
+  float: left;
+  line-height: 38px;
 }
 /* Zotte border */
 * {
