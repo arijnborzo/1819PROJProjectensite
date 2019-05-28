@@ -18,7 +18,7 @@
         <b-navbar-nav class="ml-auto">
             <b-nav-item-dropdown right>
                 <template slot="button-content" >{{user.name}} {{user.surname}}</template>
-                <b-dropdown-item href="/myProject"><a>Mijn project</a></b-dropdown-item>
+                <b-dropdown-item href="/myproject"><a>Mijn project</a></b-dropdown-item>
                 <b-dropdown-item href="#"><a onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Uitloggen</a></b-dropdown-item>
             </b-nav-item-dropdown>
         </b-navbar-nav>

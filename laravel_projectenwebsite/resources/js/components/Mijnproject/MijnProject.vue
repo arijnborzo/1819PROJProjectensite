@@ -105,9 +105,9 @@
 <!--              >Decline</b-button>-->
 <!--            </b-button-group>-->
 <!--            &lt;!&ndash; Buttons student &ndash;&gt;-->
-            <b-button :href="myproject"
+            <b-button
                       v-if="is_student"
-                      @click="verstuurGroepsverzoek()"
+                      @click="changeProject()"
                       class="btns"
                       style="float:right"
             >Pas voorstel aan</b-button>
@@ -189,8 +189,9 @@
         if (belbinrol === "Plant") return this.photo.Plant;
         if (belbinrol === "Groepswerker") return this.photo.Groepswerker;
       },
-      verstuurGroepsverzoek() {
-        this.showBtn = false;
+      changeProject() {
+        console.log('clicked');
+        location.href='/myproject';
       },
       showButton() {
         if (this.showBtn == false) {
