@@ -3,5 +3,5 @@
 {{-- set the pagetitle in the parent tpl--}}
 @section('name', 'Belbin')
 @section('content')
-    <belbin_vue :projects="{{ json_encode($groupmembers) }}"></belbin_vue>
+    <belbin_vue :belbin_type="{{ json_encode($belbintype) }}" :projects="{{ json_encode($groupmembers) }}"></belbin_vue>
 @endsection

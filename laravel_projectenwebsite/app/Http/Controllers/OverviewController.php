@@ -35,12 +35,17 @@ class OverviewController extends Controller
      */
     public function index()
     {
+        $isStudent = TRUE;
+        if (isset(Teacher::find(Auth::user()->id)->id)){
+            $isStudent = FALSE;
+        }
         $user = Auth::user();
         $year = date("Y"); //-1
         $archief = false;
         $all = $this->getAlInfo();
         return view('overzicht',
             [
+                'isStudent' => $isStudent,
                 'groupmembers' => $all,
                 'user' => $user,
                 'archief' => $archief,
@@ -66,12 +71,17 @@ class OverviewController extends Controller
     }
     public function archive()
     {
+        $isStudent = TRUE;
+        if (isset(Teacher::find(Auth::user()->id)->id)){
+            $isStudent = FALSE;
+        }
         $user = Auth::user();
         $year = date("Y"); //-1
         $archief = true;
         $all = $this->getAlInfo();
         return view('overzicht',
             [
+                'isStudent' => $isStudent,
                 'groupmembers' => $all,
                 'user' => $user,
                 'archief' => $archief,

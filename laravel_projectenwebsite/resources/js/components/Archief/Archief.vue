@@ -46,6 +46,8 @@
                       :status="project.status"
                       :proj_id="project.id"
                       :gridlist="gridlist"
+                      :ifArchief="true"
+                      :datumProject="project.aanmaakdatum"
               ></app-project>
             </transition>
           </div>

@@ -37,6 +37,8 @@ class BelbintestController extends Controller
 //      $user = Auth::user();
 //      Student::where('id', $user->id)->update(['belbintype' => $type]);
         $user = Auth::user();
+        $studentLocal = Student::where('id', $user->id)->first();
+
         $projects = Project::all();
         $all=[];
         foreach ($projects as $project) {
@@ -52,10 +54,19 @@ class BelbintestController extends Controller
             array_push($s, $project->title,$members);
             array_push($all, $s);
         }
+        if(isset($studentLocal->belbintype)){
+            $belbin = $student->belbintype;
+
+        }
+        else{
+            $belbin = null;
+        }
+
+
         return view('belbin',
             [
                 'groupmembers' => $all,
-                'user' => $user,
+                'belbintype' => $belbin,
             ]);
     }
 }

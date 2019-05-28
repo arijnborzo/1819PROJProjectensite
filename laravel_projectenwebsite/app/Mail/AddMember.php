@@ -54,7 +54,7 @@ class AddMember extends Mailable
         }
         array_push($data, $users, $user, $i, $project);
         foreach ($users as $adres){
-            Mail::raw('Dag KLOOTZAKKEN.'."\r\n".'Ik stuur jullie een verzoek om bij '.$project->title. 'aan te sluiten.'."\r\n". 'Alvast bedankt.' ."\r\n".'Groeten'."\r\n".$user->surname. ' '.$user->name,
+            Mail::raw('Dag beste,'."\r\n".'Ik stuur jullie een verzoek om bij '.$project->title. ' aan te sluiten.'."\r\n". 'Alvast bedankt.' ."\r\n".'Groeten'."\r\n".$user->surname. ' '.$user->name,
                 function ($message) use ($data)
                 {
                     $message->from('projectenwebsite@outlook.com')->to($data[0][$data[2]]->email, $data[0][$data[2]]->surname.' '.$data[0][$data[2]]->name)->subject('Verzoek tot '.$data[3]->title);

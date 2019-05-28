@@ -41,9 +41,9 @@
                                   label-for="input-4"
                     >
                         <b-form-checkbox-group stacked v-model="form.status">
-                            <b-form-checkbox value="Accepted">Accepted</b-form-checkbox>
-                            <b-form-checkbox value="In beraad">In beraad</b-form-checkbox>
-                            <b-form-checkbox value="Afgekeurd">Afgekeurd</b-form-checkbox>
+                            <b-form-checkbox value="Accepted">✔ Goedgekeurd</b-form-checkbox>
+                            <b-form-checkbox value="Pending">❔ In beraad</b-form-checkbox>
+                            <b-form-checkbox value="Declined">✖ Afgekeurd</b-form-checkbox>
                         </b-form-checkbox-group>
                     </b-form-group>
 
@@ -101,6 +101,7 @@
 
 <style>
     .btns {
+        font-family: "Segoe UI", Roboto, "Helvetica Neue", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         background-color: #093667;
         font-weight: 400;
         border: 1px solid transparent;

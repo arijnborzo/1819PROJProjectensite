@@ -13,9 +13,13 @@
         </li>
       </ul>
     </b-card-text>
-    <p style="float:left">
+    <p class="statusDatum" v-if="!ifArchief">
       Status:
-      <span>{{status}}</span>
+      <span>{{statusResult(status)}}</span>
+    </p>
+    <p class="statusDatum" v-if="ifArchief">
+      Datum:
+      <span>{{datumProject.slice(0,4)}}</span>
     </p>
     <b-button :href="'/project/' + proj_id" size="sm" class="bekijkbtn">Bekijk</b-button>
   </b-card>
@@ -30,7 +34,10 @@ export default {
     "groepsleden",
     "status",
     "proj_id",
-    "gridlist"
+    "gridlist",
+    "is_student",
+    "ifArchief",
+    "datumProject"
   ],
   mounted() {
     if (this.gridlist === "list") {
@@ -41,111 +48,128 @@ export default {
       });
     }
   },
+  methods: {
+    statusResult(status) {
+      if (status === "Accepted") return `✔`;
+      if (status === "Declined") return ":heavy_multiplication_x:";
+      else return ":grey_question:";
+    }
+  }
 };
 </script>
 
 <style>
-.bekijkbtn {
-  float: right;
-  background-color: #093667;
-  list-style-type: none;
-}
-.beschrijving {
-  height: 7.75rem;
-  overflow: overlay;
-  padding-right: 1.25rem;
-}
-.groepsleden {
-  height: 7.75rem;
-}
-.project a {
-  color: white;
-}
-/* Zotte border */
-* {
-  box-sizing: border-box;
-}
-.project {
-  overflow: hidden;
-  float: left;
-  width: 31%;
-}
-.project:before,
-.project:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  height: 1px;
-  width: 100%;
-  background-color: #fff;
-}
-.project:before {
-  top: 0;
-}
-.project:after {
-  bottom: 0;
-}
-.project:hover > * > *:before,
-.project:hover > * > *:after {
-  transform: translate3d(0, 0, 0);
-}
-.project:hover > * > * > *:before,
-.project:hover > * > * > *:after {
-  transform: translate3d(0, 0, 0);
-}
-.project > *:before,
-.project > *:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 1px;
-  background-color: #fff;
-}
-.project > *:before {
-  left: 0;
-}
-.project > *:after {
-  right: 0;
-}
-.project > * > *:before,
-.project > * > *:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  z-index: 9;
-  height: 1px;
-  width: 100%;
-  background-color: #093667;
-}
-.project > * > *:before {
-  top: 0;
-  transform: translate3d(-105%, 0, 0);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.project > * > *:after {
-  bottom: 0;
-  transform: translate3d(105%, 0, 0);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.project > * > * > *:before,
-.project > * > * > *:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  z-index: 9;
-  height: 100%;
-  width: 1px;
-  background-color: #093667;
-}
-.project > * > * > *:before {
-  left: 0;
-  transform: translate3d(0, 105%, 0);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.project > * > * > *:after {
-  right: 0;
-  transform: translate3d(0, -105%, 0);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
+  .bekijkbtn {
+    float: right;
+    background-color: #093667;
+    list-style-type: none;
+  }
+  .card-title {
+    overflow: overlay;
+    height: 3.6rem;
+  }
+  .beschrijving {
+    height: 7.75rem;
+    overflow: overlay;
+    padding-right: 1.25rem;
+  }
+
+  .groepsleden {
+    height: 7.75rem;
+  }
+  .project a {
+    color: white;
+  }
+  .statusDatum {
+    float: left;
+    line-height: 38px;
+  }
+  /* Zotte border */
+  * {
+    box-sizing: border-box;
+  }
+
+  .project {
+    overflow: hidden;
+    float: left;
+    width: 31%;
+  }
+  .project:before,
+  .project:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #fff;
+  }
+  .project:before {
+    top: 0;
+  }
+  .project:after {
+    bottom: 0;
+  }
+  .project:hover > * > *:before,
+  .project:hover > * > *:after {
+    transform: translate3d(0, 0, 0);
+  }
+  .project:hover > * > * > *:before,
+  .project:hover > * > * > *:after {
+    transform: translate3d(0, 0, 0);
+  }
+  .project > *:before,
+  .project > *:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background-color: #fff;
+  }
+  .project > *:before {
+    left: 0;
+  }
+  .project > *:after {
+    right: 0;
+  }
+  .project > * > *:before,
+  .project > * > *:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    z-index: 9;
+    height: 1px;
+    width: 100%;
+    background-color: #093667;
+  }
+  .project > * > *:before {
+    top: 0;
+    transform: translate3d(-105%, 0, 0);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .project > * > *:after {
+    bottom: 0;
+    transform: translate3d(105%, 0, 0);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .project > * > * > *:before,
+  .project > * > * > *:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    z-index: 9;
+    height: 100%;
+    width: 1px;
+    background-color: #093667;
+  }
+  .project > * > * > *:before {
+    left: 0;
+    transform: translate3d(0, 105%, 0);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .project > * > * > *:after {
+    right: 0;
+    transform: translate3d(0, -105%, 0);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 </style>

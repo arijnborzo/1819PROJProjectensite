@@ -134,6 +134,10 @@ class ProjectController extends Controller
 
     public function detail($id)
     {
+        $isStudent = TRUE;
+        if (isset(Teacher::find(Auth::user()->id)->id)){
+            $isStudent = FALSE;
+        }
         $user = Auth::user();
         $detailProject = Project::where('id', $id)->first();
         $belongstoproject = FALSE;
@@ -163,6 +167,7 @@ class ProjectController extends Controller
         }
         return view('detail',
             [
+                'isStudent' => $isStudent,
                 'project' => $detailProject,
                 'smart' => $smart,
                 'groupmembers' => $groupmembers,

@@ -23,6 +23,7 @@
                 fields: [
                     {
                         key: "groep",
+                        label: "Groep",
                         sortable: true,
                         formatter: "groepResult",
                         html: true
@@ -73,6 +74,7 @@
                     this.groepen[currentGroup - 1]++;
                 }
             }
+            console.log(this.groepen);
             var currentStudentGroup = 0;
             for (var stud in this.students) {
                 // Neem student
@@ -85,13 +87,7 @@
                     // Eerste lid toevoegen
                     var naam = student[0];
                     // Voorstel toevoegen
-                    if(student[2] === null){
-                        var projectvoorstel = "/";
-
-                    }
-                    else{
-                        var projectvoorstel = student[2];
-                    }
+                    var projectvoorstel = student[2];
                     // Belbin
                     var belbin = student[1];
                     // object nieuwe vueproject aanmaken

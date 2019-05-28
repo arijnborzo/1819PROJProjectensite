@@ -36,6 +36,7 @@
                                     :status="project.status"
                                     :proj_id="project.id"
                                     :gridlist="gridlist"
+                                    :is_student="is_student"
                             ></app-project>
                         </transition>
                     </div>
@@ -50,12 +51,12 @@
     import Project from "./Project";
 
     export default {
-        props: ['groupmembers'],
+        props: ['groupmembers', 'is_student'],
         data() {
             return {
                 selected: null,
                 sorteeropties: [
-                    { value: null, text: "Sorteren op:" },
+                    { value: null, text: "Sorteer titels op:" },
                     { value: "az", text: "Op alfabetische volgorde A-Z" },
                     { value: "za", text: "Op alfabetische volgorde Z-A" }
                 ],
@@ -129,15 +130,11 @@
             }
         },
         methods: {
-            statusProject(value) {
-              if (value === "Accepted") return `✔`;
-              if (value === "Pending") return "❔";
-              if (value === "Declined") return "✖";
-            },
             handleResize() {
                 this.width = window.innerWidth;
-                if (this.width < 1200) {
+                if (this.width < 1070) {
                     this.showicons = false;
+                    this.gridlist = "grid";
                 } else {
                     this.showicons = true;
                 }
@@ -178,7 +175,8 @@
                     proj.classList.remove("listli");
                     proj.classList.add("gridli");
                 });
-                this.gridListTekstStyling("7.75rem", "8rem");
+                this.gridListTekstStyling("7.75rem", "8rem", "3.5rem");
+                this.gridlist = "grid";
             },
             listView: function() {
                 var ul = document.getElementById("gridlist");
@@ -189,17 +187,21 @@
                     proj.classList.remove("gridli");
                     proj.classList.add("listli");
                 });
-                this.gridListTekstStyling("auto", "auto");
+                this.gridListTekstStyling("auto", "auto", "auto");
+                this.gridlist = "list";
             },
-            gridListTekstStyling(grheight, beschrheight) {
+            gridListTekstStyling(grheight, beschrheight, titelheight) {
                 var beschrijvingtekst = document.getElementsByClassName("beschrijving");
                 Array.prototype.filter.call(beschrijvingtekst, function(beschr) {
                     beschr.style.height = beschrheight;
                 });
-
-                var groepsledentekst = document.getElementsByClassName("groepsleden");
-                Array.prototype.filter.call(groepsledentekst, function(groepslid) {
-                    groepslid.style.height = grheight;
+                var groepstekst = document.getElementsByClassName("groepsleden");
+                Array.prototype.filter.call(groepstekst, function(groepsleden) {
+                    groepsleden.style.height = grheight;
+                });
+                var titeltekst = document.getElementsByClassName("card-title");
+                Array.prototype.filter.call(titeltekst, function(titel) {
+                    titel.style.height = titelheight;
                 });
             },
             filterOpNaam(waardeZoeken, projectenNaam) {
@@ -276,7 +278,6 @@
         }
     };
 </script>
-
 <style>
     body {
         background: #eef1f4;
@@ -359,7 +360,10 @@
         .groepsleden {
             height: auto !important;
         }
-        #listgriddiv: > .project {
+        .card-title {
+            height: auto;
+        }
+        #listgrid div > .project {
             margin: auto;
         }
     }
@@ -375,3 +379,4 @@
         }
     }
 </style>
+
