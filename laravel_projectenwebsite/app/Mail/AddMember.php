@@ -1,7 +1,13 @@
 <?php
 
 namespace App\Mail;
-
+use Auth;
+use App\Group;
+use App\Project;
+use App\Smartcriterium;
+use App\Student;
+use App\Teacher;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -32,69 +38,28 @@ class AddMember extends Mailable
      */
     public function build()
     {
-        return $this->from('lukas.petit@student.odisee.be')
-            ->view('/')
-            ->text('emails.orders.shipped_plain');
-    }
-    public function ship(Request $request, $orderId)
-    {
-        Mail::to("lukas.petit@gmail.com")
-            ->send("HALLLLOOOOOOOOOOOOOphp artisan cache:clear");
-
     }
     public static function mail($id)
     {
-        $data = ["moo", "boo"]; // Empty array
-//
-//        Mail::send('home', $data, function($message)
-//        {
-//            $message->to('lukas.petit@gmail.com', 'Jon Doe')->subject('Welcome!');
-//        });
-        Mail::raw('ARNO IS NE FLIKKER'.$id, function ($message)
-//        Mail::send('home',$data,function($message)
-        {
-            $message->from('projectenwebsite@outlook.com')->to('andreas.lauwers1@gmail.com', 'Lukas Petit')->subject('Mail van Laravel BAAS');
-        });
-
-
-//        require("PHPMailerAutoload.php");
-
-//        $mail = new PHPMailer();
-//        $mail->IsSMTP();
-//        $mail->Mailer = "smtp";
-//        $mail->CharSet = 'UTF-8';
-//        $mail->Host = 'tls://smtp-mail.outlook.com';
-//        $mail->Port = "587"; // 8025, 587 and 25 can also be used. Use Port 465 for SSL.
-//        $mail->SMTPAuth = true;
-//        $mail->SMTPSecure = 'tls';
-//        $mail->Username = "projectenwebsite@outlook.com";
-//        $mail->Password = "Azerty123!";
-//        $mail->From = trim_input("receivingEmailAdress@outlook.com");
-//        $mail->FromName = trim_input("mijn naam");
-//        $mail->AddAddress("lukas.petit@gmail.com", "my name");
-////        $mail->AddReplyTo(trim_input($_POST['Email']), trim_input($_POST['Name']));
-//        $mail->SMTPDebug = 1;
-//        $mail->Subject = trim_input($_POST['Subject']);
-//        $mail->Body = trim_input($_POST['message']);
-//        $mail->WordWrap = 50;
-//
-//        if (!$mail->Send()) {
-//            echo 'Message was not sent.';
-//            echo 'Mailer error: ' . $mail->ErrorInfo;
-//            exit;
-//        } else {
-//            echo 'Message has been sent.';
-//        }
-        // Path or name to the blade template to be rendered
-
-        $template_path = 'email_template';
-//        Mail::to("lukas.petit@gmail.com")
-//            ->send("HALLLLOOOOOOOOOOOOOphp artisan cache:clear");
-//        Mail::send(['text'=> $template_path ], $data, function($message) {
-//            // Set the receiver and subject of the mail.
-//            $message->to('lukas.petit@gmail.com', 'Receiver Name')->subject('Laravel First Mail');
-//            // Set the sender
-//            $message->from('projectenwebsite@outlook.com','Our Code World');
-//        });
+        $user = Auth::user();
+        $project = Project::where('id', $id)->first();
+        $group = Group::where('project_id', $project->id)->first();
+        $students = Student::where('group_id', $group->id)->get();
+        $users = [];
+        $data =[];
+        $i = 0;
+        array_push($users, $user);
+        foreach ($students as $student){
+            array_push($users, User::where('id', $student->id)->first());
+        }
+        array_push($data, $users, $user, $i, $project);
+        foreach ($users as $adres){
+            Mail::raw('Dag KLOOTZAKKEN.'."\r\n".'Ik stuur jullie een verzoek om bij '.$project->title. 'aan te sluiten.'."\r\n". 'Alvast bedankt.' ."\r\n".'Groeten'."\r\n".$user->surname. ' '.$user->name,
+                function ($message) use ($data)
+                {
+                    $message->from('projectenwebsite@outlook.com')->to($data[0][$data[2]]->email, $data[0][$data[2]]->surname.' '.$data[0][$data[2]]->name)->subject('Verzoek tot '.$data[3]->title);
+                });
+            $data[2] = $data[2] + 1;
+        }
     }
 }
