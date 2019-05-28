@@ -68,6 +68,29 @@ class create_projects_seeder extends Seeder
             'created_at' => date("Y-m-d H:i:s"),
             'main_question' => 'Was het ei er eerder of de kip?'
         ]);
+        DB::table('projects')->insert([
+            'id' => 6,
+            'title' => 'Capture the Flag platform',
+            'status' => 'Accepted',
+            'short_description' => 'Verbeteren van het huidige Capture the Flag platform',
+            'full_description' => 'de labo-opdrachten binnen het vak data security (3ICT) worden vrijgegeven op een CTF (capture the flag) platform. Gebruikers (=studenten) kunnen op dit platform de uitdagingen/raadsels opvragen die we hen voorschotelen, en hun oplossingen doorsturen. Een scorebord wordt live aangepast telkens als er punten gescoord worden.
+
+                                    We gebruiken hiervoor CTFd (https://github.com/CTFd/CTFd), maar blijven voor sommige features op onze honger zitten.
+
+                                    Met dit project bouw je aan die ontbrekende features en ga je op zoek naar nieuwe mogelijkheden om de CTF wedstrijden (en de administratie ervan) nog krachtiger te maken, zoals:
+                                    - implementeren van puntenverwerking, waarbij je bijvoorbeeld kan aangeven dat gebruikers die snel een oplossing vonden extra punten krijgen
+                                    - toevoegen van een systeem waarbij je gerandomiseerde opgaves kan produceren. Elke gebruiker krijgt dan een eigen raadsel, met een eigen oplossing. Het is dan niet langer mogelijk om oplossingen door te geven.
+                                    - planningsmechanisme, zodat je kan bepalen op welk moment opgaves zichtbaar worden.
+                                    - ...
+                                    Je hebt hierbij de keuze om CTFd verder uit te bouwen, of om een nieuw project te starten. Uiteraard moet deze keuze gemotiveerd worden.',
+            'teacher_id' => 6,
+            'creator_id' => 7,
+            'created_at' => date("Y-m-d H:i:s"),
+            'main_question' => 'Is het mogelijk om een robuust platform op te zetten?',
+            'side_questions' => 'Welke technieken kunnen hiervoor gebruikt worden?
+                                 Hoe zorg je ervoor dat data veilig wordt opgeborgen?
+                                 Authenticatie voor student en docent voorzien?'
+        ]);
     }
 }
 /**

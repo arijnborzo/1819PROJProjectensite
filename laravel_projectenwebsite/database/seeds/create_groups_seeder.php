@@ -31,5 +31,9 @@ class create_groups_seeder extends Seeder
             'id' => 5,
             'project_id' => 5,
         ]);
+        DB::table('groups')->insert([
+            'id' => 6,
+            'project_id' => 6,
+        ]);
     }
 }

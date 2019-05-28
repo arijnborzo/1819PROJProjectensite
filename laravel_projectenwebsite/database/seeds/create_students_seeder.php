@@ -65,12 +65,33 @@ class create_students_seeder extends Seeder
             'group_id' => 5,
             'belbintype' => 'Monitor geel rood',
             'created_at' => date("Y-m-d H:i:s"),
-            'confirmed' => FALSE
+            'confirmed' => TRUE
         ]);
         DB::table('students')->insert([
             'id' => 12,
             'group_id' => 5,
             'belbintype' => 'Vormer rood',
+            'created_at' => date("Y-m-d H:i:s"),
+            'confirmed' => FALSE
+        ]);
+        DB::table('students')->insert([
+            'id' => 13,
+            'group_id' => 6,
+            'belbintype' => 'Vormer rood',
+            'created_at' => date("Y-m-d H:i:s"),
+            'confirmed' => FALSE
+        ]);
+        DB::table('students')->insert([
+            'id' => 14,
+            'group_id' => 6,
+            'belbintype' => 'Monitor geel rood',
+            'created_at' => date("Y-m-d H:i:s"),
+            'confirmed' => FALSE
+        ]);
+        DB::table('students')->insert([
+            'id' => 16,
+            'group_id' => 6,
+            'belbintype' => 'Voorzitter blauw groen',
             'created_at' => date("Y-m-d H:i:s"),
             'confirmed' => FALSE
         ]);

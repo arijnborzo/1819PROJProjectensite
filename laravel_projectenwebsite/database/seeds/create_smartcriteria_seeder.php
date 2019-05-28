@@ -51,5 +51,13 @@ class create_smartcriteria_seeder extends Seeder
             'realistic' => 'Er mag niets aangebakken zijn',
             'tolerant' => 'Evenueel een beetje kruiden',
         ]);
+        DB::table('smartcriteria')->insert([
+            'project_id' => 6,
+            'specific' => 'Opzetten van robuust platform',
+            'measurable' => 'Alle studenten moeten tegelijk website kunnen bezichtigen.',
+            'acceptable' => 'Moet kunnen gebruikt worden op school',
+            'realistic' => 'Website moet af zijn tegen begin juni',
+            'tolerant' => 'Op bugs na werkend platform hebben',
+        ]);
     }
 }

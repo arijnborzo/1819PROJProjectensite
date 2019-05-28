@@ -20,6 +20,9 @@ class create_teachers_seeder extends Seeder
         DB::table('teachers')->insert([
             'id' => 7,
         ]);
+        DB::table('teachers')->insert([
+            'id' => 15,
+        ]);
 
     }
 }
