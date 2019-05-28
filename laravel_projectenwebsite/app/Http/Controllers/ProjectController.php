@@ -134,11 +134,16 @@ class ProjectController extends Controller
 
     public function detail($id)
     {
+        $user = Auth::user();
         $isStudent = TRUE;
         if (isset(Teacher::find(Auth::user()->id)->id)){
             $isStudent = FALSE;
+            $confirmed = null;
         }
-        $user = Auth::user();
+        else{
+            $confirmed = $user->student->confirmed;
+        }
+
         $detailProject = Project::where('id', $id)->first();
         $belongstoproject = FALSE;
         if(isset($user->student->group->id)){
@@ -165,6 +170,7 @@ class ProjectController extends Controller
             //echo $student;
             array_push($groupmembers, $s);
         }
+//        dd($groupmembers);
         return view('detail',
             [
                 'isStudent' => $isStudent,
@@ -174,7 +180,7 @@ class ProjectController extends Controller
                 'teacher' => $teacher,
                 'user' => $user,
                 'belongstoproject' => $belongstoproject,
-                'confirmed' => $user->student->confirmed
+                'confirmed' => $confirmed
             ]);
     }
     public function myProject()

@@ -11,11 +11,11 @@
           </b-col>
         </b-row>
         <div id="beschrijvingVoorstel">
+          <h4>Beschrijving</h4>
           <b-row>
-            <h5>Beschrijving</h5>
-          </b-row>
-          <b-row>
-            <p>{{project.full_description}}</p>
+            <b-col>
+              <p>{{project.full_description}}</p>
+            </b-col>
           </b-row>
         </div>
         <b-row>
@@ -57,17 +57,17 @@
                   <p>{{member[1].name}} {{member[1].surname}}</p>
                 </b-col>
                 <!-- BUTTONS ACCEPT DECLINE OF CREATOR -->
-                <b-col v-if="is_student" style="text-align: center">
-                  <b-button-group v-if="isPending(member[1].user_id)">
-                    <b-button
-                            size="sm"
-                            variant="success"
-                            v-if="!isAccepted(member[1].confirmed)"
-                    >Accepteer</b-button>
-                    <b-button size="sm" variant="danger" class="ml-3">Verwijder</b-button>
-                  </b-button-group>
-                  <p v-if="!isPending(member[1].user_id)">Bedenker van het project</p>
-                </b-col>
+<!--                <b-col v-if="is_student" style="text-align: center">-->
+<!--                  <b-button-group v-if="isPending(member[1].id)">-->
+<!--                    <b-button-->
+<!--                            size="sm"-->
+<!--                            variant="success"-->
+<!--                            v-if="!isAccepted(member[2])"-->
+<!--                    >Accepteer</b-button>-->
+<!--                    <b-button size="sm" variant="danger" class="ml-3">Verwijder</b-button>-->
+<!--                  </b-button-group>-->
+<!--                  <p v-if="!isPending(member[1].id)">Bedenker van het project</p>-->
+<!--                </b-col>-->
 
                 <b-col id="belbinimage">
                  <span>
@@ -142,12 +142,6 @@ props: ["project", "teacher", "groupmembers", "smartcriteria", "is_student"],
       }
     };
   },
-  mounted() {
-    console.log("x");
-
-    console.log(this.project);
-    console.log("y");
-  },
     methods: {
       checkId(value){
         if (value == "project_id") {return false} else {return true}
@@ -159,40 +153,45 @@ props: ["project", "teacher", "groupmembers", "smartcriteria", "is_student"],
       },
       checkStatus(value) {
         if (value === "Accepted") {
-          if (this.projectx.status === "Accepted") {
+          if (this.project.status === "Accepted") {
             return false;
-          } else if (this.projectx.status === "Pending") {
+          } else if (this.project.status === "Pending") {
             return true;
-          } else if (this.projectx.status === "Declined") {
+          } else if (this.project.status === "Declined") {
             return true;
           }
         } else if (value === "Pending") {
-          if (this.projectx.status === "Accepted") {
+          if (this.project.status === "Accepted") {
             return true;
-          } else if (this.projectx.status === "Pending") {
+          } else if (this.project.status === "Pending") {
             return false;
-          } else if (this.projectx.status === "Declined") {
+          } else if (this.project.status === "Declined") {
             return true;
           }
         } else if (value === "Declined") {
-          if (this.projectx.status === "Accepted") {
+          if (this.project.status === "Accepted") {
             return true;
-          } else if (this.projectx.status === "Pending") {
+          } else if (this.project.status === "Pending") {
             return true;
-          } else if (this.projectx.status === "Declined") {
+          } else if (this.project.status === "Declined") {
             return false;
           }
         }
       },
       belbinResult(value) {
-        if (value === "coordinator") return this.photo.coordinator;
-        if (value === "completor") return this.photo.completor;
-        if (value === "implementor") return this.photo.implementor;
-        if (value === "investigator") return this.photo.investigator;
-        if (value === "monitor") return this.photo.monitor;
-        if (value === "shaper") return this.photo.shaper;
-        if (value === "plant") return this.photo.plant;
-        if (value === "teamworker") return this.photo.teamworker;
+        if (value === null) {
+          return "x";
+        }
+        var woorden = value.split(" ");
+        var belbinrol = woorden[0];
+        if (belbinrol === "Voorzitter") return this.photo.Voorzitter;
+        if (belbinrol === "Zorgdrager") return this.photo.Zorgdrager;
+        if (belbinrol === "Bedrijfsman") return this.photo.Bedrijfsman;
+        if (belbinrol === "Brononderzoeker") return this.photo.Brononderzoeker;
+        if (belbinrol === "Monitor") return this.photo.Monitor;
+        if (belbinrol === "Vormer") return this.photo.Vormer;
+        if (belbinrol === "Plant") return this.photo.Plant;
+        if (belbinrol === "Groepswerker") return this.photo.Groepswerker;
       },
       verstuurGroepsverzoek() {
         this.showBtn = false;
@@ -229,7 +228,6 @@ props: ["project", "teacher", "groupmembers", "smartcriteria", "is_student"],
     }
   };
 </script>
-
 <style>
   #status {
     line-height: 38px;
@@ -237,6 +235,11 @@ props: ["project", "teacher", "groupmembers", "smartcriteria", "is_student"],
   }
   #belbinimage {
     display: auto;
+  }
+  .lidbelbin {
+    width: 29px;
+    height: auto;
+    float: right;
   }
   @media (max-width: 767px) {
     #belbinimage {

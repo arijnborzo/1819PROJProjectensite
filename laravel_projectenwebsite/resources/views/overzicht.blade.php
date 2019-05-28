@@ -4,7 +4,7 @@
 @section('name', 'Overzicht')
 @section('content')
 	@if(!$archief)
-		<overzicht_vue :is_student="{{ $isStudent }}" :groupmembers="{{ json_encode($groupmembers) }}" ></overzicht_vue>
+		<overzicht_vue :is_student="{{ json_encode($isStudent) }}" :groupmembers="{{ json_encode($groupmembers) }}" ></overzicht_vue>
 	@else
 		<archief_vue :groupmembers="{{ json_encode($groupmembers) }}"></archief_vue>
 	@endif
