@@ -21,7 +21,7 @@ class ProjectController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('belbin');
+//        $this->middleware('belbin');
     }
 
     /**
@@ -180,7 +180,8 @@ class ProjectController extends Controller
                 'teacher' => $teacher,
                 'user' => $user,
                 'belongstoproject' => $belongstoproject,
-                'confirmed' => $confirmed
+                'confirmed' => $confirmed,
+                'csrf' => csrf_token()
             ]);
     }
     public function myProject()

@@ -86,7 +86,7 @@
               <b-form action="/changeMember" method="POST" id="hiddenform">
                   <input type="hidden" v-model="form.action" name="action" value="test">
                   <input type="hidden" v-model="form.id" name="id">
-                  <!--<input type="hidden" name="_token" :value="csrf">-->
+                  <input type="hidden" name="_token" v-model="csrf">
               </b-form>
             </ul>
           </b-col>
@@ -128,10 +128,10 @@
 
 <script>
   export default {
-    props: ["project", "teacher", "groupmembers", "smartcriteria", "is_student"], // "token",
+    props: ["project", "teacher", "groupmembers", "smartcriteria", "is_student", "csrf_token"], // "token",
     data() {
       return {
-        //csrf: document.querySelector('meta[name="token"]').getAttribute('content'),
+        csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
         form: {
             action: "",
             id: "",
