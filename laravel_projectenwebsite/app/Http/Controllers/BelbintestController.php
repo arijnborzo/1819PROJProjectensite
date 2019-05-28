@@ -26,7 +26,7 @@ class BelbintestController extends Controller
     * Show the application dashboard.
     *
     * @return \Illuminate\Contracts\Support\Renderable
-    */  
+    */
 
     public function addBelbintype($type){
         $user = Auth::user();
@@ -65,6 +65,7 @@ class BelbintestController extends Controller
 
         return view('belbin',
             [
+                'user' => $user,
                 'groupmembers' => $all,
                 'belbintype' => $belbin,
             ]);
