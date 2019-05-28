@@ -52,3 +52,6 @@ Route::get('/sendrequest/{id}', 'GroupmemberController@sendMemberRequest')->name
 Route::post('/changeMember', 'GroupmemberController@addRemoveMember')->name('addRemoveMember');
 Route::get('/acceptProject/{id}', 'DocentController@acceptProject')->name('acceptProject');
 Route::get('/denyProject/{id}', 'DocentController@denyProject')->name('denyProject');
+Route::get('/addMember/{id}', 'OverviewController@addMember')->name('addMember');
+
+
