@@ -61,10 +61,11 @@
                                   <b-button-group v-if="isPending(member[1].id)">
                                     <b-button
                                             size="sm"
+                                            @click="acceptProject(member[1].id)"
                                             variant="success"
                                             v-if="!isAccepted(member[2])"
                                     >Accepteer</b-button>
-                                    <b-button size="sm" variant="danger" class="ml-3">Verwijder</b-button>
+                                    <b-button size="sm" variant="danger" @click="denyProject(member[1].id)" :value="member[1].id" class="ml-3">Verwijder</b-button>
                                   </b-button-group>
                                   <p v-if="!isPending(member[1].id)">Bedenker van het project</p>
                                 </b-col>
@@ -81,6 +82,12 @@
                  </span>
                 </b-col>
               </b-row>
+
+              <b-form action="/changeMember" method="POST" id="hiddenform">
+                  <input type="hidden" v-model="form.action" name="action" value="test">
+                  <input type="hidden" v-model="form.id" name="id">
+                  <!--<input type="hidden" name="_token" :value="csrf">-->
+              </b-form>
             </ul>
           </b-col>
           <!-- Buttons docent -->
@@ -106,7 +113,7 @@
 <!--            </b-button-group>-->
 <!--            &lt;!&ndash; Buttons student &ndash;&gt;-->
             <b-button
-                      v-if="is_student"
+                      v-if="buttonAvailble(project.status)"
                       @click="changeProject()"
                       class="btns"
                       style="float:right"
@@ -121,9 +128,14 @@
 
 <script>
   export default {
-    props: ["project", "teacher", "groupmembers", "smartcriteria", "is_student"],
+    props: ["project", "teacher", "groupmembers", "smartcriteria", "is_student"], // "token",
     data() {
       return {
+        //csrf: document.querySelector('meta[name="token"]').getAttribute('content'),
+        form: {
+            action: "",
+            id: "",
+        },
         showBtn: true,
         undo: false,
         photo: {
@@ -139,6 +151,14 @@
       };
     },
     methods: {
+      buttonAvailble(value){
+        if (this.is_student && value != 'Accepted'){
+          return true;
+        }
+        else{
+          return false;
+        }
+      },
       checkId(value){
         if (value == "project_id") {return false} else {return true}
       },
@@ -146,6 +166,18 @@
         if (value === "Accepted") return `✔`;
         if (value === "Pending") return ":grey_question:";
         if (value === "Declined") return ":heavy_multiplication_x:";
+      },
+
+      denyProject(value){
+          this.form.action="DELETE";
+          this.form.id=value;
+          console.log(this.form.action);
+          console.log(this.form.id);
+          document.getElementById("hiddenform").submit();
+      },
+      acceptProject(value){
+        console.log('accept');
+        console.log(value);
       },
       checkStatus(value) {
         if (value === "Accepted") {

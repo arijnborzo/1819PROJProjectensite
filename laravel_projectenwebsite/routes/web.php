@@ -48,8 +48,7 @@ Route::get('/belbintest/{type}', 'BelbintestController@addBelbintype')->name('up
 Route::get('/students', 'OverviewController@students')->name('studenten');
 Route::get('/project/{id}', 'ProjectController@detail')->name('detail');
 Route::get('/myproject', 'ProjectController@myProject')->name('myProject');
-Route::post('/myproject', 'GroupmemberController@addRemoveMember')->name('addRemoveMember');
 Route::get('/sendrequest/{id}', 'GroupmemberController@sendMemberRequest')->name('sendMemberRequest');
-Route::get('/addMember/{id}', 'OverviewController@addMember')->name('addMember');
+Route::post('/changeMember', 'GroupmemberController@addRemoveMember')->name('addRemoveMember');
 Route::get('/acceptProject/{id}', 'DocentController@acceptProject')->name('acceptProject');
 Route::get('/denyProject/{id}', 'DocentController@denyProject')->name('denyProject');
