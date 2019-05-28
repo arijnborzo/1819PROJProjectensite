@@ -4,7 +4,7 @@
       <b-col cols="12">
         <b-card class="p-2">
           <b-card-text>
-            <h3>Jouw Belbinrol: {{belbin}}</h3>
+            <h4>Jouw Belbinrol is {{belbin}}</h4>
             <p>
               Hieronder zie je de projecten waarin je past afhankelijk van jouw Belbinrol.
               <br>Indien jouw rol al in een groep voorkomt, zal deze groep niet tevoorschijn komen aangezien dit afgeraden is.
@@ -185,7 +185,7 @@ export default {
               this.match = "Matig";
             }
           } else if (aantalGroepsleden == 2) {
-            this.match = "Slecht";
+            this.match = "Zeer slecht";
           }
         }
       }
@@ -234,7 +234,7 @@ export default {
       if (value === "Matig") {
         return "text-warning";
       }
-      if (value === "Slecht" || value === "!Goed!") {
+      if (value === "Slecht" || value === "Zeer slecht" || value === "!Goed!") {
         return "text-danger";
       }
     }
