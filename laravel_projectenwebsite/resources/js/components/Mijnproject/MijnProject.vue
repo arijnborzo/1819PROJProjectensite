@@ -84,8 +84,8 @@
               </b-row>
 
               <b-form action="/changeMember" method="POST" id="hiddenform">
-                  <input type="hidden" v-model="form.action" name="action" value="test">
-                  <input type="hidden" v-model="form.id" name="id">
+                  <input type="hidden" v-model="form.action" id="action" name="action" value="test">
+                  <input type="hidden" v-model="form.user_id" id="user_id" name="user_id">
                   <input type="hidden" name="_token" v-model="csrf">
               </b-form>
             </ul>
@@ -134,7 +134,7 @@
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
         form: {
             action: "",
-            id: "",
+            user_id: "",
         },
         showBtn: true,
         undo: false,
@@ -169,15 +169,14 @@
       },
 
       denyProject(value){
-          this.form.action="DELETE";
-          this.form.id=value;
-          console.log(this.form.action);
-          console.log(this.form.id);
-          document.getElementById("hiddenform").submit();
+        document.getElementById('action').value = 'DELETE';
+        document.getElementById('user_id').value = value;
+        document.getElementById("hiddenform").submit();
       },
       acceptProject(value){
-        console.log('accept');
-        console.log(value);
+        document.getElementById('action').value = 'ACCEPT';
+        document.getElementById('user_id').value = value;
+        document.getElementById("hiddenform").submit();
       },
       checkStatus(value) {
         if (value === "Accepted") {
