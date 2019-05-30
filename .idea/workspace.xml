@@ -5,9 +5,6 @@
       <change afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/nginx/logrotate/nginx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/php-fpm/xhprof.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/BelbintestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/BelbintestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/OverviewController.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/OverviewController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/ProjectController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/laradock" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/DOCUMENTATION/content/documentation/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/DOCUMENTATION/content/documentation/index.md" afterDir="false" />
@@ -16,9 +13,6 @@
       <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/nginx/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/nginx/startup.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/php-fpm/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/php-fpm/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/workspace/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/laradock/workspace/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/MijnProject.vue" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/MijnProject.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laravel_projectenwebsite/resources/views/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel_projectenwebsite/resources/views/detail.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/MijnProject.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="88" column="68" lean-forward="true" selection-start-line="88" selection-start-column="68" selection-end-line="88" selection-end-column="68" />
+            <state relative-caret-position="323">
+              <caret line="130" column="93" selection-start-line="130" selection-start-column="79" selection-end-line="130" selection-end-column="93" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#li#0;n#ul#0;n#b-col#1;n#b-row#1;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#p#0;n#b-col#1;n#b-row#2;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -59,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/ProjectController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="183" column="21" selection-start-line="183" selection-start-column="17" selection-end-line="183" selection-end-column="21" />
+            <state relative-caret-position="315">
+              <caret line="187" column="5" selection-start-line="187" selection-start-column="5" selection-end-line="187" selection-end-column="5" />
               <folding>
                 <element signature="e#40#49#0#PHP" expanded="true" />
               </folding>
@@ -416,16 +410,15 @@
       <workItem from="1558990246684" duration="569000" />
       <workItem from="1559013539075" duration="3079000" />
       <workItem from="1559030292082" duration="7000" />
-      <workItem from="1559034384900" duration="1974000" />
+      <workItem from="1559034384900" duration="2966000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45304000" />
+    <option name="totallyTimeSpent" value="46296000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22818312" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -803,16 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/ProjectController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="183" column="21" selection-start-line="183" selection-start-column="17" selection-end-line="183" selection-end-column="21" />
-          <folding>
-            <element signature="e#40#49#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/views/detail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -822,14 +805,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/resources/js/components/Mijnproject/MijnProject.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="88" column="68" lean-forward="true" selection-start-line="88" selection-start-column="68" selection-end-line="88" selection-end-column="68" />
+        <state relative-caret-position="323">
+          <caret line="130" column="93" selection-start-line="130" selection-start-column="79" selection-end-line="130" selection-end-column="93" />
           <folding>
             <element signature="n#style#0;n#p#0;n#li#0;n#ul#0;n#b-col#1;n#b-row#1;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#p#0;n#b-col#1;n#b-row#2;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#b-col#1;n#b-row#0;n#ul#0;n#b-col#2;n#b-row#2;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#span#0;n#b-col#2;n#b-row#0;n#ul#0;n#b-col#2;n#b-row#2;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#b-button#0;n#b-row#2;n#b-card#0;n#b-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel_projectenwebsite/app/Http/Controllers/ProjectController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="187" column="5" selection-start-line="187" selection-start-column="5" selection-end-line="187" selection-end-column="5" />
+          <folding>
+            <element signature="e#40#49#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
