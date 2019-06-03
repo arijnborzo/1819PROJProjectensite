@@ -20,7 +20,7 @@
                 >Klik hier voor de Belbintest</a>
                 <br>
               </h3>De Belbintest wordt afgenomen op de site www.thesis.nl.
-              <br>Daarna krijgt u een resultaat toegewezen. Gelieve de correcte teamrol hieronder te selecteren:
+              <br>Daarna krijgt u een resultaat toegewezen. Gelieve de correcte teamrol hieronder te selecteren. Let op, vanaf je dit gedaan hebt kan je deze niet meer wijzigen.
               <br>
             </b-card-text>
             <b-form @submit="onSubmit">
