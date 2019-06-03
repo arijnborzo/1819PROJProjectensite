@@ -103,7 +103,7 @@ class ProjectController extends Controller
                 $project->status = 'Pending';
             }
             else {
-                $project->status = NULL;
+                $project->status = 'Declined';
             }
             $project->save();
             $projectid = Project::where('creator_id', $user['id'])->value('id');

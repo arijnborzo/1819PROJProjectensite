@@ -87,17 +87,20 @@
           <b-col cols="12">
             <b-button-group v-if="!is_student">
               <b-button
+                      :href="'/acceptProject/' + project.id"
                       variant="success"
                       v-if="checkStatus('Accepted')"
                       class="mr-2"
                       @click="project.status = 'Accepted'"
               >Accept</b-button>
               <b-button
+                      :href="'/pendingProject/' + project.id"
                       variant="warning"
                       v-if="checkStatus('Pending')"
                       @click="project.status = 'Pending'"
               >Make pending</b-button>
               <b-button
+                      :href="'/denyProject/' + project.id"
                       variant="danger"
                       v-if="checkStatus('Declined')"
                       class="ml-2"

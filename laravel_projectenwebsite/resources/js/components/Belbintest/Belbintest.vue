@@ -32,7 +32,7 @@
                 <b-form-select id="belbinrol" v-model="belbin" required :options="belbinrollen"></b-form-select>
               </b-form-group>
               <p>Je kan niet bij een groep horen of er kan geen voorstel ingediend worden zonder dat je een Belbinrol hebt.</p>
-              <b-button @click="btnClicked()" type="submit" class="btns">Verzenden</b-button>
+              <b-button :href="'/belbintest/' + belbin" @click="btnClicked()" type="submit" class="btns">Verzenden</b-button>
             </b-form>
           </b-card>
         </b-col>
