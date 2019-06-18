@@ -15,7 +15,7 @@ class create_users_seeder extends Seeder
           'id' => 1,
           'name' => "Lauwers",
           'surname' => "Andreas",
-          'email' => "t",
+          'email' => "andreas.lauwers@student.odisee.be",
           'password' => bcrypt('test'),
           'created_at' => date("Y-m-d H:i:s"),
       ]);

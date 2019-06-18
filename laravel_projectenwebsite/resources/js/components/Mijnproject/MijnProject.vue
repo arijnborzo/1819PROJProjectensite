@@ -45,8 +45,8 @@
                     </b-col>
                     <b-col cols="12">
                         <p>
-                            <span style="font-weight:bold">Verantwoordelijke docent</span>
-                            :
+                            <span style="font-weight:bold">Verantwoordelijke docent:</span>
+
                             <span>{{teacher.surname | capitalize }} {{teacher.name}}</span>
                         </p>
                     </b-col>
@@ -58,7 +58,7 @@
                                 </b-col>
                                 <!--                 BUTTONS ACCEPT DECLINE OF CREATOR-->
                                 <b-col v-if="is_student" style="text-align: center">
-                                    <b-button-group v-if="isPending(member[1].id)">
+                                    <b-button-group v-if="!isCreator(member[1].id)">
                                         <b-button
                                                 size="sm"
                                                 @click="acceptProject(member[1].id)"
@@ -66,15 +66,15 @@
                                                 v-if="(!isAccepted(member[2])&& buttonAvailble(project.status))"
                                         >Accepteer
                                         </b-button>
-                                        <b-button size="sm" variant="danger"
+                                        <b-button
+                                                  size="sm"
+                                                  variant="danger"
                                                   @click="denyProject(member[1].id)"
-                                                  :value="member[1].id"
-                                                  class="ml-3"
-                                                  v-if="(!isAccepted(member[2])&& buttonAvailble(project.status))"
+                                                  v-if="(isAccepted(member[2])&& buttonAvailble(project.status))"
                                         >Verwijder
                                         </b-button>
                                     </b-button-group>
-                                    <p v-if="!isPending(member[1].id)">Bedenker van het project</p>
+                                    <p v-if="isCreator(member[1].id)">Bedenker van het project</p>
                                 </b-col>
                                 <b-col id="belbinimage">
                  <span>
@@ -116,7 +116,7 @@
                     <!--            </b-button-group>-->
                     <!--            &lt;!&ndash; Buttons student &ndash;&gt;-->
                     <b-button :href="'/nieuwproject'"
-                              v-if="buttonAvailble(project.status)"
+                              v-if="!buttonAvailble(project.status)"
                               @click="changeProject()"
                               class="btns"
                               style="float:right"
@@ -125,6 +125,12 @@
                     <!--          </b-col>-->
 
                 </b-row>
+                <b-form action="/changeMember" method="POST" id="hiddenform">
+                  <input type="hidden" v-model="form.action" id="action" name="action" value="test">
+                  <input type="hidden" v-model="form.user_id" id="user_id" name="user_id">
+                  <input type="hidden" name="_token" v-model="csrf">
+              </b-form>
+
             </b-card>
         </b-container>
     </div>
@@ -156,7 +162,7 @@
         },
         methods: {
             buttonAvailble(value) {
-                if (this.is_student && value != 'Accepted') {
+                if (this.is_student && value == 'Accepted') {
                     return true;
                 } else {
                     return false;
@@ -176,6 +182,7 @@
             },
 
             denyProject(value) {
+              console.log(value);
                 document.getElementById('action').value = 'DELETE';
                 document.getElementById('user_id').value = value;
                 document.getElementById("hiddenform").submit();
@@ -245,12 +252,15 @@
                 if (value == 1) {
                     return true;
                 }
-            },
-            isPending(value) {
-                if (value == this.project.creator_id) {
+                else{
                     return false;
-                } else {
+                }
+            },
+            isCreator(value) {
+                if (value == this.project.creator_id) {
                     return true;
+                } else {
+                    return false;
                 }
             }
         },

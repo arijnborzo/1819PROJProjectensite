@@ -24,13 +24,9 @@ class GroupmemberController extends Controller
   }
 
   public function addRemoveMember(Request $request){
-      echo($request->user_id);
-      echo($request->action);
       $user = Auth::user();
       $newMember = Student::find($request->user_id);
-      echo ($user);
-      echo ($newMember);
-      if (Student::first('id',$user['id'])->value('group_id') == $newMember['group_id']) {
+      if (Student::find($user['id'])->group_id == $newMember['group_id']) {
           //securitycheck to see if authenticated user can only accept or deny members that want to join te same group.
           if ($request->action == 'ACCEPT') {
               echo ('ACCEPT');
