@@ -27,7 +27,7 @@ class create_students_seeder extends Seeder
         ]);
         DB::table('students')->insert([
           'id' => 3,
-          'group_id' => 1,
+          'group_id' => NULL,
           'belbintype' => 'Brononderzoeker groen geel',
           'created_at' => date("Y-m-d H:i:s"),
           'confirmed' => FALSE
@@ -44,7 +44,7 @@ class create_students_seeder extends Seeder
             'group_id' => 2,
             'belbintype' => 'Brononderzoeker groen geel',
             'created_at' => date("Y-m-d H:i:s"),
-            'confirmed' => FALSE
+            'confirmed' => TRUE
         ]);
         DB::table('students')->insert([
             'id' => 9,

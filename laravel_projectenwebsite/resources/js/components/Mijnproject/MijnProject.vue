@@ -58,35 +58,36 @@
                                 </b-col>
                                 <!--                 BUTTONS ACCEPT DECLINE OF CREATOR-->
                                 <b-col v-if="is_student" style="text-align: center">
-                                    <b-button-group v-if="!isCreator(member[1].id)">
+                                    <b-button-group v-if="!isCreator(member[1].id) && confirmed">
                                         <b-button
                                                 size="sm"
                                                 @click="acceptProject(member[1].id)"
                                                 variant="success"
-                                                v-if="(!isAccepted(member[2])&& buttonAvailble(project.status))"
+                                                v-if="(!isAccepted(member[2])&& buttonAvailble(project.status) && confirmed)"
                                         >Accepteer
                                         </b-button>
                                         <b-button
                                                   size="sm"
                                                   variant="danger"
                                                   @click="denyProject(member[1].id)"
-                                                  v-if="(isAccepted(member[2])&& buttonAvailble(project.status))"
+                                                  v-if="(isAccepted(member[2])&& buttonAvailble(project.status) && confirmed)"
                                         >Verwijder
                                         </b-button>
                                     </b-button-group>
                                     <p v-if="isCreator(member[1].id)">Bedenker van het project</p>
+                                    <p v-if="userid == member[1].id && confirmed==0">Aangevraagd</p>
                                 </b-col>
                                 <b-col id="belbinimage">
-                 <span>
-                   <img
-                           class="lidbelbin"
-                           :src="belbinResult(member[0])"
-                           :alt="member.belbintype"
-                           style="width: 29px; height: auto; float: right"
-                           v-b-tooltip.hover
-                           :title="member.belbintype"
-                   >
-                 </span>
+                                   <span>
+                                     <img
+                                             class="lidbelbin"
+                                             :src="belbinResult(member[0])"
+                                             :alt="member.belbintype"
+                                             style="width: 29px; height: auto; float: right"
+                                             v-b-tooltip.hover
+                                             :title="member.belbintype"
+                                     >
+                                   </span>
                                 </b-col>
                             </b-row>
 
@@ -116,12 +117,12 @@
                     <!--            </b-button-group>-->
                     <!--            &lt;!&ndash; Buttons student &ndash;&gt;-->
                     <b-button :href="'/nieuwproject'"
-                              v-if="!buttonAvailble(project.status)"
+                              v-if="!buttonAvailble(project.status) && confirmed"
                               @click="changeProject()"
                               class="btns"
                               style="float:right"
                     >Pas voorstel aan
-                    </b-button>
+                  </b-button>
                     <!--          </b-col>-->
 
                 </b-row>
@@ -138,7 +139,7 @@
 
 <script>
     export default {
-        props: ["project", "teacher", "groupmembers", "smartcriteria", "is_student", "csrf_token"], // "token",
+        props: ["project", "teacher", "groupmembers", "smartcriteria", "is_student", "csrf_token", "confirmed", "userid"], // "token",
         data() {
             return {
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
@@ -177,8 +178,8 @@
             },
             statusProject(value) {
                 if (value === "Accepted") return `✔`;
-                if (value === "Pending") return ":grey_question:";
-                if (value === "Declined") return ":heavy_multiplication_x:";
+                if (value === "Pending") return `❔`;
+                if (value === "Declined") return `✖`;
             },
 
             denyProject(value) {

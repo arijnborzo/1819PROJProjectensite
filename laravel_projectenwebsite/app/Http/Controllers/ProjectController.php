@@ -48,7 +48,7 @@ class ProjectController extends Controller
         }
         if ($project->status == "Accepted"){
             return redirect('/');
-        } else{
+        } else if ($user->student['confirmed'] || !isset($user->student->group)){
             return view('nieuwproject',
                 [
                     'project'  => $project,
@@ -56,6 +56,8 @@ class ProjectController extends Controller
                     'teachers' => $teacher_list,
                     'user' => $user
                 ]);
+        } else {
+            return redirect('/');
         }
 
     }
@@ -107,7 +109,6 @@ class ProjectController extends Controller
             }
             $project->save();
             $projectid = Project::where('creator_id', $user['id'])->value('id');
-            echo($projectid);
             $newsmartcriterium = [
                 'project_id' => (int)$projectid,
                 'specific' => $request->specifiek,
@@ -121,7 +122,6 @@ class ProjectController extends Controller
             if (isset($user->student)){
                 $group = new Group(['project_id' => $projectid]);
                 $group->save();
-                echo(Group::where('project_id',$projectid)->value('id'));
                 $creator = [
                     'group_id' => Group::where('project_id',$projectid)->value('id'),
                     'confirmed' => TRUE,
@@ -167,7 +167,6 @@ class ProjectController extends Controller
         foreach ($students as $student) {
             $s = [];
             array_push($s, $student->belbintype, $student->user, $student->confirmed);
-            //echo $student;
             array_push($groupmembers, $s);
         }
 //        dd($groupmembers);
@@ -187,8 +186,13 @@ class ProjectController extends Controller
     public function myProject()
     {
         $user = Auth::user();
-        $newpath = substr_replace("/project/", $user->student->group->project->id,9);
-        return redirect($newpath);
+        if (isset($user->student["group_id"])){
+          $newpath = substr_replace("/project/", $user->student->group->project->id,9);
+          return redirect($newpath);
+        }
+        else{
+          return redirect('/nieuwproject');
+        }
     }
 
 }

@@ -51,8 +51,8 @@ export default {
   methods: {
     statusResult(status) {
       if (status === "Accepted") return `✔`;
-      if (status === "Declined") return ":heavy_multiplication_x:";
-      else return ":grey_question:";
+      if (status === "Declined") return `✖`;
+      else return `❔`;
     }
   }
 };

@@ -121,10 +121,10 @@ class OverviewController extends Controller
           ]
         );
     }
-    public function addMember($id)
+    /*public function addMember($id)
     {
         AddMember::mail($id);
         return redirect('/');
 
-    }
+    }*/
 }

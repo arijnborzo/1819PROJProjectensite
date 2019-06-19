@@ -108,7 +108,7 @@
               >Decline</b-button>
             </b-button-group>
             <!-- Buttons student -->
-            <b-button :href="'/addMember/' + project.id"
+            <b-button :href="'/sendrequest/' + project.id"
                       v-if="is_student"
                       v-b-modal.modal-1
                       @click="verstuurGroepsverzoek()"

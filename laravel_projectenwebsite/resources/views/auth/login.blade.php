@@ -43,13 +43,13 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('Onthoud mij') }}
                                     </label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-6">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btns btn-secondary">
                                     {{ __('Login') }}
@@ -59,23 +59,21 @@
                             </div>
                         </div>
                     </form>
-                    <div class="form-group row mb-0">
-                        <div class="col-md-8 offset-md-4">
-                            <h6 style="margin-top:2rem">Paswoord vergeten?</h6>
+                    <div class="form-group row">
+                        <div class="col">
                             @if (Route::has('password.request'))
                                 <a href="{{ route('password.request') }}">
-                                    <button class="btns btn-secondary">
+                                    <button class="btns btn-secondary" style="float: right">
                                         {{ __('Passwoord vergeten?') }}
                                     </button>
                                 </a>
                             @endif
                             {{--                                <b-button class="btns">Reset paswoord</b-button>--}}
                         </div>
-                        <div class="col-md-8 offset-md-4">
-                            <h6 style="margin-top:2rem">Nog niet geregistreerd?</h6>
+                        <div class="col">
                             <a href="{{ route('register') }}">
                                 <button class="btns btn-secondary">
-                                    {{ __('Register') }}
+                                    {{ __('Nieuwe gebruiker') }}
                                 </button>
                             </a>
 

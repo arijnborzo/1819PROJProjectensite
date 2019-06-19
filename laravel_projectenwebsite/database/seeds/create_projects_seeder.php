@@ -15,7 +15,7 @@ class create_projects_seeder extends Seeder
         DB::table('projects')->insert([
             'id' => 1,
             'title' => 'Projectenwebsite',
-            'status' => 'Accepted',
+            'status' => 'Pending',
             'short_description' => 'Dit is de korte beschrijving',
             'full_description' => 'Dit is de veel veel veel langere beschrijving',
             'teacher_id' => 5,
