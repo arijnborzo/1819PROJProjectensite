@@ -73,7 +73,7 @@ export default {
           [
             {
               id: 1,
-              title: "Macrokeyboard via C implementeren",
+              title: "Macrokeyboard via C implementerennnnnnnnn",
               status: "Accepted",
               short_description: "dit is de korte bschrrrrrrrrrrrr",
               full_description: "Dit is de laaaaaaaaaaaaaaaange beschrrrr",
@@ -260,7 +260,7 @@ export default {
         proj.classList.remove("listli");
         proj.classList.add("gridli");
       });
-      this.gridListTekstStyling("7.75rem", "8rem", "3.5rem");
+      this.gridListTekstStyling("7.75rem", "8rem", "3.6rem");
       this.gridlist = "grid";
     },
     listView: function() {

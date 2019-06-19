@@ -1,5 +1,10 @@
 <template>
-  <b-card v-bind:title="titel" tag="article" class="mt-3 project">
+  <b-card
+    v-bind:title="titel"
+    tag="article"
+    class="mt-3 project"
+    :border-variant="bgResult(status)"
+  >
     <b-card-text class="beschrijving">
       <h6>Beschrijving</h6>
       <span v-if="kort">{{kortebeschrijving}}</span>
@@ -61,6 +66,10 @@ export default {
       if (status === "Accepted") return `✔`;
       if (status === "Declined") return "✖";
       else return "❔";
+    },
+    bgResult(status) {
+      if (status === "Accepted") return `success`;
+      if (status === "Declined") return "danger";
     }
   },
   watch: {
@@ -84,7 +93,8 @@ export default {
   list-style-type: none;
 }
 .card-title {
-  height: 3.5rem;
+  height: 3.6rem;
+  overflow: overlay;
 }
 .beschrijving {
   height: 7.75rem;

@@ -162,7 +162,7 @@ export default {
   data() {
     return {
       showBtn: true,
-      isStudent: false,
+      isStudent: true,
       undo: false,
       teacher: {
         name: "Lukas",
