@@ -1,0 +1,12 @@
+Dit is een platform dat gelinkt is met het vak 'Projecten 1' uit het tweede jaar van de richting Elektronica-ICT aan de hogeschool Technologiecampus Odisee te Gent.
+Hierin kan een account aangemaakt worden voor de studenten en docenten die hierin betrokken zijn, met hun e-mailadres van school.
+Als student zijnde zal je eerst een Belbintest moeten uitvoeren zodat men weet wat voor groepsrol je hebt.
+Via deze rol zullen we aangeven bij welke groepen je past en in welke mate.
+
+Verder is het een platform waar de studenten nieuwe projecten kunnen toevoegen, de docenten krijgen dan een melding en die mag dan het project goed- of afkeuren.
+Eens ze geaccepteerd zijn mogen andere studenten een verzoek sturen om lid te worden van de groep met dat bepaald project.
+Elk groepslid kan hier de goedkeuring voor geven en als ze met 4 zijn is de groep vol.
+Men kan zoeken en filteren doorheen alle projecten van dit jaar, maar daarnaast ook alle projecten uit het verleden.
+Elke ingeschreven student komt op de studentenpagina tevoorschijn met zijn of haar details.
+
+Dit is de korte beschrijving van het klein maar krachtig platform waar projecten voorgesteld worden en de groepen gevormd kunnen worden.
