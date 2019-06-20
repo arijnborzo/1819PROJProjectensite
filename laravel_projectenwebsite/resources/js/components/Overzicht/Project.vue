@@ -15,7 +15,7 @@
     </b-card-text>
     <p class="statusDatum" v-if="!ifArchief">
       Status:
-      <span>{{statusResult(status)}}</span>
+      <span>{{statusResult(status+"")}}</span>
     </p>
     <p class="statusDatum" v-if="ifArchief">
       Datum:
@@ -50,9 +50,9 @@ export default {
   },
   methods: {
     statusResult(status) {
-      if (status === "Accepted") return `✔`;
-      if (status === "Declined") return `✖`;
-      else return `❔`;
+      if (status === "Accepted") return "✔";
+      if (status === "Declined") return "✖";
+      else return "❔";
     }
   }
 };

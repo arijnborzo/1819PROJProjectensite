@@ -151,8 +151,8 @@ props: ["project", "teacher", "groupmembers", "smartcriteria", "is_student"],
       },
       statusProject(value) {
         if (value === "Accepted") return `✔`;
-        if (value === "Pending") return ":grey_question:";
-        if (value === "Declined") return ":heavy_multiplication_x:";
+        if (value === "Pending") return "❔";
+        if (value === "Declined") return "✖";
       },
       checkStatus(value) {
         if (value === "Accepted") {
