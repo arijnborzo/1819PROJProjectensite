@@ -15,11 +15,23 @@ class GroupmemberController extends Controller
       $group=Group::where('project_id',$id)->value('id');
       echo($group);
       //mail($id);
-      $updateStudent = [
-          'group_id' => $group,
-          'confirmed'=> 0,
-          'created_at' => date("Y-m-d H:i:s"),
-      ];
+//      $updateStudent = [
+////          'group_id' => $group,
+////          'confirmed'=> 0,
+////          'created_at' => date("Y-m-d H:i:s"),
+////      ];
+ if(Student::where('group_id', $group)->count() == 0){
+       $updateStudent = [
+           'group_id' => $group,
+           'confirmed'=> 1,
+       ];
+     }
+     else{
+       $updateStudent = [
+           'group_id' => $group,
+           'confirmed'=> 0,
+       ];
+     }
       $student->update($updateStudent);
       return redirect('/myproject');
   }
